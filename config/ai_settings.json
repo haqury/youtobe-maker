@@ -1,0 +1,15 @@
+{
+  "text_provider": "cloudflare",
+  "text_model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "image_provider": "cloudflare",
+  "image_model": "@cf/black-forest-labs/flux-1-schnell",
+  "text_fallback_on_quota": false,
+  "text_fallback_include_gemini": false,
+  "text_fallback_chain": [
+    "ollama"
+  ],
+  "text_fallback_models": {
+    "ollama": "gemma3:12b"
+  },
+  "image_fallback_on_error": true
+}

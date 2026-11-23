@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <style>
+    html, body { margin: 0; padding: 0; font-family: system-ui, sans-serif; background: transparent; }
+    .bar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 8px;
+      padding: 8px 4px; background: #141414; border-radius: 8px;
+    }
+    .btn {
+      border: none; border-radius: 6px; padding: 8px 14px; cursor: pointer;
+      background: #2d6cdf; color: #fff; font-size: 14px;
+    }
+    .btn:hover { background: #3b7bed; }
+    .state { color: #aaa; font-size: 13px; min-width: 140px; }
+    .hint { color: #777; font-size: 12px; width: 100%; margin: 0 2px 4px; }
+  </style>
+</head>
+<body>
+  <p class="hint">Кнопки читают время из плеера Streamlit над этой строкой. Комментарий — в списке участков ниже.</p>
+  <div class="bar">
+    <button type="button" class="btn" id="btnStart">⏺ Начало</button>
+    <button type="button" class="btn" id="btnEnd">⏹ Конец</button>
+    <span class="state" id="state"></span>
+  </div>
+  <script>
+    function streamlitSend(type, payload) {
+      window.parent.postMessage(
+        Object.assign({ isStreamlitMessage: true, type: type }, payload),
+        "*"
+      );
+    }
+    function setComponentValue(value) {
+      streamlitSend("streamlit:setComponentValue", {
+        value: value,
+        dataType: "json",
+      });
+    }
+    function setFrameHeight() {
+      streamlitSend("streamlit:setFrameHeight", {
+        height: Math.ceil(document.body.getBoundingClientRect().height) + 8,
+      });
+    }
+    function componentReady() {
+      streamlitSend("streamlit:componentReady", { apiVersion: 1 });
+    }
+
+    let markStart = null;
+    const stateEl = document.getElementById("state");
+
+    function hostVideo() {
+      const doc = window.parent.document;
+      const videos = doc.querySelectorAll("video");
+      if (!videos.length) return null;
+      return videos[videos.length - 1];
+    }
+
+    function fmt(seconds) {
+      const m = Math.floor(seconds / 60);
+      const s = Math.floor(seconds % 60);
+      return m + ":" + String(s).padStart(2, "0");
+    }
+
+    document.getElementById("btnStart").onclick = () => {
+      const video = hostVideo();
+      if (!video) {
+        stateEl.textContent = "Плеер не найден";
+        return;
+      }
+      markStart = video.currentTime;
+      stateEl.textContent = "Начало: " + fmt(markStart) + " (" + markStart.toFixed(1) + " с)";
+      setFrameHeight();
+    };
+
+    document.getElementById("btnEnd").onclick = () => {
+      const video = hostVideo();
+      if (!video) {
+        stateEl.textContent = "Плеер не найден";
+        return;
+      }
+      if (markStart === null) {
+        stateEl.textContent = "Сначала «Начало»";
+        return;
+      }
+      const end = video.currentTime;
+      if (end <= markStart) {
+        stateEl.textContent = "Конец позже начала";
+        return;
+      }
+      setComponentValue({
+        action: "save_segment",
+        start: Math.round(markStart * 100) / 100,
+        end: Math.round(end * 100) / 100,
+        note: "",
+      });
+      markStart = null;
+      stateEl.textContent = "Участок добавлен — допишите комментарий ниже";
+    };
+
+    componentReady();
+    setFrameHeight();
+    window.addEventListener("resize", setFrameHeight);
+  </script>
+</body>
+</html>

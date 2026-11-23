@@ -1,0 +1,24 @@
+---
+description: Обязательный orchestration через subagent-watchdog — без обхода skill
+alwaysApply: true
+---
+
+# Subagent + Watchdog (обязательно)
+
+Skill: `~/.cursor/skills/subagent-watchdog/SKILL.md` — **не обходить**.
+
+## Главный агент
+
+1. **Watchdog** — в начале сессии с инструментами убедиться, что фоновый `watchdog.ps1` жив; если `running: false` — запустить:
+   `powershell -NoProfile -ExecutionPolicy Bypass -File "$env:USERPROFILE/.cursor/skills/subagent-watchdog/scripts/watchdog.ps1"` (`block_until_ms: 0`).
+2. Любая задача с **Read/Grep/Glob/Shell/Write/Task/MCP** (кроме одного короткого Read для формулировки задачи) — через **Task**-субагентов (`explore` / `generalPurpose`), **≤2** параллельно.
+3. Долгие команды — только фон + ожидание по логу/`Await`; интерактив — запрещён.
+4. После timeout/Aborted — **new scope**, не повторять идентичный вызов.
+
+## Субагент
+
+Выполняет инструменты сам, **не** делегирует дальше. Соблюдает лимиты: ≤2 тяжёлых параллельных вызова, `Grep`/`Glob` с `head_limit` и узким `path`, shell-тесты с явным коротким таймаутом.
+
+## Отчёт пользователю
+
+Итог и файлы — от главного агента по отчётам субагентов, без пересказа процесса.

@@ -1,0 +1,130 @@
+{
+  "presets": [
+    {
+      "id": "gaming_mysteries_iceberg",
+      "title": "Gaming Mysteries & Icebergs",
+      "slug_suggestion": "channel_03_gaming_iceberg",
+      "category": "Gaming / Documentary",
+      "demand_score": 8,
+      "estimated_rpm_usd": "3.5 - 6.5",
+      "production_difficulty": 5,
+      "production_difficulty_note": "5/10 — статика + скринкасты/архивные клипы, умеренный фактчек",
+      "recommended_duration": "12-18 минут",
+      "description": "Faceless разборы лора, закрытых бет, urban legends и айсбергов по играм. Аудитория USA 18-34.",
+      "keywords": [
+        "gaming iceberg explained",
+        "video game mystery documentary",
+        "unsolved gaming mysteries",
+        "hidden game lore",
+        "creepy gaming stories",
+        "lost video game secrets",
+        "gaming conspiracy theory"
+      ]
+    },
+    {
+      "id": "gaming_humor_npc",
+      "title": "Gaming Humor & NPC Logic",
+      "slug_suggestion": "channel_04_npc_logic",
+      "category": "Gaming / Comedy",
+      "demand_score": 7,
+      "estimated_rpm_usd": "2.5 - 5.0",
+      "production_difficulty": 7,
+      "production_difficulty_note": "7/10 — нарезка геймплея, монтаж, озвучка",
+      "recommended_duration": "8-14 минут",
+      "description": "Короткие ролики про абсурд ИИ, баги NPC, физику и «логику» в играх. Виральный потенциал Shorts + longform.",
+      "keywords": [
+        "NPC logic funny",
+        "video game physics fails",
+        "gaming bugs compilation",
+        "stupid AI moments games",
+        "game logic explained funny",
+        "open world NPC behavior",
+        "skyrim NPC moments"
+      ]
+    },
+    {
+      "id": "cozy_sleep_history",
+      "title": "Cozy History & Space for Sleep",
+      "slug_suggestion": "channel_02_sleep_history",
+      "category": "Sleep / History",
+      "demand_score": 8,
+      "estimated_rpm_usd": "4.0 - 7.0",
+      "production_difficulty": 3,
+      "production_difficulty_note": "3/10 — статика + автосборка, длинный скрипт, без геймплея",
+      "recommended_duration": "45-90 минут (sleep)",
+      "description": "Медленные исторические и космические рассказы для засыпания: быт, ночь, без драмы. EN primary.",
+      "keywords": [
+        "history for sleep",
+        "ancient rome bedtime story",
+        "sleep documentary history",
+        "calm history narration",
+        "space documentary for sleep",
+        "fall asleep to history",
+        "cozy history story"
+      ]
+    },
+    {
+      "id": "survival_disasters",
+      "title": "Survival Stories & Disasters",
+      "slug_suggestion": "channel_05_survival_tales",
+      "category": "Documentary / Survival",
+      "demand_score": 9,
+      "estimated_rpm_usd": "5.0 - 9.0",
+      "production_difficulty": 4,
+      "production_difficulty_note": "4/10 — статика/архив + фактчек, без нарезки игр",
+      "recommended_duration": "15-25 минут",
+      "description": "Реальные истории выживания, катастрофы, «что если» и разборы решений. Высокий RPM в USA finance-adjacent.",
+      "keywords": [
+        "survival story documentary",
+        "what if disaster explained",
+        "plane crash survival story",
+        "extreme survival cases",
+        "natural disaster documentary",
+        "stranded survival story",
+        "true survival stories"
+      ]
+    },
+    {
+      "id": "psychology_behavior",
+      "title": "Psychology & Human Behavior",
+      "slug_suggestion": "channel_06_psychology_facts",
+      "category": "Education / Psychology",
+      "demand_score": 8,
+      "estimated_rpm_usd": "4.5 - 8.5",
+      "production_difficulty": 3,
+      "production_difficulty_note": "3/10 — статика + озвучка, нужен аккуратный фактчек",
+      "recommended_duration": "10-20 минут",
+      "description": "Когнитивные искажения, социальная психология, поведение в сети — без клинических советов.",
+      "keywords": [
+        "psychology facts explained",
+        "cognitive bias documentary",
+        "human behavior science",
+        "dark psychology explained",
+        "social psychology experiments",
+        "why people do that",
+        "mind tricks psychology"
+      ]
+    },
+    {
+      "id": "usa_legal_finance",
+      "title": "US Legal & Finance Breakdowns",
+      "slug_suggestion": "channel_07_usa_legal_money",
+      "category": "Finance / Legal (USA)",
+      "demand_score": 7,
+      "estimated_rpm_usd": "8.0 - 15.0",
+      "production_difficulty": 6,
+      "production_difficulty_note": "6/10 — фактчек, disclaimers, статика; высокий RPM",
+      "recommended_duration": "12-22 минут",
+      "description": "Разборы судебных кейсов, налогов, банкротств, fine print — для USA аудитории, не финсовет.",
+      "keywords": [
+        "lawsuit explained",
+        "how bankruptcy works usa",
+        "class action lawsuit explained",
+        "credit score explained",
+        "IRS audit explained",
+        "tenant rights explained",
+        "small claims court guide"
+      ]
+    }
+  ]
+}

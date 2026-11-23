@@ -1,0 +1,10 @@
+{
+  "playlists": [
+    {
+      "id": "S01",
+      "title_en": "The Alchemist's Journey",
+      "title_ru": "Путешествие алхимика",
+      "slug": "the_alchemists_journey"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "target_min_minutes": 30.0,
+  "target_max_minutes": 40.0,
+  "words_per_minute": 145,
+  "update_bible_recap": false
+}

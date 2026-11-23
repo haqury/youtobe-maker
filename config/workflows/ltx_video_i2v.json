@@ -1,0 +1,121 @@
+{
+  "_meta": {
+    "description": "LTX-Video 2B I2V (Checkpoint + отдельный T5 CLIP, как в ComfyUI examples).",
+    "output_node_ids": ["12"],
+    "defaults": {
+      "width": 768,
+      "height": 432,
+      "num_frames": 49,
+      "steps": 20,
+      "cfg": 3.0,
+      "strength": 0.92,
+      "fps": 24,
+      "ckpt_name": "ltx-video-2b-v0.9.5.safetensors",
+      "clip_name": "t5xxl_fp16.safetensors"
+    }
+  },
+  "1": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "{{CKPT_NAME}}"
+    }
+  },
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "{{CLIP_NAME}}",
+      "type": "ltxv"
+    }
+  },
+  "3": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "{{IMAGE}}"
+    }
+  },
+  "4": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "{{PROMPT}}",
+      "clip": ["2", 0]
+    }
+  },
+  "5": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "blurry, low quality, text, watermark, flicker, jitter, distorted",
+      "clip": ["2", 0]
+    }
+  },
+  "6": {
+    "class_type": "LTXVImgToVideo",
+    "inputs": {
+      "positive": ["4", 0],
+      "negative": ["5", 0],
+      "vae": ["1", 2],
+      "image": ["3", 0],
+      "width": {{WIDTH}},
+      "height": {{HEIGHT}},
+      "length": {{NUM_FRAMES}},
+      "batch_size": 1,
+      "strength": {{STRENGTH}}
+    }
+  },
+  "7": {
+    "class_type": "LTXVConditioning",
+    "inputs": {
+      "positive": ["6", 0],
+      "negative": ["6", 1],
+      "frame_rate": 24.0
+    }
+  },
+  "8": {
+    "class_type": "LTXVScheduler",
+    "inputs": {
+      "steps": {{STEPS}},
+      "max_shift": 2.05,
+      "base_shift": 0.95,
+      "stretch": true,
+      "terminal": 0.1,
+      "latent": ["6", 2]
+    }
+  },
+  "9": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "euler"
+    }
+  },
+  "10": {
+    "class_type": "SamplerCustom",
+    "inputs": {
+      "model": ["1", 0],
+      "add_noise": true,
+      "noise_seed": {{SEED}},
+      "cfg": {{CFG}},
+      "positive": ["7", 0],
+      "negative": ["7", 1],
+      "sampler": ["9", 0],
+      "sigmas": ["8", 0],
+      "latent_image": ["6", 2]
+    }
+  },
+  "11": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": ["10", 0],
+      "vae": ["1", 2]
+    }
+  },
+  "12": {
+    "class_type": "SaveAnimatedWEBP",
+    "inputs": {
+      "images": ["11", 0],
+      "filename_prefix": "ltx_i2v",
+      "fps": 24.0,
+      "lossless": false,
+      "quality": 85,
+      "method": "default"
+    }
+  }
+}

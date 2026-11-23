@@ -1,0 +1,34 @@
+{
+  "problem_images": [
+    {
+      "name": "03.jpg",
+      "note": "пустые кадры"
+    },
+    {
+      "name": "04.jpg",
+      "note": "пустые кадры"
+    },
+    {
+      "name": "06.jpg",
+      "note": "пустые кадры"
+    },
+    {
+      "name": "07.jpg",
+      "note": "пустые кадры"
+    },
+    {
+      "name": "08.jpg",
+      "note": "пустые кадры"
+    }
+  ],
+  "video_segments": [
+    {
+      "start": 56.78,
+      "end": 62.67,
+      "note": ""
+    }
+  ],
+  "animate_frames": [
+    "01"
+  ]
+}

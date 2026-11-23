@@ -1,0 +1,58 @@
+{
+  "providers": {
+    "cloudflare_workers_ai": {
+      "name": "Cloudflare Workers AI (FLUX schnell)",
+      "free_limit_description": "~150 изображений в сутки (10 000 free neurons/day, @cf/black-forest-labs/flux-1-schnell)",
+      "cap_period": "daily",
+      "daily_or_hourly_cap": 150,
+      "unit": "images",
+      "avg_seconds_per_item": 6,
+      "safe_delay_sec": 2.0
+    },
+    "youtube_data_api": {
+      "name": "YouTube Data API",
+      "free_limit_description": "10 000 quota units в сутки (search ≈ 100 units на запрос)",
+      "cap_period": "daily",
+      "daily_or_hourly_cap": 10000,
+      "unit": "units",
+      "avg_seconds_per_item": 0.3,
+      "safe_delay_sec": 0.1
+    },
+    "huggingface_flux": {
+      "name": "Hugging Face FLUX (Inference Providers)",
+      "free_limit_description": "Prepaid: нужны кредиты на балансе; при $0 — 402 Payment Required",
+      "cap_period": "hourly",
+      "daily_or_hourly_cap": 40,
+      "unit": "images",
+      "avg_seconds_per_item": 8,
+      "safe_delay_sec": 2.5
+    },
+    "pollinations_fallback": {
+      "name": "Pollinations.ai (fallback)",
+      "free_limit_description": "Ориентир ~3 изображения в минуту (до ~180/час); пауза между запросами",
+      "cap_period": "hourly",
+      "daily_or_hourly_cap": 180,
+      "unit": "images",
+      "avg_seconds_per_item": 12,
+      "safe_delay_sec": 4.0
+    },
+    "edge_tts": {
+      "name": "Edge TTS (озвучка)",
+      "free_limit_description": "Без публичной квоты на стороне Microsoft Edge TTS",
+      "cap_period": "daily",
+      "daily_or_hourly_cap": null,
+      "unit": "unlimited",
+      "avg_seconds_per_item": 15,
+      "safe_delay_sec": 0
+    },
+    "moviepy_render": {
+      "name": "MoviePy / FFmpeg (сборка видео)",
+      "free_limit_description": "Локальный рендер, лимит — только CPU/GPU ПК",
+      "cap_period": "daily",
+      "daily_or_hourly_cap": null,
+      "unit": "unlimited",
+      "avg_seconds_per_item": 30,
+      "safe_delay_sec": 0
+    }
+  }
+}

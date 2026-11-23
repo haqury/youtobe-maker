@@ -1,0 +1,47 @@
+.env
+logs/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+.venv/
+venv/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# --- Рендер эпизодов (перегенерируемые бинарники) ---
+channels/**/episodes/**/images/
+channels/**/episodes/**/animation/
+channels/**/episodes/**/final_video.mp4
+channels/**/episodes/**/voiceover.mp3
+channels/**/episodes/**/voiceover_ru.mp3
+channels/**/episodes/**/thumbnail.jpg
+channels/**/episodes/**/thumbnail.png
+channels/**/episodes/**/.sync_instruction.txt
+channels/**/episodes/**/sync_instruction_last.txt
+channels/**/episodes/**/history/
+
+# Бренд канала (загружается вручную)
+channels/**/brand_assets/*
+!channels/**/brand_assets/.gitkeep
+
+# Превью для веба (копии эпизодов)
+static/preview/
+
+# Локальные модели и sd.exe
+models/image/*
+!models/image/.gitkeep
+tools/sd/*
+!tools/sd/.gitkeep
+
+# Remotion
+remotion_studio/node_modules/
+remotion_studio/out/
+remotion_studio/build/
+
+# Общий ambient (держите локально или положите свой mp3)
+assets/ambient/*.mp3
+!assets/ambient/.gitkeep

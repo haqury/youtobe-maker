@@ -1,0 +1,25 @@
+﻿{
+  "version": 1,
+  "title_en": "The Alchemist's Journey",
+  "title_ru": "Путешествие алхимика",
+  "world_and_atmosphere": {
+    "ru": "Мир представляет собой дуалистическое фэнтезийное царство, где высокая магия доступна лишь элите, в то время как в суровом, мощеном «Квартале нищих» живут забытые. Тон глубоко атмосферный, спокойный и «сонный», с акцентом на ритмичные звуки кипящих котлов, скрип перьев и мягкое янтарное свечение алхимических огней. Сюжет связывает современную научную логику с древними мистическими законами. Темп повествования медленный и медитативный, предназначенный для погружения в мир пара, трав и светящихся минералов.",
+    "en": "The world is a dualistic fantasy realm where high magic is the sole province of the elite, while the forgotten dwell in the harsh, cobbled 'Beggars' Quarter.' The tone is profoundly atmospheric, tranquil, and 'dreamlike,' emphasizing the rhythmic bubbling of cauldrons, the scratching of quills, and the soft amber radiance of alchemical fires. The narrative bridges modern scientific logic with ancient mystical laws. The pacing is slow and meditative, crafted to immerse the audience in a world of steam, herbs, and luminous minerals."
+  },
+  "characters_visual_lock": {
+    "ru": "Элиан: Молодой человек со старой душой, бледной кожей, растрепанными темными волосами и поразительными серебряными глазами. Носит заплатанные льняные туники или кожаные фартуки в пятнах от чернил. Мастер Торн: Седой, стоический глава Школы алхимиков с длинной заплетенной бородой и сложными очками с множеством линз.",
+    "en": "Elian: A young man with an old soul, pale skin, tousled dark hair, and striking silver eyes. He wears patched linen tunics or ink-stained leather aprons. Master Thorn: The grey-haired, stoic head of the Alchemists' School, with a long braided beard and intricate multi-lensed spectacles."
+  },
+  "lore_and_rules": {
+    "ru": "Логика мира строится на применении земной химии к магии, борьбе с нищетой и противостоянии элитной Академии. Визуальный стиль — «Темная академия и уютное фэнтези». Высококонтрастные сцены с глубокими тенями и тёплыми бликами от свечей. Акцент на крупных планах рук, смешивающих порошки, и бурлящих колб. Цветовая палитра: глубокий коричневый, лесной зеленый и золотое мерцание трансмутации.",
+    "en": "The world's logic is rooted in the application of earthly chemistry to magic, the struggle against poverty, and the defiance of an elite Academy. The visual style is 'Dark Academia meets Cozy Fantasy.' High-contrast scenes feature deep shadows and the warm flicker of candlelight. The focus remains on close-ups of hands mixing powders and bubbling flasks. The color palette is defined by deep browns, forest greens, and the golden shimmer of transmutation."
+  },
+  "recaps": [
+    {
+      "episode": "S01E01",
+      "title": "The Alchemist's Journey",
+      "summary_ru": "{\n  \"summary_en\": \"The episode opens with a newborn silver‑eyed child being rescued from the cold stone of the Beggars’ Quarter by the compassionate monkess Sister",
+      "summary_en": "{\n  \"summary_en\": \"The episode opens with a newborn silver‑eyed child being rescued from the cold stone of the Beggars’ Quarter by the compassionate monkess Sister"
+    }
+  ]
+}
