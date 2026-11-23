@@ -2,9 +2,50 @@
   "playlists": [
     {
       "id": "S01",
-      "title_en": "The Alchemist's Journey",
-      "title_ru": "Путешествие алхимика",
-      "slug": "the_alchemists_journey"
+      "title_en": "Cozy Wizarding Academy",
+      "title_ru": "Уютная магическая академия",
+      "slug": "cozy_wizarding_academy",
+      "episodes": [
+        "EP01",
+        "EP02",
+        "EP03",
+        "EP04",
+        "EP05"
+      ]
+    },
+    {
+      "id": "S02",
+      "title_en": "Forest Sanctuaries",
+      "title_ru": "Лесные убежища",
+      "slug": "forest_sanctuaries",
+      "episodes": [
+        "EP06",
+        "EP07",
+        "EP08",
+        "EP09",
+        "EP10"
+      ]
+    },
+    {
+      "id": "S03",
+      "title_en": "Quiet Orbit",
+      "title_ru": "Тихая орбита",
+      "slug": "quiet_orbit",
+      "episodes": [
+        "EP11",
+        "EP12",
+        "EP13"
+      ]
+    },
+    {
+      "id": "S04",
+      "title_en": "Ancient Hearth",
+      "title_ru": "Древний очаг",
+      "slug": "ancient_hearth",
+      "episodes": [
+        "EP14",
+        "EP15"
+      ]
     }
   ]
 }

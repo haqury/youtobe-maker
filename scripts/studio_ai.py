@@ -1402,6 +1402,8 @@ class ScriptProfile:
     target_max_minutes: float = 20.0
     words_per_minute: int = 125
     target_frame_count: int = 20
+    target_frame_count_manual: bool = False
+    seconds_per_frame: float = 40.0
 
 
 def _sleep_style_channel(channel_slug: str) -> bool:
@@ -1434,24 +1436,30 @@ def default_minutes_for_channel(channel_slug: str, channel_dir: Path) -> tuple[f
     return DEFAULT_MINUTES.get(channel_slug, (15, 20))
 
 
-def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path) -> dict[str, float | int]:
+def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path) -> dict[str, float | int | bool | None]:
+    from episode_timing import apply_timing_defaults
+
     path = episode_dir / EPISODE_CONFIG_JSON
     mn, mx = default_minutes_for_channel(channel_slug, channel_dir)
     wpm = DEFAULT_WPM.get(channel_slug, 125)
-    base: dict[str, float | int | bool] = {
+    base: dict[str, float | int | bool | None] = {
         "target_min_minutes": mn,
         "target_max_minutes": mx,
         "words_per_minute": wpm,
         "update_bible_recap": False,
+        "target_frame_count": None,
+        "seconds_per_frame": SECONDS_PER_FRAME,
+        "voice_fade_out_sec": 12.0,
+        "ambient_tail_sec": 0.0,
     }
     if not path.is_file():
-        return base
+        return apply_timing_defaults(base)
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except json.JSONDecodeError:
-        return base
+        return apply_timing_defaults(base)
     if not isinstance(data, dict):
-        return base
+        return apply_timing_defaults(base)
     for key in base:
         if key in data:
             base[key] = data[key]
@@ -1462,11 +1470,20 @@ def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path)
     except (TypeError, ValueError):
         mn, mx = default_minutes_for_channel(channel_slug, channel_dir)
         wpm = DEFAULT_WPM.get(channel_slug, 125)
-        base = {"target_min_minutes": mn, "target_max_minutes": mx, "words_per_minute": wpm}
+        base = {
+            "target_min_minutes": mn,
+            "target_max_minutes": mx,
+            "words_per_minute": wpm,
+            "update_bible_recap": False,
+            "target_frame_count": None,
+            "seconds_per_frame": SECONDS_PER_FRAME,
+            "voice_fade_out_sec": 12.0,
+            "ambient_tail_sec": 0.0,
+        }
     if float(base["target_max_minutes"]) < float(base["target_min_minutes"]):
         base["target_max_minutes"] = base["target_min_minutes"]
     base["update_bible_recap"] = bool(data.get("update_bible_recap", False)) if isinstance(data, dict) else False
-    return base
+    return apply_timing_defaults(base)
 
 
 def save_episode_config(episode_dir: Path, data: dict[str, float | int]) -> None:
@@ -1490,12 +1507,14 @@ def save_plot_brief(episode_dir: Path, text: str) -> None:
 
 
 def profile_from_episode_settings(episode_dir: Path, channel_slug: str) -> ScriptProfile:
+    from episode_timing import resolve_target_frame_count
+
     channel_dir = episode_dir.parents[1] if len(episode_dir.parents) > 1 else ROOT / "channels" / channel_slug
     epi = load_episode_config(episode_dir, channel_slug, channel_dir)
     mn = float(epi["target_min_minutes"])
     mx = float(epi["target_max_minutes"])
     wpm = int(epi["words_per_minute"])
-    avg_min = (mn + mx) / 2.0
+    spf = float(epi["seconds_per_frame"])
     word_min = int(mn * wpm)
     word_max = int(mx * wpm)
     sleep_style = _sleep_style_channel(channel_slug)
@@ -1505,7 +1524,7 @@ def profile_from_episode_settings(episode_dir: Path, channel_slug: str) -> Scrip
         chapter_word_min, chapter_word_max = 320, 400
     avg_words = (word_min + word_max) // 2
     base_chapters = max(3, min(7, round(avg_words / WORDS_PER_CHAPTER)))
-    target_frame_count = max(8, int(round(avg_min * 60 / SECONDS_PER_FRAME)))
+    target_frame_count, frame_manual = resolve_target_frame_count(epi)
     prompts_per_chapter = max(3, min(6, round(target_frame_count / max(base_chapters, 1))))
     extra_chapter_floor = word_min if sleep_style else int(word_min * 0.85)
     return ScriptProfile(
@@ -1521,16 +1540,24 @@ def profile_from_episode_settings(episode_dir: Path, channel_slug: str) -> Scrip
         target_max_minutes=mx,
         words_per_minute=wpm,
         target_frame_count=target_frame_count,
+        target_frame_count_manual=frame_manual,
+        seconds_per_frame=spf,
     )
 
 
 def episode_plan_summary(episode_dir: Path, channel_slug: str) -> str:
     prof = profile_from_episode_settings(episode_dir, channel_slug)
+    if prof.target_frame_count_manual:
+        frames_label = f"{prof.target_frame_count} кадров (вручную)"
+    else:
+        frames_label = (
+            f"≈{prof.target_frame_count} кадров (авто, {prof.seconds_per_frame:.0f} с/кадр)"
+        )
     return (
         f"~{prof.target_min_minutes:.0f}–{prof.target_max_minutes:.0f} мин · "
         f"{prof.words_per_minute} wpm · {prof.word_target_min:,}–{prof.word_target_max:,} слов · "
         f"{prof.base_chapters} глав · ~{prof.prompts_per_chapter} кадров/глава · "
-        f"≈{prof.target_frame_count} кадров"
+        f"{frames_label}"
     )
 
 

@@ -57,7 +57,9 @@ from channel_settings import (
     save_channel_settings,
 )
 from episode_snapshot import list_episode_snapshots, restore_episode_snapshot, snapshot_display_line
+from episode_timing import auto_frame_count
 from studio_ai import (
+    episode_plan_summary,
     expand_backlog_idea_to_series,
     generate_backlog_ideas,
     generate_next_series_episode,
@@ -575,11 +577,35 @@ def read_editor_text(path: Path, channel_slug: str) -> str:
 def persist_episode_config_before_job(episode_dir: Path, ep_key: str, epi_cfg: dict) -> None:
     min_v = float(st.session_state.get(f"ep_min_min_{ep_key}", epi_cfg["target_min_minutes"]))
     max_v = float(st.session_state.get(f"ep_max_min_{ep_key}", epi_cfg["target_max_minutes"]))
+    frame_raw = int(
+        st.session_state.get(
+            f"ep_frame_count_{ep_key}",
+            epi_cfg.get("target_frame_count") or 0,
+        )
+    )
+    tfc = frame_raw if frame_raw > 0 else None
+    spf_default = float(epi_cfg.get("seconds_per_frame", 40))
     cfg_out = {
         "target_min_minutes": min_v,
         "target_max_minutes": max(max_v, min_v),
         "words_per_minute": int(epi_cfg.get("words_per_minute", 125)),
         "update_bible_recap": bool(epi_cfg.get("update_bible_recap", False)),
+        "target_frame_count": tfc,
+        "seconds_per_frame": float(
+            st.session_state.get(f"ep_spf_{ep_key}", spf_default)
+        ),
+        "voice_fade_out_sec": float(
+            st.session_state.get(
+                f"ep_voice_fade_{ep_key}",
+                epi_cfg.get("voice_fade_out_sec", 12),
+            )
+        ),
+        "ambient_tail_sec": float(
+            st.session_state.get(
+                f"ep_ambient_tail_{ep_key}",
+                epi_cfg.get("ambient_tail_sec", 0),
+            )
+        ),
     }
     save_episode_config(episode_dir, cfg_out)
 
@@ -654,6 +680,9 @@ def render_animate_i2v_panel(
     episode_dir: Path,
     ep_key: str,
     frame_stem_options: list[str],
+    *,
+    channel_slug: str,
+    channel_dir: Path,
 ) -> None:
     """Оживление / Анимация: 2.5D FFmpeg или ComfyUI I2V."""
     from animation_settings import (
@@ -802,6 +831,8 @@ def render_animate_i2v_panel(
                     }
                 )
                 save_episode_animation(episode_dir, bundle)
+                epi_save = load_episode_config(episode_dir, channel_slug, channel_dir)
+                persist_episode_config_before_job(episode_dir, ep_key, epi_save)
                 launch_background_job("build_video", episode_dir, "build_sleep_video.py")
 
         elif method == "remotion":
@@ -874,6 +905,8 @@ def render_animate_i2v_panel(
                     }
                 )
                 save_episode_animation(episode_dir, bundle)
+                epi_save = load_episode_config(episode_dir, channel_slug, channel_dir)
+                persist_episode_config_before_job(episode_dir, ep_key, epi_save)
                 launch_background_job("build_video", episode_dir, "build_remotion_video.py")
 
         elif method == "comfyui":
@@ -2775,6 +2808,66 @@ def page_studio(channel_slug: str) -> None:
             step=1.0,
             key=f"ep_max_min_{ep_key}",
         )
+    st.caption(episode_plan_summary(episode_dir, channel_slug))
+    tcol1, tcol2, tcol3, tcol4, tcol5 = st.columns([1, 1, 1, 1, 1])
+    manual_frames = epi_cfg.get("target_frame_count")
+    frame_default = int(manual_frames) if manual_frames else 0
+    with tcol1:
+        st.number_input(
+            "Кадров (0 = авто)",
+            min_value=0,
+            max_value=80,
+            value=frame_default,
+            step=1,
+            key=f"ep_frame_count_{ep_key}",
+            help="Влияет на число PROMPT при ИИ-генерации. generate_images.py рисует все строки в файле.",
+        )
+    frame_ui = int(st.session_state.get(f"ep_frame_count_{ep_key}", frame_default))
+    min_v_ui = float(st.session_state.get(f"ep_min_min_{ep_key}", epi_cfg["target_min_minutes"]))
+    max_v_ui = float(st.session_state.get(f"ep_max_min_{ep_key}", epi_cfg["target_max_minutes"]))
+    spf_ui = float(st.session_state.get(f"ep_spf_{ep_key}", epi_cfg.get("seconds_per_frame", 40)))
+    auto_hint = auto_frame_count((min_v_ui + max_v_ui) / 2.0, spf_ui)
+    with tcol2:
+        st.number_input(
+            "Сек/кадр (авто)",
+            min_value=25.0,
+            max_value=60.0,
+            value=float(epi_cfg.get("seconds_per_frame", 40)),
+            step=1.0,
+            key=f"ep_spf_{ep_key}",
+            disabled=frame_ui > 0,
+        )
+        if frame_ui <= 0:
+            st.caption(f"При авто ≈ **{auto_hint}** кадров")
+    with tcol3:
+        st.number_input(
+            "Затухание голоса (с)",
+            min_value=0.0,
+            max_value=120.0,
+            value=float(epi_cfg.get("voice_fade_out_sec", 12)),
+            step=1.0,
+            key=f"ep_voice_fade_{ep_key}",
+        )
+    with tcol4:
+        st.number_input(
+            "Хвост ambient (с)",
+            min_value=0.0,
+            max_value=600.0,
+            value=float(epi_cfg.get("ambient_tail_sec", 0)),
+            step=5.0,
+            key=f"ep_ambient_tail_{ep_key}",
+            help="После речи: последний кадр и фон без голоса.",
+        )
+    with tcol5:
+        st.write("")
+        if st.button(
+            "💾 Сохранить настройки эпизода",
+            key=f"ep_cfg_save_{ep_key}",
+            use_container_width=True,
+        ):
+            persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
+            st.toast("episode_config.json сохранён")
+            st.rerun()
     with dgen:
         st.text_area(
             "Сюжет / бриф выпуска (RU → plot_brief.txt)",
@@ -2970,7 +3063,13 @@ def page_studio(channel_slug: str) -> None:
     with c4:
         st.caption("Анимация — блок ниже ↓")
 
-    render_animate_i2v_panel(episode_dir, ep_key, frame_stem_options)
+    render_animate_i2v_panel(
+        episode_dir,
+        ep_key,
+        frame_stem_options,
+        channel_slug=channel_slug,
+        channel_dir=ch,
+    )
 
     # —— Секция D ——
     st.markdown("---")
@@ -3058,6 +3157,9 @@ def page_studio(channel_slug: str) -> None:
         else:
             build_script = "make_episode.py"
         if st.button("🎞️ Собрать / Пересобрать видео", key=f"build_vid_{ep_key}", use_container_width=True):
+            if build_script in ("build_sleep_video.py", "build_remotion_video.py"):
+                epi_save = load_episode_config(episode_dir, channel_slug, ch)
+                persist_episode_config_before_job(episode_dir, ep_key, epi_save)
             launch_background_job("build_video", episode_dir, build_script)
         if st.button(
             "🚀 Применить правки по участкам и пересобрать",

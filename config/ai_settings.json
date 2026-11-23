@@ -1,6 +1,6 @@
 {
-  "text_provider": "cloudflare",
-  "text_model": "@cf/meta/llama-3.3-70b-instruct-fp8-fast",
+  "text_provider": "gemini",
+  "text_model": "gemini-3-flash-preview",
   "image_provider": "cloudflare",
   "image_model": "@cf/black-forest-labs/flux-1-schnell",
   "text_fallback_on_quota": false,

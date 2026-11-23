@@ -6,7 +6,15 @@ import re
 import shutil
 import subprocess
 from pathlib import Path
+import sys
 from typing import Any
+
+_SCRIPTS = Path(__file__).resolve().parent
+if str(_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SCRIPTS))
+
+from channel_settings import channel_dir_from_episode, resolve_ambient_track
+from episode_timing import episode_timing_from_config
 
 ROOT = Path(__file__).resolve().parents[1]
 REMOTION_DIR = ROOT / "remotion_studio"
@@ -127,17 +135,23 @@ def stage_episode_assets(episode_dir: Path) -> dict[str, Any]:
         rel_images.append(f"current_episode/{dest_name}")
 
     ambient_rel = None
-    ambient = first_ambient()
-    if ambient and ambient.is_file():
-        shutil.copy2(ambient, PUBLIC_EPISODE / "ambient.mp3")
+    ambient_volume = 0.08
+    channel_dir = channel_dir_from_episode(episode_dir)
+    ambient_path, ambient_volume = resolve_ambient_track(channel_dir, first_ambient())
+    if ambient_path is not None and ambient_path.is_file():
+        shutil.copy2(ambient_path, PUBLIC_EPISODE / "ambient.mp3")
         ambient_rel = "current_episode/ambient.mp3"
 
+    timing = episode_timing_from_config(episode_dir)
     chapters = parse_chapters(episode_dir / "script.md")
     return {
         "images": rel_images,
         "voiceoverRel": "current_episode/voiceover.mp3",
         "ambientRel": ambient_rel,
         "chapters": chapters,
+        "ambientTailSec": float(timing["ambient_tail_sec"]),
+        "voiceFadeOutSec": float(timing["voice_fade_out_sec"]),
+        "ambientVolume": float(ambient_volume),
     }
 
 

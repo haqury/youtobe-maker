@@ -12,6 +12,10 @@ export type SleepStoryProps = {
   ambientRel: string | null;
   chapters: string[];
   settings: SleepSettings;
+  ambientTailSec?: number;
+  voiceFadeOutSec?: number;
+  ambientVolume?: number;
+  voiceDurationSec?: number;
 };
 
 export const defaultSleepProps: SleepStoryProps = {
@@ -26,4 +30,7 @@ export const defaultSleepProps: SleepStoryProps = {
     kenBurnsIntensity: 0.85,
     crossfadeSeconds: 1.5,
   },
+  ambientTailSec: 0,
+  voiceFadeOutSec: 12,
+  ambientVolume: 0.08,
 };

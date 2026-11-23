@@ -14,7 +14,6 @@ import {getAudioDurationInSeconds} from '@remotion/media-utils';
 import {defaultSleepProps, type SleepStoryProps} from './types';
 
 const FPS = 30;
-const AMBIENT_VOLUME = 0.08;
 
 const kenBurns = (
   frame: number,
@@ -166,21 +165,41 @@ export const SleepStoryComposition: React.FC<SleepStoryProps> = (props) => {
   const {durationInFrames} = useVideoConfig();
   const count = Math.max(1, props.images.length);
   const crossfade = Math.round(cfg.crossfadeSeconds * FPS);
-  const slideFrames = Math.floor((durationInFrames + crossfade * (count - 1)) / count);
+  const voiceFrames = Math.max(
+    FPS * 5,
+    Math.ceil((props.voiceDurationSec ?? durationInFrames / FPS) * FPS),
+  );
+  const tailFrames = Math.max(0, durationInFrames - voiceFrames);
+  const slideFrames = Math.floor((voiceFrames + crossfade * (count - 1)) / count);
+  const ambientVolume = props.ambientVolume ?? defaultSleepProps.ambientVolume ?? 0.08;
+  const voiceFadeSec = props.voiceFadeOutSec ?? defaultSleepProps.voiceFadeOutSec ?? 0;
+  const fadeFrames = Math.max(
+    0,
+    Math.min(Math.round(voiceFadeSec * FPS), Math.round(voiceFrames * 0.9)),
+  );
+  const fadeStartFrame = Math.max(0, voiceFrames - fadeFrames);
 
   return (
     <AbsoluteFill style={{backgroundColor: '#000'}}>
-      {props.images.map((img, index) => (
-        <Sequence key={`${img}-${index}`} from={index * (slideFrames - crossfade)} durationInFrames={slideFrames}>
-          <ImageSlide
-            src={img}
-            durationFrames={slideFrames}
-            index={index}
-            kenBurnsIntensity={cfg.kenBurnsIntensity}
-            fadeFrames={crossfade}
-          />
-        </Sequence>
-      ))}
+      {props.images.map((img, index) => {
+        const isLast = index === count - 1;
+        const seqFrames = isLast ? slideFrames + tailFrames : slideFrames;
+        return (
+          <Sequence
+            key={`${img}-${index}`}
+            from={index * (slideFrames - crossfade)}
+            durationInFrames={seqFrames}
+          >
+            <ImageSlide
+              src={img}
+              durationFrames={seqFrames}
+              index={index}
+              kenBurnsIntensity={cfg.kenBurnsIntensity}
+              fadeFrames={crossfade}
+            />
+          </Sequence>
+        );
+      })}
       {cfg.enableChapterTitles &&
         props.chapters.map((title, index) => {
           const from = Math.round((index / Math.max(1, props.chapters.length)) * durationInFrames);
@@ -192,19 +211,40 @@ export const SleepStoryComposition: React.FC<SleepStoryProps> = (props) => {
         })}
       {cfg.enableParticles && <Particles />}
       {cfg.enableVignette && <Vignette />}
-      <Audio src={staticFile(props.voiceoverRel)} />
-      {props.ambientRel ? <Audio src={staticFile(props.ambientRel)} volume={AMBIENT_VOLUME} /> : null}
+      <Audio
+        src={staticFile(props.voiceoverRel)}
+        volume={(frame) => {
+          if (fadeFrames <= 0 || frame < fadeStartFrame) {
+            return 1;
+          }
+          if (frame >= voiceFrames) {
+            return 0;
+          }
+          return interpolate(frame, [fadeStartFrame, voiceFrames], [1, 0], {
+            extrapolateLeft: 'clamp',
+            extrapolateRight: 'clamp',
+          });
+        }}
+      />
+      {props.ambientRel ? (
+        <Audio src={staticFile(props.ambientRel)} volume={ambientVolume} />
+      ) : null}
     </AbsoluteFill>
   );
 };
 
 export const calculateSleepMetadata: CalculateMetadataFunction<SleepStoryProps> = async ({props}) => {
-  const durationSec = await getAudioDurationInSeconds(staticFile(props.voiceoverRel));
+  const voiceSec = await getAudioDurationInSeconds(staticFile(props.voiceoverRel));
+  const tailSec = props.ambientTailSec ?? defaultSleepProps.ambientTailSec ?? 0;
+  const totalSec = voiceSec + Math.max(0, tailSec);
   return {
-    durationInFrames: Math.max(FPS * 5, Math.ceil(durationSec * FPS)),
+    durationInFrames: Math.max(FPS * 5, Math.ceil(totalSec * FPS)),
     fps: FPS,
     width: 1920,
     height: 1080,
-    props,
+    props: {
+      ...props,
+      voiceDurationSec: voiceSec,
+    },
   };
 };

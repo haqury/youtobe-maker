@@ -26,7 +26,9 @@ from channel_settings import (
 )
 
 from moviepy.audio.AudioClip import CompositeAudioClip
+from moviepy.audio.fx.AudioFadeOut import AudioFadeOut
 from moviepy.audio.fx.AudioLoop import AudioLoop
+from episode_timing import episode_timing_from_config
 from moviepy.audio.io.AudioFileClip import AudioFileClip
 from moviepy.video.VideoClip import VideoClip
 from moviepy.video.fx.Loop import Loop
@@ -398,6 +400,24 @@ def build(episode_dir: Path) -> Path:
 
         video = concatenate_videoclips(clips, method="compose", padding=-crossfade)
         video = video.with_duration(voice.duration).with_fps(FPS)
+
+        timing = episode_timing_from_config(episode_dir)
+        ambient_tail = float(timing["ambient_tail_sec"])
+        voice_fade = float(timing["voice_fade_out_sec"])
+        if ambient_tail > 0:
+            last_path = images[-1]
+            hold = frame_clip(
+                last_path,
+                ambient_tail,
+                zoom_size,
+                index=len(images) - 1,
+                anim=anim,
+            )
+            opened.append(hold)
+            video = concatenate_videoclips([video, hold], method="compose")
+            print(f"Хвост ambient: {ambient_tail:.1f} с (последний кадр).")
+        main_duration = float(voice.duration or 0) + ambient_tail
+        video = video.with_duration(main_duration)
         opened.append(video)
 
         overlay_path = resolve_overlay_path(anim, episode_dir)
@@ -410,12 +430,21 @@ def build(episode_dir: Path) -> Path:
             print(f"2.5D режим ({mode}): Ken Burns={anim.get('enable_ken_burns')}, свет={anim.get('enable_breathing_light')}")
 
         video, intro_len = assemble_branded_timeline(video, episode_dir=episode_dir, opened=opened)
-        final_dur = float(video.duration or voice.duration)
+        final_dur = float(video.duration or main_duration)
+        print(
+            f"Озвучка {voice.duration:.2f} с, хвост {ambient_tail:.1f} с, финал {final_dur:.2f} с."
+        )
 
         channel_dir = channel_dir_from_episode(episode_dir)
         fallback_ambient = first_ambient_track()
         ambient_path, ambient_volume = resolve_ambient_track(channel_dir, fallback_ambient)
-        voice_track = voice.with_start(intro_len) if intro_len > 0 else voice
+        voice_dur = float(voice.duration or 0)
+        fade_sec = min(voice_fade, max(0.0, voice_dur * 0.9)) if voice_fade > 0 and voice_dur > 0 else 0.0
+        voice_processed = voice
+        if fade_sec > 0.05:
+            voice_processed = voice.with_effects([AudioFadeOut(fade_sec)])
+            print(f"Затухание голоса: {fade_sec:.1f} с до конца речи.")
+        voice_track = voice_processed.with_start(intro_len) if intro_len > 0 else voice_processed
         audio_parts: list = [voice_track]
         if ambient_path is not None:
             print(f"Фон: {ambient_path.name}, громкость {ambient_volume:.0%}.")
