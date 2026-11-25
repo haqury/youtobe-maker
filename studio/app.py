@@ -15,6 +15,7 @@ _SCRIPTS = ROOT / "scripts"
 for path in (ROOT, _SCRIPTS):
     if str(path) not in sys.path:
         sys.path.insert(0, str(path))
+from isekai_config import load_isekai_settings
 from episode_review import (
     apply_video_segments_to_images,
     flag_images_batch,
@@ -47,17 +48,29 @@ from niche_advisor import (
 )
 import importlib
 
+import channel_settings
+import intro_brand
+import playlist_manager
 import studio_ai
+import tail_controls
 
+importlib.reload(channel_settings)
+importlib.reload(intro_brand)
+importlib.reload(playlist_manager)
 importlib.reload(studio_ai)
+importlib.reload(tail_controls)
+from intro_brand import INTRO_STYLE_CHOICES
 from channel_settings import (
+    apply_intro_to_series,
     brand_asset_path,
+    channel_display_name,
     ensure_brand_assets_dir,
     load_channel_settings,
     save_channel_settings,
 )
 from episode_snapshot import list_episode_snapshots, restore_episode_snapshot, snapshot_display_line
 from episode_timing import auto_frame_count
+from tail_controls import render_ambient_tail_controls, tail_fields_from_session
 from studio_ai import (
     episode_plan_summary,
     expand_backlog_idea_to_series,
@@ -78,8 +91,13 @@ from playlist_manager import (
     folder_matches_playlist,
     format_backlog_row_label,
     format_episode_folder_label,
+    list_episode_dirs,
+    create_playlist,
     load_playlists,
+    next_series_episode_from_folders,
+    next_series_episode_id,
     normalize_backlog_frame,
+    save_playlists,
     playlist_label,
     next_standalone_episode_id,
     BIBLE_SECTION_KEYS,
@@ -606,6 +624,7 @@ def persist_episode_config_before_job(episode_dir: Path, ep_key: str, epi_cfg: d
                 epi_cfg.get("ambient_tail_sec", 0),
             )
         ),
+        **tail_fields_from_session(ep_key, epi_cfg),
     }
     save_episode_config(episode_dir, cfg_out)
 
@@ -1134,6 +1153,134 @@ def save_backlog(path: Path, frame: pd.DataFrame) -> None:
     frame.to_csv(path, index=False, encoding="utf-8-sig")
 
 
+def _titles_from_manual_name(title: str) -> tuple[str, str]:
+    title = title.strip()
+    return title, title
+
+
+def _next_manual_standalone_id(channel: Path) -> str:
+    prefix = "SH" if channel.name.startswith("channel_02") else "GM" if channel.name.startswith("channel_01") else "EP"
+    numbers: list[int] = []
+    backlog = load_channel_backlog(channel / "backlog.csv")
+    for value in backlog.get("ID", pd.Series(dtype=str)).astype(str):
+        match = re.fullmatch(rf"{prefix}(\d+)", value.strip(), flags=re.IGNORECASE)
+        if match:
+            numbers.append(int(match.group(1)))
+    for path in list_episode_dirs(channel):
+        match = re.fullmatch(rf"{prefix}(\d+)", path.name.split("_", 1)[0], flags=re.IGNORECASE)
+        if match:
+            numbers.append(int(match.group(1)))
+    return f"{prefix}{max(numbers, default=0) + 1:02d}"
+
+
+def _remember_episode_title(channel: Path, episode_dir: Path, title: str, series_id: str, episode_num: str) -> None:
+    topic, topic_ru = _titles_from_manual_name(title)
+    ep_id = episode_dir.name.split("_", 1)[0]
+    backlog_path = channel / "backlog.csv"
+    frame = load_channel_backlog(backlog_path)
+    playlist = playlist_by_id(channel, series_id) if series_id != STANDALONE_ID else None
+    series_en = str(playlist.get("title_en", "")) if playlist else ""
+    series_ru = str(playlist.get("title_ru", "")) if playlist else ""
+    match = frame["ID"].astype(str).str.strip().eq(ep_id) if not frame.empty else None
+    if match is not None and bool(match.any()):
+        idx = frame.index[match][0]
+        frame.at[idx, "Topic"] = topic
+        frame.at[idx, "Topic_RU"] = topic_ru
+    else:
+        row = {column: "" for column in BACKLOG_COLUMNS}
+        row.update(
+            {
+                "ID": ep_id,
+                "Topic": topic,
+                "Topic_RU": topic_ru,
+                "Series_ID": series_id,
+                "Episode_Num": episode_num or "1",
+                "Series": series_en,
+                "Series_RU": series_ru,
+                "Expected_Views": "1000-5000 (Тест)",
+                "Status": "Idea",
+                "Priority": "P1",
+            }
+        )
+        frame = pd.concat([frame, pd.DataFrame([row])], ignore_index=True)
+    save_backlog(backlog_path, frame)
+    idea = read_episode_idea(episode_dir)
+    idea.update(
+        {
+            "id": ep_id,
+            "topic": topic,
+            "topic_ru": topic_ru,
+            "series_id": series_id,
+            "episode_num": episode_num or idea.get("episode_num") or "1",
+            "series_en": series_en,
+            "series_ru": series_ru,
+        }
+    )
+    write_episode_idea(episode_dir, idea)
+    _write_metadata_title(episode_dir / "metadata.md", title)
+
+
+def _write_metadata_title(path: Path, title: str) -> None:
+    if not path.is_file():
+        path.write_text(
+            "# Episode metadata\n\n## English Metadata\n\n### Titles\n\n"
+            f"1. {title}\n\n## Russian Metadata\n\n### Title\n\n{title}\n",
+            encoding="utf-8",
+        )
+        return
+    lines = path.read_text(encoding="utf-8-sig").splitlines()
+    in_titles = False
+    replaced = False
+    for index, line in enumerate(lines):
+        if line.strip() == "### Titles":
+            in_titles = True
+            continue
+        if in_titles and line.startswith("### "):
+            in_titles = False
+        if in_titles and re.match(r"^1\.\s+", line):
+            lines[index] = f"1. {title}"
+            replaced = True
+            break
+    if not replaced:
+        lines.extend(["", "### Titles", "", f"1. {title}"])
+    in_ru = False
+    ru_replaced = False
+    for index, line in enumerate(lines):
+        if line.strip() == "## Russian Metadata":
+            in_ru = True
+            continue
+        if in_ru and line.startswith("## "):
+            in_ru = False
+        if in_ru and line.strip() == "### Title":
+            for follow in range(index + 1, len(lines)):
+                if lines[follow].strip():
+                    lines[follow] = title
+                    ru_replaced = True
+                    break
+            if not ru_replaced:
+                lines.insert(index + 1, "")
+                lines.insert(index + 2, title)
+                ru_replaced = True
+            break
+    if not ru_replaced:
+        lines.extend(["", "## Russian Metadata", "", "### Title", "", title])
+    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def _rename_playlist(channel: Path, series_id: str, title: str) -> None:
+    playlists = load_playlists(channel)
+    found = False
+    for row in playlists:
+        if str(row.get("id", "")).strip().upper() == series_id.strip().upper():
+            row["title_en"] = title
+            row["title_ru"] = title
+            found = True
+            break
+    if not found:
+        raise ValueError(f"Плейлист {series_id} не найден.")
+    save_playlists(channel, playlists)
+
+
 def median_views_7d(published_path: Path) -> str:
     if not published_path.is_file():
         return "—"
@@ -1174,13 +1321,50 @@ def next_backlog_id(backlog: pd.DataFrame, channel_slug: str) -> str:
     return f"{prefix}{n:02d}"
 
 
-def create_channel_folder(slug: str, niche: str, duration: str, keywords: str) -> Path:
+STANDARD_TEMPLATE_LABEL = "Стандартный шаблон (templates/)"
+
+
+def list_channel_templates() -> list[tuple[str, str]]:
+    """[("", стандартный), ("template_x", "template_x"), ...] — пакеты = подпапки templates/ с channel_config.md."""
+    options: list[tuple[str, str]] = [("", STANDARD_TEMPLATE_LABEL)]
+    if TEMPLATES_DIR.is_dir():
+        for pack in sorted(TEMPLATES_DIR.iterdir(), key=lambda p: p.name.lower()):
+            if pack.is_dir() and (pack / "channel_config.md").is_file():
+                options.append((pack.name, f"{pack.name} (пакет)"))
+    return options
+
+
+def _create_channel_from_pack(target: Path, slug: str, pack_name: str) -> Path:
+    pack = TEMPLATES_DIR / pack_name
+    if pack.parent != TEMPLATES_DIR or not (pack / "channel_config.md").is_file():
+        raise FileNotFoundError(f"Пакет шаблона не найден: {pack_name}")
+    config = (pack / "channel_config.md").read_text(encoding="utf-8-sig").replace("{{SLUG}}", slug)
+    (target / "channel_config.md").write_text(config, encoding="utf-8")
+    for name in ("backlog.csv", "published.csv"):
+        source = pack / name if (pack / name).is_file() else TEMPLATES_DIR / name
+        shutil.copy2(source, target / name)
+    if (pack / "episodes").is_dir():
+        shutil.copytree(pack / "episodes", target / "episodes", dirs_exist_ok=True)
+    if (pack / "database").is_dir():
+        shutil.copytree(pack / "database", target / "database", dirs_exist_ok=True)
+    return target
+
+
+def create_channel_folder(
+    slug: str, niche: str, duration: str, keywords: str, template: str = ""
+) -> Path:
     target = channel_dir(slug)
     if target.exists():
         raise FileExistsError(f"Канал уже существует: {slug}")
     target.mkdir(parents=True)
     (target / "episodes").mkdir()
     (target / "analytics_dump").mkdir()
+    if template:
+        try:
+            return _create_channel_from_pack(target, slug, template)
+        except Exception:
+            shutil.rmtree(target, ignore_errors=True)
+            raise
     for name in ("channel_config.md", "backlog.csv", "published.csv"):
         shutil.copy2(TEMPLATES_DIR / name, target / name)
     keyword_lines = [line.strip() for line in keywords.splitlines() if line.strip()]
@@ -1222,15 +1406,63 @@ def parse_timecode(text: str) -> float:
     raise ValueError("Формат: секунды, ММ:СС или ЧЧ:ММ:СС")
 
 
+def _isekai_script_stub(config_text: str) -> str:
+    target = "es"
+    native = "en"
+    for line in config_text.splitlines():
+        if line.startswith("TARGET_LANG:"):
+            target = line.split(":", 1)[1].strip() or target
+        elif line.startswith("NATIVE_LANG:"):
+            native = line.split(":", 1)[1].strip() or native
+    gloss = {
+        "es": "Cierra los ojos.",
+        "fr": "Ferme les yeux.",
+        "de": "Schließ die Augen.",
+        "it": "Chiudi gli occhi.",
+    }.get(target, "Mira.")
+    return (
+        "# EPISODE: NEW\n"
+        f"# TARGET_LANG: {target}\n"
+        f"# NATIVE_LANG: {native}\n\n"
+        "## BLOCK: ACT_1_START\n"
+        "[001|MENTOR_NATIVE|0.90] Close your eyes. You are safe.\n"
+        "[PAUSE|2.5]\n"
+        f"[002|MENTOR_TARGET|0.82] {gloss}\n"
+        "[PAUSE|2.5]\n"
+        "[003|MENTOR_NATIVE|0.90] Close your eyes.\n"
+        "[PAUSE|3.0]\n\n"
+        "## PLAYLIST_SEQUENCE\n"
+        "PLAY: ACT_1_START (mode=full, repeat=1)\n"
+        "PLAY: ACT_1_START (mode=target_only, speed_mult=0.92, extra_pause=2.0, repeat=2)\n"
+        "PLAY: ACT_1_START (mode=shuffle_target, speed_mult=0.85, extra_pause=7.0, repeat=4)\n"
+    )
+
+
 def ensure_episode_files(episode_dir: Path, topic_en: str = "", topic_ru: str = "") -> None:
-    defaults = {
-        "script.md": f"# {topic_en or 'Episode'}\n\n",
-        "script_ru.md": (
-            f"# {topic_ru or topic_en or 'Эпизод'}\n\n"
-            "Русская адаптация `script.md`. Заполняется вместе с английским сценарием.\n"
-        ),
-        "visual_prompts.md": "# Visual prompts\n\nPROMPT: Cinematic scene, dark mood, no text\n",
-    }
+    channel_cfg = episode_dir.parents[1] / "channel_config.md"
+    config_text = channel_cfg.read_text(encoding="utf-8-sig") if channel_cfg.is_file() else ""
+    isekai = "TARGET_LANG:" in config_text and "BASE_STYLE_PROMPT:" in config_text
+    if isekai:
+        defaults = {
+            "script.md": _isekai_script_stub(config_text),
+            "script_ru.md": (
+                "Этот файл озвучка формата «язык во сне» не читает. "
+                "Пояснения на родном языке стоят в script.md, роль MENTOR_NATIVE.\n"
+            ),
+            "visual_prompts.md": (
+                "# Visual prompts\n\n"
+                "PROMPT: Night forest path, gray cat in a cloak seen from behind, dim lantern, 16:9, no text\n"
+            ),
+        }
+    else:
+        defaults = {
+            "script.md": f"# {topic_en or 'Episode'}\n\n",
+            "script_ru.md": (
+                f"# {topic_ru or topic_en or 'Эпизод'}\n\n"
+                "Русская адаптация `script.md`. Заполняется вместе с английским сценарием.\n"
+            ),
+            "visual_prompts.md": "# Visual prompts\n\nPROMPT: Cinematic scene, dark mood, no text\n",
+        }
     meta_template = TEMPLATES_DIR / "episode_metadata.md"
     if meta_template.is_file():
         defaults["metadata.md"] = meta_template.read_text(encoding="utf-8-sig")
@@ -1765,6 +1997,56 @@ def page_channel_settings(channel_slug: str) -> None:
 
     with st.expander("🎬 Интро, аутро и водяной знак", expanded=True):
         use_intro = st.checkbox("Использовать intro.mp4", value=bool(branding.get("use_intro")))
+        intro_text = st.text_input(
+            "Текст интро",
+            value=str(branding.get("intro_text") or ""),
+            placeholder=channel_display_name(ch),
+            help="Пустое поле — название канала из channel_config.md. Цвет титра #F5E6C8.",
+        )
+        text_start, text_dur, text_fade = st.columns(3)
+        with text_start:
+            intro_text_start = st.number_input(
+                "Текст с, сек",
+                min_value=0.0,
+                max_value=30.0,
+                value=float(branding.get("intro_text_start", 1.2)),
+                step=0.1,
+            )
+        with text_dur:
+            intro_text_duration = st.number_input(
+                "Текст держится, сек",
+                min_value=0.2,
+                max_value=20.0,
+                value=float(branding.get("intro_text_duration", 2.6)),
+                step=0.1,
+                help="От начала появления до начала затухания.",
+            )
+        with text_fade:
+            intro_fade_sec = st.number_input(
+                "Появление текста, сек",
+                min_value=0.1,
+                max_value=5.0,
+                value=float(branding.get("intro_fade_sec", 1.0)),
+                step=0.1,
+            )
+        intro_text_y = st.number_input(
+            "Сдвиг текста по Y",
+            min_value=-400.0,
+            max_value=400.0,
+            value=float(branding.get("intro_text_y", 0.0)),
+            step=4.0,
+            help="0 — по центру. Плюс сдвигает вниз.",
+        )
+        apply_series = st.checkbox(
+            "Применить настройки интро ко всем сериям канала",
+            value=bool(branding.get("apply_intro_to_series")),
+            help="Записывает текст, тайминги и галочку интро в playlists/<серия>/channel_settings.json. Файл intro.mp4 серии, если он есть, важнее файла канала.",
+        )
+        st.caption(
+            "Эпизод серии берёт интро канала, пока в json серии нет `intro_override: true`. "
+            "Свой intro.mp4 в папке серии перекрывает файл канала. "
+            "Шрифт выбирается у плейлиста в студии: сверху название канала, под ним заголовок эпизода."
+        )
         use_outro = st.checkbox("Использовать outro.mp4", value=bool(branding.get("use_outro")))
         use_wm = st.checkbox("Водяной знак на ролике", value=bool(branding.get("use_watermark")))
         crossfade = st.slider(
@@ -1852,6 +2134,12 @@ def page_channel_settings(channel_slug: str) -> None:
                 "crossfade_sec": float(crossfade),
                 "use_watermark": use_wm,
                 "watermark_opacity": float(wm_opacity),
+                "intro_text": intro_text.strip(),
+                "intro_text_start": float(intro_text_start),
+                "intro_text_duration": float(intro_text_duration),
+                "intro_fade_sec": float(intro_fade_sec),
+                "intro_text_y": float(intro_text_y),
+                "apply_intro_to_series": bool(apply_series),
             },
             "audio": {
                 "voice_en": voice_en.strip(),
@@ -1871,7 +2159,11 @@ def page_channel_settings(channel_slug: str) -> None:
             },
         }
         save_channel_settings(ch, new_settings)
-        st.success("Сохранено: channel_settings.json и brand_assets")
+        if apply_series:
+            series_count = apply_intro_to_series(ch, new_settings["branding"])
+            st.success(f"Сохранено. Интро записано в {series_count} серий.")
+        else:
+            st.success("Сохранено: channel_settings.json и brand_assets")
         st.rerun()
 
 
@@ -2007,11 +2299,11 @@ def page_capacity(channel_slug: str) -> None:
     st.subheader("Pre-flight: планирование эпизода")
     if channel_slug:
         ch = channel_dir(channel_slug)
-        episode_dirs = sorted((ch / "episodes").glob("*")) if (ch / "episodes").is_dir() else []
-        episode_names = [path.name for path in episode_dirs if path.is_dir()]
+        episode_by_name = {path.name: path for path in list_episode_dirs(ch)}
+        episode_names = sorted(episode_by_name)
         if episode_names:
             pick = st.selectbox("Эпизод", episode_names, key="capacity_episode")
-            episode_dir = ch / "episodes" / pick
+            episode_dir = episode_by_name[pick]
             if st.button("Рассчитать запуск", key="capacity_preflight"):
                 try:
                     plan = estimate_episode_workload(episode_dir)
@@ -2199,6 +2491,14 @@ def page_new_channel() -> None:
     st.subheader("Создание папки канала")
     st.caption("Копия шаблонов в `channels/<slug>/`.")
     with st.form("new_channel_form"):
+        template_options = list_channel_templates()
+        template_pick = st.selectbox(
+            "Шаблон канала",
+            options=list(range(len(template_options))),
+            index=0,
+            format_func=lambda i: template_options[i][1],
+            key="new_channel_template",
+        )
         slug = st.text_input(
             "Имя папки",
             placeholder="channel_03_space_sleep",
@@ -2219,7 +2519,13 @@ def page_new_channel() -> None:
         submitted = st.form_submit_button("Создать канал")
     if submitted and slug.strip():
         try:
-            create_channel_folder(slug.strip(), niche.strip(), duration.strip(), keywords)
+            create_channel_folder(
+                slug.strip(),
+                niche.strip(),
+                duration.strip(),
+                keywords,
+                template_options[template_pick][0],
+            )
             st.success(f"Канал создан: {slug}")
             st.session_state.channel_slug = slug.strip()
             st.session_state.nav_section = "analytics"
@@ -2241,7 +2547,7 @@ def page_analytics(channel_slug: str) -> None:
 
     c1, c2, c3, c4 = st.columns(4)
     c1.metric("Идей в бэклоге", len(backlog))
-    c2.metric("Готовых видео", count_ready_episodes(ch / "episodes"))
+    c2.metric("Готовых видео", sum(1 for path in list_episode_dirs(ch) if (path / "final_video.mp4").is_file()))
     published_count = max(len(load_csv(published_path)) - 0, 0) if published_path.is_file() else 0
     if published_path.is_file():
         published_count = len(pd.read_csv(published_path, encoding="utf-8-sig"))
@@ -2250,8 +2556,8 @@ def page_analytics(channel_slug: str) -> None:
 
     st.subheader("Backlog")
     st.caption(
-        "Backlog — только **идеи для одиночных роликов** (EP##, `Series_ID=standalone`). "
-        "Сериалы: плейлист + папки `episodes/S01E…` + `episode_idea.json`, без строк S01E## здесь."
+        "Одиночные идеи и серии плейлистов лежат в одном файле. "
+        "Серия определяется `Series_ID` и папкой `playlists/<плейлист>/episodes/`."
     )
     if not backlog.empty:
         backlog = backlog.copy()
@@ -2265,7 +2571,7 @@ def page_analytics(channel_slug: str) -> None:
         use_container_width=True,
         column_config={
             "Badge": st.column_config.TextColumn("Формат", disabled=True),
-            "Status": st.column_config.SelectboxColumn(options=["Idea", "research", "scripted", "ready", "published", "dropped"]),
+            "Status": st.column_config.SelectboxColumn(options=["skeleton_ready", "Idea", "research", "scripted", "ready", "published", "dropped"]),
             "Priority": st.column_config.SelectboxColumn(options=["P0", "P1", "P2"]),
             "Series_ID": st.column_config.TextColumn(help="standalone или S01, S02…"),
         },
@@ -2302,6 +2608,69 @@ def page_analytics(channel_slug: str) -> None:
         st.caption("Отчёта latest_scout.csv пока нет.")
 
 
+def render_phrase_database(channel: Path, channel_slug: str) -> None:
+    """Таблицы transitions и phrases из channel.db, с прослушиванием mp3."""
+    database = channel / "database" / "channel.db"
+    if not database.is_file():
+        return
+    import sqlite3
+
+    st.subheader("База фраз и аудио (SQLite)")
+    conn = None
+    try:
+        conn = sqlite3.connect(database)
+        transitions = pd.read_sql(
+            "SELECT id, category, text_en, audio_path, usage_count FROM transitions ORDER BY category, usage_count, id",
+            conn,
+        )
+        phrases = pd.read_sql(
+            """
+            SELECT id, playlist_name, episode_id, semantic_id, role, text_target, text_native,
+                   audio_target_path, audio_native_path, created_at
+            FROM phrases
+            ORDER BY episode_id, semantic_id
+            """,
+            conn,
+        )
+    except sqlite3.Error as exc:
+        st.warning(f"Не удалось прочитать channel.db: {exc}")
+        return
+    finally:
+        if conn is not None:
+            conn.close()
+
+    tab_transitions, tab_phrases = st.tabs(["Переходы", "Фразы"])
+    with tab_transitions:
+        st.dataframe(transitions, use_container_width=True, hide_index=True)
+        _play_db_audio(channel, transitions, "audio_path", "text_en", f"tr_{channel_slug}")
+    with tab_phrases:
+        st.dataframe(phrases, use_container_width=True, hide_index=True)
+        _play_db_audio(channel, phrases, "audio_target_path", "text_target", f"ph_t_{channel_slug}")
+        _play_db_audio(channel, phrases, "audio_native_path", "text_native", f"ph_n_{channel_slug}")
+
+
+def _play_db_audio(channel: Path, frame: pd.DataFrame, path_column: str, label_column: str, key: str) -> None:
+    if frame.empty or path_column not in frame.columns:
+        return
+    options: list[tuple[str, Path]] = []
+    for _, row in frame.iterrows():
+        rel = str(row.get(path_column) or "").strip()
+        if not rel:
+            continue
+        file_path = Path(rel)
+        if not file_path.is_absolute():
+            file_path = channel / rel
+        if file_path.is_file():
+            label = str(row.get(label_column) or file_path.name).strip()
+            options.append((f"{label} — {file_path.name}", file_path))
+    if not options:
+        st.caption(f"В колонке {path_column} пока нет готовых mp3.")
+        return
+    labels = [item[0] for item in options]
+    picked = st.selectbox(f"Прослушать ({path_column})", labels, key=f"db_audio_{key}_{path_column}")
+    st.audio(str(options[labels.index(picked)][1]))
+
+
 def page_studio(channel_slug: str) -> None:
     st.header("🎬 Студия производства и доработки")
     render_comfyui_controls(f"studio_{channel_slug or 'none'}")
@@ -2309,9 +2678,17 @@ def page_studio(channel_slug: str) -> None:
         st.info("Выберите канал.")
         return
     ch = channel_dir(channel_slug)
+    isekai_mode = bool(load_isekai_settings(ch).get("TARGET_LANG"))
+    if isekai_mode:
+        st.info(
+            "Формат «язык во сне». Сценарий — блоки `[ID|роль|скорость]`, "
+            "озвучка — только новые фразы в одну дорожку `voiceover.mp3`."
+        )
+        render_phrase_database(ch, channel_slug)
     episodes_root = ch / "episodes"
     episodes_root.mkdir(exist_ok=True)
-    episode_names = sorted(path.name for path in episodes_root.iterdir() if path.is_dir())
+    episode_by_name = {path.name: path for path in list_episode_dirs(ch)}
+    episode_names = sorted(episode_by_name)
     backlog = load_channel_backlog(ch / "backlog.csv")
 
     if "episode_name" not in st.session_state:
@@ -2347,6 +2724,98 @@ def page_studio(channel_slug: str) -> None:
             )
         ]
         st.session_state[playlist_key] = selected_playlist
+        new_playlist_key = f"new_playlist_name_{channel_slug}"
+        playlist_error_key = f"playlist_create_error_{channel_slug}"
+        playlist_ok_key = f"playlist_create_ok_{channel_slug}"
+
+        def _create_named_playlist() -> None:
+            name = str(st.session_state.get(new_playlist_key, "")).strip()
+            try:
+                created = create_playlist(ch, title=name)
+            except ValueError as exc:
+                st.session_state[playlist_error_key] = str(exc)
+                st.session_state[playlist_ok_key] = ""
+                return
+            st.session_state[playlist_error_key] = ""
+            st.session_state[playlist_ok_key] = (
+                f"{created['id']}: {created.get('title_ru') or created.get('title_en')}"
+            )
+            st.session_state[playlist_key] = str(created["id"])
+            st.session_state.pop(f"studio_playlist_select_{channel_slug}", None)
+            st.session_state[new_playlist_key] = ""
+
+        st.text_input(
+            "Название нового плейлиста",
+            key=new_playlist_key,
+            placeholder="Например: Ночной лес",
+        )
+        st.button(
+            "Создать плейлист",
+            key=f"create_playlist_{channel_slug}",
+            on_click=_create_named_playlist,
+        )
+        if st.session_state.get(playlist_error_key):
+            st.error(st.session_state[playlist_error_key])
+        elif st.session_state.get(playlist_ok_key):
+            st.success(f"Плейлист {st.session_state[playlist_ok_key]}")
+        if selected_playlist != STANDALONE_ID:
+            current_playlist = playlist_by_id(ch, selected_playlist) or {}
+            rename_key = f"playlist_rename_{channel_slug}_{selected_playlist}"
+            if rename_key not in st.session_state:
+                st.session_state[rename_key] = str(
+                    current_playlist.get("title_ru") or current_playlist.get("title_en") or ""
+                )
+            st.text_input("Название этого плейлиста", key=rename_key)
+            playlist_rename_error = f"playlist_rename_error_{channel_slug}_{selected_playlist}"
+            playlist_rename_ok = f"playlist_rename_ok_{channel_slug}_{selected_playlist}"
+
+            def _save_playlist_name() -> None:
+                renamed = str(st.session_state.get(rename_key, "")).strip()
+                if not renamed:
+                    st.session_state[playlist_rename_error] = "Введите название плейлиста."
+                    st.session_state[playlist_rename_ok] = ""
+                    return
+                _rename_playlist(ch, selected_playlist, renamed)
+                st.session_state[playlist_rename_error] = ""
+                st.session_state[playlist_rename_ok] = "Название плейлиста сохранено."
+                st.session_state.pop(f"studio_playlist_select_{channel_slug}", None)
+                st.session_state.pop(rename_key, None)
+
+            st.button(
+                "Сохранить название плейлиста",
+                key=f"save_playlist_name_{channel_slug}_{selected_playlist}",
+                on_click=_save_playlist_name,
+            )
+            if st.session_state.get(playlist_rename_error):
+                st.error(st.session_state[playlist_rename_error])
+            elif st.session_state.get(playlist_rename_ok):
+                st.success(st.session_state[playlist_rename_ok])
+            series_path = playlist_dir_for_series(ch, selected_playlist)
+            if series_path is not None:
+                series_settings = load_channel_settings(series_path)
+                style_ids = [code for code, _name in INTRO_STYLE_CHOICES]
+                style_labels = [name for _code, name in INTRO_STYLE_CHOICES]
+                current_style = str(series_settings.get("branding", {}).get("intro_text_style") or "gold_serif")
+                if current_style not in style_ids:
+                    current_style = "gold_serif"
+                picked_style = style_ids[
+                    style_labels.index(
+                        st.selectbox(
+                            "Стиль текста интро",
+                            style_labels,
+                            index=style_ids.index(current_style),
+                            key=f"intro_style_{channel_slug}_{selected_playlist}",
+                            help="Верхняя строка — название канала. Под ней первый заголовок из metadata.md этого эпизода.",
+                        )
+                    )
+                ]
+                if st.button(
+                    "Сохранить стиль интро",
+                    key=f"save_intro_style_{channel_slug}_{selected_playlist}",
+                ):
+                    series_settings.setdefault("branding", {})["intro_text_style"] = picked_style
+                    save_channel_settings(series_path, series_settings)
+                    st.success("Стиль интро сохранён для этого плейлиста.")
         if selected_playlist != STANDALONE_ID:
                 hint_key = f"next_series_hint_{channel_slug}_{selected_playlist}"
                 st.text_input(
@@ -2581,8 +3050,72 @@ def page_studio(channel_slug: str) -> None:
                         with st.expander("EN-компилят series_bible.md (только чтение)"):
                             st.caption(read_series_bible(ch, selected_playlist)[:4000])
 
+        new_video_key = f"new_video_name_{channel_slug}_{selected_playlist}"
+        video_error_key = f"new_video_error_{channel_slug}_{selected_playlist}"
+        video_ok_key = f"new_video_ok_{channel_slug}_{selected_playlist}"
+
+        def _create_named_video() -> None:
+            video_title = str(st.session_state.get(new_video_key, "")).strip()
+            if not video_title:
+                st.session_state[video_error_key] = "Введите название видео."
+                st.session_state[video_ok_key] = ""
+                return
+            if selected_playlist == STANDALONE_ID:
+                episode_id = _next_manual_standalone_id(ch)
+                episode_num = "1"
+            else:
+                _, from_folders = next_series_episode_from_folders(ch, selected_playlist)
+                _, from_backlog = next_series_episode_id(
+                    load_channel_backlog(ch / "backlog.csv"),
+                    selected_playlist,
+                )
+                episode_num_int = max(from_folders, from_backlog)
+                episode_id = f"{selected_playlist.upper()}E{episode_num_int:02d}"
+                episode_num = str(episode_num_int)
+            if selected_playlist == STANDALONE_ID:
+                folder_root = episodes_root
+            else:
+                playlist_folder = playlist_dir_for_series(ch, selected_playlist)
+                folder_root = (playlist_folder / "episodes") if playlist_folder is not None else episodes_root
+                folder_root.mkdir(parents=True, exist_ok=True)
+            folder = folder_root / f"{episode_id}_{slugify_topic(video_title)}"
+            if folder.exists():
+                st.session_state[video_error_key] = f"Папка уже есть: {folder.name}"
+                st.session_state[video_ok_key] = ""
+                return
+            folder.mkdir(parents=True)
+            ensure_episode_files(folder, topic_en=video_title, topic_ru=video_title)
+            _remember_episode_title(ch, folder, video_title, selected_playlist, episode_num)
+            st.session_state.episode_name = folder.name
+            st.session_state.pop(f"studio_ep_select_{channel_slug}_{selected_playlist}", None)
+            st.session_state[new_video_key] = ""
+            st.session_state[video_error_key] = ""
+            st.session_state[video_ok_key] = folder.name
+
+        st.text_input(
+            "Название нового видео",
+            key=new_video_key,
+            placeholder="Например: Ночь в лесу — урок 1",
+        )
+        st.button(
+            "Создать видео",
+            key=f"create_video_{channel_slug}_{selected_playlist}",
+            on_click=_create_named_video,
+        )
+        if st.session_state.get(video_error_key):
+            st.error(st.session_state[video_error_key])
+        elif st.session_state.get(video_ok_key):
+            st.success(f"Видео создано: {st.session_state[video_ok_key]}")
+
         filtered_episodes = [
-            name for name in episode_names if folder_matches_playlist(name, backlog, selected_playlist)
+            name
+            for name in episode_names
+            if folder_matches_playlist(
+                name,
+                backlog,
+                selected_playlist,
+                episode_by_name.get(name),
+            )
         ]
         if filtered_episodes:
             current_ep = st.session_state.episode_name
@@ -2592,14 +3125,37 @@ def page_studio(channel_slug: str) -> None:
                 "Папка эпизода",
                 filtered_episodes,
                 index=filtered_episodes.index(current_ep),
-                format_func=lambda name: format_episode_folder_label(name, ch, backlog),
+                format_func=lambda name: format_episode_folder_label(
+                    name, ch, backlog, episode_by_name.get(name)
+                ),
                 key=f"studio_ep_select_{channel_slug}_{selected_playlist}",
             )
             st.session_state.episode_name = picked_ep
-            episode_dir = episodes_root / picked_ep
+            episode_dir = episode_by_name.get(picked_ep) or (episodes_root / picked_ep)
             ep_key = episode_dir.name
             ensure_episode_files(episode_dir)
             write_nav_to_url()
+            current_title_key = f"video_title_{channel_slug}_{episode_dir.name}"
+            if current_title_key not in st.session_state:
+                idea = read_episode_idea(episode_dir)
+                row = backlog_row_by_episode_id(backlog, episode_dir.name.split("_", 1)[0])
+                saved = ""
+                if row is not None:
+                    saved = str(row.get("Topic_RU") or row.get("Topic") or "").strip()
+                st.session_state[current_title_key] = saved or str(idea.get("topic_ru") or idea.get("topic") or "")
+            st.text_input("Название этого видео", key=current_title_key)
+            if st.button("Сохранить название видео", key=f"save_video_title_{channel_slug}_{episode_dir.name}"):
+                current_title = str(st.session_state.get(current_title_key, "")).strip()
+                if not current_title:
+                    st.error("Введите название видео.")
+                else:
+                    ep_id = episode_dir.name.split("_", 1)[0]
+                    row = backlog_row_by_episode_id(backlog, ep_id)
+                    series_id = str(row.get("Series_ID") or selected_playlist) if row is not None else selected_playlist
+                    episode_num = str(row.get("Episode_Num") or "1") if row is not None else "1"
+                    _remember_episode_title(ch, episode_dir, current_title, series_id, episode_num)
+                    st.success("Название видео сохранено.")
+                    st.rerun()
         else:
             st.info("Нет папок эпизодов для этого плейлиста — создайте из идеи справа.")
 
@@ -2727,7 +3283,7 @@ def page_studio(channel_slug: str) -> None:
 
     ep_backlog_id = episode_dir.name.split("_", 1)[0]
     ep_row = backlog_row_by_episode_id(backlog, ep_backlog_id)
-    if ep_row is not None and row_can_expand_to_series(ep_row):
+    if ep_row is not None and row_can_expand_to_series(ep_row) and not isekai_mode:
         if st.button(
             "🔄 Превратить этот выпуск в Серию 1 нового плейлиста",
             key=f"convert_ep_series_{ep_key}",
@@ -2761,8 +3317,13 @@ def page_studio(channel_slug: str) -> None:
     with pipe_l:
         st.caption(f"Конвейер для `{episode_dir.relative_to(ROOT)}`")
     with pipe_r:
+        pipe_label = (
+            "🚀 Новые фразы, кадры и ночное видео"
+            if isekai_mode
+            else "🚀 Полная генерация эпизода (Full Pipeline)"
+        )
         if st.button(
-            "🚀 Полная генерация эпизода (Full Pipeline)",
+            pipe_label,
             key=f"full_pipe_{ep_key}",
             use_container_width=True,
         ):
@@ -2778,206 +3339,223 @@ def page_studio(channel_slug: str) -> None:
         "metadata.md": episode_dir / "metadata.md",
     }
 
-    # —— Секция A ——
-    st.markdown("---")
-    st.subheader("А — Сценарий и промпты")
-    st.caption("Документация: `docs/episode-stage-2-script.md` · Bible — отдельно (этап 1).")
+    if isekai_mode:
+        import isekai_panel
 
-    epi_cfg = load_episode_config(episode_dir, channel_slug, ch)
-    plot_on_disk = load_plot_brief(episode_dir)
-    plan_key = f"plot_brief_{ep_key}"
-    if plan_key not in st.session_state and plot_on_disk:
-        st.session_state[plan_key] = plot_on_disk
+        importlib.reload(isekai_panel)
+        from isekai_panel import render_isekai_production
+        render_isekai_production(
+            episode_dir,
+            channel_slug,
+            ep_key,
+            editor_key=editor_key,
+            save_texts=save_episode_text_files,
+            launch_job=launch_background_job,
+            acknowledge=acknowledge_episode_job_outputs,
+            sync_editors=sync_editors_from_disk_if_newer,
+        )
+    if not isekai_mode:
+        # —— Секция A ——
+        st.markdown("---")
+        st.subheader("А — Сценарий и промпты")
+        st.caption("Документация: `docs/episode-stage-2-script.md` · Bible — отдельно (этап 1).")
 
-    dcol1, dcol2, dgen = st.columns([1, 1, 2])
-    with dcol1:
-        st.number_input(
-            "Длительность (мин) — от",
-            min_value=3.0,
-            max_value=90.0,
-            value=float(epi_cfg["target_min_minutes"]),
-            step=1.0,
-            key=f"ep_min_min_{ep_key}",
-        )
-    with dcol2:
-        st.number_input(
-            "Длительность (мин) — до",
-            min_value=3.0,
-            max_value=120.0,
-            value=float(epi_cfg["target_max_minutes"]),
-            step=1.0,
-            key=f"ep_max_min_{ep_key}",
-        )
-    st.caption(episode_plan_summary(episode_dir, channel_slug))
-    tcol1, tcol2, tcol3, tcol4, tcol5 = st.columns([1, 1, 1, 1, 1])
-    manual_frames = epi_cfg.get("target_frame_count")
-    frame_default = int(manual_frames) if manual_frames else 0
-    with tcol1:
-        st.number_input(
-            "Кадров (0 = авто)",
-            min_value=0,
-            max_value=80,
-            value=frame_default,
-            step=1,
-            key=f"ep_frame_count_{ep_key}",
-            help="Влияет на число PROMPT при ИИ-генерации. generate_images.py рисует все строки в файле.",
-        )
-    frame_ui = int(st.session_state.get(f"ep_frame_count_{ep_key}", frame_default))
-    min_v_ui = float(st.session_state.get(f"ep_min_min_{ep_key}", epi_cfg["target_min_minutes"]))
-    max_v_ui = float(st.session_state.get(f"ep_max_min_{ep_key}", epi_cfg["target_max_minutes"]))
-    spf_ui = float(st.session_state.get(f"ep_spf_{ep_key}", epi_cfg.get("seconds_per_frame", 40)))
-    auto_hint = auto_frame_count((min_v_ui + max_v_ui) / 2.0, spf_ui)
-    with tcol2:
-        st.number_input(
-            "Сек/кадр (авто)",
-            min_value=25.0,
-            max_value=60.0,
-            value=float(epi_cfg.get("seconds_per_frame", 40)),
-            step=1.0,
-            key=f"ep_spf_{ep_key}",
-            disabled=frame_ui > 0,
-        )
-        if frame_ui <= 0:
-            st.caption(f"При авто ≈ **{auto_hint}** кадров")
-    with tcol3:
-        st.number_input(
-            "Затухание голоса (с)",
-            min_value=0.0,
-            max_value=120.0,
-            value=float(epi_cfg.get("voice_fade_out_sec", 12)),
-            step=1.0,
-            key=f"ep_voice_fade_{ep_key}",
-        )
-    with tcol4:
-        st.number_input(
-            "Хвост ambient (с)",
-            min_value=0.0,
-            max_value=600.0,
-            value=float(epi_cfg.get("ambient_tail_sec", 0)),
-            step=5.0,
-            key=f"ep_ambient_tail_{ep_key}",
-            help="После речи: последний кадр и фон без голоса.",
-        )
-    with tcol5:
-        st.write("")
-        if st.button(
-            "💾 Сохранить настройки эпизода",
-            key=f"ep_cfg_save_{ep_key}",
-            use_container_width=True,
-        ):
-            persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
-            st.toast("episode_config.json сохранён")
-            st.rerun()
-    with dgen:
-        st.text_area(
-            "Сюжет / бриф выпуска (RU → plot_brief.txt)",
-            height=100,
-            key=plan_key,
-            placeholder="Рамка выпуска: начало, финал, запреты.",
-        )
-        st.caption("Только для **генерации с нуля** — в переработку не подмешивается.")
-    if st.button("✍️ Сгенерировать сценарий с нуля", key=f"ai_pack_{ep_key}", type="primary"):
-        persist_episode_plan_before_job(episode_dir, ep_key, epi_cfg, plan_key)
-        launch_background_job("generation", episode_dir, "generate_episode_pack.py")
+        epi_cfg = load_episode_config(episode_dir, channel_slug, ch)
+        plot_on_disk = load_plot_brief(episode_dir)
+        plan_key = f"plot_brief_{ep_key}"
+        if plan_key not in st.session_state and plot_on_disk:
+            st.session_state[plan_key] = plot_on_disk
 
-    ed_col, tool_col = st.columns([4, 1])
-    with ed_col:
-        acknowledge_episode_job_outputs(episode_dir, ep_key)
-        sync_editors_from_disk_if_newer(channel_slug, files)
-        tabs = st.tabs(list(files.keys()))
-        for tab, (label, path) in zip(tabs, files.items()):
-            with tab:
-                content = path.read_text(encoding="utf-8-sig") if path.is_file() else ""
-                size = path.stat().st_size if path.is_file() else 0
-                st.caption(f"`{path.name}` · {size} байт")
-                st.text_area(label, content, height=300, key=editor_key(path, channel_slug))
-        if st.button("💾 Сохранить тексты", key=f"save_all_txt_{ep_key}"):
-            n = save_episode_text_files(channel_slug, files)
-            st.success(f"Сохранено файлов: {n}")
-            st.rerun()
-
-    with tool_col:
-        st.markdown("**🛠️ ИИ-переработка**")
-        truth_key = f"truth_source_{ep_key}"
-        if truth_key not in st.session_state:
-            st.session_state[truth_key] = "ru"
-        truth = st.radio(
-            "Источник истины",
-            options=("ru", "en"),
-            format_func=lambda v: (
-                "🇷🇺 Русский (script_ru.md)" if v == "ru" else "🇬🇧 Английский (script.md)"
-            ),
-            key=truth_key,
-        )
-        st.text_area(
-            "Комментарий / инструкция для ИИ",
-            height=100,
-            key=f"sync_instruction_{ep_key}",
-            placeholder="Напр.: смягчи финал, убери алхимию во 2-й главе.",
-        )
-        st.caption(
-            "Берёт **script_ru.md** или **script.md** (источник истины), правит текст **только по комментарию**, "
-            "синхронизирует второй язык, заново пишет **visual_prompts** и **metadata**. "
-            "`plot_brief` — только у кнопки «Сгенерировать с нуля»."
-        )
-        if st.button("✨ Переработать и синхронизировать", key=f"sync_scripts_{ep_key}", use_container_width=True):
-            instruction = str(st.session_state.get(f"sync_instruction_{ep_key}", "")).strip()
-            if not instruction:
-                st.error("Заполните комментарий — переработка без plot_brief не запускается.")
-            else:
-                save_episode_text_files(channel_slug, files)
-                persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
-                (episode_dir / ".sync_instruction.txt").write_text(instruction, encoding="utf-8")
-                (episode_dir / "sync_instruction_last.txt").write_text(instruction, encoding="utf-8")
-                launch_background_job(
-                    "generation",
-                    episode_dir,
-                    "sync_episode_pack.py",
-                    "--primary",
-                    truth,
-                )
-
-        st.markdown("**🕰️ История версий**")
-        snaps = list_episode_snapshots(episode_dir)
-        if snaps:
-            snap_ids = [str(s["id"]) for s in snaps]
-            snap_labels = {str(s["id"]): snapshot_display_line(s) for s in snaps}
-            pick = st.selectbox(
-                "Версия",
-                options=snap_ids,
-                format_func=lambda sid: snap_labels.get(sid, sid),
-                key=f"history_pick_{ep_key}",
+        dcol1, dcol2, dgen = st.columns([1, 1, 2])
+        with dcol1:
+            st.number_input(
+                "Длительность (мин) — от",
+                min_value=3.0,
+                max_value=90.0,
+                value=float(epi_cfg["target_min_minutes"]),
+                step=1.0,
+                key=f"ep_min_min_{ep_key}",
             )
-            if st.button("⏪ Восстановить", key=f"history_restore_{ep_key}", use_container_width=True):
-                err = restore_episode_snapshot(episode_dir, pick)
-                if err:
-                    st.error(err)
-                else:
-                    bump_episode_text_editors(episode_dir)
-                    st.success("Версия восстановлена (текущая сохранена в history/)")
-                    st.rerun()
-        else:
-            st.caption("Пока нет снапшотов — появятся после первой ИИ-генерации/переработки.")
+        with dcol2:
+            st.number_input(
+                "Длительность (мин) — до",
+                min_value=3.0,
+                max_value=120.0,
+                value=float(epi_cfg["target_max_minutes"]),
+                step=1.0,
+                key=f"ep_max_min_{ep_key}",
+            )
+        st.caption(episode_plan_summary(episode_dir, channel_slug))
+        tcol1, tcol2, tcol3, tcol4, tcol5 = st.columns([1, 1, 1, 1, 1])
+        manual_frames = epi_cfg.get("target_frame_count")
+        frame_default = int(manual_frames) if manual_frames else 0
+        with tcol1:
+            st.number_input(
+                "Кадров (0 = авто)",
+                min_value=0,
+                max_value=80,
+                value=frame_default,
+                step=1,
+                key=f"ep_frame_count_{ep_key}",
+                help="Влияет на число PROMPT при ИИ-генерации. generate_images.py рисует все строки в файле.",
+            )
+        frame_ui = int(st.session_state.get(f"ep_frame_count_{ep_key}", frame_default))
+        min_v_ui = float(st.session_state.get(f"ep_min_min_{ep_key}", epi_cfg["target_min_minutes"]))
+        max_v_ui = float(st.session_state.get(f"ep_max_min_{ep_key}", epi_cfg["target_max_minutes"]))
+        spf_ui = float(st.session_state.get(f"ep_spf_{ep_key}", epi_cfg.get("seconds_per_frame", 40)))
+        auto_hint = auto_frame_count((min_v_ui + max_v_ui) / 2.0, spf_ui)
+        with tcol2:
+            st.number_input(
+                "Сек/кадр (авто)",
+                min_value=25.0,
+                max_value=60.0,
+                value=float(epi_cfg.get("seconds_per_frame", 40)),
+                step=1.0,
+                key=f"ep_spf_{ep_key}",
+                disabled=frame_ui > 0,
+            )
+            if frame_ui <= 0:
+                st.caption(f"При авто ≈ **{auto_hint}** кадров")
+        with tcol3:
+            st.number_input(
+                "Затухание голоса (с)",
+                min_value=0.0,
+                max_value=120.0,
+                value=float(epi_cfg.get("voice_fade_out_sec", 12)),
+                step=1.0,
+                key=f"ep_voice_fade_{ep_key}",
+            )
+        with tcol4:
+            st.number_input(
+                "Хвост ambient (с)",
+                min_value=0.0,
+                max_value=600.0,
+                value=float(epi_cfg.get("ambient_tail_sec", 0)),
+                step=5.0,
+                key=f"ep_ambient_tail_{ep_key}",
+                help="Короткий хвост MoviePy: последний кадр, если длинный эмбиент-хвост выключен.",
+            )
+        with tcol5:
+            st.write("")
+            if st.button(
+                "💾 Сохранить настройки эпизода",
+                key=f"ep_cfg_save_{ep_key}",
+                use_container_width=True,
+            ):
+                persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
+                st.toast("episode_config.json сохранён")
+                st.rerun()
+        with dgen:
+            st.text_area(
+                "Сюжет / бриф выпуска (RU → plot_brief.txt)",
+                height=100,
+                key=plan_key,
+                placeholder="Рамка выпуска: начало, финал, запреты.",
+            )
+            st.caption("Только для **генерации с нуля** — в переработку не подмешивается.")
+        render_ambient_tail_controls(episode_dir, channel_slug, ep_key)
+        if st.button("✍️ Сгенерировать сценарий с нуля", key=f"ai_pack_{ep_key}", type="primary"):
+            persist_episode_plan_before_job(episode_dir, ep_key, epi_cfg, plan_key)
+            launch_background_job("generation", episode_dir, "generate_episode_pack.py")
 
-    # —— Секция B ——
-    st.markdown("---")
-    st.subheader("Б — Озвучка (Audio)")
-    b_play, b_act = st.columns([3, 1])
-    with b_play:
-        for name, label in (("voiceover.mp3", "EN"), ("voiceover_ru.mp3", "RU")):
-            audio = episode_dir / name
-            if audio.is_file():
-                st.markdown(f"**{label}**")
-                st.audio(audio.read_bytes(), format="audio/mp3")
+        ed_col, tool_col = st.columns([4, 1])
+        with ed_col:
+            acknowledge_episode_job_outputs(episode_dir, ep_key)
+            sync_editors_from_disk_if_newer(channel_slug, files)
+            tabs = st.tabs(list(files.keys()))
+            for tab, (label, path) in zip(tabs, files.items()):
+                with tab:
+                    content = path.read_text(encoding="utf-8-sig") if path.is_file() else ""
+                    size = path.stat().st_size if path.is_file() else 0
+                    st.caption(f"`{path.name}` · {size} байт")
+                    st.text_area(label, content, height=300, key=editor_key(path, channel_slug))
+            if st.button("💾 Сохранить тексты", key=f"save_all_txt_{ep_key}"):
+                n = save_episode_text_files(channel_slug, files)
+                st.success(f"Сохранено файлов: {n}")
+                st.rerun()
+
+        with tool_col:
+            st.markdown("**🛠️ ИИ-переработка**")
+            truth_key = f"truth_source_{ep_key}"
+            if truth_key not in st.session_state:
+                st.session_state[truth_key] = "ru"
+            truth = st.radio(
+                "Источник истины",
+                options=("ru", "en"),
+                format_func=lambda v: (
+                    "🇷🇺 Русский (script_ru.md)" if v == "ru" else "🇬🇧 Английский (script.md)"
+                ),
+                key=truth_key,
+            )
+            st.text_area(
+                "Комментарий / инструкция для ИИ",
+                height=100,
+                key=f"sync_instruction_{ep_key}",
+                placeholder="Напр.: смягчи финал, убери алхимию во 2-й главе.",
+            )
+            st.caption(
+                "Берёт **script_ru.md** или **script.md** (источник истины), правит текст **только по комментарию**, "
+                "синхронизирует второй язык, заново пишет **visual_prompts** и **metadata**. "
+                "`plot_brief` — только у кнопки «Сгенерировать с нуля»."
+            )
+            if st.button("✨ Переработать и синхронизировать", key=f"sync_scripts_{ep_key}", use_container_width=True):
+                instruction = str(st.session_state.get(f"sync_instruction_{ep_key}", "")).strip()
+                if not instruction:
+                    st.error("Заполните комментарий — переработка без plot_brief не запускается.")
+                else:
+                    save_episode_text_files(channel_slug, files)
+                    persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
+                    (episode_dir / ".sync_instruction.txt").write_text(instruction, encoding="utf-8")
+                    (episode_dir / "sync_instruction_last.txt").write_text(instruction, encoding="utf-8")
+                    launch_background_job(
+                        "generation",
+                        episode_dir,
+                        "sync_episode_pack.py",
+                        "--primary",
+                        truth,
+                    )
+
+            st.markdown("**🕰️ История версий**")
+            snaps = list_episode_snapshots(episode_dir)
+            if snaps:
+                snap_ids = [str(s["id"]) for s in snaps]
+                snap_labels = {str(s["id"]): snapshot_display_line(s) for s in snaps}
+                pick = st.selectbox(
+                    "Версия",
+                    options=snap_ids,
+                    format_func=lambda sid: snap_labels.get(sid, sid),
+                    key=f"history_pick_{ep_key}",
+                )
+                if st.button("⏪ Восстановить", key=f"history_restore_{ep_key}", use_container_width=True):
+                    err = restore_episode_snapshot(episode_dir, pick)
+                    if err:
+                        st.error(err)
+                    else:
+                        bump_episode_text_editors(episode_dir)
+                        st.success("Версия восстановлена (текущая сохранена в history/)")
+                        st.rerun()
             else:
-                st.caption(f"{label}: файла нет ({name})")
-    with b_act:
-        if st.button(
-            "🎙️ Сгенерировать / Обновить озвучку (EN + RU)",
-            key=f"voice_{ep_key}",
-            use_container_width=True,
-        ):
-            launch_background_job("generation", episode_dir, "generate_voice.py")
+                st.caption("Пока нет снапшотов — появятся после первой ИИ-генерации/переработки.")
+
+        # —— Секция B ——
+        st.markdown("---")
+        st.subheader("Б — Озвучка (Audio)")
+        b_play, b_act = st.columns([3, 1])
+        with b_play:
+            for name, label in (("voiceover.mp3", "EN"), ("voiceover_ru.mp3", "RU")):
+                audio = episode_dir / name
+                if audio.is_file():
+                    st.markdown(f"**{label}**")
+                    st.audio(audio.read_bytes(), format="audio/mp3")
+                else:
+                    st.caption(f"{label}: файла нет ({name})")
+        with b_act:
+            if st.button(
+                "🎙️ Сгенерировать / Обновить озвучку (EN + RU)",
+                key=f"voice_{ep_key}",
+                use_container_width=True,
+            ):
+                launch_background_job("generation", episode_dir, "generate_voice.py")
 
     # —— Секция C ——
     st.markdown("---")
@@ -3157,9 +3735,8 @@ def page_studio(channel_slug: str) -> None:
         else:
             build_script = "make_episode.py"
         if st.button("🎞️ Собрать / Пересобрать видео", key=f"build_vid_{ep_key}", use_container_width=True):
-            if build_script in ("build_sleep_video.py", "build_remotion_video.py"):
-                epi_save = load_episode_config(episode_dir, channel_slug, ch)
-                persist_episode_config_before_job(episode_dir, ep_key, epi_save)
+            epi_save = load_episode_config(episode_dir, channel_slug, ch)
+            persist_episode_config_before_job(episode_dir, ep_key, epi_save)
             launch_background_job("build_video", episode_dir, build_script)
         if st.button(
             "🚀 Применить правки по участкам и пересобрать",
@@ -3212,11 +3789,11 @@ def page_radar(channel_slug: str) -> None:
         connected = secrets_path.is_file()
         st.metric("Статус OAuth", "Подключено (файл найден)" if connected else "Не подключено")
 
-        episode_dirs = sorted((ch / "episodes").glob("*")) if (ch / "episodes").is_dir() else []
-        episode_names = [path.name for path in episode_dirs if path.is_dir()]
+        episode_by_name = {path.name: path for path in list_episode_dirs(ch)}
+        episode_names = sorted(episode_by_name)
         if episode_names:
             meta_episode = st.selectbox("Эпизод для копирования метаданных", episode_names, key="meta_copy")
-            meta_path = ch / "episodes" / meta_episode / "metadata.md"
+            meta_path = episode_by_name[meta_episode] / "metadata.md"
             if meta_path.is_file():
                 meta = meta_path.read_text(encoding="utf-8-sig")
                 en_block = extract_section(meta, "English Metadata") or meta

@@ -20,6 +20,7 @@ from remotion_env import (
     REMOTION_DIR,
     ensure_npm_install,
     node_status,
+    remotion_cli_argv,
     remotion_settings_from_animation,
     stage_episode_assets,
 )
@@ -60,9 +61,12 @@ def run_render(output: Path, props_path: Path) -> int:
         print(f"[ERROR] {msg}", file=sys.stderr)
         return 1
 
+    cli = remotion_cli_argv()
+    if not cli:
+        print("[ERROR] Не найден remotion CLI (node_modules/.bin или npx).", file=sys.stderr)
+        return 1
     cmd = [
-        "npx",
-        "remotion",
+        *cli,
         "render",
         "src/index.ts",
         "SleepStoryComposition",
@@ -117,6 +121,20 @@ def main(argv: list[str] | None = None) -> int:
             file=sys.stderr,
         )
         return 1
+
+    voice = episode_dir / "voiceover.mp3"
+    if voice.is_file():
+        from ambient_tail import settings_from_episode, tail_seconds
+        from isekai_video import build_long, probe_duration
+
+        voice_sec = probe_duration(voice)
+        settings = settings_from_episode(episode_dir)
+        if voice_sec > 0 and tail_seconds(voice_sec, settings) > 1.0:
+            print("Эмбиент-хвост включён: сборка ffmpeg вместо Remotion.")
+            build_long(episode_dir, voice, voice_sec, settings)
+            emit_progress(100, 100, "Эмбиент-хвост: готово")
+            print(f"Готово: {episode_dir / 'final_video.mp4'}")
+            return 0
 
     output = episode_dir / "final_video.mp4"
     props_path = REMOTION_DIR / "props.episode.json"

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "title_en": "Deep Space Sanctuary: Cozy Sci-Fi Sleep Journeys | Learn Spanish While Sleeping",
+  "title_ru": "Убежище в глубоком космосе: уютные фантастические путешествия для сна — испанский во сне",
+  "world_and_atmosphere": {
+    "ru": "Тихие корабли, луны и далёкие планеты ночью. Мягкий свет каюты, стекло. Людей в кадре нет.",
+    "en": "Quiet spaceships, moons, and distant planets at night. Soft cabin light, glass, and no people in frame."
+  },
+  "characters_visual_lock": {
+    "ru": "Кадр от первого лица. Людей в кадре нет.",
+    "en": "First-person frame. No people."
+  },
+  "lore_and_rules": {
+    "ru": "Простой испанский, тихая ночь, без хоррора и без медицинских обещаний про сон.",
+    "en": "Simple Spanish, a quiet night, no horror and no medical claims about sleep."
+  },
+  "recaps": []
+}

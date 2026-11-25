@@ -34,9 +34,9 @@ Enchanted Realms может использовать Remotion / ComfyUI — см
 | `script.md` | редактор / генерация |
 | `visual_prompts.md` | сценарий / ИИ |
 | `script_ru.md` | опционально, для RU-озвучки |
-| `episode_config.json` | опционально: `voice_fade_out_sec`, `ambient_tail_sec` — концовка ролика |
+| `episode_config.json` | `voice_fade_out_sec`; короткий `ambient_tail_sec` либо длинный хвост: `ambient_tail_enabled`, `target_total_minutes`, `ambient_category`, `ambient_volume` |
 
-Финальный рендер: голос затухает за `voice_fade_out_sec` до конца `voiceover.mp3`, затем `ambient_tail_sec` — **последний кадр** и ambient без речи. Смена кадров по-прежнему укладывается в длительность озвучки, хвост её не растягивает.
+Финальный рендер: голос затухает за `voice_fade_out_sec` до конца `voiceover.mp3`. Если длинный хвост выключен, `ambient_tail_sec` держит последний кадр. Если включён, ролик дотягивается до `target_total_minutes`: кадры идут по кругу, эмбиент собирается из `assets/ambient/`, с ~37.5 мин или с начала хвоста картинка темнеет до 12%.
 
 ## Что появится после
 

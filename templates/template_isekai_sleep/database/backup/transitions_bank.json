@@ -1,0 +1,66 @@
+{
+  "version": 1,
+  "voice": "MENTOR_NATIVE",
+  "categories": {
+    "describe_in_native": [
+      "Looking at this peaceful night, in Spanish, I would say:",
+      "In this language, I would say:",
+      "If I name what is in front of us, in Spanish it is simple.",
+      "The night is quiet enough for a few slow words.",
+      "Let me put this picture into Spanish.",
+      "Here is the same calm picture, in the language of this place.",
+      "I will say what we see, slowly, in Spanish.",
+      "This is how the night sounds in Spanish.",
+      "Stay with the lantern. I will say it in Spanish.",
+      "For this quiet moment, Spanish is enough."
+    ],
+    "how_it_sounds_in_target": [
+      "Listen to how it sounds again.",
+      "Listen again, slowly.",
+      "Hear it one more time, softer.",
+      "Let the words sit in the air.",
+      "I will say it once more, for your ear.",
+      "The sound is gentle. Listen.",
+      "Here it is again, unhurried.",
+      "One more time, just the sound.",
+      "Let me give you the sound again.",
+      "Listen softly, and do not hurry."
+    ],
+    "apology_mentor_spoke": [
+      "Oh, pardon me. I went a little ahead. What I just said was:",
+      "Oh, pardon me, I forgot you are new to this place. What I just said was:",
+      "Excuse me, I slipped into Spanish again. In English, I said:",
+      "Excuse me, old habits. I went ahead in Spanish. What I just said was:",
+      "Ah, my apologies, traveler. The words came out in Spanish. What I just said was:",
+      "Ah, my apologies. You are still new here. In English, I said:",
+      "Oh, pardon me, I spoke a little too quickly. What I just said was:",
+      "Excuse me. The words of this place came first. In English, I said:",
+      "Ah, my apologies, traveler. I stepped away from your language for a moment. What I just said was:",
+      "Oh, pardon me. Let me walk that sentence back. In English, I said:"
+    ],
+    "npc_statement": [
+      "Don't worry, she is friendly. What she just told us is:",
+      "Her voice is calm. In English, she said:",
+      "There is no trouble. What she just told us is:",
+      "She only greeted the fire. In English, she said:",
+      "Her voice is quiet. What she just told us is:",
+      "She means us well. In English, she said:",
+      "The guard is kind. What she just told us is:",
+      "She is at ease. In English, she said:",
+      "She spoke softly. What she just told us is:",
+      "She is a friend of the temple. In English, she said:"
+    ],
+    "npc_question": [
+      "Don't worry, she is friendly. She asked us:",
+      "She asked a small question. She said:",
+      "Her question is gentle. She asked:",
+      "She is only asking, not calling us away. She asked:",
+      "A quiet question. She asked:",
+      "She wonders something simple. She asked:",
+      "No need to answer aloud. She asked:",
+      "She asked softly, and the rain stayed calm.",
+      "The question is kind. She asked:",
+      "She looked toward the fire and asked:"
+    ]
+  }
+}

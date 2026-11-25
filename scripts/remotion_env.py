@@ -26,18 +26,41 @@ MIN_VIDEO_BYTES = 4096
 AMBIENT_DIR = ROOT / "assets" / "ambient"
 
 
+def resolve_npm() -> str | None:
+    return shutil.which("npm") or shutil.which("npm.cmd")
+
+
+def resolve_npx() -> str | None:
+    return shutil.which("npx") or shutil.which("npx.cmd")
+
+
+def remotion_cli_argv() -> list[str]:
+    """Путь к remotion CLI: локальный .bin (надёжно на Windows), иначе npx remotion."""
+    for name in ("remotion.cmd", "remotion"):
+        local = REMOTION_DIR / "node_modules" / ".bin" / name
+        if local.is_file():
+            return [str(local)]
+    npx = resolve_npx()
+    if npx:
+        return [npx, "remotion"]
+    return []
+
+
 def node_status() -> dict[str, Any]:
     node = shutil.which("node")
-    npm = shutil.which("npm") or shutil.which("npm.cmd")
+    npm = resolve_npm()
     modules_ok = (REMOTION_DIR / "node_modules" / "remotion").is_dir()
+    cli = remotion_cli_argv()
     return {
         "node": bool(node),
         "npm": bool(npm),
         "node_path": node or "",
         "npm_path": npm or "",
+        "npx_path": resolve_npx() or "",
+        "remotion_cli": cli[0] if cli else "",
         "remotion_dir": REMOTION_DIR.is_dir(),
         "node_modules": modules_ok,
-        "ready": bool(node and npm and REMOTION_DIR.is_dir() and modules_ok),
+        "ready": bool(node and npm and REMOTION_DIR.is_dir() and modules_ok and cli),
     }
 
 
@@ -47,8 +70,10 @@ def ensure_npm_install() -> tuple[bool, str]:
         return False, "Не найдены node или npm в PATH."
     if status["node_modules"]:
         return True, "node_modules уже установлен"
+    npm = resolve_npm()
+    assert npm is not None
     result = subprocess.run(
-        ["npm", "install"],
+        [npm, "install"],
         cwd=str(REMOTION_DIR),
         capture_output=True,
         text=True,

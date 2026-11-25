@@ -1,0 +1,14 @@
+{
+  "target_min_minutes": 15.0,
+  "target_max_minutes": 20.0,
+  "words_per_minute": 125,
+  "update_bible_recap": false,
+  "target_frame_count": null,
+  "seconds_per_frame": 40.0,
+  "voice_fade_out_sec": 12.0,
+  "ambient_tail_sec": 0.0,
+  "ambient_tail_enabled": false,
+  "target_total_minutes": 600.0,
+  "ambient_category": "mix",
+  "ambient_volume": 0.12
+}

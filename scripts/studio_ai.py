@@ -25,6 +25,7 @@ from playlist_manager import (
     create_playlist,
     episode_dir_for_backlog_id,
     extract_recap_section,
+    list_episode_dirs,
     load_series_bible_json,
     backlog_row_for_episode_dir,
     next_series_episode_from_folders,
@@ -429,16 +430,12 @@ def _topic_set(channel_dir: Path) -> set[str]:
                     text = value.strip().lower()
                     if text and text != "nan":
                         topics.add(text)
-    episodes = channel_dir / "episodes"
-    if episodes.is_dir():
-        for ep_dir in episodes.iterdir():
-            if not ep_dir.is_dir():
-                continue
-            idea = read_episode_idea(ep_dir)
-            for key in ("topic", "topic_ru"):
-                text = str(idea.get(key, "")).strip().lower()
-                if text:
-                    topics.add(text)
+    for ep_dir in list_episode_dirs(channel_dir):
+        idea = read_episode_idea(ep_dir)
+        for key in ("topic", "topic_ru"):
+            text = str(idea.get(key, "")).strip().lower()
+            if text:
+                topics.add(text)
     return topics
 
 
@@ -1436,7 +1433,7 @@ def default_minutes_for_channel(channel_slug: str, channel_dir: Path) -> tuple[f
     return DEFAULT_MINUTES.get(channel_slug, (15, 20))
 
 
-def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path) -> dict[str, float | int | bool | None]:
+def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path) -> dict[str, Any]:
     from episode_timing import apply_timing_defaults
 
     path = episode_dir / EPISODE_CONFIG_JSON
@@ -1451,6 +1448,13 @@ def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path)
         "seconds_per_frame": SECONDS_PER_FRAME,
         "voice_fade_out_sec": 12.0,
         "ambient_tail_sec": 0.0,
+        "ambient_tail_enabled": False,
+        "target_total_minutes": 600.0,
+        "ambient_category": "mix",
+        "ambient_volume": 0.12,
+        "fps_start": 24,
+        "fps_end": 2,
+        "fps_interval_min": 30.0,
     }
     if not path.is_file():
         return apply_timing_defaults(base)
@@ -1479,6 +1483,13 @@ def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path)
             "seconds_per_frame": SECONDS_PER_FRAME,
             "voice_fade_out_sec": 12.0,
             "ambient_tail_sec": 0.0,
+            "ambient_tail_enabled": False,
+            "target_total_minutes": 600.0,
+            "ambient_category": "mix",
+            "ambient_volume": 0.12,
+            "fps_start": 24,
+            "fps_end": 2,
+            "fps_interval_min": 30.0,
         }
     if float(base["target_max_minutes"]) < float(base["target_min_minutes"]):
         base["target_max_minutes"] = base["target_min_minutes"]
@@ -2411,6 +2422,10 @@ def script_needs_generation(episode_dir: Path) -> bool:
     if not path.is_file():
         return True
     text = path.read_text(encoding="utf-8-sig").strip()
+    from isekai_voice import is_isekai_script
+
+    if is_isekai_script(text):
+        return False
     words = count_words(text)
     threshold = max(450, profile.extra_chapter_floor - 150)
     return words < threshold

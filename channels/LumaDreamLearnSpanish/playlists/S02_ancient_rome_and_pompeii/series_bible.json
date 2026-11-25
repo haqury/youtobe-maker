@@ -1,0 +1,18 @@
+﻿{
+  "version": 1,
+  "title_en": "Ancient Rome & Pompeii: Everyday Life Sleep Stories | Learn Spanish While Sleeping",
+  "title_ru": "Древний Рим и Помпеи: быт в историях для сна — испанский во сне",
+  "world_and_atmosphere": {
+    "ru": "Тихие римские ночи в домах, термах, на улицах и у моря. Тёплые лампы, камень, вода. Людей в кадре нет.",
+    "en": "Quiet Roman nights in houses, baths, streets, and harbors. Warm lamps, stone, water, and no people in frame."
+  },
+  "characters_visual_lock": {
+    "ru": "Кадр от первого лица. Людей в кадре нет.",
+    "en": "First-person frame. No people."
+  },
+  "lore_and_rules": {
+    "ru": "Простой испанский, тихая ночь, без хоррора и без медицинских обещаний про сон.",
+    "en": "Simple Spanish, a quiet night, no horror and no medical claims about sleep."
+  },
+  "recaps": []
+}

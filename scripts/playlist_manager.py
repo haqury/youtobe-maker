@@ -491,8 +491,41 @@ def row_series_id(row: pd.Series) -> str:
     return infer_series_id_from_episode_id(ep_id)
 
 
-def folder_matches_playlist(folder_name: str, backlog: pd.DataFrame, playlist_id: str) -> bool:
+def series_id_from_episode_path(episode_dir: Path | None) -> str:
+    """playlists/S03_<slug>/episodes/EP01_… → S03."""
+    if episode_dir is None:
+        return ""
+    parts = episode_dir.parts
+    for index, part in enumerate(parts[:-1]):
+        if part != "playlists":
+            continue
+        match = SERIES_ID_RE.match(parts[index + 1])
+        if match:
+            return match.group(1).upper()
+    return ""
+
+
+def series_id_from_episode_idea(episode_dir: Path | None) -> str:
+    if episode_dir is None:
+        return ""
+    sid = str(read_episode_idea(episode_dir).get("series_id", "") or "").strip()
+    if not sid or sid.lower() == "nan" or sid == STANDALONE_ID:
+        return ""
+    return sid.upper() if SERIES_ID_RE.match(sid) else sid
+
+
+def folder_matches_playlist(
+    folder_name: str,
+    backlog: pd.DataFrame,
+    playlist_id: str,
+    episode_dir: Path | None = None,
+) -> bool:
     ep_id = episode_id_from_folder_name(folder_name)
+    placed = series_id_from_episode_path(episode_dir) or series_id_from_episode_idea(episode_dir)
+    if placed:
+        if playlist_id == STANDALONE_ID:
+            return False
+        return placed.upper() == playlist_id.upper()
     row = backlog_row_by_episode_id(normalize_backlog_frame(backlog), ep_id) if not backlog.empty else None
     if row is not None:
         rsid = row_series_id(row)
@@ -520,16 +553,24 @@ def format_episode_folder_label(
     folder_name: str,
     channel_dir: Path,
     backlog: pd.DataFrame,
+    episode_dir: Path | None = None,
 ) -> str:
     ep_id = episode_id_from_folder_name(folder_name)
+    if episode_dir is None:
+        episode_dir = episode_dir_for_backlog_id(channel_dir, ep_id)
     backlog = normalize_backlog_frame(backlog) if not backlog.empty else backlog
     row = backlog_row_by_episode_id(backlog, ep_id) if not backlog.empty else None
-    sid = row_series_id(row) if row is not None else infer_series_id_from_episode_id(ep_id)
+    idea = read_episode_idea(episode_dir) if episode_dir is not None else {}
+    sid = (
+        series_id_from_episode_path(episode_dir)
+        or series_id_from_episode_idea(episode_dir)
+        or (row_series_id(row) if row is not None else infer_series_id_from_episode_id(ep_id))
+    )
     if sid == STANDALONE_ID:
         return f"[Одиночный] {folder_name}"
     title = playlist_title_for_id(channel_dir, sid, row)
-    ep_num = ""
-    if row is not None:
+    ep_num = str(idea.get("episode_num", "") or "").strip()
+    if row is not None and not ep_num:
         ep_num = str(row.get("Episode_Num", "") or "").strip()
     if not ep_num and SERIES_EP_ID_RE.fullmatch(ep_id.upper()):
         ep_num = SERIES_EP_ID_RE.fullmatch(ep_id.upper()).group(2).lstrip("0") or "1"
@@ -673,11 +714,49 @@ def row_can_expand_to_series(row: pd.Series) -> bool:
     return sid == STANDALONE_ID
 
 
+def list_episode_dirs(channel_dir: Path) -> list[Path]:
+    """Папки эпизодов: channels/<slug>/episodes и playlists/<id>_<slug>/episodes (или сразу в папке плейлиста)."""
+    found: list[Path] = []
+    seen: set[str] = set()
+
+    def add(path: Path) -> None:
+        if not path.is_dir():
+            return
+        if not any((path / name).is_file() for name in ("script.md", "metadata.md", "episode_idea.json")):
+            return
+        key = str(path.resolve())
+        if key in seen:
+            return
+        seen.add(key)
+        found.append(path)
+
+    legacy = channel_dir / "episodes"
+    if legacy.is_dir():
+        for path in sorted(legacy.iterdir()):
+            add(path)
+
+    playlists = channel_dir / "playlists"
+    if playlists.is_dir():
+        for playlist in sorted(path for path in playlists.iterdir() if path.is_dir()):
+            nested = playlist / "episodes"
+            if nested.is_dir():
+                for path in sorted(nested.iterdir()):
+                    add(path)
+            for path in sorted(playlist.iterdir()):
+                if path.name == "episodes":
+                    continue
+                add(path)
+    found.sort(key=lambda path: path.name)
+    return found
+
+
 def episode_dir_for_backlog_id(channel_dir: Path, backlog_id: str) -> Path | None:
-    root = channel_dir / "episodes"
-    if not root.is_dir():
-        return None
-    matches = sorted(p for p in root.glob(f"{backlog_id.strip()}_*") if p.is_dir())
+    backlog_id = backlog_id.strip()
+    matches = [
+        path
+        for path in list_episode_dirs(channel_dir)
+        if path.name == backlog_id or path.name.startswith(f"{backlog_id}_")
+    ]
     return matches[0] if matches else None
 
 
@@ -781,38 +860,9 @@ def prior_series_episode_lines(channel_dir: Path, series_id: str) -> str:
 
 
 def purge_series_from_backlog(channel_dir: Path, backlog: pd.DataFrame) -> tuple[pd.DataFrame, int]:
-    """
-    Backlog — только идеи для одиночных роликов. Серийные строки снимаем;
-    темы с папкой → episode_idea.json.
-    """
-    backlog = normalize_backlog_frame(backlog)
-    if backlog.empty:
-        return backlog, 0
-    drop_idx: list[int] = []
-    for idx, row in backlog.iterrows():
-        if row_series_id(row) == STANDALONE_ID:
-            continue
-        ep_id = str(row.get("ID", "")).strip()
-        folder = episode_dir_for_backlog_id(channel_dir, ep_id)
-        if folder:
-            write_episode_idea(
-                folder,
-                {
-                    "id": ep_id,
-                    "topic": str(row.get("Topic", "")),
-                    "topic_ru": str(row.get("Topic_RU", "")),
-                    "angle": str(row.get("Angle", "")),
-                    "series_id": row_series_id(row),
-                    "episode_num": str(row.get("Episode_Num", "1")),
-                    "series_en": str(row.get("Series", "")),
-                    "series_ru": str(row.get("Series_RU", "")),
-                },
-            )
-        drop_idx.append(idx)
-    if not drop_idx:
-        return backlog, 0
-    cleaned = backlog.drop(index=drop_idx).reset_index(drop=True)
-    return cleaned, len(drop_idx)
+    """Серийные строки бэклога больше не удаляются: плейлист задаёт папка и episode_idea.json."""
+    del channel_dir
+    return normalize_backlog_frame(backlog), 0
 
 
 def filter_backlog_by_playlist(backlog: pd.DataFrame, playlist_id: str) -> pd.DataFrame:

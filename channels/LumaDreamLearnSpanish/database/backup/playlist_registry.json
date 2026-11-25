@@ -1,0 +1,352 @@
+{
+  "version": 1,
+  "playlists": {
+    "S03": {
+      "title": "Ancient Americas & Maya/Aztec Mysteries: Learn Spanish While Sleeping",
+      "episodes": {
+        "EP01_maya_jungle_rain": [
+          {
+            "id": "001",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Hola."
+          },
+          {
+            "id": "001",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "Listen to how it sounds again."
+          },
+          {
+            "id": "003",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo soy un gato."
+          },
+          {
+            "id": "003",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "Listen again, slowly."
+          },
+          {
+            "id": "005",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Tú eres mi amigo."
+          },
+          {
+            "id": "007",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Estamos aquí."
+          },
+          {
+            "id": "007",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "Hear it one more time, softer."
+          },
+          {
+            "id": "009",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Todo está tranquilo."
+          },
+          {
+            "id": "011",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El gato está aquí."
+          },
+          {
+            "id": "012",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El amigo está aquí."
+          },
+          {
+            "id": "013",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El gato está tranquilo."
+          },
+          {
+            "id": "014",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Hola, amigo."
+          },
+          {
+            "id": "015",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Esto es un bosque."
+          },
+          {
+            "id": "016",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El bosque está tranquilo."
+          },
+          {
+            "id": "018",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Esto es un árbol."
+          },
+          {
+            "id": "019",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El árbol es grande."
+          },
+          {
+            "id": "020",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El árbol está aquí."
+          },
+          {
+            "id": "022",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Hay lluvia."
+          },
+          {
+            "id": "023",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La lluvia es agua."
+          },
+          {
+            "id": "024",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El agua es tranquila."
+          },
+          {
+            "id": "024",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "Let the words sit in the air."
+          },
+          {
+            "id": "025",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La lluvia está aquí."
+          },
+          {
+            "id": "026",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El bosque es grande."
+          },
+          {
+            "id": "028",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El agua está aquí."
+          },
+          {
+            "id": "029",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La lluvia es tranquila."
+          },
+          {
+            "id": "031",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Es de noche."
+          },
+          {
+            "id": "032",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La noche es tranquila."
+          },
+          {
+            "id": "032",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "I will say it once more, for your ear."
+          },
+          {
+            "id": "034",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Aquí hay fuego."
+          },
+          {
+            "id": "035",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Aquí hay calor."
+          },
+          {
+            "id": "036",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El fuego está aquí."
+          },
+          {
+            "id": "037",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El calor está aquí."
+          },
+          {
+            "id": "039",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Esto es una piedra."
+          },
+          {
+            "id": "040",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La piedra es grande."
+          },
+          {
+            "id": "041",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Hay una piedra."
+          },
+          {
+            "id": "044",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La piedra está aquí."
+          },
+          {
+            "id": "045",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La noche está tranquila."
+          },
+          {
+            "id": "047",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Esto es un templo."
+          },
+          {
+            "id": "048",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El templo es antiguo."
+          },
+          {
+            "id": "049",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El templo es grande."
+          },
+          {
+            "id": "050",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El templo es de piedra."
+          },
+          {
+            "id": "051",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El templo está tranquilo."
+          },
+          {
+            "id": "051",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "The sound is gentle. Listen."
+          },
+          {
+            "id": "053",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo miro el templo."
+          },
+          {
+            "id": "054",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo miro el fuego."
+          },
+          {
+            "id": "055",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Mira el templo."
+          },
+          {
+            "id": "055",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "Here it is again, unhurried."
+          },
+          {
+            "id": "057",
+            "slot": "NPC_TARGET_es",
+            "text": "Buenas noches."
+          },
+          {
+            "id": "063",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Buenas noches, amigo."
+          },
+          {
+            "id": "064",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Vamos a mirar."
+          },
+          {
+            "id": "066",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Esto es el cielo."
+          },
+          {
+            "id": "067",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El cielo está tranquilo."
+          },
+          {
+            "id": "068",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La luna está aquí."
+          },
+          {
+            "id": "069",
+            "slot": "MENTOR_TARGET_es",
+            "text": "La luna es grande."
+          },
+          {
+            "id": "070",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Hay una estrella."
+          },
+          {
+            "id": "071",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo miro la luna."
+          },
+          {
+            "id": "072",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo miro la estrella."
+          },
+          {
+            "id": "073",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El gato mira la luna."
+          },
+          {
+            "id": "075",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo escucho la lluvia."
+          },
+          {
+            "id": "076",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Yo escucho el fuego."
+          },
+          {
+            "id": "076",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "One more time, just the sound."
+          },
+          {
+            "id": "077",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Escucha la lluvia."
+          },
+          {
+            "id": "078",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Vamos a escuchar."
+          },
+          {
+            "id": "080",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Descansa, amigo."
+          },
+          {
+            "id": "080",
+            "slot": "transitions_bank_how_it_sounds_in_target",
+            "text": "Let me give you the sound again."
+          },
+          {
+            "id": "081",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Vamos a descansar."
+          },
+          {
+            "id": "082",
+            "slot": "MENTOR_TARGET_es",
+            "text": "El gato descansa."
+          },
+          {
+            "id": "083",
+            "slot": "MENTOR_TARGET_es",
+            "text": "Tú descansas aquí."
+          }
+        ]
+      }
+    }
+  }
+}

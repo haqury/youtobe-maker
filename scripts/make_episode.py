@@ -60,6 +60,19 @@ def run_script(script_name: str, argument: str) -> None:
         raise SystemExit(completed.returncode)
 
 
+def _read_text(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8-sig")
+    except (OSError, UnicodeDecodeError):
+        return ""
+
+
+def is_isekai_episode(episode_dir: Path) -> bool:
+    config = _read_text(episode_dir.parents[1] / "channel_config.md")
+    script = _read_text(episode_dir / "script.md")
+    return "BASE_STYLE_PROMPT:" in config or "## PLAYLIST_SEQUENCE" in script
+
+
 def make(episode_dir: Path) -> None:
     print(f"Эпизод: {episode_dir}")
     voice = episode_dir / "voiceover.mp3"
@@ -89,6 +102,9 @@ def make(episode_dir: Path) -> None:
         build_script = resolve_video_build_script(anim)
         print(f"Шаг 3: сборка final_video.mp4 ({build_script}).")
         run_script(build_script, str(episode_dir))
+    elif is_isekai_episode(episode_dir):
+        print("Шаг 3: isekai sleep, сборка final_video.mp4 (build_sleep_video.py).")
+        run_script("build_sleep_video.py", str(episode_dir))
     else:
         print("Шаг 3: это не канал сна. Финальный рендер не запускаю, ассеты готовы.")
 

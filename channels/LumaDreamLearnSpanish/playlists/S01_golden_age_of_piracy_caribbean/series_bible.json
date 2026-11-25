@@ -1,0 +1,18 @@
+﻿{
+  "version": 1,
+  "title_en": "Golden Age of Piracy & The Spanish Main: Caribbean Night Journeys | Learn Spanish While Sleeping",
+  "title_ru": "Золотой век пиратства и Испанский Мэйн: ночные пути по Карибам — испанский во сне",
+  "world_and_atmosphere": {
+    "ru": "Ночь на испанском галеоне и в тихих карибских гаванях. Тёплый фонарь, дерево, вода. Людей в кадре нет.",
+    "en": "Night aboard a Spanish galleon and in quiet Caribbean harbors. Warm lantern light, wood, water, and no people in frame."
+  },
+  "characters_visual_lock": {
+    "ru": "Кадр от первого лица. Людей в кадре нет.",
+    "en": "First-person frame. No people."
+  },
+  "lore_and_rules": {
+    "ru": "Простой испанский, тихая ночь, без хоррора и без медицинских обещаний про сон.",
+    "en": "Simple Spanish, a quiet night, no horror and no medical claims about sleep."
+  },
+  "recaps": []
+}

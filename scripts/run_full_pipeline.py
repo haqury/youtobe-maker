@@ -42,7 +42,10 @@ def main(argv: list[str] | None = None) -> int:
         print(f"Папка не найдена: {episode_dir}", file=sys.stderr)
         return 1
 
-    is_sleep = SLEEP_CHANNEL in episode_dir.parts
+    from isekai_config import load_isekai_settings
+
+    is_isekai = bool(load_isekai_settings(episode_dir).get("TARGET_LANG"))
+    is_sleep = SLEEP_CHANNEL in episode_dir.parts or is_isekai
     total = 5 if is_sleep else 4
     emit_progress(0, total, "Старт полного конвейера")
 
@@ -62,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
     else:
         emit_progress(1, total, "Сценарий уже есть — пропуск ИИ")
 
-    emit_progress(2, total, "Озвучка EN + RU")
+    emit_progress(2, total, "Озвучка уникальных фраз" if is_isekai else "Озвучка EN + RU")
     script_path = episode_dir / "script.md"
     if not script_path.is_file():
         print("Нет script.md после генерации.", file=sys.stderr)
@@ -75,7 +78,12 @@ def main(argv: list[str] | None = None) -> int:
     if run_step("run_images_pack.py", episode_dir) != 0:
         return 1
 
-    if is_sleep:
+    if is_isekai:
+        emit_progress(4, total, "Сборка длинного видео из кэша кадров")
+        emit_progress(5, total, "Рендер final_video.mp4 (build_sleep_video.py)")
+        if run_step("build_sleep_video.py", episode_dir) != 0:
+            return 1
+    elif is_sleep:
         anim = load_episode_animation(episode_dir)
         if uses_comfyui_animation(anim):
             emit_progress(4, total, "ComfyUI: image-to-video (выбранные кадры)")

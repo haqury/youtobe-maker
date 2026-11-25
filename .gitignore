@@ -16,6 +16,7 @@ venv/
 channels/**/episodes/**/images/
 channels/**/episodes/**/animation/
 channels/**/episodes/**/final_video.mp4
+channels/**/episodes/**/*.mp4
 channels/**/episodes/**/voiceover.mp3
 channels/**/episodes/**/voiceover_ru.mp3
 channels/**/episodes/**/thumbnail.jpg
@@ -45,3 +46,4 @@ remotion_studio/build/
 # Общий ambient (держите локально или положите свой mp3)
 assets/ambient/*.mp3
 !assets/ambient/.gitkeep
+*.mp3

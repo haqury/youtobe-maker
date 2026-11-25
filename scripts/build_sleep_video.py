@@ -21,11 +21,14 @@ from animation_settings import load_episode_animation, resolve_overlay_path
 from channel_settings import (
     brand_asset_path,
     channel_dir_from_episode,
-    load_channel_settings,
     resolve_ambient_track,
+    resolve_episode_branding,
+    resolve_intro_source,
 )
+from intro_brand import prepare_intro_clip
 
 from moviepy.audio.AudioClip import CompositeAudioClip
+from moviepy.audio.fx.AudioFadeIn import AudioFadeIn
 from moviepy.audio.fx.AudioFadeOut import AudioFadeOut
 from moviepy.audio.fx.AudioLoop import AudioLoop
 from episode_timing import episode_timing_from_config
@@ -316,35 +319,51 @@ def assemble_branded_timeline(
     opened: list,
 ) -> tuple[VideoClip, float]:
     channel_dir = channel_dir_from_episode(episode_dir)
-    branding = load_channel_settings(channel_dir).get("branding", {})
+    branding = resolve_episode_branding(episode_dir)
     crossfade = float(branding.get("crossfade_sec", CROSSFADE_SECONDS))
     parts: list[VideoClip] = []
     intro_len = 0.0
     if branding.get("use_intro"):
-        intro_path = brand_asset_path(channel_dir, "intro")
-        if intro_path.is_file():
-            intro_clip = brand_fitted_clip(intro_path, opened)
+        intro_path = resolve_intro_source(episode_dir)
+        if intro_path is not None:
+            prepared = prepare_intro_clip(
+                intro_path,
+                branding,
+                WIDTH,
+                HEIGHT,
+                FPS,
+                episode_dir=episode_dir,
+            )
+            intro_clip = brand_fitted_clip(prepared, opened)
             intro_len = float(intro_clip.duration or 0)
             parts.append(intro_clip)
-            print(f"Интро: {intro_path.name} ({intro_len:.1f} с)")
+            print(f"Интро: {prepared.name} ({intro_len:.1f} с)")
+        else:
+            print("Интро включено, но intro.mp4 не найден — сборка без интро.")
     if branding.get("use_watermark"):
         wm_path = brand_asset_path(channel_dir, "watermark")
         if wm_path.is_file():
             opacity = float(branding.get("watermark_opacity", 0.25))
             main = apply_png_watermark(main, wm_path, opacity, opened)
             print(f"Водяной знак: {wm_path.name}, opacity={opacity:.2f}")
+    if intro_len > 0 and crossfade > 0:
+        main = main.with_effects([CrossFadeIn(min(crossfade, intro_len * 0.45))])
+        opened.append(main)
     parts.append(main)
     if branding.get("use_outro"):
         outro_path = brand_asset_path(channel_dir, "outro")
         if outro_path.is_file():
             parts.append(brand_fitted_clip(outro_path, opened))
             print(f"Аутро: {outro_path.name}")
+    voice_delay = max(0.0, intro_len - crossfade) if intro_len > 0 else 0.0
+    if intro_len > 0:
+        print(f"Речь сдвинута на {voice_delay:.1f} с.")
     if len(parts) == 1:
-        return main, intro_len
+        return main, voice_delay
     pad = -crossfade if crossfade > 0 and len(parts) > 1 else 0
     merged = concatenate_videoclips(parts, method="compose", padding=pad)
     opened.append(merged)
-    return merged, intro_len
+    return merged, voice_delay
 
 
 def close_clips(clips: list) -> None:
@@ -360,6 +379,11 @@ def close_clips(clips: list) -> None:
 
 
 def build(episode_dir: Path) -> Path:
+    from isekai_video import maybe_build_long
+
+    long_video = maybe_build_long(episode_dir)
+    if long_video is not None:
+        return long_video
     anim = load_episode_animation(episode_dir)
     voice_path = episode_dir / "voiceover.mp3"
     image_dir = episode_dir / "images"
@@ -452,7 +476,10 @@ def build(episode_dir: Path) -> Path:
             opened.append(amb_src)
             amb_quiet = amb_src.with_volume_scaled(ambient_volume)
             opened.append(amb_quiet)
-            amb_loop = amb_quiet.with_effects([AudioLoop(duration=final_dur)]).with_duration(final_dur)
+            amb_effects = [AudioLoop(duration=final_dur)]
+            if intro_len > 0:
+                amb_effects.append(AudioFadeIn(min(1.5, max(0.1, final_dur * 0.25))))
+            amb_loop = amb_quiet.with_effects(amb_effects).with_duration(final_dur)
             opened.append(amb_loop)
             audio_parts.append(amb_loop)
         else:

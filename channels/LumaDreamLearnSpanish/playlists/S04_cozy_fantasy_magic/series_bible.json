@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "title_en": "Cozy Fantasy & Alchemist's Sanctuary: Magical Sleep Stories | Learn Spanish While Sleeping",
+  "title_ru": "Уютное фэнтези и убежище алхимика: волшебные истории для сна — испанский во сне",
+  "world_and_atmosphere": {
+    "ru": "Уютные волшебные ночи: чердаки, башни, сады и тихие дороги. Тёплый свет, мягкая погода. Людей в кадре нет.",
+    "en": "Cozy magical nights: attics, towers, gardens, and quiet roads. Warm light, soft weather, no people in frame."
+  },
+  "characters_visual_lock": {
+    "ru": "Кадр от первого лица. Людей в кадре нет.",
+    "en": "First-person frame. No people."
+  },
+  "lore_and_rules": {
+    "ru": "Простой испанский, тихая ночь, без хоррора и без медицинских обещаний про сон.",
+    "en": "Simple Spanish, a quiet night, no horror and no medical claims about sleep."
+  },
+  "recaps": []
+}

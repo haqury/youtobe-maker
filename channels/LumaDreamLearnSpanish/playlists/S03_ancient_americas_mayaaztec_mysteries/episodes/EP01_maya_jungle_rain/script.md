@@ -1,0 +1,1019 @@
+# EPISODE: EP01_maya_jungle_rain
+# TARGET_LANG: es
+# NATIVE_LANG: en
+# BRIEF: Тёплый ночной дождь в джунглях майя, каменная тропа вверх к тихой обсерватории. Слова: lluvia, camino, árbol, noche, piedra, agua, bosque.
+# Оценка хронометража: речь ~220–240 мин. Остаток до 600 мин — тихий фон.
+
+## BLOCK: ACT_1_NIGHT_FOREST
+[000|NARRATOR_NATIVE_en|0.88] Let the weight of the day slip smoothly off your shoulders, and let both hands rest loose and open at your sides. Unclench your jaw and allow your breathing to fall into an easy, natural pace. Whatever needed your attention earlier has already closed for the evening. Nothing out here asks for hurry, effort, or thought tonight.
+[PAUSE|3.5]
+[000|NARRATOR_NATIVE_en_scene|0.88] Warm night air settles gently across the ancient Maya jungle, and the dark forest floor lies soft beneath your feet. Steady rain taps across wide green leaves in a patient, even rhythm. Ahead along the hillside, an old stone observatory waits silently above the treetops while a small circle of warm light touches the wet path.
+[PAUSE|4.0]
+[000|NARRATOR_NATIVE_en_lantern|0.88] Most of this journey unfolds calmly in English, guiding you unhurriedly along the mossy trail up toward shelter. Every now and then, a brief Spanish phrase enters slowly and quietly, followed right away by its plain translation. There is no lesson here and nothing to memorize, so you can simply follow the rain and drift comfortably toward rest.
+[PAUSE|3.5]
+[001|NARRATOR_NATIVE_en|0.85] You step off the last dry stone beside the clearing, and the warm rain finds your shoulders at once. Ahead, the Maya jungle opens deep green and unhurried beneath dark branches. Somewhere high above the canopy on a sheltered limestone ridge, an old observatory waits quietly for late watch. The road beneath your soles already knows the steady way up.
+[PAUSE|1.5]
+[001|NARRATOR_TARGET_es|0.78] La lluvia es cálida.
+[PAUSE|1.5]
+[001|NARRATOR_NATIVE_en_translate|0.85] The rain is warm.
+[PAUSE|2.0]
+[002|NARRATOR_NATIVE_en|0.85] The path winds onward like a dark ribbon tucked between wide tree trunks, cushioned by soft layers of fallen leaves. Your feet follow the gentle curve without needing to search. Rain stitches a steady, low sound across the overhead canopy. A modest circle of amber glow moves slowly with you, lighting just enough wet ground for each unhurried step.
+[PAUSE|1.5]
+[003|NARRATOR_NATIVE_en|0.85] A towering ceiba tree stands right where the trail enters deeper shadow beneath overlapping boughs. Its broad buttress roots hold the damp earth firmly like calm, patient arms. Rain glides smoothly down pale bark in narrow shining threads wherever your warm light passes nearby. You step close enough to breathe the clean scent of soaked timber and moss.
+[PAUSE|1.5]
+[003|NARRATOR_TARGET_es|0.78] El árbol es grande y viejo.
+[PAUSE|1.5]
+[003|NARRATOR_NATIVE_en_translate|0.85] The tree is large and old.
+[PAUSE|2.0]
+[004|NARRATOR_NATIVE_en|0.85] Overhead, the tropical night has no sharp boundary, only quiet layers of wet leaf and low drifting cloud. No stray bird cry breaks the even wash of falling water. Your breathing slows naturally until it matches the soft drip from hanging branches. Though the darkness around your lantern feels deep, the forest stays welcoming and remarkably gentle.
+[PAUSE|1.5]
+[005|NARRATOR_NATIVE_en|0.85] One wide palm leaf hangs close beside your sleeve, catching rainwater until a single clear drop swells at its tip. That small pearl of water lets go silently and taps the damp soil beside your heel. Another clear drop begins forming at once along the shiny green edge. You watch its tiny gleam briefly before letting the dark leaf settle behind you.
+[PAUSE|1.5]
+[006|NARRATOR_NATIVE_en|0.85] Soft forest soil yields slightly under your weight before holding firm beneath your arch. Damp earth keeps the faint print of each step for a moment while water smooths the outline away. You choose the firmer edge of the trail where gnarled roots form natural low steps. Steady rain has rounded every sharp stone along this quiet woodland floor.
+[PAUSE|1.5]
+[007|NARRATOR_NATIVE_en|0.85] Any faint trace of village woodsmoke from the valley has faded miles behind your shoulders. What fills the air around you now is warm earth, crushed green leaf, and clean falling rain. Mild evening humidity rests against your cheeks like a soft damp cloth. Taking an unhurried breath, you sense the subtle stony freshness rising from higher up the slope.
+[PAUSE|1.5]
+[008|NARRATOR_NATIVE_en|0.85] A low limestone post waits beside the first bend, its pale surface washed smooth by countless rainy seasons. On its weathered front sits a small carved frog pointing upward along the hillside trail. The simple sign carries clear guidance without needing a single word. You nod silently toward the mossy carving and follow the shaded turn upward.
+[PAUSE|1.5]
+[009|NARRATOR_NATIVE_en|0.85] The trail curves gracefully around a mossy outcrop and begins climbing steadily between two thick mahogany trunks. Instead of wandering flat across the valley floor, your next few steps lift your heels gently uphill. Warm light reveals only a short span of earth and root ahead. Wet fern fronds brush lightly across your sleeve before falling peacefully back into place.
+[PAUSE|1.5]
+[010|NARRATOR_NATIVE_en|0.85] The warm lantern pool near your boots stays modest, quiet, and comfortably contained. It never tries to brighten the entire mountainside at once. Fine silver threads of rain pass swiftly through that amber ring and vanish back into shadow. You see the firm root, the pale stone, and the dry patch for your next step without straining your eyes.
+[PAUSE|1.5]
+[011|NARRATOR_NATIVE_en|0.85] A thick liana vine hangs across the narrow bend, weighted low with beads of clear rainwater. Reaching up, you lift the supple green stem easily, duck smoothly beneath it, and let it swing silently back behind your shoulder. Beyond that leafy curtain, the forest path opens clean and inviting again, slightly narrower now as the hillside climb continues patiently upward.
+[PAUSE|1.5]
+[012|NARRATOR_NATIVE_en|0.85] For several quiet minutes, the trail feels like a sheltered corridor woven entirely from dark leaves and steady rain. Your own footsteps fall softer than the drumming canopy until the water blends every note together. Tall trunks stand evenly along both edges of the path, calm and unmoving. You keep walking uphill without counting strides, trusting the single upward direction.
+[PAUSE|1.5]
+[012|NARRATOR_TARGET_es|0.78] El bosque es tranquilo.
+[PAUSE|1.5]
+[012|NARRATOR_NATIVE_en_translate|0.85] The forest is quiet.
+[PAUSE|2.0]
+[013|NARRATOR_NATIVE_en|0.85] Half-buried beside a tangled root sits an older marker stone coated thickly in dark emerald moss. Centuries of summer storms have softened its carved lines into faint shadows across the pale grain. You pass respectfully beside it without needing to kneel or wipe the stone clean. Gentle rain washes steadily over the quiet border as you move higher into the woods.
+[PAUSE|1.5]
+[014|NARRATOR_NATIVE_en|0.85] In a shallow clay hollow near the trail edge, a small dark pool holds still rainwater. Fallen blossoms float calmly across its face while each falling drop draws expanding rings from rim to center. Your lantern light touches the quiet surface and breaks briefly into warm golden ripples. Stepping cleanly around the outer bank, you leave the pool undisturbed in shadow.
+[PAUSE|1.5]
+[015|NARRATOR_NATIVE_en|0.85] Overhead, broad leaves overlap so densely that rain reaches the path slowly in soft secondary drops. Water falls gently from high boughs to lower ferns before resting lightly across your hair and collar. Your clothes feel comfortably damp rather than heavy or cold. Beneath this green roof, warm night air stays remarkably still while the trail begins rising more clearly.
+[PAUSE|1.5]
+[016|NARRATOR_NATIVE_en|0.85] Both shoulders remain loose and dropped, and your fingers stay relaxed beside your hips. You carry no heavy bundle to balance and hear no distant voices calling through the trees. The forest allows you to move at your own quiet tempo. One steady root, one patch of gravel, and one soft turn follow naturally in a soothing, trustworthy sequence.
+[PAUSE|1.5]
+[017|NARRATOR_NATIVE_en|0.85] Beneath a wash of wet soil, one pale square corner of dressed limestone shows smoothly through the mud. It is only a quiet sign of ancient craft, not yet a full flight of stairs. Clear rainwater glides across the pale face and sinks neatly into dark earth beside it. Setting your boot beside that corner, you feel the hillside change to stone.
+[PAUSE|1.5]
+[017|NARRATOR_TARGET_es|0.78] Hay una piedra blanca.
+[PAUSE|1.5]
+[017|NARRATOR_NATIVE_en_translate|0.85] There is a white stone.
+[PAUSE|2.0]
+[018|NARRATOR_NATIVE_en|0.85] The final flat earth of the lower woodland trail lies quietly behind your heels now. From this point onward, the slope rises unmistakably toward the limestone terrace above the valley. Deep dark foliage closes peacefully over the lower path you left behind. High ahead through wet branches, the unseen observatory stays only a denser stillness waiting above the mist.
+[PAUSE|1.5]
+
+## BLOCK: ACT_2_WET_STAIRS
+[019|NARRATOR_NATIVE_en|0.85] Broad cut stone steps emerge gradually out of the dark slope as if the hillside itself had chosen to form a staircase. Their worn treads sit uneven yet solid and well sized for an unhurried stride. Warm rainwater gathers down the shallow center of each slab in a quiet silver thread. You lift onto the first stone while green leaves frame both sides.
+[PAUSE|1.5]
+[020|NARRATOR_NATIVE_en|0.85] Each ancient limestone slab looks dark and satin-smooth under its thin coat of warm rain. Your sole meets the worn middle line cleanly without slipping along the grain. Soft velvet moss clings along the outer borders, leaving the walking center dark and clear. Each tread catches one brief warm gleam from your light before fading softly behind your heels.
+[PAUSE|1.5]
+[020|NARRATOR_TARGET_es|0.78] La piedra está mojada.
+[PAUSE|1.5]
+[020|NARRATOR_NATIVE_en_translate|0.85] The stone is wet.
+[PAUSE|2.0]
+[021|NARRATOR_NATIVE_en|0.85] Between two wide steps, a thick tree root has curved patiently across the right corner over decades of growth. Its dark bark feels rounded, damp, and remarkably steady beneath your boot. Choosing that firm arch instead of the softer mud beside it, you step cleanly upward without hesitation. The ancient root and carved stone share the slope in quiet harmony.
+[PAUSE|1.5]
+[022|NARRATOR_NATIVE_en|0.85] A sheltered dip along the staircase holds a pale pocket of warm jungle mist drifting just above ankle height. Stepping quietly through that white cloud, you feel mild moisture gather softly along your cuffs. The dark steps stay solid and easy to find underneath the mist. Climbing out the upper rim, you hear the rain patter more clearly against open leaves.
+[PAUSE|1.5]
+[023|NARRATOR_NATIVE_en|0.85] Somewhere deep in the branches to your left, a lone night bird releases one soft, rounded whistle. The quiet note lingers gently for a heartbeat and does not repeat. Only the steady rain answers from the surrounding leaves while your feet move calmly upward. After that brief call fades away, the surrounding jungle settles into an even deeper hush.
+[PAUSE|1.5]
+[024|NARRATOR_NATIVE_en|0.85] Halfway up the mossy flight, the breeze brushing your forehead turns slightly fresher while the raindrops stay pleasantly mild. That subtle shift in the air tells you the open river gorge and higher ridge are drawing closer. Tall treetops still hide the stone sanctuary overhead. Your chest rises comfortably with each slow breath as cooler night air meets your skin.
+[PAUSE|1.5]
+[025|NARRATOR_NATIVE_en|0.85] An old fallen trunk rests quietly across the main line of steps, covered neatly in small ferns and pale lichen. Beside its mossy bark, a narrow shelf of natural limestone forms an easy step around the timber. The wet rock feels completely steady beneath your sole as you climb past. Below you, the great dark log stays motionless in the rain.
+[PAUSE|1.5]
+[025|NARRATOR_TARGET_es|0.78] El tronco es grande.
+[PAUSE|1.5]
+[025|NARRATOR_NATIVE_en_translate|0.85] The trunk is large.
+[PAUSE|2.0]
+[026|NARRATOR_NATIVE_en|0.85] As the stone climb rises higher, the warm scent of decaying leaves yields gradually to clean wet limestone. You catch a faint, crisp mineral note carried right inside the mild rain. Somewhere beneath the hillside boulders ahead, deeper water moves steadily along an unseen channel. That buried current sounds less like noise and more like a quiet hum below your feet.
+[PAUSE|1.5]
+[027|NARRATOR_NATIVE_en|0.85] Farther along the curved hillside, rushing water keeps a low, steady tone underneath the drumming jungle canopy. You cannot spot the stream yet through thick branches, though the staircase has turned gently toward its sound. Your footsteps slow slightly, not from hesitation, simply out of calm listening. Beneath the stone steps, the valley river invites you toward the next quiet crossing.
+[PAUSE|1.5]
+[028|NARRATOR_NATIVE_en|0.85] Long ago, masons carved one unusually broad bench-like step straight out of solid hillside rock. Centuries of rain have worn its surface smooth without hollowing the stone too deeply. Both feet fit comfortably side by side while you rest for three unhurried breaths. Warm light fills the pale slab from edge to edge before narrower treads continue gently downward.
+[PAUSE|1.5]
+[029|NARRATOR_NATIVE_en|0.85] For a short stretch, high branches part overhead and warm rain meets your hair directly from open cloud. Mild droplets feel light and comforting across your forehead and open wrists. Soon dense green boughs weave shut above the stone trail once more. Ahead through thinner leaves, the dark air opens wider, letting the low voice of flowing water grow noticeably clearer.
+[PAUSE|1.5]
+[030|NARRATOR_NATIVE_en|0.85] The carved steps bend cleanly around a mossy shoulder, and a gap between ferns reveals moving water below. It shines like a wide dark ribbon gliding steadily beyond the lantern reach. Two more steps downward close the leafy window again while the cool sound stays right beside you. Now the wet stone path descends peacefully toward the sheltered river bank.
+[PAUSE|1.5]
+[030|NARRATOR_TARGET_es|0.78] El agua está cerca.
+[PAUSE|1.5]
+[030|NARRATOR_NATIVE_en_translate|0.85] The water is near.
+[PAUSE|2.0]
+[031|NARRATOR_NATIVE_en|0.85] A broad stone landing opens halfway down the slope, wide enough to pause and let the night sounds settle. Open raindrops patter evenly onto the flat rock without any leaf overhead. Resting for one calm breath, you hear the deep, unhurried current moving smoothly alongside the rain without competing. Then your boot lowers gently onto the next wet step down.
+[PAUSE|1.5]
+[032|NARRATOR_NATIVE_en|0.85] Above that wide landing, the jungle canopy opens onto a deep velvet sky hidden beneath soft cloud. Warm steady rain drops straight down without wind or chill across your upturned cheeks. Everything around the hillside feels vast, patient, and completely undisturbed tonight. Carrying your modest glow downward, you follow the damp stone steps smoothly toward the valley stream.
+[PAUSE|1.5]
+[033|NARRATOR_NATIVE_en|0.85] The final steps near the river are lower and set closer together than the tall slabs higher up. Your feet move across them lightly in an easy, unhurried cadence. Clear runoff threads beside your boots, hurrying gently toward the same stony shore. Soon the murmur of moving water turns from a distant rumor into the steady breath of a wide canyon stream.
+[PAUSE|1.5]
+[034|NARRATOR_NATIVE_en|0.85] Even before seeing the full width of the current, you sense how calmly the river flows through the dark valley. Its low tone stays completely even, without sharp rapids or noisy drops over boulders. Soft rain draws quiet whispers across that deep water without changing its peaceful pace. Matching your breathing to the river, you walk at the unhurried speed of night.
+[PAUSE|1.5]
+[035|NARRATOR_NATIVE_en|0.85] Your lantern beam reaches a wide flat boulder resting right along the edge of the damp bank. Fine river spray has darkened its top while steady rain keeps the stone gleaming softly. Beyond that smooth rim, dark currents move quietly past overhanging ferns. Leaving the staircase behind your heels, you arrive right where the old stone crossing meets the water.
+[PAUSE|1.5]
+[035|NARRATOR_TARGET_es|0.78] Hay una orilla.
+[PAUSE|1.5]
+[035|NARRATOR_NATIVE_en_translate|0.85] There is a bank.
+[PAUSE|2.0]
+[036|NARRATOR_NATIVE_en|0.85] Now the wide jungle river reveals itself clearly, smooth and dark between mossy walls of stone. Raindrops draw small silver rings across its surface that fade quietly without traveling far downstream. Behind you, the wet stairway ends gently upon a shelf of pale limestone above the shore. Across the water, a low stone bridge stretches silently toward the opposite bank.
+[PAUSE|1.5]
+
+## BLOCK: ACT_3_STONE_BRIDGE
+[037|NARRATOR_NATIVE_en|0.85] Stepping carefully down to the near shore, you pass flat wet stones glowing faintly with mist and rain. Just two paces ahead sits the ancient stone bridge, narrow and quiet enough for a lone night walker. Thick moss cushions its nearer arch before thinning cleanly toward the center span. Below, dark river water slides patiently past without raising its calm voice.
+[PAUSE|1.5]
+[038|NARRATOR_NATIVE_en|0.85] The first broad bridge slab takes your full weight calmly without the slightest shift or wobble. Your trailing foot steps softly into the small warm circle of lantern light beside it. Unlike wooden planks, these heavy limestone blocks feel cool and solid right through the steady rain. Staying along the worn center line, you leave the muddy riverbank smoothly behind you.
+[PAUSE|1.5]
+[038|NARRATOR_TARGET_es|0.78] La piedra es firme.
+[PAUSE|1.5]
+[038|NARRATOR_NATIVE_en_translate|0.85] The stone is firm.
+[PAUSE|2.0]
+[039|NARRATOR_NATIVE_en|0.85] Along the outer edge runs a low carved stone rail, worn round by countless hands and centuries of tropical rain. Your fingertips glide lightly along its top without finding a single rough seam or jagged corner. Smooth limestone feels calm and steady beneath your open palm. Rain collects softly along its curved crest before slipping quietly back toward the river.
+[PAUSE|1.5]
+[040|NARRATOR_NATIVE_en|0.85] Looking down past the rail, you see deep water moving black and nearly motionless underneath the span. Falling drops sketch fleeting circles across the surface and let them vanish back into dark current. You walk slowly along the sheltered rail while the river keeps cleanly within its mossy banks. Only warm light on wet stone and quiet water mark this moment.
+[PAUSE|1.5]
+[041|NARRATOR_NATIVE_en|0.85] Near the middle of the arch, your stride slows naturally from one flat stone slab to the next. Every broad block rests level and sound beneath your boots across the gentle curve. Overhead canopy thins enough here that the quiet wash of the stream beside you sounds clearer than dripping leaves. Both shoulders drop easily as the far shore draws visibly nearer.
+[PAUSE|1.5]
+[042|NARRATOR_NATIVE_en|0.85] Along the second half of the bridge, warm rain softens into a fine misty veil floating lightly across the river. That gentle spray cools your cheeks without chilling your hands along the stone rail. Below the arch, the river voice grows crisp, low, and reassuringly even. Counting the final slabs ahead one by one, you sense nothing pulling you backward.
+[PAUSE|1.5]
+[043|NARRATOR_NATIVE_en|0.85] A brief cool breeze rises straight off the dark current and brushes gently across your face. It passes within a single calm heartbeat before warm woodland air folds softly back around your collar. That mild draft carries the clean mineral scent of wet boulders along the far shore. Breathing out slowly, you reach the end of the quiet stone crossing.
+[PAUSE|1.5]
+[043|NARRATOR_TARGET_es|0.78] El aire es fresco.
+[PAUSE|1.5]
+[043|NARRATOR_NATIVE_en_translate|0.85] The air is cool.
+[PAUSE|2.0]
+[044|NARRATOR_NATIVE_en|0.85] Three broad slabs later, the bridge sets your boots cleanly back onto solid earth along the far bank. Wet soil here feels darker and slightly softer under your weight than the firm stone span. Crossing that narrow border slowly, you feel the ground settle steadily into level bedrock. Behind you, the quiet river carries on downstream while flat stone opens ahead.
+[PAUSE|1.5]
+[045|NARRATOR_NATIVE_en|0.85] Lifting your gaze above the dark treetops, you spot a flat stone crown breaking cleanly against the night clouds. Centered inside that distant wall glows one small amber light, remarkably steady and patient through the rain. It is a sheltered doorway lamp burning calmly inside stone walls, never a wild flame in the trees. High on the ridge, that light waits.
+[PAUSE|1.5]
+[046|NARRATOR_NATIVE_en|0.85] That dark stone crown is the ancient observatory resting quietly atop the upper ridge. Warm rain washes harmlessly down its weathered terraces without reaching the golden glow inside the entrance. Crossing the river has brought you safely to the foot of its hill, not yet inside its chamber. Dry floors, glowing embers, and carved star lines still wait patiently above.
+[PAUSE|1.5]
+[047|NARRATOR_NATIVE_en|0.85] A carved limestone post marks the quiet terrace where the final stairway begins climbing up the cliffside. Cut into its damp front sits the same small stone frog pointing calmly upward toward the ridge. Wide wet steps rise cleanly from behind that marker toward the distant amber door. Though glistening in the rain, their broad stone treads invite an unhurried ascent.
+[PAUSE|1.5]
+[048|NARRATOR_NATIVE_en|0.85] Standing at the bottom of the upper stairway, you feel how far away the low river bridge already seems. The stream keeps murmuring behind dark leaves, softer and smaller with every breath. Broad wet steps climb patiently ahead toward one quiet frame of light. Holding out your open palm, you feel the night rain staying pleasantly warm against your skin.
+[PAUSE|1.5]
+[049|NARRATOR_NATIVE_en|0.85] You tilt your chin slightly upward along the dark stone steps and let your gaze rest calmly on the lamp. Its warm amber point never flickers or blurs behind the veil of falling water. Many gentle steps still separate you from that sheltered threshold, ready for the next peaceful stretch. For this quiet breath, simply resting your eyes on the light feels enough.
+[PAUSE|1.5]
+[049|NARRATOR_TARGET_es|0.78] Miras la luz arriba.
+[PAUSE|1.5]
+[049|NARRATOR_NATIVE_en_translate|0.85] You look at the light above.
+[PAUSE|2.0]
+[050|NARRATOR_NATIVE_en|0.85] High above the trees, that doorway glows like a tiny square of warm gold set inside dark wet stone. Around it, massive limestone blocks hold only calm shadow and patient stillness. No voice calls down from the terrace, and no bell hurries your climb. The simple steady warmth of the distant lamp offers all the quiet welcome you could ask for tonight.
+[PAUSE|1.5]
+[051|NARRATOR_NATIVE_en|0.85] Behind you lies an unbroken path of wet leaves, tree roots, mossy steps, dark river, and solid bridge. Nothing from that quiet walk feels rushed or left undone. Every calm step settles smoothly into your legs as steady, restful memory. Ahead, the distant doorway stays only a soft promise while steady rain keeps tapping peacefully across the dark forest leaves.
+[PAUSE|1.5]
+[052|NARRATOR_NATIVE_en|0.85] The night rain shows no hurry to stop or thin away. It simply keeps falling warm and steady across dark leaves, flat stone, and your open hands. You do not bother brushing droplets from your sleeves or forehead. This wide jungle night has endless room for quiet water while the ancient stairway waits patiently under your next calm step.
+[PAUSE|1.5]
+[053|NARRATOR_NATIVE_en|0.85] Pausing calmly at the bottom landing, you let stillness feel just as restful as walking forward. The distant amber doorway, the low valley river, and your own slow breath share one unhurried rhythm. Soon the final climb will carry you cleanly upward into dry stone shelter and hearth heat. Until your foot rises, standing quietly in mild rain brings easy comfort.
+[PAUSE|1.5]
+[054|NARRATOR_NATIVE_en|0.85] High in the misty dark, that small golden rectangle marks the quiet entrance waiting above the canopy. You stay below for one more easy moment before starting the stone climb. The river whispers far behind your back while thick wet jungle surrounds the terrace. Dry warmth waits calmly inside those walls while the glowing doorway shines steadily down through the rain.
+[PAUSE|1.5]
+[054|NARRATOR_TARGET_es|0.78] La puerta está lejos.
+[PAUSE|1.5]
+[054|NARRATOR_NATIVE_en_translate|0.85] The door is far away.
+[PAUSE|2.0]
+
+## BLOCK: ACT_4_OBSERVATORY_STAIR
+[055|NARRATOR_NATIVE_en|0.82] You lift your boot gently onto the first broad step leading up toward the limestone observatory. Thin rainwater glides smoothly down the worn center and catches a pale shimmer from above. Though the distant doorway still appears small against dark rock, the cold tread holds steady beneath your sole. Unblinking gold light guides your eyes quietly upward without hurry.
+[PAUSE|1.5]
+[056|NARRATOR_NATIVE_en|0.82] Clear rainwater gathers along the hollowed center of every step and slips silently downward past your heels. Setting your boots inside that worn path, you climb easily while dark forest canopies settle lower behind you. With every calm tread upward, the river murmur softens into a faint velvet ribbon far below. Cooler ridge air replaces the heavy stillness of the valley floor.
+[PAUSE|1.5]
+[057|NARRATOR_NATIVE_en|0.82] Step by step, the warm amber glow expands gradually without any sharp leap or harsh glare. Fine rain passes smoothly through that beam and leaves the doorway clear and steady. Now you can pick out three damp steps ahead before shadow folds gently back over the stone. High above the canopy, the silent observatory takes shape as a real sheltering room.
+[PAUSE|1.5]
+[057|NARRATOR_TARGET_es|0.75] La luz es grande. La casa es alta.
+[PAUSE|1.5]
+[057|NARRATOR_NATIVE_en_translate|0.82] The light is large. The house is tall.
+[PAUSE|2.5]
+[058|NARRATOR_NATIVE_en|0.82] Halfway up the ridge, a level stone terrace opens wide enough to rest both feet squarely under the rain. Pausing there for one unhurried breath, you feel your calves loosen comfortably on flat rock. Far below the mossy parapet, the distant river keeps its low, unbroken murmur through the trees. Then the limestone stairs turn cleanly left and continue smoothly upward.
+[PAUSE|1.5]
+[059|NARRATOR_NATIVE_en|0.82] Around that gentle turn, even the tallest treetops sink calmly away beneath the stone parapet. The wide night opens like a dark velvet blanket holding one warm golden doorway near its top edge. Soft breeze carries warm rain lightly across your forehead as you step nearer the outer wall. Behind your shoulders, the jungle valley rests silently in mist and shadow.
+[PAUSE|1.5]
+[060|NARRATOR_NATIVE_en|0.82] Walking close beside the massive stone wall, you notice how gently the falling rain meets your shoulders now. The broad observatory structure shelters half the dark sky overhead from passing gusts. Your sleeve nearly brushes damp carved limestone while amber light spills down the wet treads like a quiet path. High above, overhanging cornices catch the heavier drops before they reach you.
+[PAUSE|1.5]
+[060|NARRATOR_TARGET_es|0.75] La lluvia es suave. La pared es grande.
+[PAUSE|1.5]
+[060|NARRATOR_NATIVE_en_translate|0.82] The rain is gentle. The wall is large.
+[PAUSE|2.5]
+[061|NARRATOR_NATIVE_en|0.82] Raising one open hand, you rest your fingertips lightly against the cool vertical masonry beside the stair. Pale limestone feels satin-smooth along worn blocks and subtly grainy inside older carved seams. Rainwater collects gently beneath your knuckles and slips away down the stone face. Sensing that solid, motionless weight beside you makes the ancient sanctuary feel deeply grounding and safe.
+[PAUSE|1.5]
+[062|NARRATOR_NATIVE_en|0.82] Faint weathered lines cross the temple wall, smoothed too deeply by centuries of rain to read like script tonight. Only narrow grooves remain where clear droplets linger briefly before running down toward the steps. You keep walking calmly upward without stopping to trace them with your fingers. Quiet dry chambers wait just ahead where clearer carvings rest safely out of weather.
+[PAUSE|1.5]
+[063|NARRATOR_NATIVE_en|0.82] Near the upper flight, the air shifts noticeably from wet river mist to something dry and welcoming. A gentle, warmer draft drifts down from the open stone doorway above your shoulders. Carried inside that mild current comes the faint scent of clean woodsmoke and roasted cacao. Your face senses that gentle hearth warmth well before your mind names what awaits inside.
+[PAUSE|1.5]
+[063|NARRATOR_TARGET_es|0.75] El aire es cálido. Hay olor dulce.
+[PAUSE|1.5]
+[063|NARRATOR_NATIVE_en_translate|0.82] The air is warm. There is a sweet smell.
+[PAUSE|2.5]
+[064|NARRATOR_NATIVE_en|0.82] You climb without counting numbers inside your head, letting only your quiet stride keep easy measure. Wet limestone meets each sole smoothly in a slow, reassuringly steady beat up the hillside. Above you, the warm doorway widens cleanly from a distant bright point into an inviting rectangle. Though fine mist still cools your hair, shelter waits only a handful of paces ahead.
+[PAUSE|1.5]
+[065|NARRATOR_NATIVE_en|0.82] A small arched niche breaks smoothly into the thick stone wall beside the stairs, empty and shadowed at its back. Even slantwise rain never reaches deep inside that sheltered pocket of carved rock. Passing calmly beside it, you notice the pale, dusty dryness preserved cleanly beneath its stone lintel. That quiet hollow gives your eyes their first comforting glimpse of dry interior stone.
+[PAUSE|1.5]
+[066|NARRATOR_NATIVE_en|0.82] Now the open entrance stands close enough for you to see the full thickness of its ancient limestone frame. The warm amber glow comes not from outdoor torches, but from low embers resting inside a vaulted room. Overhead, steady rain drums softly across wide roof stones above the porch. Shortening your stride naturally, you climb calmly toward that peaceful sheltered sound.
+[PAUSE|1.5]
+[066|NARRATOR_TARGET_es|0.75] La puerta está cerca. La lluvia suena arriba.
+[PAUSE|1.5]
+[066|NARRATOR_NATIVE_en_translate|0.82] The door is near. The rain sounds above.
+[PAUSE|2.5]
+[067|NARRATOR_NATIVE_en|0.82] Stepping beneath the projecting stone eaves, you feel falling raindrops quietly stop touching your forehead and cheeks. Behind your trailing heel, rain continues pattering steadily across the open stairway below. Dry limestone directly ahead looks pale and lightly dusty beneath soft amber glow. Warm interior air drifts gently outward to wrap comfortably around your damp sleeves and cold wrists.
+[PAUSE|1.5]
+[068|NARRATOR_NATIVE_en|0.82] Leaving the last rain-washed step behind, your boot meets the broad limestone slab forming the threshold. Fine glistening drops coat only its outer rim exposed to passing night mist. Across the inner half, pale carved stone stays matte, dry, and faintly warmed by embers within. Standing calmly along that boundary, you leave the wet night behind your shoulders.
+[PAUSE|1.5]
+[069|NARRATOR_NATIVE_en|0.82] Looking peacefully across the threshold, you take in the quiet room before stepping fully inside. Smooth pale plaster covers the floor in clean, dry stillness under soft shadow. Centered in the chamber glows a low ring of red hearth coals, modest and steady. Rich roasted cacao scent drifts clearly across the open doorway, warm and comforting in the night air.
+[PAUSE|1.5]
+[069|NARRATOR_TARGET_es|0.75] Hay fuego rojo. Huele a cacao.
+[PAUSE|1.5]
+[069|NARRATOR_NATIVE_en_translate|0.82] There is red fire. It smells of cacao.
+[PAUSE|2.5]
+[070|NARRATOR_NATIVE_en|0.82] Taking one slow breath beneath the dry lintel, you feel the whole evening journey resting pleasantly in your calves. The dark valley river, mossy bridge, and long rain-washed climb stay gently behind you outside. Nothing down along that wet trail asks you to turn back tonight. Pale dry floor stone waits calmly at your toes like an unspoken invitation to rest.
+[PAUSE|1.5]
+[071|NARRATOR_NATIVE_en|0.82] Behind your heels, steady drops continue tapping softly onto open stone without crossing the sheltered line. Both of your hands feel cool and damp from the forest climb. Reaching slightly forward, you catch faint rosy light from the hearth coals across your open knuckles. Shifting your weight gently forward onto dry stone, you feel the calm room receive you cleanly.
+[PAUSE|1.5]
+[072|NARRATOR_NATIVE_en|0.82] Only one calm step remains between wet forest weather and the quiet stone chamber ahead. Taking that smooth pace forward, you hear the rain soften instantly from close touch into a distant roof murmur. Mild, dry warmth wraps evenly around your face, neck, and shoulders. Stepping completely beneath the curved stone vault, you settle peacefully inside ancient shelter.
+[PAUSE|1.5]
+[072|NARRATOR_TARGET_es|0.75] Entras en la casa. El suelo está seco.
+[PAUSE|1.5]
+[072|NARRATOR_NATIVE_en_translate|0.82] You enter the house. The floor is dry.
+[PAUSE|2.5]
+
+## BLOCK: ACT_5_INNER_SANCTUARY
+[073|NARRATOR_NATIVE_en|0.82] Inside the observatory, the high limestone vault curves smoothly overhead, dry and deeply still. Thick ancient walls absorb the outside storm until rain becomes only a soft, steady whisper on the roof. Your boots fall quietly across pale plaster without sharp echoes or rattle. Outside the open doorway, the jungle night stays peacefully beyond the threshold like a gentle, unmoving curtain.
+[PAUSE|1.5]
+[074|NARRATOR_NATIVE_en|0.82] Even before drawing close to the center hearth, you sense gentle warmth stored smoothly inside the floor stones. That mild heat rises softly through your damp soles, thawing away the coolness of the forest climb. Not a single wet puddle marks the clean dry surface anywhere around the room. Long quiet hours of embers have prepared this calm sanctuary before your arrival.
+[PAUSE|1.5]
+[075|NARRATOR_NATIVE_en|0.82] In the middle of the chamber sits a low circular hearth holding glowing embers of dense hardwood. Deep orange and red coals pulse steadily beneath thin white ash without tall flames or smoke. Nothing crackles sharply or flares unexpectedly into the quiet room. Only enough warm amber glow spreads across nearby stones to outline the dry walls in soft peace.
+[PAUSE|1.5]
+[075|NARRATOR_TARGET_es|0.75] El fuego es pequeño. La luz es roja.
+[PAUSE|1.5]
+[075|NARRATOR_NATIVE_en_translate|0.82] The fire is small. The light is red.
+[PAUSE|2.5]
+[076|NARRATOR_NATIVE_en|0.82] Mild heat rises steadily from the glowing coals, warming first your chilled fingers and then your cheeks. Fine dampness from the trail begins lifting quietly off your skin into dry room air. You stay completely still without shaking drops from your hair or cuffs. Let the sheltered warmth finish drying your sleeves gently while your shoulders settle lower.
+[PAUSE|1.5]
+[077|NARRATOR_NATIVE_en|0.82] Walking unhurriedly halfway around the quiet hearth, you choose a broad carved bench resting beside the glowing ring. Its pale stone top feels wonderfully smooth, dry, and gently heated by hours of ember light. Sitting down calmly, you stretch your ankles lightly across the comforting floor. Far over your left shoulder, the doorway remains a peaceful dark frame filled with distant rain.
+[PAUSE|1.5]
+[078|NARRATOR_NATIVE_en|0.82] Seated comfortably on the low stone bench, you find the glowing hearth resting right at knee level. Now and then a tiny coal settles softly with a whisper fainter than rain outside. Above your head, the curved plaster vault holds no hollow echo or restless draft. Letting both hands rest open on your knees, you listen calmly to that quiet night hearth.
+[PAUSE|1.5]
+[078|NARRATOR_TARGET_es|0.75] El fuego es bajo. La noche es suave.
+[PAUSE|1.5]
+[078|NARRATOR_NATIVE_en_translate|0.82] The fire is low. The night is gentle.
+[PAUSE|2.5]
+[079|NARRATOR_NATIVE_en|0.82] Pale wisps of steam lift softly off your damp sleeves and curl cleanly toward the high vault. They carry only the clean scent of rain-washed wool and forest cedar with nothing sharp or heavy. Within seconds those thin curls fade silently away into dry air above the hearth. Your clothes grow lighter and drier around your wrists without any effort at all.
+[PAUSE|1.5]
+[080|NARRATOR_NATIVE_en|0.82] The quiet room air blends warm roasted cacao, toasted limestone, and the faintest memory of clean hearth wood. It feels rich, mild, and instantly soothing to breathe in slowly. You inhale that gentle warmth as unhurriedly as you breathed the damp jungle leaves along the path. Nothing inside these thick walls rushes you or asks for a single spoken word.
+[PAUSE|1.5]
+[081|NARRATOR_NATIVE_en|0.82] Resting neatly on a flat stone right beside the warm ring sits a simple round cup of dark clay. Thin fragrant steam lifts calmly from its dark surface in a slender, steady ribbon. No attendant waits beside the bowl to hand it over or start conversation. It simply sits ready within easy arm's reach, warm and inviting in the soft red glow.
+[PAUSE|1.5]
+[081|NARRATOR_TARGET_es|0.75] Hay una taza. La taza es de barro.
+[PAUSE|1.5]
+[081|NARRATOR_NATIVE_en_translate|0.82] There is a cup. The cup is made of clay.
+[PAUSE|2.5]
+[082|NARRATOR_NATIVE_en|0.82] Reaching forward, you cradle the round clay vessel gently inside both cupped palms. Smooth fired earthenware feels nearly hot for one brief heartbeat before settling into comfortable, steady warmth. Gentle heat sinks straight into your fingertips and skin long before lifting the rim. Carrying its modest, reassuring weight easily, you draw the cup peacefully close to your chest.
+[PAUSE|1.5]
+[083|NARRATOR_NATIVE_en|0.82] Your first slow sip tastes of rich roasted cacao, earthy and deeply soothing with a soft hint of vanilla. No bitter edge or hurry lingers inside the warm drink, matching the calm pulse of the embers. Beyond the open stone doorway, falling rain continues steadily as though somebody had gently lowered the night volume. Warmth glides down into your chest and settles quietly.
+[PAUSE|1.5]
+[084|NARRATOR_NATIVE_en|0.82] Resting the clay cup softly against your lap, you let your eyes drift calmly around the sheltered room. Curved limestone vault, distant rainy doorway, low glowing coals, and dry warm floor surround you cleanly. Those four simple things complete the entire world inside this quiet sanctuary. Soon your slow, steady breathing joins the unhurried peace filling every corner of the chamber.
+[PAUSE|1.5]
+[084|NARRATOR_TARGET_es|0.75] La casa es tranquila. El fuego es cálido.
+[PAUSE|1.5]
+[084|NARRATOR_NATIVE_en_translate|0.82] The house is quiet. The fire is warm.
+[PAUSE|2.5]
+[085|NARRATOR_NATIVE_en|0.82] One stray raindrop slips from your damp hair down onto the dry bench stone and vanishes almost at once. Hardly any trace of the wet jungle trail clings to your sleeves or brow anymore. Mild radiant warmth from the coals dries your cheeks cleanly without needing a cloth. Leaving your hands relaxed around the earthen cup, you enjoy the quiet stillness of dry stone.
+[PAUSE|1.5]
+[086|NARRATOR_NATIVE_en|0.82] Outside the thick walls, steady rain continues washing smoothly over the long stone stairs you climbed earlier. Inside this warm chamber, that winding mountain path already feels calm and miles behind your feet. You stretch your boots slightly closer toward the glowing ring without stepping near the ash. Soothing heat reaches comfortably across your ankles while your tired calves release all weight.
+[PAUSE|1.5]
+[087|NARRATOR_NATIVE_en|0.82] Over your shoulder, the open doorway looks dimmer and softer now that your eyes have settled happily into red firelight. Falling rain inside that distant frame seems quiet, gentle, and worlds away from your warm seat. There is no need to glance back toward the steps or check the weather outside. Ahead beside the hearth, steady glowing embers hold all your peaceful attention tonight.
+[PAUSE|1.5]
+[087|NARRATOR_TARGET_es|0.75] La puerta está atrás. El fuego está aquí.
+[PAUSE|1.5]
+[087|NARRATOR_NATIVE_en_translate|0.82] The door is behind. The fire is here.
+[PAUSE|2.5]
+[088|NARRATOR_NATIVE_en|0.82] You are resting safely inside the high stone observatory above the rainforest canopy. That simple thought feels surprisingly spacious and reassuring as evening settles deep. Curved rock shelters overhead, red coals glow softly ahead, and warm cacao rests comfortably between both hands. After the long climb through wet forest and river mist, arriving inside this dry room feels completely enough.
+[PAUSE|1.5]
+[089|NARRATOR_NATIVE_en|0.82] Night rain across the Maya hills shows no sign of ending, yet stops cleanly right outside the stone threshold. Whenever you wish, you can notice its soft, wide hush tapping steadily overhead across the limestone roof. Whenever you let go, only the faint quiet tick of settling coals keeps easy time beside your bench. Between roof rain and hearth glow, every sound stays remarkably gentle.
+[PAUSE|1.5]
+[090|NARRATOR_NATIVE_en|0.82] Both shoulders release the very last trace of tension while warm clay stays steady between your open palms. Across the inner limestone wall facing the hearth, faint pale carvings catch the soft orange light without asking for hurry. Time stretches easily inside this dry shelter until morning. Letting your gaze lift naturally, you prepare to notice the quiet drawings carved along the stone.
+[PAUSE|1.5]
+[090|NARRATOR_TARGET_es|0.75] Tus hombros descansan. Hay una pared.
+[PAUSE|1.5]
+[090|NARRATOR_NATIVE_en_translate|0.82] Your shoulders rest. There is a wall.
+[PAUSE|2.5]
+
+## BLOCK: ACT_6_STAR_MAP
+[091|NARRATOR_NATIVE_en|0.82] Turning your chin calmly toward the inner wall, you let the soft amber hearth glow lead your eyes. Smooth plaster and dressed stone stretch quietly across the far side without harsh glare or shadow. Cut cleanly into that pale wall sit thin, deliberate lines carved by patient ancient hands. Rather than shining brightly, those slender grooves simply hold warm firelight gently along their edges.
+[PAUSE|1.5]
+[092|NARRATOR_NATIVE_en|0.82] Tracing those faint shapes calmly, you recognize constellations of stars linked together by a long curving line like a celestial trail. No teacher or diagram is needed to understand the quiet stone chart before you. Round carved points mark bright stars while narrow grooves sketch paths moving smoothly between them. Outside, real clouds cover the heavens, leaving this calm sky dry inside the vault.
+[PAUSE|1.5]
+[093|NARRATOR_NATIVE_en|0.82] You study the carved sky silently from your seat without rising to touch the stone. Centuries in this sheltered chamber have kept every bevel soft and smooth along the rock grain. Rain has never crossed the thick roof to blur a single line. Following one slender path from lower stars up toward higher ones, your eyes travel peacefully just as your boots climbed the hill.
+[PAUSE|1.5]
+[093|NARRATOR_TARGET_es|0.75] Las estrellas son pequeñas. El camino es largo.
+[PAUSE|1.5]
+[093|NARRATOR_NATIVE_en_translate|0.82] The stars are small. The path is long.
+[PAUSE|2.5]
+[094|NARRATOR_NATIVE_en|0.82] Meanwhile, the round clay vessel remains comfortably warm against your palms as you watch the wall. Sweet roasted cacao fills the quiet air drifting upward between your cheeks and the soft hearth glow. Lifting the smooth rim gently, you take another unhurried warm sip without looking away. Designed for cloudy nights like this one, the stone chart holds every star patiently in place.
+[PAUSE|1.5]
+[095|NARRATOR_NATIVE_en|0.82] Near the lower border, a winding cluster of dots curves gently like the river crossing you passed below. Higher up near the curved ceiling sits a small neat rectangle resembling the lit sanctuary doorway. You smile faintly without needing to force any hidden likeness between stone and hillside. Seeing both high and low patterns resting together inside one quiet wall feels peacefully whole.
+[PAUSE|1.5]
+[096|NARRATOR_NATIVE_en|0.82] High above the center of the chart sits one deep, clean circle carved larger than the stars around it. That slender path from the doorway side winds patiently upward through smaller dots before ending softly right beside it. Allowing your eyes to settle calmly on that high mark, you hear a lone coal whisper below. Nothing in the chamber asks you to walk any farther tonight.
+[PAUSE|1.5]
+[096|NARRATOR_TARGET_es|0.75] Una estrella es grande. El camino termina.
+[PAUSE|1.5]
+[096|NARRATOR_NATIVE_en_translate|0.82] One star is large. The path ends.
+[PAUSE|2.5]
+[097|NARRATOR_NATIVE_en|0.82] Another warm sip sends gentle heat straight into your middle, blending smoothly with the cozy chamber air. Your fingers loosen slightly around the dark earthen cup while your breath grows deeper and slower. Ahead across the wall, the quiet star map stays completely motionless in soft amber glow. Outside, steady tropical rain writes patiently across roof tiles without ever blurring those dry carved lines.
+[PAUSE|1.5]
+[098|NARRATOR_NATIVE_en|0.82] Even when dying embers breathe faintly upward, the carved lines stay completely still along the pale rock. Ancient stonecutters shaped them specifically to hold quiet constancy through every passing storm. Letting your focus soften naturally, you stop trying to trace every tiny star or separate turn. Only four quiet impressions remain gently inside your thoughts: stars, path, warm stone, and steady embers.
+[PAUSE|1.5]
+[099|NARRATOR_NATIVE_en|0.82] For a fleeting second, you remember the small frog carved onto that wet trail boulder, and its twin beside the upper stair. No frog appears anywhere along this smooth dry wall inside the sanctuary. Instead, this high stone holds the wide night sky toward which those forest markers patiently pointed. There is no need to stand or search outside while everything rests clear right here.
+[PAUSE|1.5]
+[099|NARRATOR_TARGET_es|0.75] La rana es pequeña. Las estrellas son muchas.
+[PAUSE|1.5]
+[099|NARRATOR_NATIVE_en_translate|0.82] The frog is small. The stars are many.
+[PAUSE|2.5]
+[100|NARRATOR_NATIVE_en|0.82] Memories of the mossy bridge linger pleasantly inside relaxed calves, while river music fades away unless you invite it. Inside this shelter, the only dark water remaining sits warm and fragrant inside your clay cup. Watching one final pale wisp of steam curl lazily upward toward the curved ceiling, you let it thin out into nothing. Peace settles warmly around your chest and hands.
+[PAUSE|1.5]
+[101|NARRATOR_NATIVE_en|0.82] Now your heavy eyelids grow pleasantly drowsy without any tightness or strain behind your eyes. Soft pale carvings along the wall blur calmly into warm golden haze, clear again for one breath, then dim once more. You let your sight drift easily without forcing focus back. Glowing coals keep their gentle red work beside your feet while the patient chart waits undisturbed.
+[PAUSE|1.5]
+[102|NARRATOR_NATIVE_en|0.82] Letting your eyelids drop shut for several calm breaths, you still sense that pale golden path faintly behind them. Warm earthen weight resting between your palms gently reminds your fingers where you sit. Far overhead, rain moves quietly across roof stones like a heavy cotton sheet. This cozy shelter holds your tired body as kindly as gentle forest soil received your early footsteps.
+[PAUSE|1.5]
+[102|NARRATOR_TARGET_es|0.75] Cierras los ojos. Ves estrellas.
+[PAUSE|1.5]
+[102|NARRATOR_NATIVE_en_translate|0.82] You close your eyes. You see stars.
+[PAUSE|2.5]
+[103|NARRATOR_NATIVE_en|0.82] Opening your eyes briefly one last time, you notice the carved chart has stayed completely unchanged while you have slowed down. Every muscle across your back and knees feels heavier and deeply settled against warm stone. That bright high star rests faithfully in place along its slender carved line. Inside this quiet sanctuary, time flows even slower than raindrops slipping down forest leaves.
+[PAUSE|1.5]
+[104|NARRATOR_NATIVE_en|0.82] Leaning carefully sideways, you set the half-warm clay cup safely onto the smooth bench stone within easy reach. Both hands settle open and light upon your lap, fingers uncurled completely. Comfortable heat lingers pleasantly across your palms long after setting the rounded vessel down. Across the hearth, the silent wall of carved stars watches over your rest without asking for any reply.
+[PAUSE|1.5]
+[105|NARRATOR_NATIVE_en|0.82] Every turn of your long night walk can settle comfortably into stillness now: wet canopy, mossy stairs, dark river, stone bridge, and dry hearth. You do not need to count or repeat those places inside your mind. Simply allow the whole quiet path to rest smoothly inside your body. The wall keeps its calm map in stone while low embers hold steady warmth.
+[PAUSE|1.5]
+[105|NARRATOR_TARGET_es|0.75] El camino descansa aquí. El fuego da calor.
+[PAUSE|1.5]
+[105|NARRATOR_NATIVE_en_translate|0.82] The path rests here. The fire gives warmth.
+[PAUSE|2.5]
+[106|NARRATOR_NATIVE_en|0.82] Steady rain drumming softly upon high stone tiles finds a slow, even cadence made effortlessly for sleep. Behind your left shoulder, the doorway remains a quiet pale frame that asks nothing more from you tonight. You are staying right here inside dry warmth until dawn breaks gently over the trees. Out across the valley, dark jungle rain continues peacefully without needing your watch.
+[PAUSE|1.5]
+[107|NARRATOR_NATIVE_en|0.82] Your eyelids close longer now, resting heavy and completely relaxed against your cheeks. Delicate star lines from the inner wall linger faintly behind dark lids like soft threads of memory. Fragrant cacao, dry limestone, and ember heat share one slow, soothing rhythm around your resting body. Having guided you cleanly above the forest, this ancient observatory holds your night safely in stillness.
+[PAUSE|1.5]
+[108|NARRATOR_NATIVE_en|0.82] Deep, unhurried night begins peacefully right here in dry shelter with the clay cup beside your hand and carved stars resting above. Outside the thick vault, the living forest holds its warm rain gently among the leaves. Inside beside low embers, dry stone keeps your shoulders cozy and still. Every high step lies behind you now while calm sleep settles softly over the ridge.
+[PAUSE|1.5]
+[108|NARRATOR_TARGET_es|0.75] La noche es buena. El bosque guarda la lluvia.
+[PAUSE|1.5]
+[108|NARRATOR_NATIVE_en_translate|0.82] The night is good. The forest keeps the rain.
+[PAUSE|2.5]
+
+## BLOCK: RECALL_1
+[109|NARRATOR_NATIVE_en|0.80] You step off the last dry stone onto the trail. Warm night rain meets your shoulders at once. Ahead, the dark green jungle opens quietly while the road guides your feet.
+[PAUSE|2.0]
+[109|NARRATOR_TARGET_es|0.75] Dejas la última piedra seca y entras al camino. La lluvia tibia de la noche toca tus hombros. Delante abre la selva verde y oscura. El camino guía tus pies.
+[PAUSE|2.0]
+[109|NARRATOR_TARGET_es_repeat|0.70] Dejas la última piedra seca y entras al camino. La lluvia tibia de la noche toca tus hombros. Delante abre la selva verde y oscura. El camino guía tus pies.
+[PAUSE|4.0]
+[110|NARRATOR_NATIVE_en|0.80] The path winds between wide tree trunks over soft fallen leaves. Rain makes a steady sound on the canopy. A small circle of warm light moves slowly beside your boots.
+[PAUSE|2.0]
+[110|NARRATOR_TARGET_es|0.75] El camino gira entre troncos anchos sobre hojas caídas y suaves. La lluvia hace un sonido firme arriba. Un círculo pequeño de luz tibia camina junto a tus botas.
+[PAUSE|2.0]
+[110|NARRATOR_TARGET_es_repeat|0.70] El camino gira entre troncos anchos sobre hojas caídas y suaves. La lluvia hace un sonido firme arriba. Un círculo pequeño de luz tibia camina junto a tus botas.
+[PAUSE|4.0]
+[111|NARRATOR_NATIVE_en|0.80] A huge old tree stands beside the darker trail. Wide roots hold the wet earth like patient arms. Rain runs down pale bark while you breathe the scent of wet wood.
+[PAUSE|2.0]
+[111|NARRATOR_TARGET_es|0.75] Un árbol grande y viejo está junto al camino oscuro. Sus raíces anchas sujetan la tierra húmeda. La lluvia baja por la corteza clara. Hueles la madera mojada.
+[PAUSE|2.0]
+[111|NARRATOR_TARGET_es_repeat|0.70] Un árbol grande y viejo está junto al camino oscuro. Sus raíces anchas sujetan la tierra húmeda. La lluvia baja por la corteza clara. Hueles la madera mojada.
+[PAUSE|4.0]
+[112|NARRATOR_NATIVE_en|0.80] Overhead, the night holds quiet layers of wet leaf and low cloud. No bird cry breaks the steady water. Your breath slows while the dark forest stays kind around your light.
+[PAUSE|2.0]
+[112|NARRATOR_TARGET_es|0.75] Arriba, la noche guarda capas quietas de hojas y nubes bajas. Ningún grito rompe el agua firme. Tu respiración baja despacio. El bosque oscuro sigue amable junto a tu luz.
+[PAUSE|2.0]
+[112|NARRATOR_TARGET_es_repeat|0.70] Arriba, la noche guarda capas quietas de hojas y nubes bajas. Ningún grito rompe el agua firme. Tu respiración baja despacio. El bosque oscuro sigue amable junto a tu luz.
+[PAUSE|4.0]
+[113|NARRATOR_NATIVE_en|0.80] One wide palm leaf hangs near your shoulder holding a clear drop. The water drop falls onto damp earth beside your foot. Another drop forms slowly on the green edge.
+[PAUSE|2.0]
+[113|NARRATOR_TARGET_es|0.75] Una hoja ancha cuelga junto a tu hombro con una gota clara. La gota de agua cae en la tierra húmeda junto a tu pie. Otra gota nace despacio en el borde verde.
+[PAUSE|2.0]
+[113|NARRATOR_TARGET_es_repeat|0.70] Una hoja ancha cuelga junto a tu hombro con una gota clara. La gota de agua cae en la tierra húmeda junto a tu pie. Otra gota nace despacio en el borde verde.
+[PAUSE|4.0]
+[114|NARRATOR_NATIVE_en|0.80] Soft soil yields slightly beneath your step and then holds steady. You choose the firmer edge where tree roots form low steps. Steady rain rounds every stone along the path.
+[PAUSE|2.0]
+[114|NARRATOR_TARGET_es|0.75] La tierra suave cede un poco bajo tu paso y luego sostiene firme. Eliges el borde duro donde las raíces forman escalones bajos. La lluvia firme redondea cada piedra del camino.
+[PAUSE|2.0]
+[114|NARRATOR_TARGET_es_repeat|0.70] La tierra suave cede un poco bajo tu paso y luego sostiene firme. Eliges el borde duro donde las raíces forman escalones bajos. La lluvia firme redondea cada piedra del camino.
+[PAUSE|4.0]
+[115|NARRATOR_NATIVE_en|0.80] Warm air smells of damp earth, green leaves, and clean rain. Mild humidity rests softly against your cheeks like a damp cloth. Fresh stone air rises gently from the slope ahead.
+[PAUSE|2.0]
+[115|NARRATOR_TARGET_es|0.75] El aire tibio huele a tierra húmeda, hojas verdes y lluvia limpia. Una humedad suave descansa en tus mejillas como tela húmeda. Aire fresco de piedra sube desde la cuesta.
+[PAUSE|2.0]
+[115|NARRATOR_TARGET_es_repeat|0.70] El aire tibio huele a tierra húmeda, hojas verdes y lluvia limpia. Una humedad suave descansa en tus mejillas como tela húmeda. Aire fresco de piedra sube desde la cuesta.
+[PAUSE|4.0]
+[116|NARRATOR_NATIVE_en|0.80] A low smooth stone waits beside the bend under falling rain. On its pale front, a small carved frog points upward along the trail. You follow that quiet sign uphill.
+[PAUSE|2.0]
+[116|NARRATOR_TARGET_es|0.75] Una piedra baja y lisa espera junto a la curva bajo la lluvia. En su frente claro, una rana pequeña apunta arriba por el camino. Sigues esa señal quieta hacia arriba.
+[PAUSE|2.0]
+[116|NARRATOR_TARGET_es_repeat|0.70] Una piedra baja y lisa espera junto a la curva bajo la lluvia. En su frente claro, una rana pequeña apunta arriba por el camino. Sigues esa señal quieta hacia arriba.
+[PAUSE|4.0]
+[117|NARRATOR_NATIVE_en|0.80] The trail bends cleanly and climbs between two dark trunks. Warm light shows only a short span of earth and root. Wet fern leaves brush your sleeve and fall quietly back.
+[PAUSE|2.0]
+[117|NARRATOR_TARGET_es|0.75] El camino gira limpio y sube entre dos troncos oscuros. La luz tibia muestra solo un tramo corto de tierra y raíz. Hojas húmedas tocan tu manga y caen atrás.
+[PAUSE|2.0]
+[117|NARRATOR_TARGET_es_repeat|0.70] El camino gira limpio y sube entre dos troncos oscuros. La luz tibia muestra solo un tramo corto de tierra y raíz. Hojas húmedas tocan tu manga y caen atrás.
+[PAUSE|4.0]
+[118|NARRATOR_NATIVE_en|0.80] The warm lantern pool near your boots stays modest and calm. Fine silver rain passes through the yellow ring into dark shadow. You see the root and stone without effort.
+[PAUSE|2.0]
+[118|NARRATOR_TARGET_es|0.75] La luz tibia cerca de tus botas sigue pequeña y calma. La lluvia fina de plata cruza el círculo hacia la sombra. Ves la raíz y la piedra sin esfuerzo.
+[PAUSE|2.0]
+[118|NARRATOR_TARGET_es_repeat|0.70] La luz tibia cerca de tus botas sigue pequeña y calma. La lluvia fina de plata cruza el círculo hacia la sombra. Ves la raíz y la piedra sin esfuerzo.
+[PAUSE|4.0]
+[119|NARRATOR_NATIVE_en|0.80] A long wet vine hangs across the narrow bend. You lift the green stem, step underneath, and let it swing back. Beyond it, the narrow forest path climbs patiently upward.
+[PAUSE|2.0]
+[119|NARRATOR_TARGET_es|0.75] Una planta larga y húmeda cuelga sobre la curva estrecha. Levantas el tallo verde, pasas debajo y lo sueltas atrás. Más allá, el camino estrecho del bosque sube despacio.
+[PAUSE|2.0]
+[119|NARRATOR_TARGET_es_repeat|0.70] Una planta larga y húmeda cuelga sobre la curva estrecha. Levantas el tallo verde, pasas debajo y lo sueltas atrás. Más allá, el camino estrecho del bosque sube despacio.
+[PAUSE|4.0]
+[120|NARRATOR_NATIVE_en|0.80] For a while, the trail becomes a sheltered hall of wet leaves. Your soft steps blend smoothly into steady rain on the canopy. Dark quiet trees stand along both sides.
+[PAUSE|2.0]
+[120|NARRATOR_TARGET_es|0.75] Por un rato, el camino parece un corredor cubierto de hojas húmedas. Tus pasos suaves se unen a la lluvia firme arriba. Árboles oscuros y quietos esperan a ambos lados.
+[PAUSE|2.0]
+[120|NARRATOR_TARGET_es_repeat|0.70] Por un rato, el camino parece un corredor cubierto de hojas húmedas. Tus pasos suaves se unen a la lluvia firme arriba. Árboles oscuros y quietos esperan a ambos lados.
+[PAUSE|4.0]
+[121|NARRATOR_NATIVE_en|0.80] An old marker stone rests half buried in green moss beside a root. Years of rain have softened every cut mark on its face. You pass calmly deeper into the woods.
+[PAUSE|2.0]
+[121|NARRATOR_TARGET_es|0.75] Una piedra vieja descansa medio cubierta de musgo verde junto a una raíz. Años de lluvia suavizan cada marca en su cara. Pasas tranquilo hacia dentro del bosque.
+[PAUSE|2.0]
+[121|NARRATOR_TARGET_es_repeat|0.70] Una piedra vieja descansa medio cubierta de musgo verde junto a una raíz. Años de lluvia suavizan cada marca en su cara. Pasas tranquilo hacia dentro del bosque.
+[PAUSE|4.0]
+[122|NARRATOR_NATIVE_en|0.80] A small shallow pool beside the trail holds still rainwater. Fallen blossoms float gently while raindrops draw clear rings. Stepping neatly around the bank, you leave the dark water undisturbed.
+[PAUSE|2.0]
+[122|NARRATOR_TARGET_es|0.75] Un charco pequeño junto al camino guarda agua quieta de lluvia. Flores caídas flotan suaves mientras las gotas dibujan círculos claros. Rodeas la orilla y dejas el agua oscura tranquila.
+[PAUSE|2.0]
+[122|NARRATOR_TARGET_es_repeat|0.70] Un charco pequeño junto al camino guarda agua quieta de lluvia. Flores caídas flotan suaves mientras las gotas dibujan círculos claros. Rodeas la orilla y dejas el agua oscura tranquila.
+[PAUSE|4.0]
+[123|NARRATOR_NATIVE_en|0.80] Broad leaves overhead hold the rain and release soft secondary drops. Mild water wets your hair lightly without chilling your neck. Under this green roof, warm night air stays still.
+[PAUSE|2.0]
+[123|NARRATOR_TARGET_es|0.75] Las hojas anchas arriba detienen la lluvia y sueltan gotas suaves. El agua tibia moja poco tu pelo sin dar frío al cuello. Bajo este techo verde, el aire nocturno está quieto.
+[PAUSE|2.0]
+[123|NARRATOR_TARGET_es_repeat|0.70] Las hojas anchas arriba detienen la lluvia y sueltan gotas suaves. El agua tibia moja poco tu pelo sin dar frío al cuello. Bajo este techo verde, el aire nocturno está quieto.
+[PAUSE|4.0]
+[124|NARRATOR_NATIVE_en|0.80] Your shoulders stay loose and your hands remain open beside your hips. No voice calls through the trees, and nothing rushes your pace. Root, gravel, and soft mud follow smoothly.
+[PAUSE|2.0]
+[124|NARRATOR_TARGET_es|0.75] Tus hombros quedan sueltos y tus manos siguen abiertas. Ninguna voz llama entre los árboles. Nada apura tu paso. Raíz, piedra pequeña y tierra blanda siguen con calma.
+[PAUSE|2.0]
+[124|NARRATOR_TARGET_es_repeat|0.70] Tus hombros quedan sueltos y tus manos siguen abiertas. Ninguna voz llama entre los árboles. Nada apura tu paso. Raíz, piedra pequeña y tierra blanda siguen con calma.
+[PAUSE|4.0]
+[125|NARRATOR_NATIVE_en|0.80] Under wet mud, one white square corner of cut stone shows clearly. Rain washes smoothly across its pale surface into the earth. Your boot steps beside that sign of carved rock.
+[PAUSE|2.0]
+[125|NARRATOR_TARGET_es|0.75] Bajo la tierra húmeda sale una esquina blanca de piedra cortada. La lluvia lava suave su cara clara hacia el suelo. Tu bota pisa junto a esa señal de roca.
+[PAUSE|2.0]
+[125|NARRATOR_TARGET_es_repeat|0.70] Bajo la tierra húmeda sale una esquina blanca de piedra cortada. La lluvia lava suave su cara clara hacia el suelo. Tu bota pisa junto a esa señal de roca.
+[PAUSE|4.0]
+[126|NARRATOR_NATIVE_en|0.80] The last flat earth of the low road lies behind your heels now. From here, the forest slope climbs clearly toward the high stone terrace. Dark leaves close behind your walk.
+[PAUSE|2.0]
+[126|NARRATOR_TARGET_es|0.75] La última tierra plana del camino bajo queda atrás. Desde aquí, el suelo del bosque sube claro hacia la terraza alta de piedra. Hojas oscuras cierran detrás de tu paso.
+[PAUSE|2.0]
+[126|NARRATOR_TARGET_es_repeat|0.70] La última tierra plana del camino bajo queda atrás. Desde aquí, el suelo del bosque sube claro hacia la terraza alta de piedra. Hojas oscuras cierran detrás de tu paso.
+[PAUSE|4.0]
+[127|NARRATOR_NATIVE_en|0.80] Broad stone steps rise out of the dark slope to form a steady stair. Rain gathers down the middle of each step in a thin line. Green leaves frame both sides.
+[PAUSE|2.0]
+[127|NARRATOR_TARGET_es|0.75] Escalones anchos de piedra salen de la cuesta oscura. Forman una escalera firme. La lluvia corre por el centro en una línea fina. Hojas verdes rodean ambos lados.
+[PAUSE|2.0]
+[127|NARRATOR_TARGET_es_repeat|0.70] Escalones anchos de piedra salen de la cuesta oscura. Forman una escalera firme. La lluvia corre por el centro en una línea fina. Hojas verdes rodean ambos lados.
+[PAUSE|4.0]
+[128|NARRATOR_NATIVE_en|0.80] Each wet limestone step shines dark and smooth under your lantern. Soft green moss grows along outer edges while the middle stays clear. Every tread gleams briefly beneath your boots.
+[PAUSE|2.0]
+[128|NARRATOR_TARGET_es|0.75] Cada piedra mojada brilla oscura y lisa bajo tu luz. El musgo verde crece en los bordes mientras el centro queda limpio. Cada escalón brilla un poco bajo tus botas.
+[PAUSE|2.0]
+[128|NARRATOR_TARGET_es_repeat|0.70] Cada piedra mojada brilla oscura y lisa bajo tu luz. El musgo verde crece en los bordes mientras el centro queda limpio. Cada escalón brilla un poco bajo tus botas.
+[PAUSE|4.0]
+[129|NARRATOR_NATIVE_en|0.80] Between two steps, a round tree root crosses the right corner firmly. You set your foot on that steady root instead of soft mud. Root and carved stone share the climb.
+[PAUSE|2.0]
+[129|NARRATOR_TARGET_es|0.75] Entre dos escalones, una raíz redonda de árbol cruza firme la esquina. Pones tu pie en esa raíz segura y no en el barro blando. Raíz y piedra comparten la subida.
+[PAUSE|2.0]
+[129|NARRATOR_TARGET_es_repeat|0.70] Entre dos escalones, una raíz redonda de árbol cruza firme la esquina. Pones tu pie en esa raíz segura y no en el barro blando. Raíz y piedra comparten la subida.
+[PAUSE|4.0]
+[130|NARRATOR_NATIVE_en|0.80] A low dip in the stair holds warm white jungle mist around your ankles. Steps remain solid and easy beneath the pale cloud. Higher up, raindrops tap louder against open leaves.
+[PAUSE|2.0]
+[130|NARRATOR_TARGET_es|0.75] Un hueco bajo en la escalera guarda niebla blanca y tibia. Los escalones siguen firmes bajo la nube pálida. Más arriba, las gotas suenan más claras sobre hojas abiertas.
+[PAUSE|2.0]
+[130|NARRATOR_TARGET_es_repeat|0.70] Un hueco bajo en la escalera guarda niebla blanca y tibia. Los escalones siguen firmes bajo la nube pálida. Más arriba, las gotas suenan más claras sobre hojas abiertas.
+[PAUSE|4.0]
+[131|NARRATOR_NATIVE_en|0.80] Deep inside the branches to your left, one night bird gives a single soft call. The small sound fades and does not return. Quiet rain fills the forest hush again.
+[PAUSE|2.0]
+[131|NARRATOR_TARGET_es|0.75] Muy dentro de las ramas a la izquierda, un pájaro nocturno canta una vez. El sonido pequeño pasa y no vuelve. La lluvia quieta llena de nuevo el silencio del bosque.
+[PAUSE|2.0]
+[131|NARRATOR_TARGET_es_repeat|0.70] Muy dentro de las ramas a la izquierda, un pájaro nocturno canta una vez. El sonido pequeño pasa y no vuelve. La lluvia quieta llena de nuevo el silencio del bosque.
+[PAUSE|4.0]
+[132|NARRATOR_NATIVE_en|0.80] Halfway up, the breeze on your forehead turns cooler while the rain remains warm. Tall treetops still hide the stone sanctuary above. Your chest rises easily with each calm breath.
+[PAUSE|2.0]
+[132|NARRATOR_TARGET_es|0.75] A mitad del camino, la brisa en tu frente es más fresca mientras la lluvia sigue tibia. Los árboles altos aún ocultan la casa arriba. Tu pecho sube fácil con cada respiro.
+[PAUSE|2.0]
+[132|NARRATOR_TARGET_es_repeat|0.70] A mitad del camino, la brisa en tu frente es más fresca mientras la lluvia sigue tibia. Los árboles altos aún ocultan la casa arriba. Tu pecho sube fácil con cada respiro.
+[PAUSE|4.0]
+[133|NARRATOR_NATIVE_en|0.80] A large fallen trunk lies quietly across the middle of the stair. Beside it, a narrow shelf of wet stone leads safely past. Below your feet, the dark log stays still.
+[PAUSE|2.0]
+[133|NARRATOR_TARGET_es|0.75] Un tronco grande caído cruza quieto por la escalera. Al lado, una piedra estrecha y mojada abre paso seguro. Debajo de tus pies, el tronco oscuro queda quieto.
+[PAUSE|2.0]
+[133|NARRATOR_TARGET_es_repeat|0.70] Un tronco grande caído cruza quieto por la escalera. Al lado, una piedra estrecha y mojada abre paso seguro. Debajo de tus pies, el tronco oscuro queda quieto.
+[PAUSE|4.0]
+[134|NARRATOR_NATIVE_en|0.80] Higher along the stair, the scent of wet leaves changes to clean wet stone. You taste fresh rock in the mild air. Deep water moves steadily somewhere beneath the hill.
+[PAUSE|2.0]
+[134|NARRATOR_TARGET_es|0.75] Más arriba, el olor a hojas mojadas cambia a piedra húmeda y limpia. Sientes el aire fresco de roca. Agua profunda corre firme por algún lugar bajo la colina.
+[PAUSE|2.0]
+[134|NARRATOR_TARGET_es_repeat|0.70] Más arriba, el olor a hojas mojadas cambia a piedra húmeda y limpia. Sientes el aire fresco de roca. Agua profunda corre firme por algún lugar bajo la colina.
+[PAUSE|4.0]
+[135|NARRATOR_NATIVE_en|0.80] Farther down the slope, moving water keeps a steady low tone beneath the rain. Your steps slow calmly to listen to that sound. The hidden river invites you toward the crossing.
+[PAUSE|2.0]
+[135|NARRATOR_TARGET_es|0.75] Más abajo en la cuesta, el agua mantiene un sonido bajo y firme bajo la lluvia. Tus pasos van más lentos para escuchar ese sonido. El río oculto invita hacia el paso.
+[PAUSE|2.0]
+[135|NARRATOR_TARGET_es_repeat|0.70] Más abajo en la cuesta, el agua mantiene un sonido bajo y firme bajo la lluvia. Tus pasos van más lentos para escuchar ese sonido. El río oculto invita hacia el paso.
+[PAUSE|4.0]
+[136|NARRATOR_NATIVE_en|0.80] One wide stone step sits cut deeply into solid rock. Both feet rest flat together there for three calm breaths. Then narrower steps begin leading smoothly down again.
+[PAUSE|2.0]
+[136|NARRATOR_TARGET_es|0.75] Un escalón ancho descansa hondo en la roca sólida. Tus dos pies quedan planos allí durante tres respiros calmos. Luego escalones más estrechos bajan suave otra vez.
+[PAUSE|2.0]
+[136|NARRATOR_TARGET_es_repeat|0.70] Un escalón ancho descansa hondo en la roca sólida. Tus dos pies quedan planos allí durante tres respiros calmos. Luego escalones más estrechos bajan suave otra vez.
+[PAUSE|4.0]
+[137|NARRATOR_NATIVE_en|0.80] High branches open briefly above you, letting warm rain fall directly onto your hair. Soon green leaves close overhead once more. Ahead, the low voice of flowing water grows clearer.
+[PAUSE|2.0]
+[137|NARRATOR_TARGET_es|0.75] Ramas altas abren un poco arriba y la lluvia tibia toca directo tu pelo. Pronto las hojas verdes cierran de nuevo. Delante, la voz baja del agua suena más clara.
+[PAUSE|2.0]
+[137|NARRATOR_TARGET_es_repeat|0.70] Ramas altas abren un poco arriba y la lluvia tibia toca directo tu pelo. Pronto las hojas verdes cierran de nuevo. Delante, la voz baja del agua suena más clara.
+[PAUSE|4.0]
+[138|NARRATOR_NATIVE_en|0.80] The stone stair bends, and a gap between ferns shows dark moving water below. Two steps down, the leaves close again while the sound stays close. The path descends toward shore.
+[PAUSE|2.0]
+[138|NARRATOR_TARGET_es|0.75] La escalera gira y un espacio entre hojas muestra agua oscura abajo. Dos pasos después, las hojas cierran otra vez mientras el sonido sigue cerca. El camino baja hacia la orilla.
+[PAUSE|2.0]
+[138|NARRATOR_TARGET_es_repeat|0.70] La escalera gira y un espacio entre hojas muestra agua oscura abajo. Dos pasos después, las hojas cierran otra vez mientras el sonido sigue cerca. El camino baja hacia la orilla.
+[PAUSE|4.0]
+[139|NARRATOR_NATIVE_en|0.80] A broad stone landing opens wide enough to stand and listen in open rain. Beside the soft drops, the river keeps an even note. Your foot finds the next wet step down.
+[PAUSE|2.0]
+[139|NARRATOR_TARGET_es|0.75] Un descanso ancho de piedra abre para parar y oír bajo la lluvia abierta. Junto a las gotas suaves, el río sigue un tono igual. Tu pie busca el siguiente escalón mojado.
+[PAUSE|2.0]
+[139|NARRATOR_TARGET_es_repeat|0.70] Un descanso ancho de piedra abre para parar y oír bajo la lluvia abierta. Junto a las gotas suaves, el río sigue un tono igual. Tu pie busca el siguiente escalón mojado.
+[PAUSE|4.0]
+[140|NARRATOR_NATIVE_en|0.80] Above that flat stone, the canopy opens toward a black sky without wind or stars. Warm steady rain drops straight down onto your face. Carrying your light, you walk down peacefully.
+[PAUSE|2.0]
+[140|NARRATOR_TARGET_es|0.75] Sobre esa piedra plana, el bosque abre al cielo negro sin viento ni estrellas. Lluvia tibia cae recta sobre tu cara. Con tu luz en mano, bajas tranquilo por la cuesta.
+[PAUSE|2.0]
+[140|NARRATOR_TARGET_es_repeat|0.70] Sobre esa piedra plana, el bosque abre al cielo negro sin viento ni estrellas. Lluvia tibia cae recta sobre tu cara. Con tu luz en mano, bajas tranquilo por la cuesta.
+[PAUSE|4.0]
+[141|NARRATOR_NATIVE_en|0.80] The lowest steps are shorter and set close together above the valley bank. Clear water runs beside your boots toward the stony edge. Soon the river sound fills the whole night air.
+[PAUSE|2.0]
+[141|NARRATOR_TARGET_es|0.75] Los últimos escalones son bajos y están muy juntos sobre la orilla. Agua clara corre junto a tus botas hacia la piedra. Pronto el sonido del río llena el aire nocturno.
+[PAUSE|2.0]
+[141|NARRATOR_TARGET_es_repeat|0.70] Los últimos escalones son bajos y están muy juntos sobre la orilla. Agua clara corre junto a tus botas hacia la piedra. Pronto el sonido del río llena el aire nocturno.
+[PAUSE|4.0]
+[142|NARRATOR_NATIVE_en|0.80] You sense how calmly the wide river moves before seeing its dark width. No sharp rapid breaks its smooth tone under the rain. Your pace matches that slow water naturally.
+[PAUSE|2.0]
+[142|NARRATOR_TARGET_es|0.75] Sientes cómo corre calmo el río ancho antes de ver toda el agua oscura. Ningún ruido brusco rompe su tono bajo la lluvia. Tu paso sigue natural esa agua lenta.
+[PAUSE|2.0]
+[142|NARRATOR_TARGET_es_repeat|0.70] Sientes cómo corre calmo el río ancho antes de ver toda el agua oscura. Ningún ruido brusco rompe su tono bajo la lluvia. Tu paso sigue natural esa agua lenta.
+[PAUSE|4.0]
+[143|NARRATOR_NATIVE_en|0.80] Your lantern beam lights one flat boulder beside the wet river bank. Fine mist darkens its top while rain keeps the stone shining. You stand right beside the quiet water edge.
+[PAUSE|2.0]
+[143|NARRATOR_TARGET_es|0.75] Tu luz toca una piedra plana junto a la orilla mojada del río. Una niebla fina oscurece su parte alta mientras la lluvia da brillo. Estás justo al borde del agua quieta.
+[PAUSE|2.0]
+[143|NARRATOR_TARGET_es_repeat|0.70] Tu luz toca una piedra plana junto a la orilla mojada del río. Una niebla fina oscurece su parte alta mientras la lluvia da brillo. Estás justo al borde del agua quieta.
+[PAUSE|4.0]
+[144|NARRATOR_NATIVE_en|0.80] Now the wide dark river stretches smoothly between mossy rock walls. Rain draws tiny silver rings that fade before moving far. Across the water, a low stone bridge waits in silence.
+[PAUSE|2.0]
+[144|NARRATOR_TARGET_es|0.75] Ahora el río ancho y oscuro corre suave entre paredes de piedra con musgo. La lluvia dibuja pequeños círculos de plata que desaparecen pronto. Al otro lado espera un puente bajo de piedra.
+[PAUSE|2.0]
+[144|NARRATOR_TARGET_es_repeat|0.70] Ahora el río ancho y oscuro corre suave entre paredes de piedra con musgo. La lluvia dibuja pequeños círculos de plata que desaparecen pronto. Al otro lado espera un puente bajo de piedra.
+[PAUSE|4.0]
+
+## BLOCK: RECALL_2
+[145|NARRATOR_NATIVE_en|0.80] You walk down to the near shore beside wet shining stones. Two steps ahead waits the ancient stone bridge over dark water. Thick moss covers the near side while the river glides calmly.
+[PAUSE|2.0]
+[145|NARRATOR_TARGET_es|0.75] Bajas hasta la orilla cercana junto a piedras mojadas y brillantes. Dos pasos delante espera el puente antiguo sobre el agua oscura. Musgo espeso cubre este lado mientras el río corre calmo.
+[PAUSE|2.0]
+[145|NARRATOR_TARGET_es_repeat|0.70] Bajas hasta la orilla cercana junto a piedras mojadas y brillantes. Dos pasos delante espera el puente antiguo sobre el agua oscura. Musgo espeso cubre este lado mientras el río corre calmo.
+[PAUSE|4.0]
+[146|NARRATOR_NATIVE_en|0.80] The first heavy bridge slab holds your weight firmly without shifting. Cool stone blocks sit solid under steady rain. Keeping along the worn middle line, you leave the muddy riverbank smoothly behind.
+[PAUSE|2.0]
+[146|NARRATOR_TARGET_es|0.75] La primera losa pesada del puente sostiene tu peso sin moverse. Bloques fríos de piedra siguen firmes bajo la lluvia. Por el centro gastado, dejas atrás la orilla de barro.
+[PAUSE|2.0]
+[146|NARRATOR_TARGET_es_repeat|0.70] La primera losa pesada del puente sostiene tu peso sin moverse. Bloques fríos de piedra siguen firmes bajo la lluvia. Por el centro gastado, dejas atrás la orilla de barro.
+[PAUSE|4.0]
+[147|NARRATOR_NATIVE_en|0.80] Along the edge runs a low stone rail worn smooth by centuries of rain. Your fingers rest lightly along its rounded top without sharp corners. Rain gathers softly and slips back down.
+[PAUSE|2.0]
+[147|NARRATOR_TARGET_es|0.75] Por el borde sigue una baranda baja de piedra lisa por la lluvia. Tus dedos descansan suaves arriba sin esquinas duras. El agua junta despacio y cae abajo otra vez.
+[PAUSE|2.0]
+[147|NARRATOR_TARGET_es_repeat|0.70] Por el borde sigue una baranda baja de piedra lisa por la lluvia. Tus dedos descansan suaves arriba sin esquinas duras. El agua junta despacio y cae abajo otra vez.
+[PAUSE|4.0]
+[148|NARRATOR_NATIVE_en|0.80] Below the arch, deep black river water moves almost motionless between mossy banks. Falling drops draw brief circles that fade quickly into dark current. Light shines softly on wet stone.
+[PAUSE|2.0]
+[148|NARRATOR_TARGET_es|0.75] Bajo el arco, el agua negra del río corre casi quieta entre orillas con musgo. Las gotas dibujan círculos breves que borran pronto en el río. La luz brilla suave en la piedra.
+[PAUSE|2.0]
+[148|NARRATOR_TARGET_es_repeat|0.70] Bajo el arco, el agua negra del río corre casi quieta entre orillas con musgo. Las gotas dibujan círculos breves que borran pronto en el río. La luz brilla suave en la piedra.
+[PAUSE|4.0]
+[149|NARRATOR_NATIVE_en|0.80] Near the middle of the bridge, your footsteps slow calmly across level slabs. You hear the river clearly beside you beneath thinner leaves. Your shoulders drop as the far bank nears.
+[PAUSE|2.0]
+[149|NARRATOR_TARGET_es|0.75] En el centro del puente, tus pasos van más lentos sobre las piedras planas. Oyes claro el río cerca bajo pocas hojas. Tus hombros bajan mientras la otra orilla está más cerca.
+[PAUSE|2.0]
+[149|NARRATOR_TARGET_es_repeat|0.70] En el centro del puente, tus pasos van más lentos sobre las piedras planas. Oyes claro el río cerca bajo pocas hojas. Tus hombros bajan mientras la otra orilla está más cerca.
+[PAUSE|4.0]
+[150|NARRATOR_NATIVE_en|0.80] Across the second half of the span, warm rain softens into a fine misty veil. That gentle spray cools your cheeks without chilling your hands. Below, the river voice sounds crisp and steady.
+[PAUSE|2.0]
+[150|NARRATOR_TARGET_es|0.75] En la segunda parte del paso, la lluvia tibia cambia a niebla fina. Esa brisa refresca tus mejillas sin dar frío a tus manos. Abajo, la voz del río suena clara y firme.
+[PAUSE|2.0]
+[150|NARRATOR_TARGET_es_repeat|0.70] En la segunda parte del paso, la lluvia tibia cambia a niebla fina. Esa brisa refresca tus mejillas sin dar frío a tus manos. Abajo, la voz del río suena clara y firme.
+[PAUSE|4.0]
+[151|NARRATOR_NATIVE_en|0.80] One cool breeze rises off the dark river and touches your face briefly. Warm jungle air returns soon carrying the clean scent of wet stone. You reach the end of the crossing.
+[PAUSE|2.0]
+[151|NARRATOR_TARGET_es|0.75] Una brisa fresca sube del río oscuro y toca un momento tu cara. El aire tibio del bosque vuelve pronto con olor a piedra mojada. Llegas al final del puente.
+[PAUSE|2.0]
+[151|NARRATOR_TARGET_es_repeat|0.70] Una brisa fresca sube del río oscuro y toca un momento tu cara. El aire tibio del bosque vuelve pronto con olor a piedra mojada. Llegas al final del puente.
+[PAUSE|4.0]
+[152|NARRATOR_NATIVE_en|0.80] Three final slabs bring your boots back onto dark soft earth on the far bank. Soon the ground firms into flat rock beneath your feet. Behind you, the river flows quietly downstream.
+[PAUSE|2.0]
+[152|NARRATOR_TARGET_es|0.75] Tres piedras más dejan tus botas sobre tierra oscura y blanda en la otra orilla. Pronto el suelo firme es roca plana bajo tus pies. Detrás, el río corre quieto abajo.
+[PAUSE|2.0]
+[152|NARRATOR_TARGET_es_repeat|0.70] Tres piedras más dejan tus botas sobre tierra oscura y blanda en la otra orilla. Pronto el suelo firme es roca plana bajo tus pies. Detrás, el río corre quieto abajo.
+[PAUSE|4.0]
+[153|NARRATOR_NATIVE_en|0.80] Lifting your gaze above dark treetops, you spot a flat stone crown against night clouds. Centered inside that distant wall glows one small amber doorway lamp. High on the ridge, it waits.
+[PAUSE|2.0]
+[153|NARRATOR_TARGET_es|0.75] Subes la mirada sobre los árboles oscuros y ves una corona plana de piedra contra las nubes. En el centro del muro lejano brilla una luz pequeña y tibia. Espera arriba.
+[PAUSE|2.0]
+[153|NARRATOR_TARGET_es_repeat|0.70] Subes la mirada sobre los árboles oscuros y ves una corona plana de piedra contra las nubes. En el centro del muro lejano brilla una luz pequeña y tibia. Espera arriba.
+[PAUSE|4.0]
+[154|NARRATOR_NATIVE_en|0.80] That high stone building is the ancient observatory resting quietly atop the ridge. Rain washes smoothly down its dark outer walls without touching the warm room inside. Dry floors await above.
+[PAUSE|2.0]
+[154|NARRATOR_TARGET_es|0.75] Esa casa alta de piedra es el lugar antiguo sobre la colina. La lluvia limpia sus muros oscuros sin tocar el cuarto cálido dentro. Suelos secos esperan arriba en la altura.
+[PAUSE|2.0]
+[154|NARRATOR_TARGET_es_repeat|0.70] Esa casa alta de piedra es el lugar antiguo sobre la colina. La lluvia limpia sus muros oscuros sin tocar el cuarto cálido dentro. Suelos secos esperan arriba en la altura.
+[PAUSE|4.0]
+[155|NARRATOR_NATIVE_en|0.80] A carved stone post marks where the final wide stairway begins climbing up. Cut on its front sits the same small stone frog pointing upward. Broad shining treads lead toward the doorway.
+[PAUSE|2.0]
+[155|NARRATOR_TARGET_es|0.75] Un poste de piedra marca dónde empieza la última escalera ancha hacia arriba. En su frente está la misma rana pequeña apuntando arriba. Escalones anchos y brillantes suben hacia la puerta.
+[PAUSE|2.0]
+[155|NARRATOR_TARGET_es_repeat|0.70] Un poste de piedra marca dónde empieza la última escalera ancha hacia arriba. En su frente está la misma rana pequeña apuntando arriba. Escalones anchos y brillantes suben hacia la puerta.
+[PAUSE|4.0]
+[156|NARRATOR_NATIVE_en|0.80] At the foot of the upper stair, the river bridge feels far away already. Wet steps climb ahead toward one quiet frame of light. Night rain stays pleasantly warm on your palm.
+[PAUSE|2.0]
+[156|NARRATOR_TARGET_es|0.75] Al pie de la escalera alta, el puente del río parece ya muy lejos. Escalones mojados suben delante hacia un marco quieto de luz. La lluvia nocturna sigue tibia en tu palma.
+[PAUSE|2.0]
+[156|NARRATOR_TARGET_es_repeat|0.70] Al pie de la escalera alta, el puente del río parece ya muy lejos. Escalones mojados suben delante hacia un marco quieto de luz. La lluvia nocturna sigue tibia en tu palma.
+[PAUSE|4.0]
+[157|NARRATOR_NATIVE_en|0.80] You look up along the dark stone steps toward the steady amber doorway lamp. Rain crosses the beam without blurring its glow. Resting your eyes on that distant light feels enough.
+[PAUSE|2.0]
+[157|NARRATOR_TARGET_es|0.75] Miras arriba por los escalones oscuros hacia la luz firme de la puerta. La lluvia cruza el rayo sin apagar su brillo. Descansar los ojos en esa luz lejana basta ahora.
+[PAUSE|2.0]
+[157|NARRATOR_TARGET_es_repeat|0.70] Miras arriba por los escalones oscuros hacia la luz firme de la puerta. La lluvia cruza el rayo sin apagar su brillo. Descansar los ojos en esa luz lejana basta ahora.
+[PAUSE|4.0]
+[158|NARRATOR_NATIVE_en|0.80] High above the trees, the doorway shines like a tiny square of warm gold in dark stone. Massive blocks sit silent around it. No voice calls, and the lamp gives quiet welcome.
+[PAUSE|2.0]
+[158|NARRATOR_TARGET_es|0.75] Alto sobre los árboles, la puerta brilla como un cuadro pequeño de oro en piedra oscura. Grandes bloques esperan en silencio alrededor. Ninguna voz llama. La luz da una bienvenida quieta.
+[PAUSE|2.0]
+[158|NARRATOR_TARGET_es_repeat|0.70] Alto sobre los árboles, la puerta brilla como un cuadro pequeño de oro en piedra oscura. Grandes bloques esperan en silencio alrededor. Ninguna voz llama. La luz da una bienvenida quieta.
+[PAUSE|4.0]
+[159|NARRATOR_NATIVE_en|0.80] Behind you lies an unbroken path of wet leaves, roots, mossy stairs, river, and solid bridge. Every step settles calmly inside your legs. Ahead, the warm door waits under steady rain.
+[PAUSE|2.0]
+[159|NARRATOR_TARGET_es|0.75] Detrás queda un camino entero de hojas, raíces, escalones, río y puente firme. Cada paso descansa calmo en tus piernas. Delante espera la puerta tibia bajo la lluvia continua.
+[PAUSE|2.0]
+[159|NARRATOR_TARGET_es_repeat|0.70] Detrás queda un camino entero de hojas, raíces, escalones, río y puente firme. Cada paso descansa calmo en tus piernas. Delante espera la puerta tibia bajo la lluvia continua.
+[PAUSE|4.0]
+[160|NARRATOR_NATIVE_en|0.80] Night rain falls warm and steady across dark leaves, flat stone, and your open hands. You do not shake droplets from your sleeves. The old stairway waits patiently under your next step.
+[PAUSE|2.0]
+[160|NARRATOR_TARGET_es|0.75] La lluvia de noche cae tibia y firme sobre hojas oscuras, piedra plana y tus manos abiertas. No sacudes el agua de tus mangas. La escalera vieja espera tranquila bajo tu próximo paso.
+[PAUSE|2.0]
+[160|NARRATOR_TARGET_es_repeat|0.70] La lluvia de noche cae tibia y firme sobre hojas oscuras, piedra plana y tus manos abiertas. No sacudes el agua de tus mangas. La escalera vieja espera tranquila bajo tu próximo paso.
+[PAUSE|4.0]
+[161|NARRATOR_NATIVE_en|0.80] Standing calmly at the bottom landing feels just as restful as walking forward. The amber door, the river below, and your slow breath share one rhythm. Warm shelter waits quietly above.
+[PAUSE|2.0]
+[161|NARRATOR_TARGET_es|0.75] Parar calmo abajo descansa tanto como caminar delante. La puerta dorada, el río abajo y tu respiro lento siguen un ritmo. Un refugio tibio espera tranquilo arriba.
+[PAUSE|2.0]
+[161|NARRATOR_TARGET_es_repeat|0.70] Parar calmo abajo descansa tanto como caminar delante. La puerta dorada, el río abajo y tu respiro lento siguen un ritmo. Un refugio tibio espera tranquilo arriba.
+[PAUSE|4.0]
+[162|NARRATOR_NATIVE_en|0.80] High in the misty dark, a small gold doorway waits above the canopy. Behind you whispers the river while green jungle surrounds the stone terrace. The door is far away through warm rain.
+[PAUSE|2.0]
+[162|NARRATOR_TARGET_es|0.75] Alto en la niebla oscura espera una pequeña puerta de oro sobre las copas. Detrás suena el río mientras la selva rodea el suelo de piedra. La puerta está lejos bajo la lluvia.
+[PAUSE|2.0]
+[162|NARRATOR_TARGET_es_repeat|0.70] Alto en la niebla oscura espera una pequeña puerta de oro sobre las copas. Detrás suena el río mientras la selva rodea el suelo de piedra. La puerta está lejos bajo la lluvia.
+[PAUSE|4.0]
+[163|NARRATOR_NATIVE_en|0.80] You lift your boot onto the first broad step of the observatory climb. Rain shines thinly down the worn center. Cold rock holds firm beneath your sole while warm gold guides you upward.
+[PAUSE|2.0]
+[163|NARRATOR_TARGET_es|0.75] Subes la bota al primer escalón ancho de la casa alta. La lluvia brilla fina por el centro gastado. La roca fría sostiene firme bajo tu pie mientras la luz guía arriba.
+[PAUSE|2.0]
+[163|NARRATOR_TARGET_es_repeat|0.70] Subes la bota al primer escalón ancho de la casa alta. La lluvia brilla fina por el centro gastado. La roca fría sostiene firme bajo tu pie mientras la luz guía arriba.
+[PAUSE|4.0]
+[164|NARRATOR_NATIVE_en|0.80] Water runs smoothly down the hollowed stone center past your heels. Climbing slowly upward, you leave the dark trees and valley river far behind. Cooler ridge air meets your face gently.
+[PAUSE|2.0]
+[164|NARRATOR_TARGET_es|0.75] El agua baja suave por el centro de la piedra junto a tus pies. Subes despacio y dejas atrás los árboles oscuros y el río. Aire fresco de altura toca suave tu cara.
+[PAUSE|2.0]
+[164|NARRATOR_TARGET_es_repeat|0.70] El agua baja suave por el centro de la piedra junto a tus pies. Subes despacio y dejas atrás los árboles oscuros y el río. Aire fresco de altura toca suave tu cara.
+[PAUSE|4.0]
+[165|NARRATOR_NATIVE_en|0.80] Step by step, the warm amber glow grows larger without any harsh glare. You see three wet stone steps ahead before dark night returns. The tall house takes shape above the canopy.
+[PAUSE|2.0]
+[165|NARRATOR_TARGET_es|0.75] Paso a paso, la luz tibia es más grande sin brillo fuerte. Ves tres escalones mojados delante antes de la noche oscura. La casa alta toma forma sobre los árboles.
+[PAUSE|2.0]
+[165|NARRATOR_TARGET_es_repeat|0.70] Paso a paso, la luz tibia es más grande sin brillo fuerte. Ves tres escalones mojados delante antes de la noche oscura. La casa alta toma forma sobre los árboles.
+[PAUSE|4.0]
+[166|NARRATOR_NATIVE_en|0.80] Halfway up, a level terrace opens wide enough for both feet under rain. Pausing for one calm breath, you hear the river murmur far below. Then the limestone stairs turn cleanly left.
+[PAUSE|2.0]
+[166|NARRATOR_TARGET_es|0.75] A mitad de camino abre un espacio plano para tus dos pies bajo la lluvia. Paras un respiro calmo y oyes el río lejos abajo. Luego la escalera de piedra gira a la izquierda.
+[PAUSE|2.0]
+[166|NARRATOR_TARGET_es_repeat|0.70] A mitad de camino abre un espacio plano para tus dos pies bajo la lluvia. Paras un respiro calmo y oyes el río lejos abajo. Luego la escalera de piedra gira a la izquierda.
+[PAUSE|4.0]
+[167|NARRATOR_NATIVE_en|0.80] Around that turn, even high treetops drop peacefully out of sight beneath the stone parapet. Warm night breeze brushes rain across your forehead. Behind you, the deep valley rests in mist.
+[PAUSE|2.0]
+[167|NARRATOR_TARGET_es|0.75] Tras ese giro, hasta las copas altas bajan fuera de vista bajo el muro. La brisa tibia nocturna lleva lluvia por tu frente. Detrás, el valle profundo descansa en la niebla.
+[PAUSE|2.0]
+[167|NARRATOR_TARGET_es_repeat|0.70] Tras ese giro, hasta las copas altas bajan fuera de vista bajo el muro. La brisa tibia nocturna lleva lluvia por tu frente. Detrás, el valle profundo descansa en la niebla.
+[PAUSE|4.0]
+[168|NARRATOR_NATIVE_en|0.80] Walking close beside the massive stone wall, you feel softer rain against your shoulders. The large wall blocks part of the dark sky. Warm amber light spills quietly down the wet steps.
+[PAUSE|2.0]
+[168|NARRATOR_TARGET_es|0.75] Caminas junto a la pared grande de piedra y sientes la lluvia suave en tus hombros. La pared grande tapa parte del cielo oscuro. La luz tibia cae suave por los escalones mojados.
+[PAUSE|2.0]
+[168|NARRATOR_TARGET_es_repeat|0.70] Caminas junto a la pared grande de piedra y sientes la lluvia suave en tus hombros. La pared grande tapa parte del cielo oscuro. La luz tibia cae suave por los escalones mojados.
+[PAUSE|4.0]
+[169|NARRATOR_NATIVE_en|0.80] You set your open fingertips lightly against cool wet stone beside the stair. Pale rock feels smooth in worn spots and slightly rough along seams. Rain slides gently under your hand.
+[PAUSE|2.0]
+[169|NARRATOR_TARGET_es|0.75] Pones tus dedos abiertos suaves sobre la piedra fría y mojada junto al paso. La roca pálida es lisa en partes y algo áspera en las líneas. La lluvia baja bajo tu mano.
+[PAUSE|2.0]
+[169|NARRATOR_TARGET_es_repeat|0.70] Pones tus dedos abiertos suaves sobre la piedra fría y mojada junto al paso. La roca pálida es lisa en partes y algo áspera en las líneas. La lluvia baja bajo tu mano.
+[PAUSE|4.0]
+[170|NARRATOR_NATIVE_en|0.80] Old weathered lines cross the stone wall, softened too much by centuries of rain to read tonight. Raindrops gather briefly inside those shallow grooves. You climb steadily upward toward clear indoor carvings.
+[PAUSE|2.0]
+[170|NARRATOR_TARGET_es|0.75] Líneas viejas cruzan la pared de piedra, muy gastadas por siglos de lluvia para leer esta noche. Gotas juntan un momento en esos surcos. Subes firme hacia figuras claras dentro.
+[PAUSE|2.0]
+[170|NARRATOR_TARGET_es_repeat|0.70] Líneas viejas cruzan la pared de piedra, muy gastadas por siglos de lluvia para leer esta noche. Gotas juntan un momento en esos surcos. Subes firme hacia figuras claras dentro.
+[PAUSE|4.0]
+[171|NARRATOR_NATIVE_en|0.80] Higher along the stair, a warmer current drifts slowly downward from the open doorway. Inside that mild air comes a sweet scent of woodsmoke and cacao. Your face senses warmth ahead.
+[PAUSE|2.0]
+[171|NARRATOR_TARGET_es|0.75] Más arriba en la escalera, un aire tibio baja despacio desde la puerta abierta. En ese aire suave viene un olor dulce a humo y cacao. Tu cara siente el calor delante.
+[PAUSE|2.0]
+[171|NARRATOR_TARGET_es_repeat|0.70] Más arriba en la escalera, un aire tibio baja despacio desde la puerta abierta. En ese aire suave viene un olor dulce a humo y cacao. Tu cara siente el calor delante.
+[PAUSE|4.0]
+[172|NARRATOR_NATIVE_en|0.80] You climb calmly without counting steps inside your head. Your soles keep an even beat upward while the warm doorway widens into a bright rectangle. Shelter waits just a few paces ahead.
+[PAUSE|2.0]
+[172|NARRATOR_TARGET_es|0.75] Subes calmo sin contar escalones en tu cabeza. Tus pies siguen un ritmo igual arriba mientras la puerta tibia crece en un cuadro claro. El refugio espera pocos pasos delante.
+[PAUSE|2.0]
+[172|NARRATOR_TARGET_es_repeat|0.70] Subes calmo sin contar escalones en tu cabeza. Tus pies siguen un ritmo igual arriba mientras la puerta tibia crece en un cuadro claro. El refugio espera pocos pasos delante.
+[PAUSE|4.0]
+[173|NARRATOR_NATIVE_en|0.80] An empty stone niche breaks the wall beside the stair with dry shadow inside. Rain never reaches back into that sheltered hollow. Passing calmly beside it, you glimpse dry rock inside.
+[PAUSE|2.0]
+[173|NARRATOR_TARGET_es|0.75] Un hueco vacío de piedra abre en la pared junto al paso con sombra seca dentro. La lluvia nunca llega a ese espacio protegido. Al pasar calmo, ves la roca seca dentro.
+[PAUSE|2.0]
+[173|NARRATOR_TARGET_es_repeat|0.70] Un hueco vacío de piedra abre en la pared junto al paso con sombra seca dentro. La lluvia nunca llega a ese espacio protegido. Al pasar calmo, ves la roca seca dentro.
+[PAUSE|4.0]
+[174|NARRATOR_NATIVE_en|0.80] Now the doorway stands near enough to show its thick carved stone frame. Low embers inside give warm golden glow. Overhead, steady rain sounds softly across wide roof stones above the porch.
+[PAUSE|2.0]
+[174|NARRATOR_TARGET_es|0.75] Ahora la puerta está cerca y muestra su marco grueso de piedra. Brasas bajas dentro dan luz dorada y tibia. Arriba, la lluvia firme suena suave sobre el techo de piedra.
+[PAUSE|2.0]
+[174|NARRATOR_TARGET_es_repeat|0.70] Ahora la puerta está cerca y muestra su marco grueso de piedra. Brasas bajas dentro dan luz dorada y tibia. Arriba, la lluvia firme suena suave sobre el techo de piedra.
+[PAUSE|4.0]
+[175|NARRATOR_NATIVE_en|0.80] Beneath the stone eaves, falling raindrops stop touching your cheeks and forehead. Behind your heel, water still patters across open stairs. Warm interior air wraps gently around your damp sleeves.
+[PAUSE|2.0]
+[175|NARRATOR_TARGET_es|0.75] Bajo el borde de piedra, la lluvia deja de tocar tus mejillas y tu frente. Detrás de tu pie, el agua aún cae en la escalera. Aire tibio rodea tus mangas húmedas.
+[PAUSE|2.0]
+[175|NARRATOR_TARGET_es_repeat|0.70] Bajo el borde de piedra, la lluvia deja de tocar tus mejillas y tu frente. Detrás de tu pie, el agua aún cae en la escalera. Aire tibio rodea tus mangas húmedas.
+[PAUSE|4.0]
+[176|NARRATOR_NATIVE_en|0.80] Your boot finds the wide stone threshold at the top of the climb. Its outer rim glitters with fine mist while the inner half stays matte, dry, and faintly warmed from inside.
+[PAUSE|2.0]
+[176|NARRATOR_TARGET_es|0.75] Tu bota pisa el umbral ancho de piedra arriba del camino. Su borde exterior brilla con niebla fina mientras la mitad interior queda opaca, seca y algo tibia desde dentro.
+[PAUSE|2.0]
+[176|NARRATOR_TARGET_es_repeat|0.70] Tu bota pisa el umbral ancho de piedra arriba del camino. Su borde exterior brilla con niebla fina mientras la mitad interior queda opaca, seca y algo tibia desde dentro.
+[PAUSE|4.0]
+[177|NARRATOR_NATIVE_en|0.80] Looking calmly inside before stepping over, you see a pale dry floor under soft shadow. A small red hearth glows steadily in the middle. Warm cacao scent drifts through the doorway.
+[PAUSE|2.0]
+[177|NARRATOR_TARGET_es|0.75] Miras calmo dentro antes de entrar y ves un suelo pálido y seco bajo sombra suave. Un fuego rojo pequeño brilla firme en el centro. Olor tibio a cacao sale por la puerta.
+[PAUSE|2.0]
+[177|NARRATOR_TARGET_es_repeat|0.70] Miras calmo dentro antes de entrar y ves un suelo pálido y seco bajo sombra suave. Un fuego rojo pequeño brilla firme en el centro. Olor tibio a cacao sale por la puerta.
+[PAUSE|4.0]
+[178|NARRATOR_NATIVE_en|0.80] Under the dry stone lintel, your calves hold the quiet memory of river, bridge, and climb. Nothing down the trail calls you back. Pale dry stone invites your feet inside.
+[PAUSE|2.0]
+[178|NARRATOR_TARGET_es|0.75] Bajo la piedra seca, tus piernas guardan el recuerdo calmo del río, puente y subida. Nada en el camino llama atrás. La piedra pálida y seca invita tus pies adentro.
+[PAUSE|2.0]
+[178|NARRATOR_TARGET_es_repeat|0.70] Bajo la piedra seca, tus piernas guardan el recuerdo calmo del río, puente y subida. Nada en el camino llama atrás. La piedra pálida y seca invita tus pies adentro.
+[PAUSE|4.0]
+[179|NARRATOR_NATIVE_en|0.80] Behind your heels, rain taps open stairs without crossing the dry line. Warm rosy firelight touches your damp knuckles as you shift your weight gently onto the dry threshold stone.
+[PAUSE|2.0]
+[179|NARRATOR_TARGET_es|0.75] Detrás de tus pies, la lluvia toca la escalera sin cruzar la línea seca. Una luz cálida y roja toca tus manos húmedas mientras pasas tu peso a la piedra seca.
+[PAUSE|2.0]
+[179|NARRATOR_TARGET_es_repeat|0.70] Detrás de tus pies, la lluvia toca la escalera sin cruzar la línea seca. Una luz cálida y roja toca tus manos húmedas mientras pasas tu peso a la piedra seca.
+[PAUSE|4.0]
+[180|NARRATOR_NATIVE_en|0.80] One final step brings you completely inside the stone house. Rain softens instantly into a distant roof sound while dry warmth meets your face. You stand calmly beneath the curved vault.
+[PAUSE|2.0]
+[180|NARRATOR_TARGET_es|0.75] Un paso más te lleva del todo dentro de la casa de piedra. La lluvia suena lejos arriba en el techo mientras el calor seco toca tu cara. Estás bajo la bóveda curva.
+[PAUSE|2.0]
+[180|NARRATOR_TARGET_es_repeat|0.70] Un paso más te lleva del todo dentro de la casa de piedra. La lluvia suena lejos arriba en el techo mientras el calor seco toca tu cara. Estás bajo la bóveda curva.
+[PAUSE|4.0]
+
+## BLOCK: RECALL_3
+[181|NARRATOR_NATIVE_en|0.80] Inside the observatory, the curved limestone ceiling stays dry and deeply still. Thick walls soften the outside rain into a quiet whisper overhead. The night remains peacefully outside the doorway.
+[PAUSE|2.0]
+[181|NARRATOR_TARGET_es|0.75] Dentro del lugar, el techo curvo de piedra sigue seco y muy quieto. Las paredes gruesas suavizan la lluvia fuera en un sonido bajo arriba. La noche queda tranquila fuera de la puerta.
+[PAUSE|2.0]
+[181|NARRATOR_TARGET_es_repeat|0.70] Dentro del lugar, el techo curvo de piedra sigue seco y muy quieto. Las paredes gruesas suavizan la lluvia fuera en un sonido bajo arriba. La noche queda tranquila fuera de la puerta.
+[PAUSE|4.0]
+[182|NARRATOR_NATIVE_en|0.80] Gentle warmth stored inside the floor stones rises softly through your damp boots. No puddle marks the dry pale floor anywhere in the chamber. Embers have warmed this quiet room.
+[PAUSE|2.0]
+[182|NARRATOR_TARGET_es|0.75] Un calor suave en las piedras del suelo sube despacio por tus botas húmedas. Ningún charco mancha el suelo seco y pálido del cuarto. Las brasas calientan este espacio tranquilo.
+[PAUSE|2.0]
+[182|NARRATOR_TARGET_es_repeat|0.70] Un calor suave en las piedras del suelo sube despacio por tus botas húmedas. Ningún charco mancha el suelo seco y pálido del cuarto. Las brasas calientan este espacio tranquilo.
+[PAUSE|4.0]
+[183|NARRATOR_NATIVE_en|0.80] In the center, a low bed of red coals glows steadily beneath white ash. No tall flame jumps or crackles sharply inside the chamber. Soft amber light outlines the nearby dry stones.
+[PAUSE|2.0]
+[183|NARRATOR_TARGET_es|0.75] En el centro, un fuego bajo de brasas rojas brilla firme bajo ceniza blanca. Ninguna llama alta salta ni suena fuerte dentro del cuarto. Luz tibia dibuja las piedras secas cercanas.
+[PAUSE|2.0]
+[183|NARRATOR_TARGET_es_repeat|0.70] En el centro, un fuego bajo de brasas rojas brilla firme bajo ceniza blanca. Ninguna llama alta salta ni suena fuerte dentro del cuarto. Luz tibia dibuja las piedras secas cercanas.
+[PAUSE|4.0]
+[184|NARRATOR_NATIVE_en|0.80] Warm air rises smoothly from the coals, warming first your hands and then your cheeks. Dampness lifts quietly off your skin without effort. Your shoulders drop comfortably inside the shelter.
+[PAUSE|2.0]
+[184|NARRATOR_TARGET_es|0.75] El aire tibio sube despacio del fuego, calienta primero tus manos y luego tus mejillas. La humedad sale quieta de tu piel sin esfuerzo. Tus hombros bajan cómodos dentro del refugio.
+[PAUSE|2.0]
+[184|NARRATOR_TARGET_es_repeat|0.70] El aire tibio sube despacio del fuego, calienta primero tus manos y luego tus mejillas. La humedad sale quieta de tu piel sin esfuerzo. Tus hombros bajan cómodos dentro del refugio.
+[PAUSE|4.0]
+[185|NARRATOR_NATIVE_en|0.80] You walk halfway around the hearth and sit on a broad warm stone bench. Pale rock feels smooth and dry beneath you. Over your shoulder, the doorway holds dark falling rain.
+[PAUSE|2.0]
+[185|NARRATOR_TARGET_es|0.75] Caminas medio círculo junto al fuego y te sientas en un banco ancho de piedra tibia. La roca pálida está lisa y seca bajo ti. Atrás, la puerta muestra lluvia oscura.
+[PAUSE|2.0]
+[185|NARRATOR_TARGET_es_repeat|0.70] Caminas medio círculo junto al fuego y te sientas en un banco ancho de piedra tibia. La roca pálida está lisa y seca bajo ti. Atrás, la puerta muestra lluvia oscura.
+[PAUSE|4.0]
+[186|NARRATOR_NATIVE_en|0.80] Seated comfortably on the bench, you see the low red fire right at knee height. A tiny coal ticks softer than rain on the roof. Both hands rest open on your legs.
+[PAUSE|2.0]
+[186|NARRATOR_TARGET_es|0.75] Sentado cómodo en el banco, ves el fuego bajo y rojo a la altura de tus rodillas. Una brasa pequeña suena más suave que la lluvia arriba. Tus manos descansan abiertas.
+[PAUSE|2.0]
+[186|NARRATOR_TARGET_es_repeat|0.70] Sentado cómodo en el banco, ves el fuego bajo y rojo a la altura de tus rodillas. Una brasa pequeña suena más suave que la lluvia arriba. Tus manos descansan abiertas.
+[PAUSE|4.0]
+[187|NARRATOR_NATIVE_en|0.80] Thin pale steam rises softly from your damp sleeves and fades into dry air. It smells mildly of rain and clean wool. Your sleeves grow lighter and warm without work.
+[PAUSE|2.0]
+[187|NARRATOR_TARGET_es|0.75] Vapor pálido y fino sube suave de tus mangas húmedas y desaparece en el aire seco. Huele leve a lluvia y lana limpia. Tus mangas quedan más ligeras y tibias sin trabajo.
+[PAUSE|2.0]
+[187|NARRATOR_TARGET_es_repeat|0.70] Vapor pálido y fino sube suave de tus mangas húmedas y desaparece en el aire seco. Huele leve a lluvia y lana limpia. Tus mangas quedan más ligeras y tibias sin trabajo.
+[PAUSE|4.0]
+[188|NARRATOR_NATIVE_en|0.80] The room air blends roasted cacao, warm limestone, and clean wood. You breathe that mild warmth slowly just as you breathed damp leaves outside. Nothing inside asks for a single word.
+[PAUSE|2.0]
+[188|NARRATOR_TARGET_es|0.75] El aire del cuarto mezcla cacao tostado, piedra tibia y madera limpia. Respiras ese calor suave despacio igual que las hojas húmedas fuera. Nada dentro pide una sola palabra.
+[PAUSE|2.0]
+[188|NARRATOR_TARGET_es_repeat|0.70] El aire del cuarto mezcla cacao tostado, piedra tibia y madera limpia. Respiras ese calor suave despacio igual que las hojas húmedas fuera. Nada dentro pide una sola palabra.
+[PAUSE|4.0]
+[189|NARRATOR_NATIVE_en|0.80] Beside the glowing coals sits a simple round cup of dark clay on flat rock. Thin fragrant steam curls steadily upward from its rim. The warm bowl waits within easy reach.
+[PAUSE|2.0]
+[189|NARRATOR_TARGET_es|0.75] Junto al fuego hay una taza redonda y simple de barro oscuro sobre piedra plana. Vapor fino y dulce sube firme desde su borde. La taza tibia espera al alcance de tu mano.
+[PAUSE|2.0]
+[189|NARRATOR_TARGET_es_repeat|0.70] Junto al fuego hay una taza redonda y simple de barro oscuro sobre piedra plana. Vapor fino y dulce sube firme desde su borde. La taza tibia espera al alcance de tu mano.
+[PAUSE|4.0]
+[190|NARRATOR_NATIVE_en|0.80] You lift the warm clay cup gently inside both cupped palms. Steady heat enters your fingertips right away. Holding its honest small weight, you bring the warm cup close to chest.
+[PAUSE|2.0]
+[190|NARRATOR_TARGET_es|0.75] Tomas la taza tibia de barro suave entre las dos manos. Un calor firme entra en tus dedos al instante. Con su peso pequeño y bueno, acercas la taza tibia al pecho.
+[PAUSE|2.0]
+[190|NARRATOR_TARGET_es_repeat|0.70] Tomas la taza tibia de barro suave entre las dos manos. Un calor firme entra en tus dedos al instante. Con su peso pequeño y bueno, acercas la taza tibia al pecho.
+[PAUSE|4.0]
+[191|NARRATOR_NATIVE_en|0.80] Your first slow sip tastes of rich warm cacao without bitterness or hurry. Outside the doorway, rain sounds softer as if turned down low. Warmth settles deep inside your chest.
+[PAUSE|2.0]
+[191|NARRATOR_TARGET_es|0.75] Tu primer sorbo lento sabe a cacao rico y tibio sin sabor amargo ni prisa. Fuera de la puerta, la lluvia suena más baja. El calor descansa profundo dentro de tu pecho.
+[PAUSE|2.0]
+[191|NARRATOR_TARGET_es_repeat|0.70] Tu primer sorbo lento sabe a cacao rico y tibio sin sabor amargo ni prisa. Fuera de la puerta, la lluvia suena más baja. El calor descansa profundo dentro de tu pecho.
+[PAUSE|4.0]
+[192|NARRATOR_NATIVE_en|0.80] Resting the clay cup softly on your lap, you look calmly around the sheltered chamber. Curved vault, rainy door, warm coals, and dry floor surround you. Your breathing joins their peace.
+[PAUSE|2.0]
+[192|NARRATOR_TARGET_es|0.75] Apoyas suave la taza de barro sobre tus piernas y miras calmo el cuarto protegido. Techo curvo, puerta con lluvia, brasas tibias y suelo seco te rodean. Tu respiro sigue su paz.
+[PAUSE|2.0]
+[192|NARRATOR_TARGET_es_repeat|0.70] Apoyas suave la taza de barro sobre tus piernas y miras calmo el cuarto protegido. Techo curvo, puerta con lluvia, brasas tibias y suelo seco te rodean. Tu respiro sigue su paz.
+[PAUSE|4.0]
+[193|NARRATOR_NATIVE_en|0.80] One last drop falls from your hair onto warm stone and disappears. Soft radiant warmth dries your cheeks completely without any cloth. Your relaxed hands hold the warm cup lightly.
+[PAUSE|2.0]
+[193|NARRATOR_TARGET_es|0.75] Una última gota cae de tu pelo a la piedra tibia y desaparece. El calor suave seca tus mejillas del todo sin tela. Tus manos sueltas sostienen la taza tibia sin fuerza.
+[PAUSE|2.0]
+[193|NARRATOR_TARGET_es_repeat|0.70] Una última gota cae de tu pelo a la piedra tibia y desaparece. El calor suave seca tus mejillas del todo sin tela. Tus manos sueltas sostienen la taza tibia sin fuerza.
+[PAUSE|4.0]
+[194|NARRATOR_NATIVE_en|0.80] Outside the walls, steady rain washes the long stairs below. You stretch your boots slightly closer toward the coals without touching ash. Warmth eases both ankles and calves.
+[PAUSE|2.0]
+[194|NARRATOR_TARGET_es|0.75] Fuera de los muros, la lluvia firme lava los escalones largos abajo. Estiras tus botas un poco cerca del fuego sin tocar la ceniza. El calor descansa tobillos y piernas.
+[PAUSE|2.0]
+[194|NARRATOR_TARGET_es_repeat|0.70] Fuera de los muros, la lluvia firme lava los escalones largos abajo. Estiras tus botas un poco cerca del fuego sin tocar la ceniza. El calor descansa tobillos y piernas.
+[PAUSE|4.0]
+[195|NARRATOR_NATIVE_en|0.80] Over your shoulder, the doorway glows softly while outside rain feels far away. No need pulls you back toward the wet steps. Ahead beside the hearth, steady red coals hold warmth.
+[PAUSE|2.0]
+[195|NARRATOR_TARGET_es|0.75] Detrás de tu hombro, la puerta brilla suave mientras la lluvia fuera parece lejos. Nada te llama atrás a los escalones mojados. Delante en el centro, las brasas rojas guardan calor.
+[PAUSE|2.0]
+[195|NARRATOR_TARGET_es_repeat|0.70] Detrás de tu hombro, la puerta brilla suave mientras la lluvia fuera parece lejos. Nada te llama atrás a los escalones mojados. Delante en el centro, las brasas rojas guardan calor.
+[PAUSE|4.0]
+[196|NARRATOR_NATIVE_en|0.80] Resting safely inside the high stone house feels deeply complete after the long wet walk. Stone curves above you, fire glows ahead, and warm cacao rests comfortably inside both hands.
+[PAUSE|2.0]
+[196|NARRATOR_TARGET_es|0.75] Descansar seguro dentro de la casa alta de piedra se siente completo tras el largo camino mojado. Piedra curva sube arriba, el fuego brilla delante y cacao tibio reposa en tus manos.
+[PAUSE|2.0]
+[196|NARRATOR_TARGET_es_repeat|0.70] Descansar seguro dentro de la casa alta de piedra se siente completo tras el largo camino mojado. Piedra curva sube arriba, el fuego brilla delante y cacao tibio reposa en tus manos.
+[PAUSE|4.0]
+[197|NARRATOR_NATIVE_en|0.80] Night rain continues across the hills yet stops cleanly at the threshold. You can listen to its soft roof murmur or follow the quiet ticking coals beside your warm stone bench.
+[PAUSE|2.0]
+[197|NARRATOR_TARGET_es|0.75] La lluvia nocturna sigue por las colinas pero para limpia en el umbral. Puedes oír su sonido suave en el techo o seguir las brasas quietas junto a tu banco de piedra.
+[PAUSE|2.0]
+[197|NARRATOR_TARGET_es_repeat|0.70] La lluvia nocturna sigue por las colinas pero para limpia en el umbral. Puedes oír su sonido suave en el techo o seguir las brasas quietas junto a tu banco de piedra.
+[PAUSE|4.0]
+[198|NARRATOR_NATIVE_en|0.80] Your shoulders drop completely while the cup stays warm in your hands. Along the pale inner wall, faint carved lines catch gentle light. You lift your gaze toward that stone wall.
+[PAUSE|2.0]
+[198|NARRATOR_TARGET_es|0.75] Tus hombros bajan del todo mientras la taza sigue tibia en tus manos. Por la pared clara interior, líneas finas toman luz suave. Subes la vista hacia esa pared de piedra.
+[PAUSE|2.0]
+[198|NARRATOR_TARGET_es_repeat|0.70] Tus hombros bajan del todo mientras la taza sigue tibia en tus manos. Por la pared clara interior, líneas finas toman luz suave. Subes la vista hacia esa pared de piedra.
+[PAUSE|4.0]
+[199|NARRATOR_NATIVE_en|0.80] Turning gently toward the inner wall, you see smooth stone washed in soft hearth light. Thin lines carved by ancient hands rest quietly there. Their shallow edges hold warm orange glow.
+[PAUSE|2.0]
+[199|NARRATOR_TARGET_es|0.75] Giras suave hacia la pared interior y ves piedra lisa bajo luz tibia del fuego. Líneas finas hechas por manos antiguas esperan quietas allí. Sus bordes suaves guardan brillo naranja.
+[PAUSE|2.0]
+[199|NARRATOR_TARGET_es_repeat|0.70] Giras suave hacia la pared interior y ves piedra lisa bajo luz tibia del fuego. Líneas finas hechas por manos antiguas esperan quietas allí. Sus bordes suaves guardan brillo naranja.
+[PAUSE|4.0]
+[200|NARRATOR_NATIVE_en|0.80] Carved points mark bright stars linked by one long curving trail across the wall. Clouds hide the real sky outside, yet this quiet stone sky stays dry inside the vault.
+[PAUSE|2.0]
+[200|NARRATOR_TARGET_es|0.75] Puntos cortados marcan estrellas claras unidas por un camino largo y curvo en la pared. Nubes cubren el cielo real fuera, pero este cielo quieto sigue seco dentro del cuarto.
+[PAUSE|2.0]
+[200|NARRATOR_TARGET_es_repeat|0.70] Puntos cortados marcan estrellas claras unidas por un camino largo y curvo en la pared. Nubes cubren el cielo real fuera, pero este cielo quieto sigue seco dentro del cuarto.
+[PAUSE|4.0]
+[201|NARRATOR_NATIVE_en|0.80] You look from your bench without touching the smooth rock carvings. Rain has never blurred those edges. Your eyes follow the carved trail upward just as your boots climb the hill.
+[PAUSE|2.0]
+[201|NARRATOR_TARGET_es|0.75] Miras desde tu banco sin tocar las líneas lisas de piedra. La lluvia nunca borra esos bordes. Tus ojos siguen el camino en la roca igual que tus botas suben la colina.
+[PAUSE|2.0]
+[201|NARRATOR_TARGET_es_repeat|0.70] Miras desde tu banco sin tocar las líneas lisas de piedra. La lluvia nunca borra esos bordes. Tus ojos siguen el camino en la roca igual que tus botas suben la colina.
+[PAUSE|4.0]
+[202|NARRATOR_NATIVE_en|0.80] The clay cup remains warm against your palms while you watch the stars on stone. Sweet cacao fills the air before your cheeks. You take another unhurried sip without looking away.
+[PAUSE|2.0]
+[202|NARRATOR_TARGET_es|0.75] La taza de barro sigue tibia en tus manos mientras miras las estrellas en piedra. Cacao dulce llena el aire ante tus mejillas. Tomas otro sorbo lento sin apartar la vista.
+[PAUSE|2.0]
+[202|NARRATOR_TARGET_es_repeat|0.70] La taza de barro sigue tibia en tus manos mientras miras las estrellas en piedra. Cacao dulce llena el aire ante tus mejillas. Tomas otro sorbo lento sin apartar la vista.
+[PAUSE|4.0]
+[203|NARRATOR_NATIVE_en|0.80] A low cluster of carved dots bends like the river below. Near the ceiling sits a small rectangle like the lit doorway. High and low patterns rest together on one quiet wall.
+[PAUSE|2.0]
+[203|NARRATOR_TARGET_es|0.75] Un grupo bajo de puntos gira como el río abajo. Cerca del techo hay un cuadro pequeño como la puerta iluminada. Formas altas y bajas descansan juntas en una pared quieta.
+[PAUSE|2.0]
+[203|NARRATOR_TARGET_es_repeat|0.70] Un grupo bajo de puntos gira como el río abajo. Cerca del techo hay un cuadro pequeño como la puerta iluminada. Formas altas y bajas descansan juntas en una pared quieta.
+[PAUSE|4.0]
+[204|NARRATOR_NATIVE_en|0.80] Above the center sits one deep large star where the carved path ends softly. Resting your eyes on that mark, you hear a coal tick. Nothing asks you to travel farther tonight.
+[PAUSE|2.0]
+[204|NARRATOR_TARGET_es|0.75] Arriba del centro hay una estrella grande donde el camino termina suave. Descansas los ojos en esa marca y oyes una brasa sonar. Nada pide caminar más esta noche.
+[PAUSE|2.0]
+[204|NARRATOR_TARGET_es_repeat|0.70] Arriba del centro hay una estrella grande donde el camino termina suave. Descansas los ojos en esa marca y oyes una brasa sonar. Nada pide caminar más esta noche.
+[PAUSE|4.0]
+[205|NARRATOR_NATIVE_en|0.80] Warm cacao blends gently with the dry heat of the room. Your fingers loosen around the clay cup while your breath grows slower. Outside, steady rain falls harmlessly on roof stone.
+[PAUSE|2.0]
+[205|NARRATOR_TARGET_es|0.75] El cacao tibio mezcla suave con el calor seco del cuarto. Tus dedos sueltan algo la taza de barro mientras respiras más lento. Fuera, la lluvia cae firme en el techo.
+[PAUSE|2.0]
+[205|NARRATOR_TARGET_es_repeat|0.70] El cacao tibio mezcla suave con el calor seco del cuarto. Tus dedos sueltan algo la taza de barro mientras respiras más lento. Fuera, la lluvia cae firme en el techo.
+[PAUSE|4.0]
+[206|NARRATOR_NATIVE_en|0.80] Even when red coals breathe gently upward, the carved lines stay completely still. Letting your gaze soften naturally, you hold only four simple impressions: stars, path, warm stone, and steady embers.
+[PAUSE|2.0]
+[206|NARRATOR_TARGET_es|0.75] Aunque las brasas rojas suben suave su luz, las líneas siguen quietas. Sueltas natural la mirada y guardas solo cuatro cosas simples: estrellas, camino, piedra tibia y brasas firmes.
+[PAUSE|2.0]
+[206|NARRATOR_TARGET_es_repeat|0.70] Aunque las brasas rojas suben suave su luz, las líneas siguen quietas. Sueltas natural la mirada y guardas solo cuatro cosas simples: estrellas, camino, piedra tibia y brasas firmes.
+[PAUSE|4.0]
+[207|NARRATOR_NATIVE_en|0.80] You recall the small carved frog from the wet forest stone and lower stair. No frog appears on this dry wall. Instead, the stone shows the many stars those markers pointed toward.
+[PAUSE|2.0]
+[207|NARRATOR_TARGET_es|0.75] Recuerdas la rana pequeña de la piedra húmeda del bosque y la escalera baja. Ninguna rana sale en esta pared seca. La piedra muestra las muchas estrellas que esas señales mostraban.
+[PAUSE|2.0]
+[207|NARRATOR_TARGET_es_repeat|0.70] Recuerdas la rana pequeña de la piedra húmeda del bosque y la escalera baja. Ninguna rana sale en esta pared seca. La piedra muestra las muchas estrellas que esas señales mostraban.
+[PAUSE|4.0]
+[208|NARRATOR_NATIVE_en|0.80] Memories of the stone bridge linger gently in relaxed calves while river sounds fade. Inside, the only dark water sits warm inside your cup. One final pale steam wisp vanishes upward.
+[PAUSE|2.0]
+[208|NARRATOR_TARGET_es|0.75] Recuerdos del puente de piedra quedan suaves en piernas relajadas mientras el río calla. Dentro, la única agua oscura está tibia en tu taza. Un último vapor pálido sube y desaparece.
+[PAUSE|2.0]
+[208|NARRATOR_TARGET_es_repeat|0.70] Recuerdos del puente de piedra quedan suaves en piernas relajadas mientras el río calla. Dentro, la única agua oscura está tibia en tu taza. Un último vapor pálido sube y desaparece.
+[PAUSE|4.0]
+[209|NARRATOR_NATIVE_en|0.80] Your heavy eyelids grow pleasantly drowsy without any tension behind your eyes. Pale lines along the wall blur softly into golden haze. Glowing coals keep their quiet red warmth beside your feet.
+[PAUSE|2.0]
+[209|NARRATOR_TARGET_es|0.75] Tus párpados pesados sienten sueño dulce sin tensión detrás de los ojos. Las líneas pálidas en la pared se borran suaves en luz dorada. Las brasas guardan su calor rojo junto a ti.
+[PAUSE|2.0]
+[209|NARRATOR_TARGET_es_repeat|0.70] Tus párpados pesados sienten sueño dulce sin tensión detrás de los ojos. Las líneas pálidas en la pared se borran suaves en luz dorada. Las brasas guardan su calor rojo junto a ti.
+[PAUSE|4.0]
+[210|NARRATOR_NATIVE_en|0.80] You close your eyes for several slow breaths and still see pale golden stars behind them. Roof rain sounds like soft cloth overhead while dry warm shelter holds your tired body.
+[PAUSE|2.0]
+[210|NARRATOR_TARGET_es|0.75] Cierras los ojos varios respiros lentos y aún ves estrellas doradas y pálidas detrás. La lluvia en el techo suena como tela suave mientras el refugio seco sostiene tu cuerpo cansado.
+[PAUSE|2.0]
+[210|NARRATOR_TARGET_es_repeat|0.70] Cierras los ojos varios respiros lentos y aún ves estrellas doradas y pálidas detrás. La lluvia en el techo suena como tela suave mientras el refugio seco sostiene tu cuerpo cansado.
+[PAUSE|4.0]
+[211|NARRATOR_NATIVE_en|0.80] Opening your eyes briefly one last time, you see the stone chart completely unchanged. Back and knees rest heavy against warm stone. Time flows even slower than forest raindrops here.
+[PAUSE|2.0]
+[211|NARRATOR_TARGET_es|0.75] Abres los ojos breves una última vez y ves el mapa de piedra igual. Espalda y rodillas pesan sobre la piedra tibia. El tiempo corre aún más lento que las gotas del bosque.
+[PAUSE|2.0]
+[211|NARRATOR_TARGET_es_repeat|0.70] Abres los ojos breves una última vez y ves el mapa de piedra igual. Espalda y rodillas pesan sobre la piedra tibia. El tiempo corre aún más lento que las gotas del bosque.
+[PAUSE|4.0]
+[212|NARRATOR_NATIVE_en|0.80] You set the warm clay cup gently onto the bench stone beside your hip. Both open hands rest lightly on your lap. Across the hearth, silent carved stars watch over your rest.
+[PAUSE|2.0]
+[212|NARRATOR_TARGET_es|0.75] Dejas suave la taza tibia de barro en el banco de piedra junto a ti. Ambas manos abiertas descansan ligeras. Frente al fuego, estrellas quietas de piedra cuidan tu descanso.
+[PAUSE|2.0]
+[212|NARRATOR_TARGET_es_repeat|0.70] Dejas suave la taza tibia de barro en el banco de piedra junto a ti. Ambas manos abiertas descansan ligeras. Frente al fuego, estrellas quietas de piedra cuidan tu descanso.
+[PAUSE|4.0]
+[213|NARRATOR_NATIVE_en|0.80] The whole night walk settles calmly inside your body: leaves, wet stairs, river, bridge, and dry room. The wall keeps its map in stone while low embers hold steady warmth here.
+[PAUSE|2.0]
+[213|NARRATOR_TARGET_es|0.75] Todo el camino nocturno descansa calmo en tu cuerpo: hojas, escalones mojados, río, puente y cuarto seco. La pared guarda su mapa en piedra mientras el fuego da calor aquí.
+[PAUSE|2.0]
+[213|NARRATOR_TARGET_es_repeat|0.70] Todo el camino nocturno descansa calmo en tu cuerpo: hojas, escalones mojados, río, puente y cuarto seco. La pared guarda su mapa en piedra mientras el fuego da calor aquí.
+[PAUSE|4.0]
+[214|NARRATOR_NATIVE_en|0.80] Steady rain on the stone roof keeps an easy rhythm made for sleep. Behind you, the doorway stays a quiet pale frame. You remain safely inside dry warmth until dawn arrives.
+[PAUSE|2.0]
+[214|NARRATOR_TARGET_es|0.75] La lluvia firme en el techo de piedra sigue un ritmo fácil para dormir. Detrás, la puerta queda como un marco pálido y quieto. Sigues seguro dentro del calor seco hasta el alba.
+[PAUSE|2.0]
+[214|NARRATOR_TARGET_es_repeat|0.70] La lluvia firme en el techo de piedra sigue un ritmo fácil para dormir. Detrás, la puerta queda como un marco pálido y quieto. Sigues seguro dentro del calor seco hasta el alba.
+[PAUSE|4.0]
+[215|NARRATOR_NATIVE_en|0.80] Your eyelids close longer now, resting heavy and completely relaxed against your cheeks. Soft star lines linger behind dark lids. Cacao, dry stone, and hearth heat share one slow peaceful pace.
+[PAUSE|2.0]
+[215|NARRATOR_TARGET_es|0.75] Tus párpados cierran más tiempo y descansan pesados y sueltos sobre tus mejillas. Líneas suaves de estrellas siguen detrás de tus ojos. Cacao, piedra seca y calor comparten un paso lento.
+[PAUSE|2.0]
+[215|NARRATOR_TARGET_es_repeat|0.70] Tus párpados cierran más tiempo y descansan pesados y sueltos sobre tus mejillas. Líneas suaves de estrellas siguen detrás de tus ojos. Cacao, piedra seca y calor comparten un paso lento.
+[PAUSE|4.0]
+[216|NARRATOR_NATIVE_en|0.80] Deep unhurried night begins cleanly inside this dry sanctuary with clay cup and stone stars nearby. Outside, the forest keeps its warm rain while sleep settles softly across the quiet ridge.
+[PAUSE|2.0]
+[216|NARRATOR_TARGET_es|0.75] La noche buena y lenta empieza limpia dentro de este refugio seco con taza de barro y estrellas cerca. Fuera, el bosque guarda la lluvia tibia mientras el sueño llega suave arriba.
+[PAUSE|2.0]
+[216|NARRATOR_TARGET_es_repeat|0.70] La noche buena y lenta empieza limpia dentro de este refugio seco con taza de barro y estrellas cerca. Fuera, el bosque guarda la lluvia tibia mientras el sueño llega suave arriba.
+[PAUSE|4.0]
+
+## PLAYLIST_SEQUENCE
+PLAY: ACT_1_NIGHT_FOREST, ACT_2_WET_STAIRS, ACT_3_STONE_BRIDGE (mode=full, repeat=1)
+PLAY: ACT_4_OBSERVATORY_STAIR, ACT_5_INNER_SANCTUARY, ACT_6_STAR_MAP (mode=full, repeat=1)
+PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=full, repeat=1)
+PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.85, extra_pause=5.0, repeat=1)

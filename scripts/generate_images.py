@@ -442,7 +442,11 @@ def fetch_jpeg(
 ) -> bytes | None:
     if channel_dir is not None:
         from channel_settings import apply_style_suffix
+        from isekai_config import base_style_prompt
 
+        base = base_style_prompt(channel_dir)
+        if base and base.lower() not in prompt.lower():
+            prompt = f"{base}. {prompt}"
         prompt = apply_style_suffix(prompt, channel_dir)
     settings = load_ai_settings()
     provider = str(settings.get("image_provider", "cloudflare"))
@@ -508,7 +512,11 @@ def _collect_local_sd_batch(
             prompt_use = f"{prompt}. Fix and improve: {extra}"
         if channel_dir is not None:
             from channel_settings import apply_style_suffix
+            from isekai_config import base_style_prompt
 
+            base = base_style_prompt(channel_dir)
+            if base and base.lower() not in prompt_use.lower():
+                prompt_use = f"{base}. {prompt_use}"
             prompt_use = apply_style_suffix(prompt_use, channel_dir)
         batch_items.append((number, prompt_use))
     batch_done: dict[int, bytes] = {}

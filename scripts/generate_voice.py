@@ -9,6 +9,7 @@ import re
 import shutil
 import subprocess
 import sys
+import time
 from pathlib import Path
 
 import edge_tts
@@ -19,6 +20,7 @@ from stdio_utf8 import configure_utf8_stdio
 
 SLEEP_CHANNEL = "channel_02_sleep_history"
 SLEEP_VOICE_EN = "en-US-BrianNeural"
+DEFAULT_PITCH = "-4Hz"
 SLEEP_RATE = "-12%"
 DEFAULT_VOICE_EN = "en-US-AndrewMultilingualNeural"
 DEFAULT_RATE_EN = "+0%"
@@ -193,6 +195,19 @@ async def _write_stream(communicate: edge_tts.Communicate, output: Path) -> None
         )
 
 
+def _discard_output(output: Path) -> bool:
+    """Удалить обрезок mp3. После таймаута Windows часто ещё держит файл."""
+    for delay in (0.0, 0.25, 0.5, 1.0, 1.5):
+        if delay:
+            time.sleep(delay)
+        try:
+            output.unlink(missing_ok=True)
+        except PermissionError:
+            continue
+        return True
+    return False
+
+
 def _ensure_mp3_output(output: Path) -> None:
     if not output.is_file():
         raise RuntimeError("No audio was received. Please verify that your parameters are correct.")
@@ -202,9 +217,16 @@ def _ensure_mp3_output(output: Path) -> None:
         )
 
 
-async def synthesize_chunk_cli(text: str, voice: str, rate: str, output: Path) -> None:
+async def synthesize_chunk_cli(
+    text: str,
+    voice: str,
+    rate: str,
+    output: Path,
+    pitch: str = DEFAULT_PITCH,
+) -> None:
     """Запасной путь: отдельный процесс edge-tts (иногда стабильнее WebSocket в asyncio)."""
-    output.unlink(missing_ok=True)
+    if not _discard_output(output):
+        raise PermissionError(f"Файл занят другим процессом: {output}")
     text_file = output.with_suffix(".cli_input.txt")
     try:
         text_file.write_text(text, encoding="utf-8")
@@ -216,6 +238,7 @@ async def synthesize_chunk_cli(text: str, voice: str, rate: str, output: Path) -
             "--voice",
             voice,
             f"--rate={rate}",
+            f"--pitch={pitch}",
             "--file",
             str(text_file),
             "--write-media",
@@ -235,24 +258,30 @@ async def synthesize_chunk_cli(text: str, voice: str, rate: str, output: Path) -
     finally:
         text_file.unlink(missing_ok=True)
         if not output.is_file():
-            output.unlink(missing_ok=True)
+            _discard_output(output)
 
 
-async def synthesize_chunk(text: str, voice: str, rate: str, output: Path) -> None:
+async def synthesize_chunk(
+    text: str,
+    voice: str,
+    rate: str,
+    output: Path,
+    pitch: str = DEFAULT_PITCH,
+) -> None:
     last_error: Exception | None = None
     for attempt in range(1, TTS_ATTEMPTS + 1):
         try:
-            communicate = edge_tts.Communicate(text, voice, rate=rate)
+            communicate = edge_tts.Communicate(text, voice, rate=rate, pitch=pitch)
 
             async def run() -> None:
-                output.unlink(missing_ok=True)
+                _discard_output(output)
                 await _write_stream(communicate, output)
 
             await asyncio.wait_for(run(), timeout=TTS_CHUNK_TIMEOUT_SEC)
             return
         except Exception as exc:
             last_error = exc
-            output.unlink(missing_ok=True)
+            _discard_output(output)
             if attempt < TTS_ATTEMPTS:
                 print(
                     f"TTS stream повтор {attempt}/{TTS_ATTEMPTS}: {exc!r}",
@@ -268,26 +297,27 @@ async def synthesize_chunk_with_voices(
     voices: tuple[str, ...],
     rate: str,
     output: Path,
+    pitch: str = DEFAULT_PITCH,
 ) -> str:
     errors: list[str] = []
     for voice in voices:
         try:
-            await synthesize_chunk(text, voice, rate, output)
+            await synthesize_chunk(text, voice, rate, output, pitch=pitch)
             if voice != voices[0]:
                 print(f"TTS: использован запасной голос {voice}")
             return voice
         except Exception as exc:
             errors.append(f"{voice} stream: {exc!r}")
-            output.unlink(missing_ok=True)
+            _discard_output(output)
             try:
-                await synthesize_chunk_cli(text, voice, rate, output)
+                await synthesize_chunk_cli(text, voice, rate, output, pitch=pitch)
                 print(f"TTS: часть через CLI (голос {voice})")
                 if voice != voices[0]:
                     print(f"TTS: использован запасной голос {voice}")
                 return voice
             except Exception as cli_exc:
                 errors.append(f"{voice} CLI: {cli_exc!r}")
-                output.unlink(missing_ok=True)
+                _discard_output(output)
     hint = (
         " Проверьте интернет/VPN и повторите позже: Edge TTS ходит на сервера Microsoft."
     )
@@ -301,11 +331,12 @@ async def synthesize(
     output: Path,
     *,
     voice_fallbacks: tuple[str, ...] | None = None,
+    pitch: str = DEFAULT_PITCH,
 ) -> None:
     voices = voice_fallbacks or (voice,)
     chunks = split_for_tts(text)
     if len(chunks) == 1:
-        await synthesize_chunk_with_voices(chunks[0], voices, rate, output)
+        await synthesize_chunk_with_voices(chunks[0], voices, rate, output, pitch=pitch)
         return
 
     print(f"TTS: {len(chunks)} частей (≤{CHUNK_MAX_CHARS} симв. на запрос)")
@@ -328,7 +359,7 @@ async def synthesize(
             print(f"TTS часть {index}/{len(chunks)}: {len(chunk)} симв.")
             use_voices = (locked_voice,) if locked_voice else voices
             locked_voice = await synthesize_chunk_with_voices(
-                chunk, use_voices, rate, part
+                chunk, use_voices, rate, part, pitch=pitch
             )
             voice_lock_path.write_text(locked_voice, encoding="utf-8")
             part_paths.append(part)
@@ -373,6 +404,15 @@ def needs_refresh(script: Path, output: Path) -> bool:
 
 
 async def voice_episode(episode_dir: Path, script_en: Path) -> None:
+    """Isekai-разметка уходит в isekai_voice. В mode=target_only слоты с
+    суффиксом _repeat не попадают в план: фаза 4 говорит каждую фразу
+    изучаемого языка один раз, без медленного дубля.
+    Isekai: только script.md и audio_cache/ эпизода (без channel.db).
+    """
+    from isekai_voice import maybe_render
+
+    if await maybe_render(episode_dir, script_en):
+        return
     script_ru = episode_dir / "script_ru.md"
     steps = 1 + (1 if script_ru.is_file() else 0)
     step = 0

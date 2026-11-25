@@ -1,0 +1,25 @@
+﻿{
+  "version": 1,
+  "title_en": "Ancient Americas & Maya/Aztec Mysteries: Learn Spanish While Sleeping",
+  "title_ru": "Древняя Америка и тайны майя и ацтеков: испанский во сне",
+  "world_and_atmosphere": {
+    "ru": "Ночные прогулки, тёплый дождь, камень, огонь и тихий храм. Без хоррора и без медицинских обещаний про сон.",
+    "en": "Night walks, warm rain, stone, fire, and a quiet temple. No horror and no medical claims about sleep."
+  },
+  "characters_visual_lock": {
+    "ru": "Матео — спокойный пожилой местный проводник в простом тканом плаще с тусклым фонарём, со спины или вполоборота, лицо в тени. Ночная стражница храма с деревянным факелом, лицо не в фокусе.",
+    "en": "Mateo is a calm older local guide in a simple woven cloak with a dim lantern, shown from behind or in three-quarter view, face in shadow. The night guard is a calm woman with a wooden torch, face not in focus."
+  },
+  "lore_and_rules": {
+    "ru": "Одно новое испанское слово за раз. Храм древний и спокойный. Люди дружелюбны. Дождь тёплый.",
+    "en": "One new Spanish word at a time. The temple is ancient and calm. People are friendly. The rain is warm."
+  },
+  "recaps": [
+    {
+      "episode": "S03E01",
+      "title": "Ancient Maya Temple Rain Journey",
+      "summary_ru": "Матео встречает тебя в ночных джунглях, называет дождь, большое дерево, сухое каменное укрытие и маленький костёр. Стражница храма желает спокойной ночи и уходит. Вы отдыхаете под луной.",
+      "summary_en": "Mateo meets you in the night jungle, names the rain, the big tree, the dry stone shelter, and the small fire. A temple guard says good night and walks back. You rest under the moon."
+    }
+  ]
+}

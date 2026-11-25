@@ -1,0 +1,46 @@
+{
+  "playlists": [
+    {
+      "id": "S01",
+      "title_en": "Golden Age of Piracy & The Spanish Main: Caribbean Night Journeys | Learn Spanish While Sleeping",
+      "title_ru": "Золотой век пиратства и Испанский Мэйн: ночные пути по Карибам — испанский во сне",
+      "slug": "golden_age_of_piracy_caribbean"
+    },
+    {
+      "id": "S02",
+      "title_en": "Ancient Rome & Pompeii: Everyday Life Sleep Stories | Learn Spanish While Sleeping",
+      "title_ru": "Древний Рим и Помпеи: быт в историях для сна — испанский во сне",
+      "slug": "ancient_rome_and_pompeii"
+    },
+    {
+      "id": "S03",
+      "title_en": "Ancient Americas & Maya/Aztec Mysteries: Learn Spanish While Sleeping",
+      "title_ru": "Ancient Americas & Maya/Aztec Mysteries: Learn Spanish While Sleeping",
+      "slug": "ancient_americas_mayaaztec_mysteries"
+    },
+    {
+      "id": "S04",
+      "title_en": "Cozy Fantasy & Alchemist's Sanctuary: Magical Sleep Stories | Learn Spanish While Sleeping",
+      "title_ru": "Уютное фэнтези и убежище алхимика: волшебные истории для сна — испанский во сне",
+      "slug": "cozy_fantasy_magic"
+    },
+    {
+      "id": "S05",
+      "title_en": "Deep Space Sanctuary: Cozy Sci-Fi Sleep Journeys | Learn Spanish While Sleeping",
+      "title_ru": "Убежище в глубоком космосе: уютные фантастические путешествия для сна — испанский во сне",
+      "slug": "deep_space_scifi"
+    },
+    {
+      "id": "S06",
+      "title_en": "Ancient Greece Sanctuary: Aegean Night Journeys | Learn Spanish While Sleeping",
+      "title_ru": "Святилище Древней Греции: ночные пути у Эгейского моря — испанский во сне",
+      "slug": "ancient_greece_sanctuary"
+    },
+    {
+      "id": "S07",
+      "title_en": "Nights of Ancient Egypt: Nile & Temple Sleep Stories | Learn Spanish While Sleeping",
+      "title_ru": "Ночи Древнего Египта: Нил и храмы в историях для сна — испанский во сне",
+      "slug": "nights_of_ancient_egypt"
+    }
+  ]
+}

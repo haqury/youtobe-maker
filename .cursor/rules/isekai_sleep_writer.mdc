@@ -1,0 +1,125 @@
+---
+description: Генерация эпизодов isekai/historical sleep language. Применять, когда просят создать эпизод для шаблона template_isekai_sleep или канала с TARGET_LANG и разметкой PLAYLIST_SEQUENCE.
+alwaysApply: false
+globs: ["templates/template_isekai_sleep/**", "channels/**"]
+---
+
+# Sleep language: писатель эпизодов
+
+Команда: «Создай эпизод EP02 для канала X [для плейлиста Y]».
+
+Повествование строго от второго лица («ты»). Погружение в место: свет, звук, запах, шаг. Без проводника, имён, диалогов и извинений за язык. Зрителю вопросов не задавать. Без «suddenly» / «вдруг», без хоррора, без медицинских обещаний про сон.
+
+## Границы
+
+- Только каналы из `template_isekai_sleep` (`channel_config.md`: `TARGET_LANG`, `NATIVE_LANG`, `BASE_STYLE_PROMPT`).
+- Не для `channel_02_sleep_history` и другой прозы. Старый `script.md` не конвертировать, пока пользователь прямо не попросил этот формат.
+- Озвучку, картинки и сборку видео не запускать без отдельной команды.
+
+## Подготовка
+
+Имя плейлиста — из запроса или `playlists.json`. **Озвучка и сборка — только `script.md` + `audio_cache/`**; `channel.db` в пайплайне не используем.
+
+1. Прочитай `channel_config.md`. `TARGET_LANG` и `NATIVE_LANG` только оттуда.
+2. Прочитай `series_bible.md`, `# BRIEF:`, `backlog.csv`, `published.csv`, соседние `script.md`. ID = бэклог.
+3. Дедуп между эпизодами — по файлам сценариев (или опционально `db_manager.py check`).
+4. Папка: `channels/<X>/playlists/<PLAYLIST_FOLDER>/episodes/<ID>_<slug>/`.
+
+## Слоты
+
+В `script.md` только `NARRATOR_NATIVE_<язык>` и `NARRATOR_TARGET_<язык>`. Суффикс языка = `NATIVE_LANG` / `TARGET_LANG`.
+
+Голос берётся из ключей конфига, не из имени слота: `NARRATOR_NATIVE_*` → `MENTOR_NATIVE`, `NARRATOR_TARGET_*` → `MENTOR_TARGET`. Слоты `MENTOR_*` в сценарий не писать.
+
+В `ACT_1`–`ACT_6` большинство связок содержат только `NARRATOR_NATIVE_<язык>`. Целевой слот не ставится в каждую связку.
+
+Там, где вкрапление есть, сразу после `NARRATOR_TARGET_<язык>` идёт `NARRATOR_NATIVE_<язык>_translate` с тем же ID и темпом `0.84`: точный перевод этой фразы. Голос тот же `MENTOR_NATIVE`. Пример: `[005|NARRATOR_NATIVE_en_translate|0.84]`.
+
+В хуке `000` три разных слота, чтобы кэш не затирал строки: `NARRATOR_NATIVE_en`, `NARRATOR_NATIVE_en_scene`, `NARRATOR_NATIVE_en_lantern`. Слот `_slow` в сценарий не добавлять. Один смысловой ID на связку; внутри связки каждый слот один раз. ID только возрастают.
+
+В `RECALL` допустим второй целевой слот `NARRATOR_TARGET_<язык>_repeat`. Это медленный повтор той же фразы, голос тот же `MENTOR_TARGET`. В `mode=target_only` слоты с суффиксом `_repeat` не озвучиваются.
+
+## Четыре фазы
+
+Сюжет и порядок сцен берутся только из `# BRIEF:` эпизода. В `ACT_1`–`ACT_6` красота только в `NARRATOR_NATIVE`: связные предложения, свет, звук, запах, фактура места. `NARRATOR_TARGET` — A1: настоящее время, одна короткая мысль, без придаточных, прошедшего и сослагательного. Базовые слова окружения, движения и простых качеств. Внутри реплик нет других скобок, HTML и markdown.
+
+Оценку минут одной русской строкой `#` в начале `script.md`. Остаток до 600 минут — тихий фон на сборке, не строками сценария.
+
+**Два прохода.** Новый эпизод всегда пишется в два прохода, чтобы не упереться в лимит вывода и не обрезать концовку. Проход 1: только `ACT_1`–`ACT_6`, ровно 108 связок, затем остановка. Проход 2: `RECALL_1`–`RECALL_3`, ровно 108 связок, плюс `PLAYLIST_SEQUENCE`. Не сжимай закрепление, чтобы вместить его в тот же ответ, что и сюжет.
+
+Пропорция **1 к 1**. В `ACT_1`–`ACT_6` ровно **18 связок на акт**, всего **108**. В `RECALL_1`, `RECALL_2`, `RECALL_3` ровно **36 связок на блок**, всего **108**: по одной связке на каждую сцену `001`–`108`, ничего не выкидывая. `RECALL_1` = сцены `001`–`036`, `RECALL_2` = `037`–`072`, `RECALL_3` = `073`–`108`. ID закрепления не повторяют ID сюжета и идут следом.
+
+1. **Хук `000`** (внутри `ACT_1_<SCENE>`, до первого слова изучаемого языка). Три реплики только `NARRATOR_NATIVE`, темп `0.88`. Паузы `[PAUSE|3.5]`…`[PAUSE|4.0]`. Смысл: тело отпускает день; воздух и звук места из `# BRIEF:`.
+2. **Фаза 1, `ACT_1_<SCENE>`–`ACT_3_<SCENE>`.** По **18 связок** в каждом акте, ~85% родного языка и ~15% изучаемого. Почти весь акт — сплошной `NARRATOR_NATIVE` (`0.84`) и `[PAUSE|1.5]`. Целевой язык только в **3–4 связках акта**, примерно раз в 4–5 связок. В такой связке: родной текст → `[PAUSE|1.5]` → одна короткая A1-фраза `NARRATOR_TARGET` (`0.78`) → `[PAUSE|1.5]` → `NARRATOR_NATIVE_<язык>_translate` (`0.84`) → `[PAUSE|2.0]`.
+3. **Фаза 2, `ACT_4_<SCENE>`–`ACT_6_<SCENE>`.** По **18 связок** в каждом акте, ~70% родного языка и ~30% изучаемого. Целевой язык в **5–6 связках акта**, примерно раз в 2–3 связки: 1–2 простых A1-предложения. Те же паузы, и после каждой целевой реплики обязателен `_translate`. Остальные связки акта — только родной язык.
+4. **Фаза 3, `RECALL_1`, `RECALL_2`, `RECALL_3`.** Это не сюжетные акты, а пошаговое закрепление каждой сцены. Каждая связка — один новый ID, строго так:
+   1. `NARRATOR_NATIVE` (`0.88`) — **2–3 предложения, 25–35 слов**, эта сцена целиком.
+   2. `[PAUSE|2.0]`
+   3. `NARRATOR_TARGET` (`0.78`) — **4–5 простых связных предложений A1, 30–40 слов**, полный перевод этой сцены. Нельзя сжимать до 1 предложения. Нельзя раздувать до абзаца в 15 предложений.
+   4. `[PAUSE|2.0]`
+   5. `NARRATOR_TARGET_<язык>_repeat` (`0.74`) — точный медленный повтор тех же 4–5 предложений.
+   6. `[PAUSE|3.0]`
+5. **Фаза 4 — не новый текст.** `PLAYLIST_SEQUENCE`: сначала `mode=full`, `repeat=1` по `ACT_1_<SCENE>`–`ACT_6_<SCENE>` и по `RECALL_1`–`RECALL_3`. Затем одна строка `PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.88, extra_pause=4.0, repeat=1)`. Слоты `_repeat` не звучат. 108 сцен по 30–40 слов дают ~55–65 минут чистого целевого языка, сопоставимых с длиной сюжета.
+
+## Пример разметки
+
+`es` / `en` — пример ритма, не сюжет. `<SCENE>` замени по `# BRIEF:`. В файле по 18 связок на каждый акт и по 36 связок на каждый recall. Ниже показан хук, одна связка фазы и одна связка закрепления нужного объёма.
+
+    # EPISODE: EP02_name
+    # TARGET_LANG: es
+    # NATIVE_LANG: en
+    # Оценка хронометража: речь ~220–240 мин. Остаток до 600 мин — тихий фон.
+
+    ## BLOCK: ACT_1_<SCENE>
+    [000|NARRATOR_NATIVE_en|0.88] Let the day slip from your shoulders, and let your hands rest open. Nothing you did today needs you now. The night can be slow.
+    [PAUSE|3.5]
+    [000|NARRATOR_NATIVE_en_scene|0.88] The air of this place is close and mild. A small sound repeats, and the dark around you stays kind.
+    [PAUSE|4.0]
+    [000|NARRATOR_NATIVE_en_lantern|0.88] A low warm light touches what is nearest. The rest of the room can wait.
+    [PAUSE|3.5]
+    [001|NARRATOR_NATIVE_en|0.84] The nearest surface is cool under your hand. A small sound repeats in the same place. The air does not hurry. You stay with that sound.
+    [PAUSE|1.5]
+    [002|NARRATOR_NATIVE_en|0.84] The same place is still around you. The light is lower than before. A quiet texture meets your hand.
+    [PAUSE|1.5]
+
+    ## BLOCK: ACT_2_<SCENE>
+    ## BLOCK: ACT_3_<SCENE>
+
+    ## BLOCK: ACT_4_<SCENE>
+    [055|NARRATOR_NATIVE_en|0.84] The air here is cooler than the room you left. One hand stays on the stone.
+    [PAUSE|1.5]
+    [055|NARRATOR_TARGET_es|0.78] El aire es fresco.
+    [PAUSE|1.5]
+    [055|NARRATOR_NATIVE_en_translate|0.84] The air is cool.
+    [PAUSE|2.0]
+
+    ## BLOCK: ACT_5_<SCENE>
+    ## BLOCK: ACT_6_<SCENE>
+
+    ## BLOCK: RECALL_1
+    [109|NARRATOR_NATIVE_en|0.88] Warm rain finds you on the dark stone street. Water keeps to the middle of the road. A small lamp burns in a doorway ahead.
+    [PAUSE|2.0]
+    [109|NARRATOR_TARGET_es|0.78] Tú estás bajo la lluvia cálida. La calle es oscura y de piedra. El agua corre por el centro. Tus pies están en la piedra mojada. Hay una luz pequeña en una puerta.
+    [PAUSE|2.0]
+    [109|NARRATOR_TARGET_es_repeat|0.74] Tú estás bajo la lluvia cálida. La calle es oscura y de piedra. El agua corre por el centro. Tus pies están en la piedra mojada. Hay una luz pequeña en una puerta.
+    [PAUSE|3.0]
+
+    ## BLOCK: RECALL_2
+    ## BLOCK: RECALL_3
+
+    ## PLAYLIST_SEQUENCE
+    PLAY: ACT_1_<SCENE>, ACT_2_<SCENE>, ACT_3_<SCENE> (mode=full, repeat=1)
+    PLAY: ACT_4_<SCENE>, ACT_5_<SCENE>, ACT_6_<SCENE> (mode=full, repeat=1)
+    PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=full, repeat=1)
+    PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.88, extra_pause=4.0, repeat=1)
+
+## visual_prompts.md
+
+- Одна строка `PROMPT: ` на кадр: ночной пейзаж, интерьер или деталь окружения от первого лица. Людей, лиц, имён и фигур в кадре нет.
+- `BASE_STYLE_PROMPT` в строки не вставлять: `generate_images.py` добавит его сам.
+- Каждая строка заканчивается на `16:9, no text`.
+
+## Остальные файлы
+
+- `metadata.md` — `## English Metadata` и `## Russian Metadata` по `templates/episode_metadata.md`.
+- `script_ru.md` не обязателен: озвучка на этом пути делает только `voiceover.mp3`.
