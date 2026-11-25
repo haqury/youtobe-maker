@@ -19,8 +19,6 @@ channels/**/episodes/**/final_video.mp4
 channels/**/episodes/**/*.mp4
 channels/**/episodes/**/voiceover.mp3
 channels/**/episodes/**/voiceover_ru.mp3
-channels/**/episodes/**/thumbnail.jpg
-channels/**/episodes/**/thumbnail.png
 channels/**/episodes/**/.sync_instruction.txt
 channels/**/episodes/**/sync_instruction_last.txt
 channels/**/episodes/**/history/
