@@ -131,6 +131,7 @@ from ai_router import (
     save_ai_settings,
 )
 from local_sd import list_local_sd_models, local_sd_status
+from project_update import project_status, pull_master, schedule_restart
 from quota_tracker import (
     all_provider_statuses,
     estimate_episode_workload,
@@ -1986,6 +1987,43 @@ def render_sidebar_quota_widget() -> None:
         )
 
 
+def render_sidebar_project_update() -> None:
+    status = project_status(ROOT)
+    st.sidebar.markdown("---")
+    with st.sidebar.expander("Обновление с master"):
+        if status["branch"]:
+            st.caption(f"Сейчас: `{status['branch']}` · {status['head'] or 'без коммитов'}")
+        else:
+            st.caption("Git в этом окружении недоступен, пока образ не пересобран с git.")
+        st.caption(
+            "Переключает рабочую копию на `master`, подтягивает `origin/master` "
+            "и перезапускает контейнер `youtobe-studio`. "
+            "Несохранённые правки в отслеживаемых файлах обновление остановят. "
+            "Новые пакеты из requirements попадут в контейнер только после пересборки образа."
+        )
+        confirm = st.checkbox(
+            "Подтянуть master и перезапустить Docker",
+            key="confirm_pull_master_restart",
+        )
+        if st.button(
+            "Обновить и перезапустить",
+            type="primary",
+            disabled=not confirm,
+            key="pull_master_restart",
+        ):
+            ok, log = pull_master(ROOT)
+            st.session_state["project_update_log"] = log
+            st.session_state["project_update_ok"] = ok
+            if ok:
+                schedule_restart(ROOT)
+        if "project_update_log" in st.session_state:
+            if st.session_state.get("project_update_ok"):
+                st.success("Master подтянут. Контейнер перезапустится через пару секунд, страница оборвётся и поднимется сама.")
+            else:
+                st.error("Обновление не выполнено.")
+            st.code(st.session_state["project_update_log"] or "пусто")
+
+
 def sidebar() -> str:
     st.sidebar.title("YouTube Panel")
     render_sidebar_jobs_widget()
@@ -2009,6 +2047,7 @@ def sidebar() -> str:
         st.rerun()
     render_sidebar_ai_settings()
     render_sidebar_quota_widget()
+    render_sidebar_project_update()
     return section
 
 
