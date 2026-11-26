@@ -1,0 +1,8 @@
+streamlit>=1.39
+pandas>=2.2
+requests>=2.32
+python-dotenv>=1.0
+Pillow>=10.0
+edge-tts>=7.0
+imageio-ffmpeg>=0.5
+moviepy==2.2.1

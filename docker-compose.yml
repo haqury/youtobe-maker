@@ -1,0 +1,13 @@
+services:
+  studio:
+    build: .
+    container_name: youtobe-studio
+    ports:
+      - "8501:8501"
+    environment:
+      - STUDIO_CONTAINER_NAME=youtobe-studio
+    volumes:
+      - .:/app
+      - /var/run/docker.sock:/var/run/docker.sock
+    working_dir: /app
+    restart: unless-stopped

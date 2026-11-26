@@ -1,0 +1,15 @@
+.git
+.venv
+venv
+**/__pycache__
+**/*.pyc
+remotion_studio/node_modules
+remotion_studio/out
+remotion_studio/build
+**/*.mp4
+**/*.mp3
+models
+tools
+logs
+static/preview
+.env
