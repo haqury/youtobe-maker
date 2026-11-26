@@ -19,8 +19,8 @@ NATIVE_LANG: en
 MENTOR_NATIVE: en-US-BrianNeural
 MENTOR_TARGET: es-ES-AlvaroNeural
 NPC_TARGET: es-ES-AlvaroNeural
-SPEECH_SPEED_BIAS: 0.90
-SPEECH_PITCH: -8Hz
+SPEECH_SPEED_BIAS: 0.96
+SPEECH_PITCH: -12Hz
 BASE_STYLE_PROMPT: cozy dark anime illustration, muted desaturated colors for sleep, night jungle or ancient stone or temple, warm rain, a small pool of dim lantern light on wet leaves or stone, no people, chiaroscuro, no text, no neon, no horror
 Channel Name: LumaDream: Learn Spanish
 Handle: @LumaDreamLearnSpanish

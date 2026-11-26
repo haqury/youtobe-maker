@@ -44,3 +44,6 @@ remotion_studio/build/
 assets/ambient/*.mp3
 !assets/ambient/.gitkeep
 *.mp3
+
+# Оверлеи остаются на диске, в репозиторий не кладём (rain1.mp4 > 100 МБ)
+assets/overlays/*.mp4
