@@ -47,3 +47,4 @@ assets/ambient/*.mp3
 
 # Оверлеи остаются на диске, в репозиторий не кладём (rain1.mp4 > 100 МБ)
 assets/overlays/*.mp4
+*.m4a
