@@ -197,11 +197,10 @@ def save_review(episode_dir: Path, data: dict) -> None:
                 "note": str(segment.get("note", "")).strip(),
             }
         )
-    payload = {
-        "problem_images": normalize_problem_images(data.get("problem_images")),
-        "video_segments": cleaned_segments,
-        "animate_frames": normalize_animate_frames(data.get("animate_frames")),
-    }
+    payload = dict(data)
+    payload["problem_images"] = normalize_problem_images(data.get("problem_images"))
+    payload["video_segments"] = cleaned_segments
+    payload["animate_frames"] = normalize_animate_frames(data.get("animate_frames"))
     review_path(episode_dir).write_text(
         json.dumps(payload, ensure_ascii=False, indent=2),
         encoding="utf-8",

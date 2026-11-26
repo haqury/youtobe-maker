@@ -14,7 +14,11 @@ DEFAULT_ANIMATION: dict[str, Any] = {
     "enable_ken_burns": True,
     "enable_breathing_light": True,
     "overlay_file": "none",
+    "overlay_files": [],
     "overlay_opacity": 0.22,
+    "overlay_random_mix": True,
+    "overlay_max_layers": 3,
+    "overlay_variants": 12,
     "comfy_frames": ["01", "02", "03"],
     "remotion_chapter_titles": True,
     "remotion_particles": True,
@@ -32,8 +36,36 @@ def list_overlay_files() -> list[str]:
     return sorted(path.name for path in OVERLAYS_DIR.glob("*.mp4") if path.is_file())
 
 
+def _normalize_overlay_list(raw_files: object, legacy_file: str) -> list[str]:
+    items: list[str] = []
+    if raw_files is not None:
+        if isinstance(raw_files, (list, tuple, set)):
+            candidates = [str(item).strip() for item in raw_files]
+        elif isinstance(raw_files, str):
+            candidates = [part.strip() for part in raw_files.split(",")]
+        else:
+            candidates = [str(raw_files).strip()]
+        seen: set[str] = set()
+        for token in candidates:
+            low = token.lower()
+            if low in {"", "none", "off"}:
+                continue
+            normalized = "auto" if low == "auto" else token
+            if normalized not in seen:
+                seen.add(normalized)
+                items.append(normalized)
+        return items
+    low_legacy = legacy_file.strip().lower()
+    if low_legacy in {"", "none", "off"}:
+        return []
+    if low_legacy == "auto":
+        return ["auto"]
+    return [legacy_file.strip()]
+
+
 def normalize_animation_settings(raw: object | None) -> dict[str, Any]:
     out = dict(DEFAULT_ANIMATION)
+    has_raw_files = isinstance(raw, dict) and "overlay_files" in raw and raw["overlay_files"] is not None
     if isinstance(raw, dict):
         for key in DEFAULT_ANIMATION:
             if key in raw and raw[key] is not None:
@@ -45,11 +77,25 @@ def normalize_animation_settings(raw: object | None) -> dict[str, Any]:
     out["enable_ken_burns"] = bool(out.get("enable_ken_burns", True))
     out["enable_breathing_light"] = bool(out.get("enable_breathing_light", True))
     overlay = str(out.get("overlay_file", "none")).strip() or "none"
-    out["overlay_file"] = overlay
+    overlay_files = _normalize_overlay_list(
+        out.get("overlay_files") if has_raw_files else None,
+        overlay,
+    )
+    out["overlay_files"] = overlay_files
+    out["overlay_file"] = overlay_files[0] if overlay_files else "none"
     try:
         out["overlay_opacity"] = min(0.4, max(0.1, float(out["overlay_opacity"])))
     except (TypeError, ValueError):
         out["overlay_opacity"] = 0.22
+    out["overlay_random_mix"] = bool(out.get("overlay_random_mix", True))
+    try:
+        out["overlay_max_layers"] = max(1, min(5, int(out.get("overlay_max_layers", 3))))
+    except (TypeError, ValueError):
+        out["overlay_max_layers"] = 3
+    try:
+        out["overlay_variants"] = max(1, min(48, int(out.get("overlay_variants", 12))))
+    except (TypeError, ValueError):
+        out["overlay_variants"] = 12
     frames = out.get("comfy_frames")
     if isinstance(frames, list):
         stems: list[str] = []
@@ -76,21 +122,45 @@ def normalize_animation_settings(raw: object | None) -> dict[str, Any]:
     return out
 
 
-def resolve_overlay_path(settings: dict[str, Any], episode_dir: Path | None = None) -> Path | None:
-    choice = str(settings.get("overlay_file", "none")).strip().lower()
-    if choice in {"", "none", "off"}:
-        return None
-    if choice == "auto":
-        files = list_overlay_files()
-        return (OVERLAYS_DIR / files[0]) if files else None
-    candidate = OVERLAYS_DIR / choice
+def _resolve_single_overlay(token: str, episode_dir: Path | None) -> Path | None:
+    candidate = OVERLAYS_DIR / token
     if candidate.is_file():
         return candidate
     if episode_dir:
-        local = episode_dir / "images" / choice
+        local = episode_dir / "images" / token
         if local.is_file() and local.suffix.lower() == ".mp4":
             return local
     return None
+
+
+def resolve_overlay_paths(settings: dict[str, Any], episode_dir: Path | None = None) -> list[Path]:
+    if "overlay_files" in settings and settings["overlay_files"] is not None:
+        tokens = _normalize_overlay_list(settings["overlay_files"], str(settings.get("overlay_file", "none")))
+    else:
+        tokens = _normalize_overlay_list(None, str(settings.get("overlay_file", "none")))
+    resolved: list[Path] = []
+    seen: set[Path] = set()
+    for token in tokens:
+        if token.lower() == "auto":
+            for name in list_overlay_files():
+                path = OVERLAYS_DIR / name
+                key = path.resolve()
+                if path.is_file() and key not in seen:
+                    seen.add(key)
+                    resolved.append(path)
+            continue
+        path = _resolve_single_overlay(token, episode_dir)
+        if path is not None:
+            key = path.resolve()
+            if key not in seen:
+                seen.add(key)
+                resolved.append(path)
+    return resolved
+
+
+def resolve_overlay_path(settings: dict[str, Any], episode_dir: Path | None = None) -> Path | None:
+    paths = resolve_overlay_paths(settings, episode_dir)
+    return paths[0] if paths else None
 
 
 def infer_animation_method_from_review(review: dict) -> str | None:
@@ -123,6 +193,7 @@ def load_episode_animation(episode_dir: Path) -> dict[str, Any]:
             "animation_mode": review.get("animation_mode"),
             "enable_breathing_light": review.get("enable_breathing_light"),
             "overlay_file": review.get("overlay_file"),
+            "overlay_files": review.get("overlay_files"),
             "comfy_frames": review.get("animate_frames"),
         }
     settings = normalize_animation_settings(raw)

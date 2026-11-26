@@ -7,9 +7,12 @@ maybe_build_long(episode_dir) -> Path | None. None = использовать о
 from __future__ import annotations
 
 import math
+import random
 import re
+import shutil
 import subprocess
 import sys
+from dataclasses import dataclass
 from pathlib import Path
 
 _SCRIPTS = Path(__file__).resolve().parent
@@ -21,6 +24,7 @@ from ambient_tail import (
     brightness_at,
     collect_tracks,
     dim_start_for,
+    episode_seed,
     mix_voice_with_tail,
     render_unique_ambient,
     safe_category,
@@ -44,10 +48,24 @@ AMBIENT_VOLUME = 0.08
 DURATION_RE = re.compile(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)")
 
 
-def _ffmpeg() -> str:
-    import imageio_ffmpeg
+@dataclass(frozen=True)
+class OverlayLayerSpec:
+    path: Path
+    opacity: float
+    start_sec: float = 0.0
+    hflip: bool = False
 
-    return imageio_ffmpeg.get_ffmpeg_exe()
+
+def _ffmpeg() -> str:
+    try:
+        import imageio_ffmpeg
+
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except ImportError:
+        exe = shutil.which("ffmpeg")
+        if exe:
+            return exe
+        raise
 
 
 def _run(args: list[str]) -> subprocess.CompletedProcess:
@@ -187,6 +205,104 @@ def _apply_brightness(
     return graph, last
 
 
+def build_overlay_variants(
+    overlays: list[Path],
+    durations: dict[Path, float],
+    *,
+    base_opacity: float,
+    random_mix: bool,
+    max_layers: int,
+    variant_count: int,
+    rng: random.Random,
+) -> list[tuple[OverlayLayerSpec, ...]]:
+    """Генерирует пул комбинаций оверлеев (по 1 или несколько слоёв один на другой)."""
+    if not overlays:
+        return []
+    if not random_mix:
+        fixed = tuple(
+            OverlayLayerSpec(
+                path=path,
+                opacity=round(max(0.08, min(0.45, base_opacity * (0.90 ** idx))), 3),
+                start_sec=0.0,
+                hflip=False,
+            )
+            for idx, path in enumerate(overlays)
+        )
+        return [fixed]
+
+    cap = min(len(overlays), max(1, int(max_layers)))
+    target = max(1, int(variant_count))
+    weights = [1.0] if cap == 1 else ([0.42, 0.58] if cap == 2 else [0.28, 0.44, 0.28, *([0.16] * (cap - 3))])
+    counts = list(range(1, cap + 1))
+
+    variants: list[tuple[OverlayLayerSpec, ...]] = []
+    seen_sigs: set[tuple[tuple[str, bool], ...]] = set()
+    has_stacked = False
+
+    for idx in range(target):
+        best_specs: tuple[OverlayLayerSpec, ...] | None = None
+        best_sig: tuple[tuple[str, bool], ...] | None = None
+        force_stack = cap >= 2 and target >= 2 and idx == target - 1 and not has_stacked
+        for attempt in range(8):
+            if force_stack:
+                k = min(cap, 2)
+            else:
+                k = rng.choices(counts, weights=weights[:cap], k=1)[0]
+            chosen = rng.sample(overlays, k)
+            rng.shuffle(chosen)
+            specs: list[OverlayLayerSpec] = []
+            for layer_i, path in enumerate(chosen):
+                dur = float(durations.get(path, 0.0) or 0.0)
+                start_sec = round(rng.uniform(0.0, max(0.0, dur - 0.5)), 2) if dur > 1.0 else 0.0
+                hflip = bool(rng.random() < 0.5)
+                jitter = rng.uniform(-0.04, 0.04)
+                layer_op = round(max(0.08, min(0.45, (base_opacity + jitter) * (0.90 ** layer_i))), 3)
+                specs.append(
+                    OverlayLayerSpec(
+                        path=path,
+                        opacity=layer_op,
+                        start_sec=start_sec,
+                        hflip=hflip,
+                    )
+                )
+            sig = tuple((s.path.name, s.hflip) for s in specs)
+            best_specs = tuple(specs)
+            best_sig = sig
+            if sig not in seen_sigs or attempt == 7:
+                break
+        assert best_specs is not None and best_sig is not None
+        seen_sigs.add(best_sig)
+        if len(best_specs) >= 2:
+            has_stacked = True
+        variants.append(best_specs)
+    return variants
+
+
+def pick_batch_overlay_variant(
+    batch_count: int,
+    variant_count: int,
+    rng: random.Random,
+) -> list[int]:
+    """Распределяет варианты оверлеев по batch без повторов подряд."""
+    if batch_count <= 0 or variant_count <= 0:
+        return []
+    if variant_count == 1:
+        return [0] * batch_count
+    schedule: list[int] = []
+    deck: list[int] = []
+    prev = -1
+    for _ in range(batch_count):
+        if not deck:
+            deck = list(range(variant_count))
+            rng.shuffle(deck)
+            if len(deck) > 1 and deck[0] == prev:
+                deck[0], deck[1] = deck[1], deck[0]
+        pick = deck.pop(0)
+        schedule.append(pick)
+        prev = pick
+    return schedule
+
+
 def encode_batch(
     clips: list[Path],
     output: Path,
@@ -196,6 +312,7 @@ def encode_batch(
     overlay: Path | None = None,
     overlay_opacity: float = 0.22,
     keyframe_at: float | None = None,
+    overlays: list[OverlayLayerSpec] | tuple[OverlayLayerSpec, ...] | None = None,
 ) -> None:
     """До 6 клипов с xfade 0.5 с в один batch (без O(n^2) пере-кодирования)."""
     fps = max(1, int(fps))
@@ -214,16 +331,40 @@ def encode_batch(
     if len(clips) == 1:
         graph = prep[0].replace("[p0]", "[x0]")
         last = "x0"
-    if overlay is not None:
-        ov_index = len(clips)
-        args += ["-stream_loop", "-1", "-i", str(overlay)]
-        opacity = max(0.0, min(1.0, float(overlay_opacity)))
-        graph += (
-            f";[{ov_index}:v]scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=increase,"
-            f"crop={WIDTH}:{HEIGHT},fps={fps},format=yuv420p[ov]"
-            f";[{last}][ov]blend=all_mode=screen:all_opacity={opacity:.3f}:shortest=1[vlay]"
-        )
-        last = "vlay"
+
+    active_overlays: list[OverlayLayerSpec]
+    if overlays:
+        active_overlays = list(overlays)
+    elif overlay is not None:
+        active_overlays = [OverlayLayerSpec(path=overlay, opacity=overlay_opacity)]
+    else:
+        active_overlays = []
+
+    if active_overlays:
+        graph += f";[{last}]setsar=1[vbase]"
+        last = "vbase"
+        for idx, spec in enumerate(active_overlays):
+            ov_index = len(clips) + idx
+            args += ["-stream_loop", "-1", "-i", str(spec.path)]
+            ov_filters: list[str] = []
+            if spec.start_sec > 0.01:
+                ov_filters.append(f"trim=start={spec.start_sec:.2f},setpts=PTS-STARTPTS")
+            ov_filters.append(f"settb=AVTB,fps={fps}")
+            if spec.hflip:
+                ov_filters.append("hflip")
+            ov_filters.append(
+                f"scale={WIDTH}:{HEIGHT}:force_original_aspect_ratio=increase,"
+                f"crop={WIDTH}:{HEIGHT},setsar=1,format=yuv420p"
+            )
+            ov_label = f"ov{idx}"
+            out_label = f"vlay{idx}"
+            opacity = max(0.0, min(1.0, float(spec.opacity)))
+            graph += (
+                f";[{ov_index}:v]{','.join(ov_filters)}[{ov_label}]"
+                f";[{last}][{ov_label}]blend=all_mode=screen:all_opacity={opacity:.3f}:shortest=1[{out_label}]"
+            )
+            last = out_label
+
     graph, last = _apply_brightness(graph, last, brightness, ramp)
     cmd = [
         *args, "-filter_complex", graph, "-map", f"[{last}]", "-an",
@@ -343,7 +484,7 @@ def build_long(
             f"Затемнение до {int(brightness_at(10**9, dim_start_for(duration)) * 100)}% "
             f"с {dim_start_for(duration) / 60:.1f} мин."
         )
-    from animation_settings import load_episode_animation, resolve_overlay_path
+    from animation_settings import load_episode_animation, resolve_overlay_paths
     from episode_timing import describe_fps_schedule, episode_timing_from_config, fps_at
 
     timing = episode_timing_from_config(episode_dir)
@@ -351,8 +492,11 @@ def build_long(
     fps_end = int(timing["fps_end"])
     fps_every = float(timing["fps_interval_min"])
     anim = load_episode_animation(episode_dir)
-    overlay = resolve_overlay_path(anim, episode_dir)
+    overlay_paths = resolve_overlay_paths(anim, episode_dir)
     overlay_opacity = float(anim.get("overlay_opacity", 0.22) or 0.22)
+    overlay_random_mix = bool(anim.get("overlay_random_mix", True))
+    overlay_max_layers = int(anim.get("overlay_max_layers", 3) or 3)
+    overlay_variants_count = int(anim.get("overlay_variants", 12) or 12)
     from intro_brand import attach_intro, prepare_intro_clip
     from channel_settings import resolve_episode_branding, resolve_intro_source
 
@@ -381,10 +525,28 @@ def build_long(
         )
     print(f"Длинный ролик: озвучка {duration / 60:.1f} мин, кадров {len(images)} (ffmpeg, без MoviePy).")
     print(f"FPS: {describe_fps_schedule(total, fps_start, fps_end, fps_every)}")
-    if overlay is None:
+
+    ov_durations = {path: probe_duration(path) for path in overlay_paths}
+    ov_pool = build_overlay_variants(
+        overlay_paths,
+        ov_durations,
+        base_opacity=overlay_opacity,
+        random_mix=overlay_random_mix,
+        max_layers=overlay_max_layers,
+        variant_count=overlay_variants_count,
+        rng=random.Random(episode_seed(episode_dir, "overlays")),
+    )
+    if not overlay_paths:
         print("Оверлей не выбран — и речь, и хвост без него.")
+    elif overlay_random_mix:
+        names = ", ".join(p.name for p in overlay_paths)
+        print(
+            f"Оверлеи ({len(overlay_paths)}): {names} — рандомный микс (до {min(len(overlay_paths), overlay_max_layers)} сл., "
+            f"{len(ov_pool)} вариантов, база screen {overlay_opacity:.0%})."
+        )
     else:
-        print(f"Оверлей: {overlay.name}, screen {overlay_opacity:.0%}, на всю длину включая хвост.")
+        names = " + ".join(p.name for p in overlay_paths)
+        print(f"Оверлеи (фиксированно): {names}, screen {overlay_opacity:.0%}.")
 
     for index, image in enumerate(images, start=1):
         emit_progress(index, total_steps, f"Клип {index}/{len(images)}: {image.name}")
@@ -392,6 +554,15 @@ def build_long(
 
     batch_len = BATCH_SIZE * CLIP_SEC - (BATCH_SIZE - 1) * XFADE_SEC
     batch_count = max(1, math.ceil(total / batch_len))
+    ov_schedule = (
+        pick_batch_overlay_variant(
+            batch_count,
+            len(ov_pool),
+            random.Random(episode_seed(episode_dir, "overlay_seq")),
+        )
+        if ov_pool
+        else []
+    )
     for stale in cache.glob("batch_*.mp4"):
         stale.unlink(missing_ok=True)
     unique: dict[tuple, Path] = {}
@@ -423,8 +594,11 @@ def build_long(
                 key = tuple(slots) + ("ramp", round(b0, 2), round(b1, 2))
         else:
             key = tuple(slots)
-        if overlay is not None:
-            key = key + ("ov", round(overlay_opacity, 2))
+        batch_overlays: tuple[OverlayLayerSpec, ...] | None = None
+        if ov_pool:
+            ov_idx = ov_schedule[batch]
+            batch_overlays = ov_pool[ov_idx]
+            key = key + ("ov_v", ov_idx, round(overlay_opacity, 2))
         keyframe_at: float | None = None
         if intro_head is not None and start_t <= intro_head < start_t + batch_len:
             keyframe_at = intro_head - start_t
@@ -437,9 +611,8 @@ def build_long(
                 brightness,
                 ramp,
                 batch_fps,
-                overlay,
-                overlay_opacity,
-                keyframe_at,
+                keyframe_at=keyframe_at,
+                overlays=batch_overlays,
             )
             unique[key] = target
         sequence.append(unique[key])

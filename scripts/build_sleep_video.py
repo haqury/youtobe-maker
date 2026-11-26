@@ -3,9 +3,11 @@
 from __future__ import annotations
 
 import argparse
+import bisect
 import gc
 import math
 import os
+import random
 import re
 import sys
 from pathlib import Path
@@ -17,7 +19,8 @@ _SCRIPTS = Path(__file__).resolve().parent
 if str(_SCRIPTS) not in sys.path:
     sys.path.insert(0, str(_SCRIPTS))
 
-from animation_settings import load_episode_animation, resolve_overlay_path
+from ambient_tail import episode_seed
+from animation_settings import load_episode_animation, resolve_overlay_paths
 from channel_settings import (
     brand_asset_path,
     channel_dir_from_episode,
@@ -241,7 +244,15 @@ def screen_blend(base: np.ndarray, overlay: np.ndarray, alpha: float) -> np.ndar
     return (np.clip(mix, 0, 1) * 255).astype(np.uint8)
 
 
-def apply_video_overlay(base: VideoClip, overlay_path: Path, opacity: float, opened: list) -> VideoClip:
+def apply_video_overlay(
+    base: VideoClip,
+    overlay_path: Path,
+    opacity: float,
+    opened: list,
+    *,
+    start_sec: float = 0.0,
+    hflip: bool = False,
+) -> VideoClip:
     overlay_src = VideoFileClip(str(overlay_path)).without_audio()
     opened.append(overlay_src)
     if overlay_src.duration is None or overlay_src.duration <= 0:
@@ -249,9 +260,92 @@ def apply_video_overlay(base: VideoClip, overlay_path: Path, opacity: float, ope
 
     def frame(t: float) -> np.ndarray:
         base_f = base.get_frame(t)
-        ov_t = t % overlay_src.duration
+        ov_t = (t + start_sec) % overlay_src.duration
         ov_f = overlay_src.get_frame(ov_t)
+        if hflip:
+            ov_f = ov_f[:, ::-1]
         return screen_blend(base_f, ov_f, opacity)
+
+    layered = VideoClip(frame_function=frame, duration=base.duration).with_fps(FPS)
+    opened.append(layered)
+    return layered
+
+
+def apply_video_overlays(
+    base: VideoClip,
+    overlay_paths: list[Path],
+    opacity: float,
+    opened: list,
+    *,
+    random_mix: bool = True,
+    max_layers: int = 3,
+    seed: int = 0,
+) -> VideoClip:
+    sources: list[VideoFileClip] = []
+    for path in overlay_paths:
+        src = VideoFileClip(str(path)).without_audio()
+        opened.append(src)
+        if src.duration is not None and src.duration > 0:
+            sources.append(src)
+    if not sources:
+        return base
+
+    total_dur = float(base.duration or 0.0)
+    if not random_mix or total_dur <= 0:
+        fixed_layers = [
+            (
+                idx,
+                max(0.08, min(0.45, opacity * (0.90 ** idx))),
+                0.0,
+                False,
+            )
+            for idx in range(len(sources))
+        ]
+        starts = [0.0]
+        windows = [fixed_layers]
+    else:
+        rng = random.Random(seed)
+        win_sec = 25.0 if total_dur >= 50.0 else max(8.0, total_dur / 3.0)
+        win_count = max(1, math.ceil(total_dur / win_sec))
+        cap = min(len(sources), max(1, int(max_layers)))
+        counts = list(range(1, cap + 1))
+        weights = [1.0] if cap == 1 else ([0.42, 0.58] if cap == 2 else [0.28, 0.44, 0.28, *([0.16] * (cap - 3))])
+        starts = [i * win_sec for i in range(win_count)]
+        windows = []
+        prev_sig: tuple[int, ...] | None = None
+        for w_idx in range(win_count):
+            picked_indices: list[int] = []
+            for _attempt in range(6):
+                if cap >= 2 and win_count >= 2 and w_idx == win_count - 1 and all(len(w) < 2 for w in windows):
+                    k = min(cap, 2)
+                else:
+                    k = rng.choices(counts, weights=weights[:cap], k=1)[0]
+                picked_indices = rng.sample(range(len(sources)), k)
+                rng.shuffle(picked_indices)
+                if tuple(picked_indices) != prev_sig or len(sources) == 1:
+                    break
+            prev_sig = tuple(picked_indices)
+            layers = []
+            for layer_i, src_idx in enumerate(picked_indices):
+                dur = float(sources[src_idx].duration or 0.0)
+                start_sec = rng.uniform(0.0, max(0.0, dur - 0.5)) if dur > 1.0 else 0.0
+                hflip = bool(rng.random() < 0.5)
+                jitter = rng.uniform(-0.04, 0.04)
+                layer_op = max(0.08, min(0.45, (opacity + jitter) * (0.90 ** layer_i)))
+                layers.append((src_idx, layer_op, start_sec, hflip))
+            windows.append(layers)
+
+    def frame(t: float) -> np.ndarray:
+        out = base.get_frame(t)
+        w_idx = max(0, min(len(windows) - 1, bisect.bisect_right(starts, t) - 1))
+        for src_idx, layer_op, start_sec, hflip in windows[w_idx]:
+            src = sources[src_idx]
+            ov_t = (t + start_sec) % float(src.duration)
+            ov_f = src.get_frame(ov_t)
+            if hflip:
+                ov_f = ov_f[:, ::-1]
+            out = screen_blend(out, ov_f, layer_op)
+        return out
 
     layered = VideoClip(frame_function=frame, duration=base.duration).with_fps(FPS)
     opened.append(layered)
@@ -444,11 +538,25 @@ def build(episode_dir: Path) -> Path:
         video = video.with_duration(main_duration)
         opened.append(video)
 
-        overlay_path = resolve_overlay_path(anim, episode_dir)
-        if overlay_path is not None:
+        overlay_paths = resolve_overlay_paths(anim, episode_dir)
+        if overlay_paths:
             opacity = float(anim.get("overlay_opacity", 0.22))
-            print(f"Оверлей: {overlay_path.name}, Screen, opacity={opacity:.2f}")
-            video = apply_video_overlay(video, overlay_path, opacity, opened)
+            random_mix = bool(anim.get("overlay_random_mix", True))
+            max_layers = int(anim.get("overlay_max_layers", 3) or 3)
+            names = ", ".join(p.name for p in overlay_paths)
+            print(
+                f"Оверлеи ({len(overlay_paths)}): {names}, Screen, opacity={opacity:.2f}, "
+                f"{'рандомный микс' if random_mix else 'все слои подряд'}"
+            )
+            video = apply_video_overlays(
+                video,
+                overlay_paths,
+                opacity,
+                opened,
+                random_mix=random_mix,
+                max_layers=max_layers,
+                seed=episode_seed(episode_dir, "overlays"),
+            )
         else:
             mode = anim.get("animation_mode", "ffmpeg_25d")
             print(f"2.5D режим ({mode}): Ken Burns={anim.get('enable_ken_burns')}, свет={anim.get('enable_breathing_light')}")

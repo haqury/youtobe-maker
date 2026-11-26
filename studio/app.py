@@ -798,19 +798,21 @@ def render_animate_i2v_panel(
                 value=bool(anim.get("enable_breathing_light", True)),
                 key=f"ffmpeg_breathe_{ep_key}",
             )
-            overlays = ["none"] + list_overlay_files()
-            overlay_labels = {"none": "Без оверлея"}
-            overlay_labels.update({name: name for name in list_overlay_files()})
-            cur_ov = str(anim.get("overlay_file", "none"))
-            if cur_ov not in overlays:
-                overlays = ["none", cur_ov, *list_overlay_files()]
-            ov_index = overlays.index(cur_ov) if cur_ov in overlays else 0
-            ov_pick = st.selectbox(
-                "Видео-оверлей (assets/overlays/)",
-                overlays,
-                index=ov_index,
+            available_overlays = list_overlay_files()
+            overlay_options = ["auto", *available_overlays]
+            cur_ov_list = list(anim.get("overlay_files") or [])
+            for item in cur_ov_list:
+                if item not in overlay_options:
+                    overlay_options.append(item)
+            overlay_labels = {"auto": "🎲 Авто (все файлы из assets/overlays/)"}
+            overlay_labels.update({name: name for name in available_overlays})
+            ov_picks = st.multiselect(
+                "Видео-оверлеи (assets/overlays/) — можно выбрать несколько",
+                overlay_options,
+                default=cur_ov_list,
                 format_func=lambda x: overlay_labels.get(x, x),
-                key=f"ffmpeg_overlay_{ep_key}",
+                placeholder="Без оверлея (выберите один или несколько)",
+                key=f"ffmpeg_overlays_{ep_key}",
             )
             opacity = st.slider(
                 "Прозрачность оверлея (Screen)",
@@ -820,6 +822,30 @@ def render_animate_i2v_panel(
                 step=0.02,
                 key=f"ffmpeg_ov_opacity_{ep_key}",
             )
+            ov_random_mix = st.checkbox(
+                "Рандомно смешивать и накладывать друг на друга (анти-повтор для хвоста)",
+                value=bool(anim.get("overlay_random_mix", True)),
+                key=f"ffmpeg_ov_random_{ep_key}",
+            )
+            if ov_random_mix:
+                ov_c1, ov_c2 = st.columns(2)
+                ov_max_layers = ov_c1.slider(
+                    "Макс. слоёв одновременно",
+                    min_value=1,
+                    max_value=5,
+                    value=int(anim.get("overlay_max_layers", 3)),
+                    key=f"ffmpeg_ov_layers_{ep_key}",
+                )
+                ov_variants = ov_c2.slider(
+                    "Вариантов комбинаций в хвосте",
+                    min_value=2,
+                    max_value=32,
+                    value=int(anim.get("overlay_variants", 12)),
+                    key=f"ffmpeg_ov_variants_{ep_key}",
+                )
+            else:
+                ov_max_layers = int(anim.get("overlay_max_layers", 3))
+                ov_variants = int(anim.get("overlay_variants", 12))
             ff_save, ff_build = st.columns(2)
             if ff_save.button("💾 Сохранить настройки", key=f"ffmpeg_save_{ep_key}", use_container_width=True):
                 bundle = normalize_animation_settings(
@@ -827,8 +853,11 @@ def render_animate_i2v_panel(
                         "animation_mode": "ffmpeg_25d",
                         "enable_ken_burns": ken,
                         "enable_breathing_light": breathe,
-                        "overlay_file": ov_pick,
+                        "overlay_files": ov_picks,
                         "overlay_opacity": opacity,
+                        "overlay_random_mix": ov_random_mix,
+                        "overlay_max_layers": ov_max_layers,
+                        "overlay_variants": ov_variants,
                         "comfy_frames": default_stems,
                     }
                 )
@@ -845,8 +874,11 @@ def render_animate_i2v_panel(
                         "animation_mode": "ffmpeg_25d",
                         "enable_ken_burns": ken,
                         "enable_breathing_light": breathe,
-                        "overlay_file": ov_pick,
+                        "overlay_files": ov_picks,
                         "overlay_opacity": opacity,
+                        "overlay_random_mix": ov_random_mix,
+                        "overlay_max_layers": ov_max_layers,
+                        "overlay_variants": ov_variants,
                     }
                 )
                 save_episode_animation(episode_dir, bundle)
