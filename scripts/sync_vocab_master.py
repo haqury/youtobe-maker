@@ -6,7 +6,7 @@
   - Status (`covered` / `todo`, не перезаписывая ручной статус `skipped`)
   - Playlist_IDs (например `S01, S06, S07`)
   - Episode_IDs (например `S06:EP01, S07:EP01`)
-  - Occurrences (количество уникальных связок с этим словом)
+  - Occurrences (количество вхождений в целевых репликах)
 
 Запуск:
   python scripts/sync_vocab_master.py
@@ -29,62 +29,142 @@ LINE_RE = re.compile(r"^\[(\d+)\|([^|]+)\|([0-9.]+)\]\s*(.*)$")
 
 # Ручные исключения и неправильные формы для точного сопоставления со словарной формой
 IRREGULAR_FORMS: dict[str, set[str]] = {
-    "ser": {"es", "son", "soy", "eres", "somos", "sea"},
-    "estar": {"está", "están", "estás", "estoy", "estamos", "estando"},
-    "tener": {"tiene", "tienen", "tienes", "tengo", "tenemos", "teniendo"},
-    "haber": {"hay", "ha", "han"},
-    "ir": {"va", "van", "vas", "voy", "vamos", "yendo"},
-    "venir": {"viene", "vienen", "vienes", "vengo", "venimos", "viniendo"},
-    "hacer": {"hace", "hacen", "haces", "hago", "hacemos", "haciendo"},
-    "poder": {"puede", "pueden", "puedes", "puedo", "podemos", "pudiendo"},
-    "querer": {"quiere", "quieren", "quieres", "quiero", "queremos"},
-    "saber": {"sabe", "saben", "sabes", "sé", "sabemos"},
-    "conocer": {"conoce", "conocen", "conoces", "conozco"},
-    "ver": {"ve", "ven", "ves", "veo", "vemos", "viendo"},
-    "oír": {"oye", "oyen", "oyes", "oigo", "oímos", "oyendo"},
-    "dar": {"da", "dan", "das", "doy", "damos", "dando"},
-    "poner": {"pone", "ponen", "pones", "pongo", "ponemos", "poniendo"},
-    "salir": {"sale", "salen", "sales", "salgo", "salimos", "saliendo"},
-    "traer": {"trae", "traen", "traes", "traigo", "traemos"},
-    "caer": {"cae", "caen", "caes", "caigo", "cayendo"},
-    "decir": {"dice", "dicen", "dices", "digo"},
-    "dormir": {"duerme", "duermen", "duermes", "duermo", "durmiendo"},
-    "sentir": {"siente", "sienten", "sientes", "siento", "sintiendo"},
+    "ser": {"es", "son", "soy", "eres", "somos", "sea", "sean", "era", "fue", "sido"},
+    "estar": {"está", "están", "estás", "estoy", "estamos", "estando", "estado"},
+    "tener": {"tiene", "tienen", "tienes", "tengo", "tenemos", "teniendo", "tenido"},
+    "haber": {"hay", "ha", "han", "he", "hemos", "habido"},
+    "ir": {"va", "van", "vas", "voy", "vamos", "yendo", "ido"},
+    "venir": {"viene", "vienen", "vienes", "vengo", "venimos", "viniendo", "venido"},
+    "hacer": {"hace", "hacen", "haces", "hago", "hacemos", "haciendo", "hecho", "hecha"},
+    "poder": {"puede", "pueden", "puedes", "puedo", "podemos", "pudiendo", "podido"},
+    "querer": {"quiere", "quieren", "quieres", "quiero", "queremos", "queriendo", "querido"},
+    "saber": {"sabe", "saben", "sabes", "sé", "sabemos", "sabido"},
+    "conocer": {"conoce", "conocen", "conoces", "conozco", "conocemos"},
+    "caber": {"cabe", "caben", "quepo"},
+    "ver": {"ve", "ven", "ves", "veo", "vemos", "viendo", "visto", "vista"},
+    "oír": {"oye", "oyen", "oyes", "oigo", "oímos", "oyendo", "oído"},
+    "dar": {"da", "dan", "das", "doy", "damos", "dando", "dado"},
+    "poner": {"pone", "ponen", "pones", "pongo", "ponemos", "poniendo", "puesto", "puesta"},
+    "salir": {"sale", "salen", "sales", "salgo", "salimos", "saliendo", "salido"},
+    "valer": {"vale", "valen", "vales", "valgo", "valemos"},
+    "traer": {"trae", "traen", "traes", "traigo", "traemos", "trayendo", "traído"},
+    "caer": {"cae", "caen", "caes", "caigo", "caemos", "cayendo", "caído"},
+    "decir": {"dice", "dicen", "dices", "digo", "decimos", "diciendo", "dicho", "dicha"},
+    "dormir": {"duerme", "duermen", "duermes", "duermo", "dormimos", "durmiendo", "dormido"},
+    "morir": {"muere", "mueren", "mueres", "muero", "morimos", "muriendo", "muerto", "muerta"},
+    "sentir": {"siente", "sienten", "sientes", "siento", "sentimos", "sintiendo", "sentido"},
+    "mentir": {"miente", "mienten", "mientes", "miento"},
+    "preferir": {"prefiere", "prefieren", "prefieres", "prefiero"},
+    "sugerir": {"sugiere", "sugieren", "sugieres", "sugiero"},
+    "convertir": {"convierte", "convierten", "conviertes"},
+    "hervir": {"hierve", "hierven"},
+    "divertir": {"divierte", "divierten", "diviertes"},
+    "advertir": {"advierte", "advierten"},
+    "herir": {"hiere", "hieren"},
+    "pedir": {"pide", "piden", "pides", "pido", "pidiendo"},
+    "repetir": {"repite", "repiten", "repites", "repito", "repitiendo"},
+    "medir": {"mide", "miden", "mides", "mido"},
+    "vestir": {"viste", "visten", "vistes", "visto"},
+    "servir": {"sirve", "sirven", "sirves", "sirvo"},
+    "impedir": {"impide", "impiden"},
+    "despedir": {"despide", "despiden", "despides"},
+    "elegir": {"elige", "eligen", "eliges", "elijo"},
+    "corregir": {"corrige", "corrigen"},
     "seguir": {"sigue", "siguen", "sigues", "sigo", "siguiendo"},
-    "volver": {"vuelve", "vuelven", "vuelves", "vuelvo", "volviendo"},
+    "conseguir": {"consigue", "consiguen", "consigues", "consigo"},
+    "sonreír": {"sonríe", "sonríen", "sonríes", "sonrío", "sonriendo"},
+    "reír": {"ríe", "ríen", "ríes", "río", "riendo"},
+    "volver": {"vuelve", "vuelven", "vuelves", "vuelvo", "volviendo", "vuelto", "vuelta"},
+    "devolver": {"devuelve", "devuelven", "devuelves", "devuelto"},
+    "resolver": {"resuelve", "resuelven", "resuelto"},
+    "envolver": {"envuelve", "envuelven", "envuelves", "envolviendo", "envuelto"},
+    "disolver": {"disuelve", "disuelven", "disuelves", "disolviendo", "disuelto"},
     "mover": {"mueve", "mueven", "mueves", "muevo", "moviendo"},
-    "envolver": {"envuelve", "envuelven", "envuelves", "envolviendo"},
-    "disolver": {"disuelve", "disuelven", "disuelves", "disolviendo"},
-    "cerrar": {"cierra", "cierran", "cierras", "cierro", "cerrando"},
+    "llover": {"llueve", "lloviendo", "llovido"},
+    "oler": {"huele", "huelen", "hueles", "huelo"},
+    "morder": {"muerde", "muerden"},
+    "torcer": {"tuerce", "tuercen"},
+    "cerrar": {"cierra", "cierran", "cierras", "cierro", "cerrando", "cerrado", "cerrada"},
     "empezar": {"empieza", "empiezan", "empiezas", "empiezo", "empezando"},
-    "comenzar": {"comienza", "comienzan", "comienzas"},
+    "comenzar": {"comienza", "comienzan", "comienzas", "comienzo"},
+    "pensar": {"piensa", "piensan", "piensas", "pienso"},
+    "sentar": {"sienta", "sientan", "sientas", "siento"},
+    "calentar": {"calienta", "calientan", "calientas"},
+    "despertar": {"despierta", "despiertan", "despiertas"},
+    "nevar": {"nieva", "nevando"},
+    "regar": {"riega", "riegan"},
+    "sembrar": {"siembra", "siembran"},
+    "temblar": {"tiembla", "tiemblan", "tiemblas"},
+    "recomendar": {"recomienda", "recomiendan"},
+    "negar": {"niega", "niegan"},
+    "atravesar": {"atraviesa", "atraviesan", "atraviesas"},
     "descender": {"desciende", "descienden", "desciendes", "descendiendo"},
     "ascender": {"asciende", "ascienden", "asciendes", "ascendiendo"},
-    "encender": {"enciende", "encenden", "encienden", "enciendes"},
+    "encender": {"enciende", "encienden", "enciendes"},
     "extender": {"extiende", "extienden", "extiendes", "extendiendo"},
     "entender": {"entiende", "entienden", "entiendes"},
+    "atender": {"atiende", "atienden", "atiendes"},
+    "defender": {"defiende", "defienden", "defiendes"},
+    "perder": {"pierde", "pierden", "pierdes", "pierdo"},
+    "tender": {"tiende", "tienden", "tiendes"},
     "sostener": {"sostiene", "sostienen", "sostienes", "sosteniendo"},
     "mantener": {"mantiene", "mantienen", "mantienes"},
     "contener": {"contiene", "contienen", "contienes"},
     "detener": {"detiene", "detienen", "detienes"},
+    "obtener": {"obtiene", "obtienen", "obtienes"},
+    "retener": {"retiene", "retienen"},
     "recordar": {"recuerda", "recuerdan", "recuerdas", "recuerdo"},
     "soñar": {"sueña", "sueñan", "sueñas", "sueño"},
     "sonar": {"suena", "suenan", "suenas"},
     "contar": {"cuenta", "cuentan", "cuentas"},
     "mostrar": {"muestra", "muestran", "muestras"},
+    "demostrar": {"demuestra", "demuestran"},
     "encontrar": {"encuentra", "encuentran", "encuentras"},
     "probar": {"prueba", "prueban", "pruebas"},
+    "comprobar": {"comprueba", "comprueban"},
+    "aprobar": {"aprueba", "aprueban"},
     "volar": {"vuela", "vuelan", "vuelas", "volando"},
     "colgar": {"cuelga", "cuelgan", "cuelgas"},
     "jugar": {"juega", "juegan", "juegas"},
-    "oler": {"huele", "huelen", "hueles"},
+    "acostar": {"acuesta", "acuestan", "acuestas"},
+    "costar": {"cuesta", "cuestan"},
+    "almorzar": {"almuerza", "almuerzan", "almuerzas"},
+    "rogar": {"ruega", "ruegan"},
+    "soltar": {"suelta", "sueltan", "sueltas"},
+    "renovar": {"renueva", "renuevan"},
     "fluir": {"fluye", "fluyen", "fluyes", "fluyendo"},
-    "construir": {"construye", "construyen"},
+    "construir": {"construye", "construyen", "construyendo"},
+    "destruir": {"destruye", "destruyen"},
+    "incluir": {"incluye", "incluyen"},
+    "concluir": {"concluye", "concluyen"},
+    "influir": {"influye", "influyen"},
+    "huir": {"huye", "huyen"},
     "distinguir": {"distingue", "distinguen", "distingues"},
-    "calentar": {"calienta", "calientan", "calientas"},
-    "despertar": {"despierta", "despiertan", "despiertas"},
-    "pensar": {"piensa", "piensan", "piensas", "pienso"},
-    "sentar": {"sienta", "sientan", "sientas", "siento"},
+    "abrir": {"abre", "abren", "abres", "abriendo", "abierto", "abierta", "abiertos", "abiertas"},
+    "cubrir": {"cubre", "cubren", "cubres", "cubriendo", "cubierto", "cubierta", "cubiertos", "cubiertas"},
+    "descubrir": {"descubre", "descubren", "descubres", "descubierto", "descubierta"},
+    "escribir": {"escribe", "escriben", "escribes", "escribiendo", "escrito", "escrita"},
+    "romper": {"rompe", "rompen", "rompes", "rompiendo", "roto", "rota"},
+    "leer": {"lee", "leen", "lees", "leyendo", "leído"},
+    "creer": {"cree", "creen", "crees", "creyendo", "creído"},
+    "poseer": {"posee", "poseen"},
+    "proveer": {"provee", "proveen"},
+    "producir": {"produce", "producen", "produzco"},
+    "conducir": {"conduce", "conducen", "conduzco"},
+    "traducir": {"traduce", "traducen", "traduzco"},
+    "reducir": {"reduce", "reducen", "reduzco"},
+    "crecer": {"crece", "crecen", "crezco"},
+    "nacer": {"nace", "nacen", "nazco"},
+    "ofrecer": {"ofrece", "ofrecen", "ofrezco"},
+    "parecer": {"parece", "parecen", "parezco"},
+    "aparecer": {"aparece", "aparecen", "aparezco"},
+    "desaparecer": {"desaparece", "desaparecen"},
+    "permanecer": {"permanece", "permanecen"},
+    "pertenecer": {"pertenece", "pertenecen"},
+    "merecer": {"merece", "merecen"},
+    "reconocer": {"reconoce", "reconocen", "reconozco"},
+    "obedecer": {"obedece", "obedecen"},
+    "establecer": {"establece", "establecen"},
     "primero": {"primero", "primera", "primer", "primeros", "primeras"},
     "tercero": {"tercero", "tercera", "tercer", "terceros", "terceras"},
     "uno": {"uno", "una", "un", "unos", "unas"},
@@ -94,6 +174,7 @@ IRREGULAR_FORMS: dict[str, set[str]] = {
     "malo": {"malo", "mala", "mal", "malos", "malas"},
     "alguno": {"alguno", "alguna", "algún", "algunos", "algunas"},
     "ninguno": {"ninguno", "ninguna", "ningún"},
+    "cualquiera": {"cualquier", "cualquiera"},
     "luz": {"luz", "luces"},
     "vez": {"vez", "veces"},
     "voz": {"voz", "voces"},
@@ -102,6 +183,27 @@ IRREGULAR_FORMS: dict[str, set[str]] = {
     "nariz": {"nariz", "narices"},
     "cruz": {"cruz", "cruces"},
     "paz": {"paz", "paces"},
+    "pez": {"pez", "peces"},
+    "nuez": {"nuez", "nueces"},
+    "feliz": {"feliz", "felices"},
+    "capaz": {"capaz", "capaces"},
+    "eficaz": {"eficaz", "eficaces"},
+    "juez": {"juez", "jueces"},
+    "rey": {"rey", "reyes"},
+    "ley": {"ley", "leyes"},
+    "buey": {"buey", "bueyes"},
+    "joven": {"joven", "jóvenes"},
+    "imagen": {"imagen", "imágenes"},
+    "origen": {"origen", "orígenes"},
+    "margen": {"margen", "márgenes"},
+    "orden": {"orden", "órdenes"},
+    "examen": {"examen", "exámenes"},
+    "este": {"este", "esta", "estos", "estas", "esto"},
+    "ese": {"ese", "esa", "esos", "esas", "eso"},
+    "aquel": {"aquel", "aquella", "aquellos", "aquellas", "aquello"},
+    "quién": {"quien", "quién", "quienes", "quiénes"},
+    "cuál": {"cual", "cuál", "cuales", "cuáles"},
+    "cuánto": {"cuanto", "cuánto", "cuanta", "cuánta", "cuantos", "cuántos", "cuantas", "cuántas"},
 }
 
 
@@ -133,10 +235,13 @@ def forms_for_entry(word: str, pos: str) -> set[str]:
             })
             if w.endswith("gar"):
                 forms.add(w[:-3] + "gue")
+                forms.add(w[:-3] + "guen")
             if w.endswith("car"):
                 forms.add(w[:-3] + "que")
+                forms.add(w[:-3] + "quen")
             if w.endswith("zar"):
                 forms.add(w[:-3] + "ce")
+                forms.add(w[:-3] + "cen")
         elif w.endswith("er"):
             stem = w[:-2]
             forms.update({
@@ -144,6 +249,9 @@ def forms_for_entry(word: str, pos: str) -> set[str]:
                 stem + "iendo", stem + "ido", stem + "ida", stem + "idos", stem + "idas",
                 stem + "a", stem + "an",
             })
+            if w.endswith("ger"):
+                forms.add(w[:-3] + "jo")
+                forms.add(w[:-3] + "ja")
         elif w.endswith("ir") or w.endswith("ír"):
             stem = w[:-2]
             forms.update({
@@ -151,22 +259,28 @@ def forms_for_entry(word: str, pos: str) -> set[str]:
                 stem + "iendo", stem + "ido", stem + "ida", stem + "idos", stem + "idas",
                 stem + "a", stem + "an",
             })
-    elif pos in {"noun", "adj", "numeral"}:
+            if w.endswith("gir"):
+                forms.add(w[:-3] + "jo")
+                forms.add(w[:-3] + "ja")
+    elif pos in {"noun", "adj", "numeral", "pron"}:
         if w.endswith("o"):
             base = w[:-1]
             forms.update({base + "o", base + "a", base + "os", base + "as"})
-        elif w.endswith("a"):
+        elif w.endswith(("a", "e", "é", "á", "ó")):
             forms.add(w + "s")
-        elif w.endswith(("e", "é")):
-            forms.add(w + "s")
+        elif w.endswith(("í", "ú")):
+            forms.update({w + "s", w + "es"})
         elif w.endswith(("r", "l", "n", "d", "j", "y", "s")):
             forms.add(w + "es")
-            if w.endswith(("ón", "án", "én", "ín")):
+            if w.endswith(("ón", "án", "én", "ín", "és")):
                 forms.add(strip_accents_tail(w) + "es")
         elif w.endswith("z"):
             forms.add(w[:-1] + "ces")
         if w.endswith("dor"):
             forms.update({w + "a", w + "es", w + "as"})
+        if w.endswith("és"):
+            base = strip_accents_tail(w[:-1]) + "s"
+            forms.update({base + "a", base + "es", base + "as"})
     return forms
 
 
@@ -202,7 +316,6 @@ def scan_channel(channel_dir: Path) -> dict[str, list[tuple[str, str]]]:
             low_body = body.lower()
             for tok in TOKEN_RE.findall(low_body):
                 hits[tok].append((playlist_id, ep_key))
-            # Также сохраняем полную строку для словосочетаний
             hits[f"__phrase__:{low_body}"].append((playlist_id, ep_key))
     return hits
 

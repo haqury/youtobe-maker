@@ -13,7 +13,6 @@ venv/
 .streamlit/secrets.toml
 
 # --- Рендер эпизодов (перегенерируемые бинарники) ---
-channels/**/episodes/**/images/
 channels/**/episodes/**/animation/
 channels/**/episodes/**/final_video.mp4
 channels/**/episodes/**/*.mp4

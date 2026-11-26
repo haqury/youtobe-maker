@@ -357,3 +357,662 @@
 [PAUSE|1.5]
 [108|NARRATOR_NATIVE_en_translate|0.82] Everything is calm and rest.
 [PAUSE|2.5]
+## BLOCK: RECALL_1
+[109|NARRATOR_NATIVE_en|0.80] Evening light turns the street dust gold while your sandals step across warm paving. Far ahead above the rooftops, the sunset sky fades into soft apricot color.
+[PAUSE|2.0]
+[109|NARRATOR_TARGET_es|0.75] La luz del atardecer vuelve dorado el polvo de la calle. Tus sandalias pisan el suelo tibio. Arriba de los techos, el cielo tiene color suave. Todo avanza lento.
+[PAUSE|2.0]
+[109|NARRATOR_TARGET_es_repeat|0.70] La luz del atardecer vuelve dorado el polvo de la calle. Tus sandalias pisan el suelo tibio. Arriba de los techos, el cielo tiene color suave. Todo avanza lento.
+[PAUSE|4.0]
+[110|NARRATOR_NATIVE_en|0.80] Narrow houses stand close with closed shutters and one thin orange lamp glow. A gentle evening breeze carries the sweet scent of woodsmoke along the stone wall.
+[PAUSE|2.0]
+[110|NARRATOR_TARGET_es|0.75] Las casas están cerca con ventanas cerradas. Brilla una línea naranja de lámpara detrás de la madera. Una brisa suave pasa por el muro. Trae olor dulce a humo.
+[PAUSE|2.0]
+[110|NARRATOR_TARGET_es_repeat|0.70] Las casas están cerca con ventanas cerradas. Brilla una línea naranja de lámpara detrás de la madera. Una brisa suave pasa por el muro. Trae olor dulce a humo.
+[PAUSE|4.0]
+[111|NARRATOR_NATIVE_en|0.80] Beside the walk runs a low brick wall still holding afternoon sun. Your fingers trail lightly over the warm rough clay, guiding your quiet steps toward the corner.
+[PAUSE|2.0]
+[111|NARRATOR_TARGET_es|0.75] Junto al camino sigue un muro bajo de ladrillo tibio. El sol de la tarde guarda calor allí. Tus dedos tocan la piedra suave. Sigues hacia la esquina.
+[PAUSE|2.0]
+[111|NARRATOR_TARGET_es_repeat|0.70] Junto al camino sigue un muro bajo de ladrillo tibio. El sol de la tarde guarda calor allí. Tus dedos tocan la piedra suave. Sigues hacia la esquina.
+[PAUSE|4.0]
+[112|NARRATOR_NATIVE_en|0.80] At the corner, the street opens into a small square with wide smooth flagstones. Swallows cross the soft sky above, and your footsteps spread gently across the open stone.
+[PAUSE|2.0]
+[112|NARRATOR_TARGET_es|0.75] En la esquina aparece una plaza pequeña con piedras grandes y lisas. Unos pájaros cruzan el cielo suave arriba. Tus pasos suenan despacio por el suelo abierto. Todo descansa.
+[PAUSE|2.0]
+[112|NARRATOR_TARGET_es_repeat|0.70] En la esquina aparece una plaza pequeña con piedras grandes y lisas. Unos pájaros cruzan el cielo suave arriba. Tus pasos suenan despacio por el suelo abierto. Todo descansa.
+[PAUSE|4.0]
+[113|NARRATOR_NATIVE_en|0.80] Ahead stands the tall bath house with wide stone steps worn smooth by long use. Resting one hand on the first step, you feel steady warmth in the stone.
+[PAUSE|2.0]
+[113|NARRATOR_TARGET_es|0.75] Adelante está la casa alta de los baños con escalones anchos de piedra. Apoyas una mano en el primer escalón. La piedra está cálida bajo tu palma. El edificio respira calma.
+[PAUSE|2.0]
+[113|NARRATOR_TARGET_es_repeat|0.70] Adelante está la casa alta de los baños con escalones anchos de piedra. Apoyas una mano en el primer escalón. La piedra está cálida bajo tu palma. El edificio respira calma.
+[PAUSE|4.0]
+[114|NARRATOR_NATIVE_en|0.80] Climbing onto the deep porch, you see a bronze lamp hanging from a chain above the entrance. The air feels warmer here and smells of damp marble and olive oil.
+[PAUSE|2.0]
+[114|NARRATOR_TARGET_es|0.75] Subes a la entrada cubierta bajo una lámpara de bronce colgada. La llama brilla hacia la puerta. Aquí el aire está más tibio. Huele a mármol húmedo y aceite.
+[PAUSE|2.0]
+[114|NARRATOR_TARGET_es_repeat|0.70] Subes a la entrada cubierta bajo una lámpara de bronce colgada. La llama brilla hacia la puerta. Aquí el aire está más tibio. Huele a mármol húmedo y aceite.
+[PAUSE|4.0]
+[115|NARRATOR_NATIVE_en|0.80] Under your sandals, a mosaic of black and white tiles forms long waves across the porch. Lamplight slides over the smooth pattern toward the tall wooden door ahead.
+[PAUSE|2.0]
+[115|NARRATOR_TARGET_es|0.75] El suelo tiene piedras blancas y negras en forma de olas largas. La luz de la lámpara brilla sobre el dibujo liso. Caminas sobre el borde fresco. Vas hacia la puerta.
+[PAUSE|2.0]
+[115|NARRATOR_TARGET_es_repeat|0.70] El suelo tiene piedras blancas y negras en forma de olas largas. La luz de la lámpara brilla sobre el dibujo liso. Caminas sobre el borde fresco. Vas hacia la puerta.
+[PAUSE|4.0]
+[116|NARRATOR_NATIVE_en|0.80] Somewhere inside, a bronze bell sounds one calm note that drifts out into the evening air. Afterward, deep quiet widens around the soft hiss of the nearby lamp.
+[PAUSE|2.0]
+[116|NARRATOR_TARGET_es|0.75] Adentro suena una campana de bronce una sola vez con tono calmo. El sonido sale lento al aire de la tarde. Después llega un silencio muy ancho. Solo suena la llama.
+[PAUSE|2.0]
+[116|NARRATOR_TARGET_es_repeat|0.70] Adentro suena una campana de bronce una sola vez con tono calmo. El sonido sale lento al aire de la tarde. Después llega un silencio muy ancho. Solo suena la llama.
+[PAUSE|4.0]
+[117|NARRATOR_NATIVE_en|0.80] Beside the door, a carved stone fountain pours clear water into a shallow basin. Bright drops catch the warm lamplight while your shoulders lower calmly beside the murmur.
+[PAUSE|2.0]
+[117|NARRATOR_TARGET_es|0.75] Junto a la puerta hay una fuente de piedra tallada. Hay agua en la fuente y cae en una pila baja. Unas gotas brillan bajo la luz. Tus hombros bajan despacio.
+[PAUSE|2.0]
+[117|NARRATOR_TARGET_es_repeat|0.70] Junto a la puerta hay una fuente de piedra tallada. Hay agua en la fuente y cae en una pila baja. Unas gotas brillan bajo la luz. Tus hombros bajan despacio.
+[PAUSE|4.0]
+[118|NARRATOR_NATIVE_en|0.80] Tall dark planks form the entrance door standing slightly open to warm air inside. Your palm meets the smooth wood, and the heavy door swings open without any sound.
+[PAUSE|2.0]
+[118|NARRATOR_TARGET_es|0.75] La puerta alta es de madera oscura y está un poco abierta. El aire tibio toca tu mano afuera. Apoyas la palma sobre la madera lisa. La puerta gira sin ruido.
+[PAUSE|2.0]
+[118|NARRATOR_TARGET_es_repeat|0.70] La puerta alta es de madera oscura y está un poco abierta. El aire tibio toca tu mano afuera. Apoyas la palma sobre la madera lisa. La puerta gira sin ruido.
+[PAUSE|4.0]
+[119|NARRATOR_NATIVE_en|0.80] Inside lies a pale corridor lit evenly by lamps resting in small wall niches. Painted garlands border the ceiling while the scent of oil and warm stone grows stronger.
+[PAUSE|2.0]
+[119|NARRATOR_TARGET_es|0.75] Entras en un pasillo claro con lámparas en las paredes. Arriba hay hojas pintadas de colores suaves. Tus pasos suenan menos en el aire espeso. Crece el olor a piedra caliente.
+[PAUSE|2.0]
+[119|NARRATOR_TARGET_es_repeat|0.70] Entras en un pasillo claro con lámparas en las paredes. Arriba hay hojas pintadas de colores suaves. Tus pasos suenan menos en el aire espeso. Crece el olor a piedra caliente.
+[PAUSE|4.0]
+[120|NARRATOR_NATIVE_en|0.80] You walk down the middle of the narrow brick floor where every tile shines softly. Small lamps pass smoothly along both sides, keeping quiet pace beside your steps.
+[PAUSE|2.0]
+[120|NARRATOR_TARGET_es|0.75] Caminas por el centro del suelo de ladrillo fino. Cada pieza tiene un brillo suave y parejo. Las lámparas pasan una a una a los dos lados. La luz te acompaña siempre.
+[PAUSE|2.0]
+[120|NARRATOR_TARGET_es_repeat|0.70] Caminas por el centro del suelo de ladrillo fino. Cada pieza tiene un brillo suave y parejo. Las lámparas pasan una a una a los dos lados. La luz te acompaña siempre.
+[PAUSE|4.0]
+[121|NARRATOR_NATIVE_en|0.80] Pushing aside a heavy curtain at the corridor's end, you step into rich warmth. Gentle heated air rolls smoothly across your face, your forehead, and your open hands.
+[PAUSE|2.0]
+[121|NARRATOR_TARGET_es|0.75] Al final apartas una tela pesada con la mano. Sientes el calor en la cara y en la frente. El aire tibio cubre tus manos. Es el primer aliento de los baños.
+[PAUSE|2.0]
+[121|NARRATOR_TARGET_es_repeat|0.70] Al final apartas una tela pesada con la mano. Sientes el calor en la cara y en la frente. El aire tibio cubre tus manos. Es el primer aliento de los baños.
+[PAUSE|4.0]
+[122|NARRATOR_NATIVE_en|0.80] You enter a high vaulted hall lined with wooden shelves and quiet dark stone niches. The room rests nearly empty, glowing faintly gold under its high curved roof.
+[PAUSE|2.0]
+[122|NARRATOR_TARGET_es|0.75] Entras en una sala alta con techo curvo en sombra suave. En las paredes hay estantes de madera y huecos oscuros. La sala está casi vacía. El aire arriba brilla dorado.
+[PAUSE|2.0]
+[122|NARRATOR_TARGET_es_repeat|0.70] Entras en una sala alta con techo curvo en sombra suave. En las paredes hay estantes de madera y huecos oscuros. La sala está casi vacía. El aire arriba brilla dorado.
+[PAUSE|4.0]
+[123|NARRATOR_NATIVE_en|0.80] Choosing a quiet niche near the bench, you fold your heavy wool cloak and lay down belt and tunic. Warm air touches your bare shoulders directly without hurry.
+[PAUSE|2.0]
+[123|NARRATOR_TARGET_es|0.75] Eliges un hueco tranquilo cerca del banco. Doblas tu ropa pesada sobre el estante de madera. Quitas también el cinturón. Ahora el aire tibio toca tu piel directa con mucha calma.
+[PAUSE|2.0]
+[123|NARRATOR_TARGET_es_repeat|0.70] Eliges un hueco tranquilo cerca del banco. Doblas tu ropa pesada sobre el estante de madera. Quitas también el cinturón. Ahora el aire tibio toca tu piel directa con mucha calma.
+[PAUSE|4.0]
+[124|NARRATOR_NATIVE_en|0.80] On a bronze ring hang a small flask of olive oil and a curved bronze scraper. Sliding the ring onto your wrist, cool metal soon takes your body's warmth.
+[PAUSE|2.0]
+[124|NARRATOR_TARGET_es|0.75] En un anillo de bronce cuelgan un frasco pequeño de aceite y una hoja curva. Pones el anillo en tu brazo. El metal está frío primero. Pronto toma el calor de tu piel.
+[PAUSE|2.0]
+[124|NARRATOR_TARGET_es_repeat|0.70] En un anillo de bronce cuelgan un frasco pequeño de aceite y una hoja curva. Pones el anillo en tu brazo. El metal está frío primero. Pronto toma el calor de tu piel.
+[PAUSE|4.0]
+[125|NARRATOR_NATIVE_en|0.80] Sitting on the smooth bench with hands on your knees, you feel the tired weight of the day settle. Listening to distant water, your whole frame grows loose.
+[PAUSE|2.0]
+[125|NARRATOR_TARGET_es|0.75] Descansas sentado en el banco liso con manos sobre las piernas. El cuerpo está cansado después del día largo. Escuchas el agua lejana. Todo el cuerpo queda suelto y muy quieto.
+[PAUSE|2.0]
+[125|NARRATOR_TARGET_es_repeat|0.70] Descansas sentado en el banco liso con manos sobre las piernas. El cuerpo está cansado después del día largo. Escuchas el agua lejana. Todo el cuerpo queda suelto y muy quieto.
+[PAUSE|4.0]
+[126|NARRATOR_NATIVE_en|0.80] Standing again, you slip your feet into wooden sandals left by the exit for heated floors. Beyond a second linen curtain waits thicker warmth scented with wet stone.
+[PAUSE|2.0]
+[126|NARRATOR_TARGET_es|0.75] Al levantarte pones sandalias de madera para los suelos calientes. Las tiras cierran fácil sobre los pies. Delante espera otra tela en la puerta. Atrás queda olor a piedra húmeda.
+[PAUSE|2.0]
+[126|NARRATOR_TARGET_es_repeat|0.70] Al levantarte pones sandalias de madera para los suelos calientes. Las tiras cierran fácil sobre los pies. Delante espera otra tela en la puerta. Atrás queda olor a piedra húmeda.
+[PAUSE|4.0]
+[127|NARRATOR_NATIVE_en|0.80] Beyond the curtain opens the warm tepidarium with honey-colored walls and a low arch. Steady lamps glow softly through thick air pressing gently around your face and arms.
+[PAUSE|2.0]
+[127|NARRATOR_TARGET_es|0.75] Detrás de la tela está la sala tibia con paredes color miel. El techo bajo tiene un arco suave. Las lámparas brillan con calma. El aire pesado abraza tus brazos con suavidad.
+[PAUSE|2.0]
+[127|NARRATOR_TARGET_es_repeat|0.70] Detrás de la tela está la sala tibia con paredes color miel. El techo bajo tiene un arco suave. Las lámparas brillan con calma. El aire pesado abraza tus brazos con suavidad.
+[PAUSE|4.0]
+[128|NARRATOR_NATIVE_en|0.80] Your wooden sandals tap softly across the warm stone floor. Steady heat rises through the soles into your ankles, slowing your steps until they match your calm heartbeat.
+[PAUSE|2.0]
+[128|NARRATOR_TARGET_es|0.75] Tus sandalias suenan suaves sobre la piedra del suelo. El calor sube por los pies hasta las piernas con calma. Caminas cada vez más lento. El ritmo sigue casi tu latido.
+[PAUSE|2.0]
+[128|NARRATOR_TARGET_es_repeat|0.70] Tus sandalias suenan suaves sobre la piedra del suelo. El calor sube por los pies hasta las piernas con calma. Caminas cada vez más lento. El ritmo sigue casi tu latido.
+[PAUSE|4.0]
+[129|NARRATOR_NATIVE_en|0.80] Near the far wall, a stone vent breathes thin ribbons of steam upward along painted plaster. They rise slowly, stretch under the arched vault, and soften the warm air.
+[PAUSE|2.0]
+[129|NARRATOR_TARGET_es|0.75] Cerca de la pared sale vapor fino por una piedra abierta. El vapor sube despacio por el muro pintado. Asciende hasta el techo y desaparece allí. El aire queda más suave.
+[PAUSE|2.0]
+[129|NARRATOR_TARGET_es_repeat|0.70] Cerca de la pared sale vapor fino por una piedra abierta. El vapor sube despacio por el muro pintado. Asciende hasta el techo y desaparece allí. El aire queda más suave.
+[PAUSE|4.0]
+[130|NARRATOR_NATIVE_en|0.80] Beneath the floor moves a low distant sound like wind inside a hollow space. Warmth from a hidden furnace travels silently under the stone to reach your resting feet.
+[PAUSE|2.0]
+[130|NARRATOR_TARGET_es|0.75] Debajo del suelo hay un sonido bajo como viento lejano. Un espacio vacío lleva calor constante desde el fuego oculto. El suelo guarda ese calor tranquilo. Tus pies sienten su ayuda.
+[PAUSE|2.0]
+[130|NARRATOR_TARGET_es_repeat|0.70] Debajo del suelo hay un sonido bajo como viento lejano. Un espacio vacío lleva calor constante desde el fuego oculto. El suelo guarda ese calor tranquilo. Tus pies sienten su ayuda.
+[PAUSE|4.0]
+[131|NARRATOR_NATIVE_en|0.80] Resting your palm against the honey-colored wall, you feel mild warmth rising through hidden clay pipes inside. The painted surface glows softly under your fingers, completely calm.
+[PAUSE|2.0]
+[131|NARRATOR_TARGET_es|0.75] Pones tu palma abierta sobre la pared de color miel. La superficie está tibia como bajo el sol. Adentro pasan tubos con calor constante. El muro permanece muy calmo bajo tus dedos.
+[PAUSE|2.0]
+[131|NARRATOR_TARGET_es_repeat|0.70] Pones tu palma abierta sobre la pared de color miel. La superficie está tibia como bajo el sol. Adentro pasan tubos con calor constante. El muro permanece muy calmo bajo tus dedos.
+[PAUSE|4.0]
+[132|NARRATOR_NATIVE_en|0.80] Along the wall sits a smooth bench of pale marble beside a folded linen towel and a small lamp. You sit briefly on the edge and lengthen your breath.
+[PAUSE|2.0]
+[132|NARRATOR_TARGET_es|0.75] Junto a la pared hay un banco liso de mármol claro. Tiene una tela doblada al lado y una lámpara pequeña. Te sientas un momento en el borde. Tu aliento es largo.
+[PAUSE|2.0]
+[132|NARRATOR_TARGET_es_repeat|0.70] Junto a la pared hay un banco liso de mármol claro. Tiene una tela doblada al lado y una lámpara pequeña. Te sientas un momento en el borde. Tu aliento es largo.
+[PAUSE|4.0]
+[133|NARRATOR_NATIVE_en|0.80] High overhead, drops gather on the curved ceiling and slide down the walls instead of falling on you. Patient taps sound in the corners between long pools of quiet.
+[PAUSE|2.0]
+[133|NARRATOR_TARGET_es|0.75] Arriba, unas gotas nacen en el techo curvo y bajan por las paredes. No caen sobre tu cuerpo nunca. Suenan golpes muy pequeños en los rincones. El silencio llena cada pausa.
+[PAUSE|2.0]
+[133|NARRATOR_TARGET_es_repeat|0.70] Arriba, unas gotas nacen en el techo curvo y bajan por las paredes. No caen sobre tu cuerpo nunca. Suenan golpes muy pequeños en los rincones. El silencio llena cada pausa.
+[PAUSE|4.0]
+[134|NARRATOR_NATIVE_en|0.80] Walking toward the next arch, you step across pale blue mosaic squares holding steady heat underneath. Your feet absorb the warmth evenly, feeling wrapped and completely unhurried.
+[PAUSE|2.0]
+[134|NARRATOR_TARGET_es|0.75] Caminas hacia el siguiente arco sobre cuadros azules del suelo. Cada piedra guarda calor como un fuego suave. El suelo guarda el calor para tus pies. Ya caminas sin prisa ninguna.
+[PAUSE|2.0]
+[134|NARRATOR_TARGET_es_repeat|0.70] Caminas hacia el siguiente arco sobre cuadros azules del suelo. Cada piedra guarda calor como un fuego suave. El suelo guarda el calor para tus pies. Ya caminas sin prisa ninguna.
+[PAUSE|4.0]
+[135|NARRATOR_NATIVE_en|0.80] Along the base of the wall, clear water slips silently through a narrow stone channel. Smooth lamplight gleams along the surface as your eyes follow its quiet curve.
+[PAUSE|2.0]
+[135|NARRATOR_TARGET_es|0.75] Al pie del muro corre un canal estrecho de piedra lisa. Pasa agua clara con una o dos burbujas pequeñas. La luz de la lámpara brilla encima. Sigues esa línea con calma.
+[PAUSE|2.0]
+[135|NARRATOR_TARGET_es_repeat|0.70] Al pie del muro corre un canal estrecho de piedra lisa. Pasa agua clara con una o dos burbujas pequeñas. La luz de la lámpara brilla encima. Sigues esa línea con calma.
+[PAUSE|4.0]
+[136|NARRATOR_NATIVE_en|0.80] From the arch ahead comes a low murmur of deep water breathing gently against stone. Thicker steam drifts toward you in soft folds, drawing your slow steps forward.
+[PAUSE|2.0]
+[136|NARRATOR_TARGET_es|0.75] Desde el arco adelante llega un sonido bajo de agua profunda contra piedra. El vapor más espeso viene hacia ti en capas suaves. Tus pasos siguen solos hacia adelante. Todo está tranquilo.
+[PAUSE|2.0]
+[136|NARRATOR_TARGET_es_repeat|0.70] Desde el arco adelante llega un sonido bajo de agua profunda contra piedra. El vapor más espeso viene hacia ti en capas suaves. Tus pasos siguen solos hacia adelante. Todo está tranquilo.
+[PAUSE|4.0]
+[137|NARRATOR_NATIVE_en|0.80] As the steam thickens, every lamp flame wears a soft golden halo. Sharp edges on the painted walls blur calmly, and your eyes grow wide and unstrained.
+[PAUSE|2.0]
+[137|NARRATOR_TARGET_es|0.75] La luz cambia cuando crece el vapor blanco. Cada llama tiene un círculo dorado y pálido alrededor. Las paredes pierden sus líneas duras. Tus ojos descansan suaves en la niebla cálida.
+[PAUSE|2.0]
+[137|NARRATOR_TARGET_es_repeat|0.70] La luz cambia cuando crece el vapor blanco. Cada llama tiene un círculo dorado y pálido alrededor. Las paredes pierden sus líneas duras. Tus ojos descansan suaves en la niebla cálida.
+[PAUSE|4.0]
+[138|NARRATOR_NATIVE_en|0.80] A wide marble basin holds steaming water warm as breath. Dipping two fingers inside, you lift your hand and watch bright drops slide cleanly down to fall.
+[PAUSE|2.0]
+[138|NARRATOR_TARGET_es|0.75] En el borde de la sala espera una pila ancha de mármol. El agua tibia tiembla apenas con el calor. Tocas el agua con dos dedos. Al levantar la mano caen gotas brillantes.
+[PAUSE|2.0]
+[138|NARRATOR_TARGET_es_repeat|0.70] En el borde de la sala espera una pila ancha de mármol. El agua tibia tiembla apenas con el calor. Tocas el agua con dos dedos. Al levantar la mano caen gotas brillantes.
+[PAUSE|4.0]
+[139|NARRATOR_NATIVE_en|0.80] A thin sheet of water runs down the carved stone pedestal into the lower channel. Watching the gentle flow, your breathing slows down to match its quiet whisper.
+[PAUSE|2.0]
+[139|NARRATOR_TARGET_es|0.75] El agua corre por la piedra tallada desde el borde alto. Sigue las formas de hojas hasta caer abajo en el canal. Su sonido es un susurro claro. Tu respiración sigue ese paso.
+[PAUSE|2.0]
+[139|NARRATOR_TARGET_es_repeat|0.70] El agua corre por la piedra tallada desde el borde alto. Sigue las formas de hojas hasta caer abajo en el canal. Su sonido es un susurro claro. Tu respiración sigue ese paso.
+[PAUSE|4.0]
+[140|NARRATOR_NATIVE_en|0.80] At the tall archway, a damp linen curtain hangs drawn halfway back. Warm mist parts around your ankles, smelling cleanly of mineral water and heated white marble.
+[PAUSE|2.0]
+[140|NARRATOR_TARGET_es|0.75] El arco hacia la otra sala tiene una tela húmeda abierta a medias. El vapor tibio sale por el suelo entre tus pies. Huele a agua mineral y mármol. Toca la piel suave.
+[PAUSE|2.0]
+[140|NARRATOR_TARGET_es_repeat|0.70] El arco hacia la otra sala tiene una tela húmeda abierta a medias. El vapor tibio sale por el suelo entre tus pies. Huele a agua mineral y mármol. Toca la piel suave.
+[PAUSE|4.0]
+[141|NARRATOR_NATIVE_en|0.80] Light even moisture gathers across your forearms, neck, and shoulders in the warm air. Nothing asks you to hurry or wipe it away as calm warmth wraps your skin.
+[PAUSE|2.0]
+[141|NARRATOR_TARGET_es|0.75] Gotas finas cubren tus brazos, el cuello y los hombros sin prisa. No quitas el agua tibia de la piel. El aire suave te envuelve como una tela ligera. Todo se siente calmo.
+[PAUSE|2.0]
+[141|NARRATOR_TARGET_es_repeat|0.70] Gotas finas cubren tus brazos, el cuello y los hombros sin prisa. No quitas el agua tibia de la piel. El aire suave te envuelve como una tela ligera. Todo se siente calmo.
+[PAUSE|4.0]
+[142|NARRATOR_NATIVE_en|0.80] High in the wall, a small green glass window holds the last dusky rose of evening. Beyond the stone, the daytime world finishes while warm stillness holds inside.
+[PAUSE|2.0]
+[142|NARRATOR_TARGET_es|0.75] Arriba hay una ventana pequeña de cristal verde. Entra una luz rosada de la tarde que termina. Afuera acaba el día largo. Adentro solo queda el tiempo tibio de la calma.
+[PAUSE|2.0]
+[142|NARRATOR_TARGET_es_repeat|0.70] Arriba hay una ventana pequeña de cristal verde. Entra una luz rosada de la tarde que termina. Afuera acaba el día largo. Adentro solo queda el tiempo tibio de la calma.
+[PAUSE|4.0]
+[143|NARRATOR_NATIVE_en|0.80] White steam fills the room in slow quiet layers, shrinking the distant lamps into gold points. Even the soft tap of your wooden sandals sounds muffled and gentle.
+[PAUSE|2.0]
+[143|NARRATOR_TARGET_es|0.75] El vapor llena la sala en capas blancas y lentas. Las lámparas lejos parecen solo puntos de oro. Los rincones desaparecen en la niebla. Hasta tus sandalias suenan ahora muy suaves.
+[PAUSE|2.0]
+[143|NARRATOR_TARGET_es_repeat|0.70] El vapor llena la sala en capas blancas y lentas. Las lámparas lejos parecen solo puntos de oro. Los rincones desaparecen en la niebla. Hasta tus sandalias suenan ahora muy suaves.
+[PAUSE|4.0]
+[144|NARRATOR_NATIVE_en|0.80] You pause at the archway before the hot caldarium. Floor, walls, and air hold steady warmth around your face while deep quiet water waits patiently just ahead.
+[PAUSE|2.0]
+[144|NARRATOR_TARGET_es|0.75] Paras en el arco antes de la gran sala caliente. El suelo, las paredes y el aire tienen un calor igual. Atrás brilla la sala tibia. Adelante espera el agua profunda y quieta.
+[PAUSE|2.0]
+[144|NARRATOR_TARGET_es_repeat|0.70] Paras en el arco antes de la gran sala caliente. El suelo, las paredes y el aire tienen un calor igual. Atrás brilla la sala tibia. Adelante espera el agua profunda y quieta.
+[PAUSE|4.0]
+
+## BLOCK: RECALL_2
+[145|NARRATOR_NATIVE_en|0.80] Stepping through the arch, you enter the tall rounded hot room wrapped in white mist. Dim gold lamps glow softly while steam closes silently behind your ankles.
+[PAUSE|2.0]
+[145|NARRATOR_TARGET_es|0.75] Cruzas el arco y entras en la gran sala caliente y alta. El techo curvo se pierde en la niebla blanca. Las lámparas brillan suaves. El vapor cierra sin ruido atrás.
+[PAUSE|2.0]
+[145|NARRATOR_TARGET_es_repeat|0.70] Cruzas el arco y entras en la gran sala caliente y alta. El techo curvo se pierde en la niebla blanca. Las lámparas brillan suaves. El vapor cierra sin ruido atrás.
+[PAUSE|4.0]
+[146|NARRATOR_NATIVE_en|0.80] Deep steady heat rests over your shoulders like a warm cloak. Even through wooden sandals, you feel the floor glowing patiently beneath your careful, unhurried steps.
+[PAUSE|2.0]
+[146|NARRATOR_TARGET_es|0.75] Aquí el calor es más hondo y suave sobre tus hombros. Tus sandalias protegen los pies sobre el suelo caliente. Sientes el calor firme debajo de la madera. Caminas muy despacio.
+[PAUSE|2.0]
+[146|NARRATOR_TARGET_es_repeat|0.70] Aquí el calor es más hondo y suave sobre tus hombros. Tus sandalias protegen los pies sobre el suelo caliente. Sientes el calor firme debajo de la madera. Caminas muy despacio.
+[PAUSE|4.0]
+[147|NARRATOR_NATIVE_en|0.80] At the far end lies a wide rectangular pool edged with white marble. Lazy columns of steam rise above dark water while gentle ripples tap against the rim.
+[PAUSE|2.0]
+[147|NARRATOR_TARGET_es|0.75] Al fondo descansa la gran piscina rodeada de mármol blanco. Columnas lentas de vapor suben sobre el agua oscura y lisa. De vez en cuando pasa una ola. Suena muy baja.
+[PAUSE|2.0]
+[147|NARRATOR_TARGET_es_repeat|0.70] Al fondo descansa la gran piscina rodeada de mármol blanco. Columnas lentas de vapor suben sobre el agua oscura y lisa. De vez en cuando pasa una ola. Suena muy baja.
+[PAUSE|4.0]
+[148|NARRATOR_NATIVE_en|0.80] You spread a folded towel over a polished marble bench and sit slowly down. Warm stone returns steady pressure behind your back like an open, patient hand.
+[PAUSE|2.0]
+[148|NARRATOR_TARGET_es|0.75] Pones una tela doblada sobre el banco liso de mármol. La piedra debajo está caliente y firme. Apoyas la espalda contra la pared tibia. La piedra responde con calor constante.
+[PAUSE|2.0]
+[148|NARRATOR_TARGET_es_repeat|0.70] Pones una tela doblada sobre el banco liso de mármol. La piedra debajo está caliente y firme. Apoyas la espalda contra la pared tibia. La piedra responde con calor constante.
+[PAUSE|4.0]
+[149|NARRATOR_NATIVE_en|0.80] Every breath inside the hot room tastes faintly of clean mineral water. Your chest opens easily, drawing warm humid air deep before releasing small lingering tensions outward.
+[PAUSE|2.0]
+[149|NARRATOR_TARGET_es|0.75] El aire es caliente y húmedo en esta sala grande. Cada respiración lenta lleva un gusto limpio a agua mineral. Tu pecho se abre fácil. Sueltas toda tensión con calma.
+[PAUSE|2.0]
+[149|NARRATOR_TARGET_es_repeat|0.70] El aire es caliente y húmedo en esta sala grande. Cada respiración lenta lleva un gusto limpio a agua mineral. Tu pecho se abre fácil. Sueltas toda tensión con calma.
+[PAUSE|4.0]
+[150|NARRATOR_NATIVE_en|0.80] Silver threads of moisture slide quietly down the heated plaster walls without leaving a mark. Closing your eyes, you hear only warm silence and soft ceiling drops.
+[PAUSE|2.0]
+[150|NARRATOR_TARGET_es|0.75] Gotas de agua bajan en hilos finos por las paredes tibias. Desaparecen abajo sin dejar señal. Detrás de la pared pasa calor constante hacia arriba. Cierras los ojos y escuchas.
+[PAUSE|2.0]
+[150|NARRATOR_TARGET_es_repeat|0.70] Gotas de agua bajan en hilos finos por las paredes tibias. Desaparecen abajo sin dejar señal. Detrás de la pared pasa calor constante hacia arriba. Cierras los ojos y escuchas.
+[PAUSE|4.0]
+[151|NARRATOR_NATIVE_en|0.80] Through a high window, one slanted ray of sunset lights floating mist in warm copper. Slowly it fades across the far wall into amber and deep smoky violet.
+[PAUSE|2.0]
+[151|NARRATOR_TARGET_es|0.75] Por una ventana alta entra el último rayo del atardecer en el vapor. Ilumina la niebla con un tono cálido y dorado. Luego cambia sobre la pared. Queda un color púrpura suave.
+[PAUSE|2.0]
+[151|NARRATOR_TARGET_es_repeat|0.70] Por una ventana alta entra el último rayo del atardecer en el vapor. Ilumina la niebla con un tono cálido y dorado. Luego cambia sobre la pared. Queda un color púrpura suave.
+[PAUSE|4.0]
+[152|NARRATOR_NATIVE_en|0.80] At the room's center stands a round basin holding cool clear water. Cupping your hands, you touch fresh water to your wrists and neck for a brief breath.
+[PAUSE|2.0]
+[152|NARRATOR_TARGET_es|0.75] En el centro hay una pila redonda con agua fresca y clara. Tomas un poco con las manos. El agua está fría sobre tus muñecas. Llevas esa frescura detrás del cuello.
+[PAUSE|2.0]
+[152|NARRATOR_TARGET_es_repeat|0.70] En el centro hay una pila redonda con agua fresca y clara. Tomas un poco con las manos. El agua está fría sobre tus muñecas. Llevas esa frescura detrás del cuello.
+[PAUSE|4.0]
+[153|NARRATOR_NATIVE_en|0.80] Marble steps descend into the steaming pool one smooth stair at a time. Entering the hot water, you feel silky warmth rise calmly up around your quiet legs.
+[PAUSE|2.0]
+[153|NARRATOR_TARGET_es|0.75] Bajas por los escalones blancos hacia la piscina profunda. Entras en el agua caliente paso a paso. El agua tibia sube suave por las piernas. Todo queda quieto a tu alrededor.
+[PAUSE|2.0]
+[153|NARRATOR_TARGET_es_repeat|0.70] Bajas por los escalones blancos hacia la piscina profunda. Entras en el agua caliente paso a paso. El agua tibia sube suave por las piernas. Todo queda quieto a tu alrededor.
+[PAUSE|4.0]
+[154|NARRATOR_NATIVE_en|0.80] As water reaches your waist, your body feels weightless and arms float easily out. Overhead, pale rings of reflected lamplight wander softly across the curved ceiling vault.
+[PAUSE|2.0]
+[154|NARRATOR_TARGET_es|0.75] El agua llega a tu cintura y el cuerpo queda ligero. Tus brazos flotan libres sobre el agua tibia. Arriba pasan círculos suaves de luz por el techo curvo. No sostienes nada.
+[PAUSE|2.0]
+[154|NARRATOR_TARGET_es_repeat|0.70] El agua llega a tu cintura y el cuerpo queda ligero. Tus brazos flotan libres sobre el agua tibia. Arriba pasan círculos suaves de luz por el techo curvo. No sostienes nada.
+[PAUSE|4.0]
+[155|NARRATOR_NATIVE_en|0.80] Gentle heat melts into your shoulders and long back muscles strand by strand. Your jaw loosens softly while each slow breath carries remaining tightness steadily away.
+[PAUSE|2.0]
+[155|NARRATOR_TARGET_es|0.75] El calor entra despacio por los hombros y toda la espalda. La boca descansa blanda y sin fuerza. Respiras hondo el aire húmedo del baño. Cada aliento lleva lejos el cansancio.
+[PAUSE|2.0]
+[155|NARRATOR_TARGET_es_repeat|0.70] El calor entra despacio por los hombros y toda la espalda. La boca descansa blanda y sin fuerza. Respiras hondo el aire húmedo del baño. Cada aliento lleva lejos el cansancio.
+[PAUSE|4.0]
+[156|NARRATOR_NATIVE_en|0.80] Water laps steadily along the marble rim in a slow, small tide. Soft steam rises into cooler air above and turns into quiet drops tapping down the walls.
+[PAUSE|2.0]
+[156|NARRATOR_TARGET_es|0.75] El agua toca el borde de mármol con un ritmo muy lento. Sube poco, besa la piedra y baja otra vez. El vapor sube hacia el techo. Allá vuelve en gotas suaves.
+[PAUSE|2.0]
+[156|NARRATOR_TARGET_es_repeat|0.70] El agua toca el borde de mármol con un ritmo muy lento. Sube poco, besa la piedra y baja otra vez. El vapor sube hacia el techo. Allá vuelve en gotas suaves.
+[PAUSE|4.0]
+[157|NARRATOR_NATIVE_en|0.80] Resting your forearm along the white marble edge, you feel smooth gray-veined stone beneath your palm. Your fingertip traces one thin vein gently into the quiet corner.
+[PAUSE|2.0]
+[157|NARRATOR_TARGET_es|0.75] Apoyas el brazo en el borde de la piscina tranquila. La piedra es blanca y lisa como seda húmeda bajo tu piel. Sigues con un dedo una línea gris. Termina en la esquina.
+[PAUSE|2.0]
+[157|NARRATOR_TARGET_es_repeat|0.70] Apoyas el brazo en el borde de la piscina tranquila. La piedra es blanca y lisa como seda húmeda bajo tu piel. Sigues con un dedo una línea gris. Termina en la esquina.
+[PAUSE|4.0]
+[158|NARRATOR_NATIVE_en|0.80] Sitting on a submerged stone step, you let warm water cover your collarbones completely. Your steady heartbeat slows inside the silence, and time asks nothing at all.
+[PAUSE|2.0]
+[158|NARRATOR_TARGET_es|0.75] Te sientas en un escalón bajo el agua hasta los hombros. El calor te rodea igual por todos los lados. Tu latido suena despacio en el silencio. No haces nada más aquí.
+[PAUSE|2.0]
+[158|NARRATOR_TARGET_es_repeat|0.70] Te sientas en un escalón bajo el agua hasta los hombros. El calor te rodea igual por todos los lados. Tu latido suena despacio en el silencio. No haces nada más aquí.
+[PAUSE|4.0]
+[159|NARRATOR_NATIVE_en|0.80] Lamps burn lower as dusk turns deep blue outside the high window, revealing one small white star. Far off a door closes softly, swallowed cleanly by the quiet hall.
+[PAUSE|2.0]
+[159|NARRATOR_TARGET_es|0.75] Las lámparas tienen menos fuerza al avanzar la tarde oscura. En la ventana alta aparece una primera estrella blanca. Lejos cierra una puerta sin eco. La sala absorbe todo el sonido.
+[PAUSE|2.0]
+[159|NARRATOR_TARGET_es_repeat|0.70] Las lámparas tienen menos fuerza al avanzar la tarde oscura. En la ventana alta aparece una primera estrella blanca. Lejos cierra una puerta sin eco. La sala absorbe todo el sonido.
+[PAUSE|4.0]
+[160|NARRATOR_NATIVE_en|0.80] Rising from the pool, bright threads of water stream down your shoulders onto the floor. You walk calmly to the marble bench, leaving faint damp prints that soon fade.
+[PAUSE|2.0]
+[160|NARRATOR_TARGET_es|0.75] Sales del agua tibia mientras hilos brillantes caen de tus hombros. El aire toca la piel húmeda casi fresco. Caminas al banco liso. Cada gota oscura desaparece pronto en la piedra.
+[PAUSE|2.0]
+[160|NARRATOR_TARGET_es_repeat|0.70] Sales del agua tibia mientras hilos brillantes caen de tus hombros. El aire toca la piel húmeda casi fresco. Caminas al banco liso. Cada gota oscura desaparece pronto en la piedra.
+[PAUSE|4.0]
+[161|NARRATOR_NATIVE_en|0.80] Seated on the dry towel, your skin glows warm while arms rest heavy and loose. All day-long ache has left completely, leaving quiet fullness and deep rest.
+[PAUSE|2.0]
+[161|NARRATOR_TARGET_es|0.75] La tela seca el agua de tus piernas con cuidado. Tus brazos están pesados, sueltos y lentos. Todo cansancio del día desaparece ya. Hay descanso en el cuerpo y paz en la sala.
+[PAUSE|2.0]
+[161|NARRATOR_TARGET_es_repeat|0.70] La tela seca el agua de tus piernas con cuidado. Tus brazos están pesados, sueltos y lentos. Todo cansancio del día desaparece ya. Hay descanso en el cuerpo y paz en la sala.
+[PAUSE|4.0]
+[162|NARRATOR_NATIVE_en|0.80] Laying the bronze ring on the bench, you turn the small flask in your hand. Thick golden olive oil tilts slowly inside like honey before you begin.
+[PAUSE|2.0]
+[162|NARRATOR_TARGET_es|0.75] Dejas el anillo de bronce sobre el banco liso de mármol. Tomas el frasco pequeño entre los dedos. Adentro gira el aceite dorado y espeso como miel. Respiras largo antes de abrir.
+[PAUSE|2.0]
+[162|NARRATOR_TARGET_es_repeat|0.70] Dejas el anillo de bronce sobre el banco liso de mármol. Tomas el frasco pequeño entre los dedos. Adentro gira el aceite dorado y espeso como miel. Respiras largo antes de abrir.
+[PAUSE|4.0]
+[163|NARRATOR_NATIVE_en|0.80] Opening the cloth stopper on the round flask, you catch the fresh green scent of pressed olives. That clean, grassy aroma makes the warm room feel timeless and calm.
+[PAUSE|2.0]
+[163|NARRATOR_TARGET_es|0.75] Quitas el tapón de tela del frasco redondo con calma. Sube un olor verde y fresco desde el cuello pequeño. Es el aroma limpio del olivo. Hace la sala aún más serena.
+[PAUSE|2.0]
+[163|NARRATOR_TARGET_es_repeat|0.70] Quitas el tapón de tela del frasco redondo con calma. Sube un olor verde y fresco desde el cuello pequeño. Es el aroma limpio del olivo. Hace la sala aún más serena.
+[PAUSE|4.0]
+[164|NARRATOR_NATIVE_en|0.80] Tipping the flask, you pour a thin golden thread of oil into your open palm. Setting the jar down safely, you watch the warm pool catch lamp light.
+[PAUSE|2.0]
+[164|NARRATOR_TARGET_es|0.75] Inclinas el frasco y viertes un hilo dorado de aceite en la palma. El líquido guarda el brillo de la lámpara. Cierras el frasco con cuidado. Queda listo en tu mano.
+[PAUSE|2.0]
+[164|NARRATOR_TARGET_es_repeat|0.70] Inclinas el frasco y viertes un hilo dorado de aceite en la palma. El líquido guarda el brillo de la lámpara. Cierras el frasco con cuidado. Queda listo en tu mano.
+[PAUSE|4.0]
+[165|NARRATOR_NATIVE_en|0.80] Pressing both palms together warms and thins the oil between your hands. As you rub slowly, the sweet fragrance of olive fills your quiet breath and thoughts.
+[PAUSE|2.0]
+[165|NARRATOR_TARGET_es|0.75] Juntas las dos palmas y el calor vuelve más ligero el aceite. El aceite huele a oliva dulce y limpia. Respiras ese perfume suave. Trae una calma dulce sin pedir nada.
+[PAUSE|2.0]
+[165|NARRATOR_TARGET_es_repeat|0.70] Juntas las dos palmas y el calor vuelve más ligero el aceite. El aceite huele a oliva dulce y limpia. Respiras ese perfume suave. Trae una calma dulce sin pedir nada.
+[PAUSE|4.0]
+[166|NARRATOR_NATIVE_en|0.80] Long unhurried strokes spread the warm oil from wrist to elbow, shoulder, and neck. Your skin drinks the gloss evenly while golden lamplight slides smoothly along your arm.
+[PAUSE|2.0]
+[166|NARRATOR_TARGET_es|0.75] Pasas el aceite desde la muñeca hasta el hombro con manos lentas. La piel bebe el brillo suave sin prisa. Sigues por el lado del cuello. La luz corre por tu brazo.
+[PAUSE|2.0]
+[166|NARRATOR_TARGET_es_repeat|0.70] Pasas el aceite desde la muñeca hasta el hombro con manos lentas. La piel bebe el brillo suave sin prisa. Sigues por el lado del cuello. La luz corre por tu brazo.
+[PAUSE|4.0]
+[167|NARRATOR_NATIVE_en|0.80] Your hands glide across chest, ribs, and down each leg to the ankles. Warmed by the oil, your skin shines softly and carries the quiet scent of olive trees.
+[PAUSE|2.0]
+[167|NARRATOR_TARGET_es|0.75] Tus manos bajan por el pecho y por las piernas hasta los pies. El aceite deja un camino brillante y tibio. Toda la piel recibe calor agradable. Huele suave a campo de olivos.
+[PAUSE|2.0]
+[167|NARRATOR_TARGET_es_repeat|0.70] Tus manos bajan por el pecho y por las piernas hasta los pies. El aceite deja un camino brillante y tibio. Toda la piel recibe calor agradable. Huele suave a campo de olivos.
+[PAUSE|4.0]
+[168|NARRATOR_NATIVE_en|0.80] Lifting the curved bronze strigil from the bench, you feel cool metal warm against your fingers. A thin line of lamplight gleams gently along its smooth grooved edge.
+[PAUSE|2.0]
+[168|NARRATOR_TARGET_es|0.75] Tomas el estrígil de bronce sobre el banco liso. Es de bronce curvo con una línea hueca larga. Primero está fresco en tus dedos. Pronto toma el calor de tu mano tranquila.
+[PAUSE|2.0]
+[168|NARRATOR_TARGET_es_repeat|0.70] Tomas el estrígil de bronce sobre el banco liso. Es de bronce curvo con una línea hueca larga. Primero está fresco en tus dedos. Pronto toma el calor de tu mano tranquila.
+[PAUSE|4.0]
+[169|NARRATOR_NATIVE_en|0.80] Drawing the curved blade gently down from shoulder to wrist makes a soft dry whisper. Behind its bronze edge, your cleared skin feels cool, bright, and clean.
+[PAUSE|2.0]
+[169|NARRATOR_TARGET_es|0.75] Pones el borde curvo en el hombro y bajas despacio por el brazo. Hace un susurro muy suave como arena fina. Recoge el aceite y el polvo. La piel queda libre y clara.
+[PAUSE|2.0]
+[169|NARRATOR_TARGET_es_repeat|0.70] Pones el borde curvo en el hombro y bajas despacio por el brazo. Hace un susurro muy suave como arena fina. Recoge el aceite y el polvo. La piel queda libre y clara.
+[PAUSE|4.0]
+[170|NARRATOR_NATIVE_en|0.80] At the wrist you pause and wipe the bronze blade clean onto the folded linen towel. Setting the curve back at your shoulder, you begin another steady downward stroke.
+[PAUSE|2.0]
+[170|NARRATOR_TARGET_es|0.75] Paras en la mano y limpias la hoja en la tela doblada. Queda una línea húmeda sobre el lino. Vuelves al hombro otra vez sin prisa. Repites el movimiento lento y parejo.
+[PAUSE|2.0]
+[170|NARRATOR_TARGET_es_repeat|0.70] Paras en la mano y limpias la hoja en la tela doblada. Queda una línea húmeda sobre el lino. Vuelves al hombro otra vez sin prisa. Repites el movimiento lento y parejo.
+[PAUSE|4.0]
+[171|NARRATOR_NATIVE_en|0.80] After a dozen slow strokes, your arm feels light, smooth, and completely clean. Turning it under the lamplight, you watch the bare skin shine without a speck of dust.
+[PAUSE|2.0]
+[171|NARRATOR_TARGET_es|0.75] Después de doce pasadas lentas terminas todo el primer brazo. El brazo está limpio, ligero y muy liso. El aire tibio pasa suave alrededor. Ya no queda nada de polvo encima.
+[PAUSE|2.0]
+[171|NARRATOR_TARGET_es_repeat|0.70] Después de doce pasadas lentas terminas todo el primer brazo. El brazo está limpio, ligero y muy liso. El aire tibio pasa suave alrededor. Ya no queda nada de polvo encima.
+[PAUSE|4.0]
+[172|NARRATOR_NATIVE_en|0.80] Passing the strigil to your other hand, you trace the same quiet rhythm along the second arm. Stroke, pause, wipe—matching your slow breathing cleanly from top to bottom.
+[PAUSE|2.0]
+[172|NARRATOR_TARGET_es|0.75] Cambias el bronce a la otra mano para el segundo brazo. El ritmo sigue fácil: bajar, parar y limpiar en la tela. Tu respiración acompaña cada movimiento. Todo suena como música pequeña.
+[PAUSE|2.0]
+[172|NARRATOR_TARGET_es_repeat|0.70] Cambias el bronce a la otra mano para el segundo brazo. El ritmo sigue fácil: bajar, parar y limpiar en la tela. Tu respiración acompaña cada movimiento. Todo suena como música pequeña.
+[PAUSE|4.0]
+[173|NARRATOR_NATIVE_en|0.80] The smooth curve glides across chest and ribs, clearing away the warm oil line by line. Every steady stroke leaves cooler air resting gently on your bare skin.
+[PAUSE|2.0]
+[173|NARRATOR_TARGET_es|0.75] La curva pasa por el pecho y los lados del cuerpo con cuidado. Limpia el aceite brillante en líneas suaves. Cada pasada deja más aire libre en la piel. Todo se siente tibio.
+[PAUSE|2.0]
+[173|NARRATOR_TARGET_es_repeat|0.70] La curva pasa por el pecho y los lados del cuerpo con cuidado. Limpia el aceite brillante en líneas suaves. Cada pasada deja más aire libre en la piel. Todo se siente tibio.
+[PAUSE|4.0]
+[174|NARRATOR_NATIVE_en|0.80] Long downward strokes clear both legs from thigh to ankle with a hushed bronze whisper. Your skin stays remarkably soft while the room's heat continues steadily around you.
+[PAUSE|2.0]
+[174|NARRATOR_TARGET_es|0.75] Pasas el bronce largo por las piernas hasta abajo sin prisa. El sonido suave llena el espacio entre las lámparas. La piel está suave como dentro de una concha. El calor sigue.
+[PAUSE|2.0]
+[174|NARRATOR_TARGET_es_repeat|0.70] Pasas el bronce largo por las piernas hasta abajo sin prisa. El sonido suave llena el espacio entre las lámparas. La piel está suave como dentro de una concha. El calor sigue.
+[PAUSE|4.0]
+[175|NARRATOR_NATIVE_en|0.80] Reaching back over your shoulder with the curved strigil, you draw it gently down along your spine. Where the bronze passes, your skin turns bright, smooth, and relaxed.
+[PAUSE|2.0]
+[175|NARRATOR_TARGET_es|0.75] Llevas la hoja curva sobre el hombro hacia la espalda alta. Bajas despacio por los músculos largos cerca de la columna. Donde llega el bronce, la piel queda lisa. Sonríes con calma.
+[PAUSE|2.0]
+[175|NARRATOR_TARGET_es_repeat|0.70] Llevas la hoja curva sobre el hombro hacia la espalda alta. Bajas despacio por los músculos largos cerca de la columna. Donde llega el bronce, la piel queda lisa. Sonríes con calma.
+[PAUSE|4.0]
+[176|NARRATOR_NATIVE_en|0.80] Beside the marble basin hangs a shallow bronze ladle. Dipping it into clear mild water, you lift the smooth handle over your shoulders and pause for a quiet breath.
+[PAUSE|2.0]
+[176|NARRATOR_TARGET_es|0.75] Junto a la pila cuelga un cazo ancho de bronce antiguo. Tomas agua clara y tibia con olor limpio a tierra. El mango es liso en tus manos. Esperas un respiro arriba.
+[PAUSE|2.0]
+[176|NARRATOR_TARGET_es_repeat|0.70] Junto a la pila cuelga un cazo ancho de bronce antiguo. Tomas agua clara y tibia con olor limpio a tierra. El mango es liso en tus manos. Esperas un respiro arriba.
+[PAUSE|4.0]
+[177|NARRATOR_NATIVE_en|0.80] Pouring one ladle after another over your shoulders sends a silky sheet of water down your back. Drops ring softly on the tiles like a warm, rolling evening rain.
+[PAUSE|2.0]
+[177|NARRATOR_TARGET_es|0.75] Vuelcas el agua sobre tus hombros en un velo ancho y suave. El agua corre por el cuerpo y lleva el último aceite. Suenan gotas en el suelo. Parece lluvia tibia.
+[PAUSE|2.0]
+[177|NARRATOR_TARGET_es_repeat|0.70] Vuelcas el agua sobre tus hombros en un velo ancho y suave. El agua corre por el cuerpo y lleva el último aceite. Suenan gotas en el suelo. Parece lluvia tibia.
+[PAUSE|4.0]
+[178|NARRATOR_NATIVE_en|0.80] Pressing rough sun-dried linen gently against your skin lifts away the last drops of moisture. Folded neatly, the towel sits beside the bronze strigil and little oil flask.
+[PAUSE|2.0]
+[178|NARRATOR_TARGET_es|0.75] Secas tu piel despacio con el lino áspero y limpio. La tela huele a sol y hierbas secas. Doblas la tela con cuidado. Queda al lado del estrígil y del frasco pequeño.
+[PAUSE|2.0]
+[178|NARRATOR_TARGET_es_repeat|0.70] Secas tu piel despacio con el lino áspero y limpio. La tela huele a sol y hierbas secas. Doblas la tela con cuidado. Queda al lado del estrígil y del frasco pequeño.
+[PAUSE|4.0]
+[179|NARRATOR_NATIVE_en|0.80] Seated quietly with hands on your knees, you notice a light coolness across clean skin. Faint olive scent lingers at your wrists while bronze tools rest beside the flask.
+[PAUSE|2.0]
+[179|NARRATOR_TARGET_es|0.75] Te sientas quieto y sientes la piel nueva y ligera. Queda un olor verde de oliva cerca de tus manos. El calor pasa ahora sin peso. Las cosas de bronce descansan frías.
+[PAUSE|2.0]
+[179|NARRATOR_TARGET_es_repeat|0.70] Te sientas quieto y sientes la piel nueva y ligera. Queda un olor verde de oliva cerca de tus manos. El calor pasa ahora sin peso. Las cosas de bronce descansan frías.
+[PAUSE|4.0]
+[180|NARRATOR_NATIVE_en|0.80] The great caldarium grows nearly silent as lamps burn low and water settles. Pulling a dry cloth around your shoulders, you feel clean, calm, and ready for cool air.
+[PAUSE|2.0]
+[180|NARRATOR_TARGET_es|0.75] La gran sala está ahora casi en silencio total. La piscina descansa y las lámparas arden bajas. Cubres tus hombros con la tela seca. Todo está limpio y tranquilo para salir.
+[PAUSE|2.0]
+[180|NARRATOR_TARGET_es_repeat|0.70] La gran sala está ahora casi en silencio total. La piscina descansa y las lámparas arden bajas. Cubres tus hombros con la tela seca. Todo está limpio y tranquilo para salir.
+[PAUSE|4.0]
+
+## BLOCK: RECALL_3
+[181|NARRATOR_NATIVE_en|0.80] Gathering your dry linen cloth around your shoulders, you cross the hot room one final time. Steam parts softly before your sandals while the archway releases deep heat.
+[PAUSE|2.0]
+[181|NARRATOR_TARGET_es|0.75] Guardas tus hombros con la tela seca y cruzas la sala caliente una última vez. El vapor abre paso ante tus pies. En el arco sale el calor. Todo queda suave atrás.
+[PAUSE|2.0]
+[181|NARRATOR_TARGET_es_repeat|0.70] Guardas tus hombros con la tela seca y cruzas la sala caliente una última vez. El vapor abre paso ante tus pies. En el arco sale el calor. Todo queda suave atrás.
+[PAUSE|4.0]
+[182|NARRATOR_NATIVE_en|0.80] Back in the warm tepidarium, honeyed lamplight glows lower and floor warmth feels mild beneath your soles. Your long shadow glides peacefully across the painted plaster wall.
+[PAUSE|2.0]
+[182|NARRATOR_TARGET_es|0.75] La sala tibia te recibe con luz dulce y suave. Las lámparas brillan ahora mucho menos. El suelo da un calor amable bajo tus pies. Tu sombra pasa lenta por la pared.
+[PAUSE|2.0]
+[182|NARRATOR_TARGET_es_repeat|0.70] La sala tibia te recibe con luz dulce y suave. Las lámparas brillan ahora mucho menos. El suelo da un calor amable bajo tus pies. Tu sombra pasa lenta por la pared.
+[PAUSE|4.0]
+[183|NARRATOR_NATIVE_en|0.80] Past the next archway, cool clean air brushes over your warm damp skin. Each step along the amber-lit corridor carries you farther from the deep heat inside.
+[PAUSE|2.0]
+[183|NARRATOR_TARGET_es|0.75] Pasas el arco y el aire cambia pronto. El aire es fresco y limpio sobre tu piel tibia. La lámpara del pasillo alumbra el suelo. Cada paso te aleja del calor.
+[PAUSE|2.0]
+[183|NARRATOR_TARGET_es_repeat|0.70] Pasas el arco y el aire cambia pronto. El aire es fresco y limpio sobre tu piel tibia. La lámpara del pasillo alumbra el suelo. Cada paso te aleja del calor.
+[PAUSE|4.0]
+[184|NARRATOR_NATIVE_en|0.80] Before you opens the tall frigidarium with pale stone columns and open dusk arches. Evening air drifts inside gently, turning shadows deep blue across the quiet hall.
+[PAUSE|2.0]
+[184|NARRATOR_TARGET_es|0.75] Delante se abre una sala muy alta con columnas claras de piedra. Grandes arcos miran hacia la tarde oscura. El aire fresco entra tranquilo. Las sombras toman un azul profundo.
+[PAUSE|2.0]
+[184|NARRATOR_TARGET_es_repeat|0.70] Delante se abre una sala muy alta con columnas claras de piedra. Grandes arcos miran hacia la tarde oscura. El aire fresco entra tranquilo. Las sombras toman un azul profundo.
+[PAUSE|4.0]
+[185|NARRATOR_NATIVE_en|0.80] Stepping out of your sandals at the doorway, you walk barefoot across smooth cool marble. Each quiet footstep sends a faint round echo across the peaceful stone floor.
+[PAUSE|2.0]
+[185|NARRATOR_TARGET_es|0.75] Dejas las sandalias en la puerta y caminas sin ellas sobre el mármol frío. La piedra es muy lisa bajo tus pies descalzos. Cada paso suena claro. El eco desaparece pronto.
+[PAUSE|2.0]
+[185|NARRATOR_TARGET_es_repeat|0.70] Dejas las sandalias en la puerta y caminas sin ellas sobre el mármol frío. La piedra es muy lisa bajo tus pies descalzos. Cada paso suena claro. El eco desaparece pronto.
+[PAUSE|4.0]
+[186|NARRATOR_NATIVE_en|0.80] In the center lies a wide square cold pool so clear you see blue tiles far below. Thin mist rests quietly across the surface under steady lamplight.
+[PAUSE|2.0]
+[186|NARRATOR_TARGET_es|0.75] En el centro hay una piscina fría, ancha y cuadrada. El agua está tan clara que ves el azul del fondo. Una niebla fina toca arriba. Toda el agua parece quieta.
+[PAUSE|2.0]
+[186|NARRATOR_TARGET_es_repeat|0.70] En el centro hay una piscina fría, ancha y cuadrada. El agua está tan clara que ves el azul del fondo. Una niebla fina toca arriba. Toda el agua parece quieta.
+[PAUSE|4.0]
+[187|NARRATOR_NATIVE_en|0.80] Crouching beside the cool marble rim, you dip one hand into the water. The brief bright cold turns calm as you hold your fingers there for three slow breaths.
+[PAUSE|2.0]
+[187|NARRATOR_TARGET_es|0.75] Bajas al borde frío de mármol y tocas el agua con la mano. Primero sientes un frío claro y corto. Luego esperas tres respiraciones largas. El agua fría parece ahora constante.
+[PAUSE|2.0]
+[187|NARRATOR_TARGET_es_repeat|0.70] Bajas al borde frío de mármol y tocas el agua con la mano. Primero sientes un frío claro y corto. Luego esperas tres respiraciones largas. El agua fría parece ahora constante.
+[PAUSE|4.0]
+[188|NARRATOR_NATIVE_en|0.80] You step down onto the first submerged stair as clean coldness wraps your ankles. Waiting calmly with loose shoulders, you feel the sharpness turn into quiet stillness.
+[PAUSE|2.0]
+[188|NARRATOR_TARGET_es|0.75] Bajas al primer escalón y el agua rodea tus pies con frescura. El frío es limpio y directo sin ruido. Esperas quieto con hombros sueltos. Todo queda pronto tranquilo en las piernas.
+[PAUSE|2.0]
+[188|NARRATOR_TARGET_es_repeat|0.70] Bajas al primer escalón y el agua rodea tus pies con frescura. El frío es limpio y directo sin ruido. Esperas quieto con hombros sueltos. Todo queda pronto tranquilo en las piernas.
+[PAUSE|4.0]
+[189|NARRATOR_NATIVE_en|0.80] Stepping deeper, cold clear water reaches your knees and thighs while deep heat still glows inside. Through water clear as air, you see every blue floor tile below.
+[PAUSE|2.0]
+[189|NARRATOR_TARGET_es|0.75] Bajas un escalón más en el agua. El agua es fría y clara hasta las rodillas. Dentro del cuerpo queda todavía un calor suave. Ves todas las piedras azules en el fondo.
+[PAUSE|2.0]
+[189|NARRATOR_TARGET_es_repeat|0.70] Bajas un escalón más en el agua. El agua es fría y clara hasta las rodillas. Dentro del cuerpo queda todavía un calor suave. Ves todas las piedras azules en el fondo.
+[PAUSE|4.0]
+[190|NARRATOR_NATIVE_en|0.80] You sink to your shoulders in utterly still water while your steady heart beats calmly. One single ceiling drop ripples across the whole dark surface in a slow ring.
+[PAUSE|2.0]
+[190|NARRATOR_TARGET_es|0.75] El agua quieta cubre tus hombros por unos momentos. El silencio rodea tus oídos con mucha paz. Tu corazón late despacio bajo el agua. Una sola gota dibuja un círculo ancho.
+[PAUSE|2.0]
+[190|NARRATOR_TARGET_es_repeat|0.70] El agua quieta cubre tus hombros por unos momentos. El silencio rodea tus oídos con mucha paz. Tu corazón late despacio bajo el agua. Una sola gota dibuja un círculo ancho.
+[PAUSE|4.0]
+[191|NARRATOR_NATIVE_en|0.80] Rising from the pool, bright silver water falls away while brisk night air meets your shoulders. Standing still on the step, you feel your entire skin clear and calm.
+[PAUSE|2.0]
+[191|NARRATOR_TARGET_es|0.75] Sales de la piscina fría y el agua cae de tus hombros. El aire fresco de la tarde toca la piel limpia. Esperas un segundo arriba. Todo tu cuerpo se siente claro.
+[PAUSE|2.0]
+[191|NARRATOR_TARGET_es_repeat|0.70] Sales de la piscina fría y el agua cae de tus hombros. El aire fresco de la tarde toca la piel limpia. Esperas un segundo arriba. Todo tu cuerpo se siente claro.
+[PAUSE|4.0]
+[192|NARRATOR_NATIVE_en|0.80] Climbing onto the marble, you wrap the soft dry linen around your cool arms. A thin trace of mist lifts gently from your shoulders into the quiet evening air.
+[PAUSE|2.0]
+[192|NARRATOR_TARGET_es|0.75] Subes al suelo de mármol y envuelves tu cuerpo en la tela seca. El lino toma el agua con suavidad. La piel está fresca y firme. Sube un hilo fino de vapor.
+[PAUSE|2.0]
+[192|NARRATOR_TARGET_es_repeat|0.70] Subes al suelo de mármol y envuelves tu cuerpo en la tela seca. El lino toma el agua con suavidad. La piel está fresca y firme. Sube un hilo fino de vapor.
+[PAUSE|4.0]
+[193|NARRATOR_NATIVE_en|0.80] Through tall open arches drifts the sweet scent of jasmine from a night garden. Leaning against cool stone, you see bright silver stars emerging across a clear blue sky.
+[PAUSE|2.0]
+[193|NARRATOR_TARGET_es|0.75] Por los arcos altos entra perfume dulce de flores nocturnas. Apoyas un hombro en la piedra fría del arco. El cielo está azul oscuro. Aparecen estrellas claras sobre los techos.
+[PAUSE|2.0]
+[193|NARRATOR_TARGET_es_repeat|0.70] Por los arcos altos entra perfume dulce de flores nocturnas. Apoyas un hombro en la piedra fría del arco. El cielo está azul oscuro. Aparecen estrellas claras sobre los techos.
+[PAUSE|4.0]
+[194|NARRATOR_NATIVE_en|0.80] From the quiet town below come soft evening sounds: a fading cart wheel, distant water in a channel. None of those gentle sounds asks anything at all from you.
+[PAUSE|2.0]
+[194|NARRATOR_TARGET_es|0.75] Desde la ciudad abajo llegan sonidos suaves de la noche que empieza. Una rueda pasa lejos y agua corre por la calle. Todo llega muy bajo por los arcos. Nada pide prisa.
+[PAUSE|2.0]
+[194|NARRATOR_TARGET_es_repeat|0.70] Desde la ciudad abajo llegan sonidos suaves de la noche que empieza. Una rueda pasa lejos y agua corre por la calle. Todo llega muy bajo por los arcos. Nada pide prisa.
+[PAUSE|4.0]
+[195|NARRATOR_NATIVE_en|0.80] The sky deepens gradually from dark blue into velvet black above the rooftops. Night arrives slowly through the open stone arches and settles cleanly across the marble hall.
+[PAUSE|2.0]
+[195|NARRATOR_TARGET_es|0.75] El cielo cambia poco a poco a negro profundo sobre las casas. La noche llega despacio sin prisa por todos los techos. Entra por los arcos altos. Cubre el suelo de mármol.
+[PAUSE|2.0]
+[195|NARRATOR_TARGET_es_repeat|0.70] El cielo cambia poco a poco a negro profundo sobre las casas. La noche llega despacio sin prisa por todos los techos. Entra por los arcos altos. Cubre el suelo de mármol.
+[PAUSE|4.0]
+[196|NARRATOR_NATIVE_en|0.80] Behind you, the bronze bell sounds twice with low unhurried notes marking the end of the baths. Its gentle echo fades through the arches, widening the stillness around you.
+[PAUSE|2.0]
+[196|NARRATOR_TARGET_es|0.75] Atrás suena la campana de bronce dos veces con voz calma. Marca el final tranquilo del día en los baños. El sonido sale lento por los arcos. Luego crece el silencio.
+[PAUSE|2.0]
+[196|NARRATOR_TARGET_es_repeat|0.70] Atrás suena la campana de bronce dos veces con voz calma. Marca el final tranquilo del día en los baños. El sonido sale lento por los arcos. Luego crece el silencio.
+[PAUSE|4.0]
+[197|NARRATOR_NATIVE_en|0.80] Along the pale columns, lamps dim to small gold beads beside the dark glassy pool. Returning to the marble bench, you feel cool air outside and warm calm within.
+[PAUSE|2.0]
+[197|NARRATOR_TARGET_es|0.75] En las paredes, las lámparas brillan ahora como puntos pequeños de oro. Las columnas grises miran la piscina oscura como cristal. Te sientas cerca del arco. Sientes aire fresco y calor interno.
+[PAUSE|2.0]
+[197|NARRATOR_TARGET_es_repeat|0.70] En las paredes, las lámparas brillan ahora como puntos pequeños de oro. Las columnas grises miran la piscina oscura como cristal. Te sientas cerca del arco. Sientes aire fresco y calor interno.
+[PAUSE|4.0]
+[198|NARRATOR_NATIVE_en|0.80] Resting quietly with folded hands, you breathe slow and wide in rare balance. Cool air clears your mind while bath heat stays inside, leaving your whole body calm.
+[PAUSE|2.0]
+[198|NARRATOR_TARGET_es|0.75] Quedas sentado en silencio con las manos juntas y sueltas. El aire fresco limpia tus ideas. El calor de antes sigue adentro en equilibrio. El cuerpo está tranquilo bajo la luz azul.
+[PAUSE|2.0]
+[198|NARRATOR_TARGET_es_repeat|0.70] Quedas sentado en silencio con las manos juntas y sueltas. El aire fresco limpia tus ideas. El calor de antes sigue adentro en equilibrio. El cuerpo está tranquilo bajo la luz azul.
+[PAUSE|4.0]
+[199|NARRATOR_NATIVE_en|0.80] Picking up your wooden sandals, you walk quietly back along the dim painted corridor. Smaller lamp flames soften the wall garlands while the air grows gently warmer again.
+[PAUSE|2.0]
+[199|NARRATOR_TARGET_es|0.75] Tomas tus sandalias en la puerta y vuelves por el pasillo largo. Las lámparas tienen llamas pequeñas en las paredes. Tus pasos casi no suenan en el suelo. El aire vuelve tibio.
+[PAUSE|2.0]
+[199|NARRATOR_TARGET_es_repeat|0.70] Tomas tus sandalias en la puerta y vuelves por el pasillo largo. Las lámparas tienen llamas pequeñas en las paredes. Tus pasos casi no suenan en el suelo. El aire vuelve tibio.
+[PAUSE|4.0]
+[200|NARRATOR_NATIVE_en|0.80] The changing hall lies hushed and half dark under its high vaulted roof. Your quiet niche glows faintly where your folded tunic and wool cloak wait on the shelf.
+[PAUSE|2.0]
+[200|NARRATOR_TARGET_es|0.75] La primera sala está oscura y en silencio bajo el techo alto. Solo brilla poco tu hueco junto al banco. Allí espera tu ropa doblada. Tus pasos lentos cruzan la sala.
+[PAUSE|2.0]
+[200|NARRATOR_TARGET_es_repeat|0.70] La primera sala está oscura y en silencio bajo el techo alto. Solo brilla poco tu hueco junto al banco. Allí espera tu ropa doblada. Tus pasos lentos cruzan la sala.
+[PAUSE|4.0]
+[201|NARRATOR_NATIVE_en|0.80] Lifting your warm dry tunic from the shelf, you smell faint sun and woodsmoke in the cloth. The light fabric settles comfortably over your shoulders and fastens easily at your waist.
+[PAUSE|2.0]
+[201|NARRATOR_TARGET_es|0.75] Tomas la ropa del estante de madera. La ropa está seca y tibia por el aire de la sala. Huele un poco a sol y humo. Cierras el cinturón con facilidad.
+[PAUSE|2.0]
+[201|NARRATOR_TARGET_es_repeat|0.70] Tomas la ropa del estante de madera. La ropa está seca y tibia por el aire de la sala. Huele un poco a sol y humo. Cierras el cinturón con facilidad.
+[PAUSE|4.0]
+[202|NARRATOR_NATIVE_en|0.80] You drape the heavy wool cloak around your shoulders and fasten its edge pin. Smoothing the soft cloth with your hands holds the cozy warmth of the baths close inside.
+[PAUSE|2.0]
+[202|NARRATOR_TARGET_es|0.75] Pones tu capa de lana sobre los hombros y cierras el borde. La tela pesada guarda cerca el calor del cuerpo. Pasas las manos por la lana. Todo queda bien ordenado.
+[PAUSE|2.0]
+[202|NARRATOR_TARGET_es_repeat|0.70] Pones tu capa de lana sobre los hombros y cierras el borde. La tela pesada guarda cerca el calor del cuerpo. Pasas las manos por la lana. Todo queda bien ordenado.
+[PAUSE|4.0]
+[203|NARRATOR_NATIVE_en|0.80] Sliding the bronze ring back onto your wrist, you feel the pleasant weight of flask and curved strigil. Metal taps lightly as you turn toward the doorway curtain.
+[PAUSE|2.0]
+[203|NARRATOR_TARGET_es|0.75] Pones otra vez el anillo de bronce en tu brazo. El frasco y el estrígil están tibios por el calor de la sala. Suenan muy suave al caminar. Vas hacia la cortina.
+[PAUSE|2.0]
+[203|NARRATOR_TARGET_es_repeat|0.70] Pones otra vez el anillo de bronce en tu brazo. El frasco y el estrígil están tibios por el calor de la sala. Suenan muy suave al caminar. Vas hacia la cortina.
+[PAUSE|4.0]
+[204|NARRATOR_NATIVE_en|0.80] Looking back at the curtain, you see a thin golden veil of steam catching the final lamp glow. Dropping the cloth closes the glowing room gently behind you.
+[PAUSE|2.0]
+[204|NARRATOR_TARGET_es|0.75] Miras atrás antes de salir por la tela pesada. Una nube fina de vapor brilla bajo la última lámpara dorada. Dejas el vapor atrás con calma. La luz queda en una línea.
+[PAUSE|2.0]
+[204|NARRATOR_TARGET_es_repeat|0.70] Miras atrás antes de salir por la tela pesada. Una nube fina de vapor brilla bajo la última lámpara dorada. Dejas el vapor atrás con calma. La luz queda en una línea.
+[PAUSE|4.0]
+[205|NARRATOR_NATIVE_en|0.80] Walking slowly through the quiet entrance corridor, you pass the last painted leaves and dim niches. Ahead, the heavy timber door opens smoothly into cool dark evening air.
+[PAUSE|2.0]
+[205|NARRATOR_TARGET_es|0.75] El pasillo te recibe con su calma de tarde noche. Tus sandalias marcan un ritmo lento sobre los ladrillos claros. Pasas el último hueco de pared. La puerta abre al aire fresco.
+[PAUSE|2.0]
+[205|NARRATOR_TARGET_es_repeat|0.70] El pasillo te recibe con su calma de tarde noche. Tus sandalias marcan un ritmo lento sobre los ladrillos claros. Pasas el último hueco de pared. La puerta abre al aire fresco.
+[PAUSE|4.0]
+[206|NARRATOR_NATIVE_en|0.80] Outside on the porch, cool night air touches your glowing skin with the faint scent of distant bread ovens. Under your feet, mosaic waves shine silver beneath one low lamp.
+[PAUSE|2.0]
+[206|NARRATOR_TARGET_es|0.75] Afuera, el aire nocturno toca tu rostro limpio y fresco. Huele lejos a pan y jardines quietos. Las olas del suelo brillan en sombra clara. La lámpara arriba arde muy pequeña.
+[PAUSE|2.0]
+[206|NARRATOR_TARGET_es_repeat|0.70] Afuera, el aire nocturno toca tu rostro limpio y fresco. Huele lejos a pan y jardines quietos. Las olas del suelo brillan en sombra clara. La lámpara arriba arde muy pequeña.
+[PAUSE|4.0]
+[207|NARRATOR_NATIVE_en|0.80] Beyond the steps, the dark street lies empty and damp with evening dew. Shuttered houses stand quietly row by row, wrapped in unbroken silence under the night sky.
+[PAUSE|2.0]
+[207|NARRATOR_TARGET_es|0.75] Más allá de los escalones, la calle está en silencio y casi vacía. Las piedras tienen un poco de humedad nocturna. Todas las casas cierran sus ventanas. Reina una paz muy ancha.
+[PAUSE|2.0]
+[207|NARRATOR_TARGET_es_repeat|0.70] Más allá de los escalones, la calle está en silencio y casi vacía. Las piedras tienen un poco de humedad nocturna. Todas las casas cierran sus ventanas. Reina una paz muy ancha.
+[PAUSE|4.0]
+[208|NARRATOR_NATIVE_en|0.80] Walking slowly down the stone steps with one hand on the rail, you see a field of silver stars overhead. A tiny bat crosses the lamp glow and vanishes into quiet air.
+[PAUSE|2.0]
+[208|NARRATOR_TARGET_es|0.75] Bajas despacio los escalones con una mano sobre el borde de piedra. El cielo entero está lleno de estrellas claras. Pasa una sombra pequeña junto a la lámpara. Luego todo queda quieto.
+[PAUSE|2.0]
+[208|NARRATOR_TARGET_es_repeat|0.70] Bajas despacio los escalones con una mano sobre el borde de piedra. El cielo entero está lleno de estrellas claras. Pasa una sombra pequeña junto a la lámpara. Luego todo queda quieto.
+[PAUSE|4.0]
+[209|NARRATOR_NATIVE_en|0.80] At the foot of the stairs, the carved stone fountain still pours its clear rope of water into the basin. Its soft round murmur holds the quiet street in one breath.
+[PAUSE|2.0]
+[209|NARRATOR_TARGET_es|0.75] Abajo pasas otra vez junto a la fuente de piedra tallada. El agua clara cae igual dentro de la pila baja. Su sonido es redondo y suave. Acompaña toda la calle tranquila.
+[PAUSE|2.0]
+[209|NARRATOR_TARGET_es_repeat|0.70] Abajo pasas otra vez junto a la fuente de piedra tallada. El agua clara cae igual dentro de la pila baja. Su sonido es redondo y suave. Acompaña toda la calle tranquila.
+[PAUSE|4.0]
+[210|NARRATOR_NATIVE_en|0.80] Resting your fingers inside the basin, you feel steady cool water run gently across your skin. Listening between the fountain's soft voice and silent street, your breath stays unforced.
+[PAUSE|2.0]
+[210|NARRATOR_TARGET_es|0.75] Tocas el agua fresca de la pila con los dedos quietos. La fuente suena suave sin apuro ninguno. Tu mano descansa húmeda y ligera. Respiras con mucha calma entre fuente y calle.
+[PAUSE|2.0]
+[210|NARRATOR_TARGET_es_repeat|0.70] Tocas el agua fresca de la pila con los dedos quietos. La fuente suena suave sin apuro ninguno. Tu mano descansa húmeda y ligera. Respiras con mucha calma entre fuente y calle.
+[PAUSE|4.0]
+[211|NARRATOR_NATIVE_en|0.80] You cross the square smoothly over cool flagstones glimmering faintly with night dew. Your wool cloak settles lightly while your own slow footsteps stay even, soft, and easy to follow.
+[PAUSE|2.0]
+[211|NARRATOR_TARGET_es|0.75] Cruzas la plaza despacio sobre piedras frescas que brillan poco. La capa descansa tranquila sobre tus piernas al andar. Solo suenan tus pasos suaves y parejos. El camino es muy fácil.
+[PAUSE|2.0]
+[211|NARRATOR_TARGET_es_repeat|0.70] Cruzas la plaza despacio sobre piedras frescas que brillan poco. La capa descansa tranquila sobre tus piernas al andar. Solo suenan tus pasos suaves y parejos. El camino es muy fácil.
+[PAUSE|4.0]
+[212|NARRATOR_NATIVE_en|0.80] Gentle bath warmth still rests deep inside your chest, spreading easily along loose shoulders and arms. Every calm breath carries a faint hint of olive oil from your clean wrists.
+[PAUSE|2.0]
+[212|NARRATOR_TARGET_es|0.75] El calor suave de los baños sigue todavía dentro de tu pecho. Tu piel está limpia y tus hombros descansan bajos. Cada respiración trae un poco de olor a oliva. Todo fluye fácil.
+[PAUSE|2.0]
+[212|NARRATOR_TARGET_es_repeat|0.70] El calor suave de los baños sigue todavía dentro de tu pecho. Tu piel está limpia y tus hombros descansan bajos. Cada respiración trae un poco de olor a oliva. Todo fluye fácil.
+[PAUSE|4.0]
+[213|NARRATOR_NATIVE_en|0.80] At the street corner, you rest your palm once more on the old brick wall. Still there is warmth inside the stone, given gently back into the cool evening air.
+[PAUSE|2.0]
+[213|NARRATOR_TARGET_es|0.75] En la esquina apoyas la mano en el muro viejo de ladrillo. Todavía hay calor en la piedra desde la tarde. El muro entrega poco a poco su calor tibio. Esperas un momento.
+[PAUSE|2.0]
+[213|NARRATOR_TARGET_es_repeat|0.70] En la esquina apoyas la mano en el muro viejo de ladrillo. Todavía hay calor en la piedra desde la tarde. El muro entrega poco a poco su calor tibio. Esperas un momento.
+[PAUSE|4.0]
+[214|NARRATOR_NATIVE_en|0.80] Above the dark rooftops opens a clear deep well of stars without a trace of steam. Far down the quiet street, one small steady shuttered lamp marks the peaceful night.
+[PAUSE|2.0]
+[214|NARRATOR_TARGET_es|0.75] Sobre los techos brilla un cielo claro lleno de estrellas altas. El vapor de antes ya no está arriba. Lejos en la calle queda una sola luz pequeña. La noche es profunda.
+[PAUSE|2.0]
+[214|NARRATOR_TARGET_es_repeat|0.70] Sobre los techos brilla un cielo claro lleno de estrellas altas. El vapor de antes ya no está arriba. Lejos en la calle queda una sola luz pequeña. La noche es profunda.
+[PAUSE|4.0]
+[215|NARRATOR_NATIVE_en|0.80] As the narrow street curves gently ahead, your soft steps slow down over smooth stone. Mild night air surrounds you while you carry the warm stillness of the baths onward.
+[PAUSE|2.0]
+[215|NARRATOR_TARGET_es|0.75] La calle gira suave adelante con casas en sombra oscura. Tus pasos suenan ahora más bajos sobre la piedra lisa. El aire nocturno es agradable y tibio. Llevas la calma contigo siempre.
+[PAUSE|2.0]
+[215|NARRATOR_TARGET_es_repeat|0.70] La calle gira suave adelante con casas en sombra oscura. Tus pasos suenan ahora más bajos sobre la piedra lisa. El aire nocturno es agradable y tibio. Llevas la calma contigo siempre.
+[PAUSE|4.0]
+[216|NARRATOR_NATIVE_en|0.80] Stopping beneath a quiet roof overhang, you feel clean, warm, and unhurried in the calm town. Everything is calm and rest, and the wide night stays peacefully around you.
+[PAUSE|2.0]
+[216|NARRATOR_TARGET_es|0.75] Paras bajo un techo tranquilo y escuchas la noche silenciosa. Estás limpio, tibio y sin prisa ninguna en la ciudad. Todo es calma y descanso. La noche entera permanece en paz.
+[PAUSE|2.0]
+[216|NARRATOR_TARGET_es_repeat|0.70] Paras bajo un techo tranquilo y escuchas la noche silenciosa. Estás limpio, tibio y sin prisa ninguna en la ciudad. Todo es calma y descanso. La noche entera permanece en paz.
+[PAUSE|4.0]
+
+## PLAYLIST_SEQUENCE
+PLAY: ACT_1_EVENING_ENTRY, ACT_2_WARM_FLOOR, ACT_3_CALDARIUM_STEAM (mode=full, repeat=1)
+PLAY: ACT_4_STRIGIL, ACT_5_COOL_ROOM, ACT_6_CLOSING_REST (mode=full, repeat=1)
+PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=full, repeat=1)
+PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.85, extra_pause=5.0, repeat=1)
