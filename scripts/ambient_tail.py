@@ -49,6 +49,8 @@ class AmbientTailSettings:
     category: str
     volume: float
     voice_fade_out_sec: float
+    # False = затемнение только с начала эмбиент-хвоста, не во время речи
+    dim_during_speech: bool = True
 
 
 @dataclass(frozen=True)
@@ -124,9 +126,16 @@ def tail_seconds(voice_sec: float, settings: AmbientTailSettings) -> float:
     return max(0.0, settings.target_total_sec - voice_sec)
 
 
-def dim_start_for(voice_sec: float) -> float:
-    """Затемнение с ~37.5 мин или с начала хвоста — что наступит раньше."""
-    return min(DIM_START_SEC, max(0.0, voice_sec))
+def dim_start_for(voice_sec: float, *, dim_during_speech: bool = True) -> float:
+    """Момент старта затемнения по шкале времени ролика.
+
+    dim_during_speech=True (сон): с ~37.5 мин или с начала хвоста — что наступит раньше.
+    dim_during_speech=False: только с конца озвучки (начало эмбиент-хвоста).
+    """
+    voice_sec = max(0.0, voice_sec)
+    if not dim_during_speech:
+        return voice_sec
+    return min(DIM_START_SEC, voice_sec)
 
 
 def brightness_at(t: float, dim_start: float) -> float:
@@ -181,6 +190,7 @@ def settings_from_episode(episode_dir: Path) -> AmbientTailSettings:
         category=safe_category(str(timing["ambient_category"])),
         volume=float(timing["ambient_volume"]),
         voice_fade_out_sec=float(timing["voice_fade_out_sec"]),
+        dim_during_speech=bool(timing.get("dim_during_speech", True)),
     )
 
 

@@ -472,9 +472,17 @@ def close_clips(clips: list) -> None:
     gc.collect()
 
 
-def build(episode_dir: Path) -> Path:
-    from isekai_video import maybe_build_long
+def build(episode_dir: Path, *, stage: str = "all") -> Path:
+    from isekai_video import maybe_build_long, maybe_build_long_staged
 
+    if stage and stage != "all":
+        staged = maybe_build_long_staged(episode_dir, stage)
+        if staged is not None:
+            return staged
+        raise RuntimeError(
+            "Этапная сборка доступна только для длинных роликов (isekai). "
+            "Используйте обычную сборку без --stage."
+        )
     long_video = maybe_build_long(episode_dir)
     if long_video is not None:
         return long_video
@@ -626,13 +634,19 @@ def main(argv: list[str] | None = None) -> int:
         type=Path,
         help="Папка эпизода, например channels/channel_02_sleep_history/episodes/SH01_roman_apartment",
     )
+    parser.add_argument(
+        "--stage",
+        choices=("all", "video", "ambient", "mux"),
+        default="all",
+        help="Длинный ролик (isekai): video → ambient → mux по отдельности; all = всё сразу",
+    )
     args = parser.parse_args(argv)
     episode_dir = args.episode.expanduser().resolve()
     if not episode_dir.is_dir():
         print(f"Папка не найдена: {episode_dir}", file=sys.stderr)
         return 1
     try:
-        output = build(episode_dir)
+        output = build(episode_dir, stage=args.stage)
     except (FileNotFoundError, RuntimeError, OSError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

@@ -1,0 +1,2 @@
+file 'C:/Users/haqury/youtobe-maker/channels/LumaDreamLearnSpanish/playlists/S04_cozy_fantasy_magic/episodes/EP01_alchemist_attic_rain/.video_cache/batch_0000.mp4'
+file 'C:/Users/haqury/youtobe-maker/channels/LumaDreamLearnSpanish/playlists/S04_cozy_fantasy_magic/episodes/EP01_alchemist_attic_rain/.video_cache/batch_0194.mp4'

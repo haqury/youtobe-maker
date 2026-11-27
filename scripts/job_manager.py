@@ -132,6 +132,8 @@ def _log_indicates_success(log_path: Path) -> bool:
         tail = log_path.read_text(encoding="utf-8", errors="replace")[-5000:]
     except OSError:
         return False
+    if "Готово: этап" in tail:
+        return True
     return "Готово:" in tail and ("video ready" in tail or "final_video.mp4" in tail)
 
 

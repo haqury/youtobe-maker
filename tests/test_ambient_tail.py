@@ -66,6 +66,7 @@ def test_tail_and_dim() -> None:
     assert tail_seconds(20 * 60, off) == 0
     assert dim_start_for(15 * 60) == 15 * 60
     assert dim_start_for(90 * 60) == 37.5 * 60
+    assert dim_start_for(90 * 60, dim_during_speech=False) == 90 * 60
     assert brightness_at(0, 100) == 1
     assert brightness_at(100, 100) == 1
     assert abs(brightness_at(100 + 90, 100) - 0.12) < 1e-6

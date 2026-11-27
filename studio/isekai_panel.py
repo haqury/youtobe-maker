@@ -64,6 +64,65 @@ def _pick_voice(label: str, lang: str, current: str, key: str) -> str:
     return voices[labels.index(picked)]
 
 
+def _render_isekai_voice_block(episode_dir: Path, ep_key: str) -> None:
+    settings = load_isekai_settings(episode_dir)
+    target = settings.get("TARGET_LANG", "?")
+    native = settings.get("NATIVE_LANG", "?")
+    st.caption(
+        f"Урок: **{target}**, пояснения: **{native}**. "
+        "Растянутость и мягкость влияют на следующую сборку voiceover.mp3."
+    )
+    native_voice = _pick_voice(
+        "Пояснения на английском",
+        native,
+        settings.get("MENTOR_NATIVE", ""),
+        f"isekai_voice_native_{ep_key}",
+    )
+    target_voice = _pick_voice(
+        "Испанский урок",
+        target,
+        settings.get("MENTOR_TARGET", ""),
+        f"isekai_voice_target_{ep_key}",
+    )
+    npc_voice = _pick_voice(
+        "Реплики NPC",
+        target,
+        settings.get("NPC_TARGET", ""),
+        f"isekai_voice_npc_{ep_key}",
+    )
+    stretch = st.slider(
+        "Растянутость",
+        min_value=0.75,
+        max_value=1.0,
+        value=float(speech_speed_bias(settings)),
+        step=0.01,
+        key=f"isekai_stretch_{ep_key}",
+        help="1.00 — темп из сценария. Ниже — медленнее и длиннее.",
+    )
+    pitch_hz = int(speech_pitch(settings).replace("Hz", "").replace("+", "") or "0")
+    softness = st.slider(
+        "Мягкость тона",
+        min_value=0,
+        max_value=16,
+        value=max(0, min(16, -pitch_hz if pitch_hz < 0 else 0)),
+        step=1,
+        key=f"isekai_soft_{ep_key}",
+        help="0 — без снижения. 8 Гц — тихий мужской Альваро. Выше 12 уже заметно глухо.",
+    )
+    if st.button("Сохранить голос", key=f"isekai_voice_save_{ep_key}"):
+        write_isekai_settings(
+            episode_dir,
+            {
+                "MENTOR_NATIVE": native_voice,
+                "MENTOR_TARGET": target_voice,
+                "NPC_TARGET": npc_voice,
+                "SPEECH_SPEED_BIAS": f"{stretch:.2f}",
+                "SPEECH_PITCH": f"-{int(softness)}Hz",
+            },
+        )
+        st.rerun()
+
+
 def render_isekai_production(
     episode_dir: Path,
     channel_slug: str,
@@ -78,70 +137,10 @@ def render_isekai_production(
     settings = load_isekai_settings(episode_dir)
     target = settings.get("TARGET_LANG", "?")
     native = settings.get("NATIVE_LANG", "?")
-    voices = ", ".join(
-        f"{role} → {settings.get(role)}"
-        for role in ("MENTOR_NATIVE", "MENTOR_TARGET", "NPC_TARGET")
-        if settings.get(role)
-    )
-
     st.markdown("---")
     st.subheader("А — Сценарий блоками")
-    with st.expander("Голос", expanded=False):
-        st.caption(
-            "Испанский урок и редкие реплики NPC. Растянутость замедляет речь, "
-            "мягкость опускает тон. Уже собранный voiceover.mp3 сам не меняется."
-        )
-        native_voice = _pick_voice(
-            "Пояснения на английском",
-            native,
-            settings.get("MENTOR_NATIVE", ""),
-            f"isekai_voice_native_{ep_key}",
-        )
-        target_voice = _pick_voice(
-            "Испанский урок",
-            target,
-            settings.get("MENTOR_TARGET", ""),
-            f"isekai_voice_target_{ep_key}",
-        )
-        npc_voice = _pick_voice(
-            "Реплики NPC",
-            target,
-            settings.get("NPC_TARGET", ""),
-            f"isekai_voice_npc_{ep_key}",
-        )
-        stretch = st.slider(
-            "Растянутость",
-            min_value=0.75,
-            max_value=1.0,
-            value=float(speech_speed_bias(settings)),
-            step=0.01,
-            key=f"isekai_stretch_{ep_key}",
-            help="1.00 — темп из сценария. Ниже — медленнее и длиннее.",
-        )
-        pitch_hz = int(speech_pitch(settings).replace("Hz", "").replace("+", "") or "0")
-        softness = st.slider(
-            "Мягкость тона",
-            min_value=0,
-            max_value=16,
-            value=max(0, min(16, -pitch_hz if pitch_hz < 0 else 0)),
-            step=1,
-            key=f"isekai_soft_{ep_key}",
-            help="0 — без снижения. 8 Гц — тихий мужской Альваро. Выше 12 уже заметно глухо.",
-        )
-        if st.button("Сохранить голос", key=f"isekai_voice_save_{ep_key}"):
-            write_isekai_settings(
-                episode_dir,
-                {
-                    "MENTOR_NATIVE": native_voice,
-                    "MENTOR_TARGET": target_voice,
-                    "NPC_TARGET": npc_voice,
-                    "SPEECH_SPEED_BIAS": f"{stretch:.2f}",
-                    "SPEECH_PITCH": f"-{int(softness)}Hz",
-                },
-            )
-            st.rerun()
     st.caption(
-        f"Урок: **{target}**, пояснения: **{native}**. Голоса: {voices}. "
+        f"Урок: **{target}**, пояснения: **{native}**. "
         "Каждая фраза пишется один раз. Ночную длину задаёт PLAYLIST_SEQUENCE."
     )
     st.caption("`script_ru.md` этот формат не озвучивает. Перевод уже в строках MENTOR_NATIVE.")
@@ -243,6 +242,7 @@ def render_isekai_production(
 
     st.markdown("---")
     st.subheader("Б — Озвучка")
+    _render_isekai_voice_block(episode_dir, ep_key)
     stale = _voice_script_stale(episode_dir)
     if stale:
         st.info(

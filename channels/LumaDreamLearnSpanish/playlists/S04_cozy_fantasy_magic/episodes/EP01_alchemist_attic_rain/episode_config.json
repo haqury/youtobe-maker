@@ -13,5 +13,5 @@
   "ambient_volume": 0.12,
   "fps_start": 24,
   "fps_end": 2,
-  "fps_interval_min": 10.0
+  "fps_interval_min": 5.0
 }

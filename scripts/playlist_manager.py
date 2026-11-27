@@ -714,6 +714,21 @@ def row_can_expand_to_series(row: pd.Series) -> bool:
     return sid == STANDALONE_ID
 
 
+def playlist_id_from_episode_dir(episode_dir: Path, channel_dir: Path) -> str | None:
+    """S04 из playlists/S04_slug/... или None для legacy episodes/."""
+    try:
+        rel = episode_dir.resolve().relative_to(channel_dir.resolve())
+    except ValueError:
+        return None
+    if len(rel.parts) < 2 or rel.parts[0] != "playlists":
+        return None
+    folder = rel.parts[1]
+    match = SERIES_ID_RE.match(folder)
+    if match:
+        return match.group(1).upper()
+    return folder.split("_", 1)[0]
+
+
 def list_episode_dirs(channel_dir: Path) -> list[Path]:
     """Папки эпизодов: channels/<slug>/episodes и playlists/<id>_<slug>/episodes (или сразу в папке плейлиста)."""
     found: list[Path] = []

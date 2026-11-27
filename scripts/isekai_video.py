@@ -6,6 +6,7 @@ maybe_build_long(episode_dir) -> Path | None. None = использовать о
 
 from __future__ import annotations
 
+import json
 import math
 import random
 import re
@@ -31,6 +32,15 @@ from ambient_tail import (
     tail_seconds,
 )
 from job_progress import emit_progress
+from long_build_stages import (
+    AMBIENT_BED,
+    AMBIENT_TAIL,
+    mark_ambient_stage,
+    mark_video_stage,
+    video_for_mux,
+    video_stage_ready,
+    ambient_stage_ready,
+)
 
 ROOT = _SCRIPTS.parent
 AMBIENT_DIR = ROOT / "assets" / "ambient"
@@ -54,6 +64,66 @@ class OverlayLayerSpec:
     opacity: float
     start_sec: float = 0.0
     hflip: bool = False
+
+
+@dataclass(frozen=True)
+class LongBuildPlan:
+    episode_dir: Path
+    voice: Path
+    duration: float
+    tail: AmbientTailSettings | None
+    use_tail: bool
+    total: float
+
+
+def inspect_long_episode(episode_dir: Path) -> LongBuildPlan | None:
+    voice = episode_dir / "voiceover.mp3"
+    script = episode_dir / "script.md"
+    playlist = False
+    if script.is_file():
+        try:
+            playlist = "## PLAYLIST_SEQUENCE" in script.read_text(encoding="utf-8-sig")
+        except (OSError, UnicodeDecodeError):
+            playlist = False
+    if not voice.is_file():
+        if playlist:
+            raise FileNotFoundError(f"Нет озвучки: {voice}")
+        return None
+    duration = probe_duration(voice)
+    if duration <= 0:
+        raise RuntimeError("У voiceover.mp3 нулевая длина.")
+    from ambient_tail import settings_from_episode
+
+    settings = settings_from_episode(episode_dir)
+    extend = tail_seconds(duration, settings) > 1.0
+    if not playlist and duration < LONG_THRESHOLD_SEC and not extend:
+        return None
+    use_tail = extend and settings.enabled
+    total = float(settings.target_total_sec) if use_tail else duration
+    return LongBuildPlan(
+        episode_dir=episode_dir,
+        voice=voice,
+        duration=duration,
+        tail=settings if use_tail else None,
+        use_tail=use_tail,
+        total=total,
+    )
+
+
+def _write_mux_meta(cache: Path, lead: float, total: float) -> None:
+    cache.mkdir(exist_ok=True)
+    (cache / "long_mux_meta.json").write_text(
+        json.dumps({"lead_sec": lead, "total_sec": total}, indent=0),
+        encoding="utf-8",
+    )
+
+
+def _read_mux_meta(cache: Path) -> tuple[float, float]:
+    path = cache / "long_mux_meta.json"
+    if not path.is_file():
+        return 0.0, 0.0
+    data = json.loads(path.read_text(encoding="utf-8"))
+    return float(data.get("lead_sec", 0) or 0), float(data.get("total_sec", 0) or 0)
 
 
 def _ffmpeg() -> str:
@@ -309,6 +379,7 @@ def encode_batch(
     brightness: float = 1.0,
     ramp: tuple[float, float, float] | None = None,
     fps: int = FPS,
+    timeline_fps: int | None = None,
     overlay: Path | None = None,
     overlay_opacity: float = 0.22,
     keyframe_at: float | None = None,
@@ -366,10 +437,14 @@ def encode_batch(
             last = out_label
 
     graph, last = _apply_brightness(graph, last, brightness, ramp)
+    out_fps = max(1, int(timeline_fps or fps))
+    if out_fps != fps:
+        graph += f";[{last}]fps={out_fps}[vout_cfr]"
+        last = "vout_cfr"
     cmd = [
         *args, "-filter_complex", graph, "-map", f"[{last}]", "-an",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
-        "-pix_fmt", "yuv420p", "-r", str(fps), "-threads", "2",
+        "-pix_fmt", "yuv420p", "-r", str(out_fps), "-fps_mode", "cfr", "-threads", "2",
     ]
     if keyframe_at is not None and keyframe_at > 0:
         cmd += ["-force_key_frames", f"{float(keyframe_at):.3f}"]
@@ -452,12 +527,13 @@ def _ensure_clip(cache: Path, image: Path, variant: int, fps: int = FPS) -> Path
     return clip
 
 
-def build_long(
-    episode_dir: Path,
-    voice: Path,
-    duration: float,
-    tail: AmbientTailSettings | None = None,
-) -> Path:
+def build_long_video_stage(plan: LongBuildPlan) -> Path:
+    episode_dir = plan.episode_dir
+    voice = plan.voice
+    duration = plan.duration
+    tail = plan.tail
+    use_tail = plan.use_tail
+    total = plan.total
     image_dir = episode_dir / "images"
     if not image_dir.is_dir():
         raise FileNotFoundError(f"Нет папки с кадрами: {image_dir}")
@@ -467,22 +543,21 @@ def build_long(
 
     cache = episode_dir / CACHE_NAME
     cache.mkdir(exist_ok=True)
-    use_tail = tail is not None and tail_seconds(duration, tail) > 1.0
-    total = float(tail.target_total_sec) if use_tail and tail is not None else duration
     if use_tail and tail is not None and not collect_tracks(tail.category):
         folder = "assets/ambient" if safe_category(tail.category) == "mix" else f"assets/ambient/{safe_category(tail.category)}"
         raise RuntimeError(
             f"Нет аудио в {folder}. Положите длинные записи без речи или выберите другую категорию."
         )
-    total_steps = len(images) + 4
+    total_steps = len(images) + 3
     if use_tail and tail is not None:
         print(
             f"Эмбиент-хвост: речь {duration / 60:.1f} мин, итог {total / 60:.1f} мин, "
             f"категория {tail.category}, громкость {tail.volume:.0%}."
         )
+        dim_at = dim_start_for(duration, dim_during_speech=tail.dim_during_speech)
         print(
-            f"Затемнение до {int(brightness_at(10**9, dim_start_for(duration)) * 100)}% "
-            f"с {dim_start_for(duration) / 60:.1f} мин."
+            f"Затемнение до {int(brightness_at(10**9, dim_at) * 100)}% "
+            f"с {dim_at / 60:.1f} мин."
         )
     from animation_settings import load_episode_animation, resolve_overlay_paths
     from episode_timing import describe_fps_schedule, episode_timing_from_config, fps_at
@@ -567,7 +642,11 @@ def build_long(
         stale.unlink(missing_ok=True)
     unique: dict[tuple, Path] = {}
     sequence: list[Path] = []
-    dim_start = dim_start_for(duration) if use_tail else None
+    dim_start = (
+        dim_start_for(duration, dim_during_speech=tail.dim_during_speech)
+        if use_tail and tail is not None
+        else None
+    )
     emit_progress(len(images) + 1, total_steps, f"Batch xfade (всего {batch_count})")
     for batch in range(batch_count):
         start_t = batch * batch_len
@@ -611,6 +690,7 @@ def build_long(
                 brightness,
                 ramp,
                 batch_fps,
+                timeline_fps=fps_start,
                 keyframe_at=keyframe_at,
                 overlays=batch_overlays,
             )
@@ -622,37 +702,80 @@ def build_long(
     video_all = cache / "video_all.mp4"
     concat_copy(sequence, video_all, cache / "_batches.txt")
 
-    output = episode_dir / OUTPUT_NAME
     video_for_audio = video_all
     lead = 0.0
     if intro_ready is not None:
         prepared, crossfade = intro_ready
-        emit_progress(len(images) + 2, total_steps, "Интро xfade + хвост (-c copy)")
+        emit_progress(len(images) + 3, total_steps, "Интро xfade (-c copy)")
         video_for_audio, lead = attach_intro(video_all, prepared, crossfade, fps_start, cache)
         print(f"Интро вклеено, речь сдвинута на {lead:.1f} с, эмбиент с 00:00.")
-    emit_progress(len(images) + 3, total_steps, f"Mux {OUTPUT_NAME}")
-    if use_tail and tail is not None:
-        join_pad = 8.0
-        bed = render_unique_ambient(
-            episode_dir, tail.category, duration, cache / "ambient_bed.m4a", "bed"
-        )
-        tail_audio = render_unique_ambient(
-            episode_dir,
-            tail.category,
-            (total - duration) + join_pad,
-            cache / "ambient_tail.m4a",
-            "tail",
-        )
+    _write_mux_meta(cache, lead, total)
+    mark_video_stage(episode_dir, video_for_audio)
+    emit_progress(total_steps, total_steps, "Видеодорожка готова")
+    print(f"Готово: этап video — {video_for_audio}", flush=True)
+    return video_for_audio
+
+
+def build_long_ambient_stage(plan: LongBuildPlan) -> tuple[Path, Path]:
+    if not plan.use_tail or plan.tail is None:
+        raise RuntimeError("Этап ambient: у эпизода нет эмбиент-хвоста (ambient_tail_enabled).")
+    if not video_stage_ready(plan.episode_dir):
+        raise RuntimeError("Сначала соберите этап video (build_sleep_video.py --stage video).")
+    tail = plan.tail
+    episode_dir = plan.episode_dir
+    cache = episode_dir / CACHE_NAME
+    cache.mkdir(exist_ok=True)
+    total_steps = 2
+    emit_progress(1, total_steps, "Эмбиент под речь (bed)")
+    bed = render_unique_ambient(
+        episode_dir, tail.category, plan.duration, cache / AMBIENT_BED, "bed"
+    )
+    join_pad = 8.0
+    emit_progress(2, total_steps, "Эмбиент-хвост (tail)")
+    tail_audio = render_unique_ambient(
+        episode_dir,
+        tail.category,
+        (plan.total - plan.duration) + join_pad,
+        cache / AMBIENT_TAIL,
+        "tail",
+    )
+    mark_ambient_stage(episode_dir)
+    print(f"Готово: этап ambient — {bed.name}, {tail_audio.name}", flush=True)
+    return bed, tail_audio
+
+
+def build_long_mux_stage(plan: LongBuildPlan) -> Path:
+    episode_dir = plan.episode_dir
+    cache = episode_dir / CACHE_NAME
+    video_path = video_for_mux(episode_dir)
+    if video_path is None:
+        raise RuntimeError("Сначала соберите этап video.")
+    lead, total_dur = _read_mux_meta(cache)
+    if total_dur <= 0:
+        total_dur = plan.total
+    output = episode_dir / OUTPUT_NAME
+    emit_progress(1, 1, f"Mux {OUTPUT_NAME}")
+    if plan.use_tail and plan.tail is not None:
+        if not ambient_stage_ready(episode_dir):
+            raise RuntimeError("Сначала соберите этап ambient (build_sleep_video.py --stage ambient).")
+        bed = cache / AMBIENT_BED
+        tail_audio = cache / AMBIENT_TAIL
+        probed_v = probe_duration(video_path)
+        if probed_v > total_dur + 1.0:
+            print(
+                f"Длина видео {probed_v / 60:.1f} мин > цели {total_dur / 60:.1f} мин — "
+                f"mux обрежет по целевым {total_dur / 60:.1f} мин."
+            )
         mix_voice_with_tail(
             episode_dir=episode_dir,
-            video=video_for_audio,
-            voice=voice,
+            video=video_path,
+            voice=plan.voice,
             bed=bed,
             tail=tail_audio,
-            voice_dur=duration,
-            total_dur=probe_duration(video_for_audio) if lead > 0 else total,
-            volume=tail.volume,
-            voice_fade_sec=tail.voice_fade_out_sec,
+            voice_dur=plan.duration,
+            total_dur=total_dur,
+            volume=plan.tail.volume,
+            voice_fade_sec=plan.tail.voice_fade_out_sec,
             output=output,
             lead_sec=lead,
         )
@@ -663,41 +786,62 @@ def build_long(
         else:
             print(f"Ambient: {ambient.name}, громкость {AMBIENT_VOLUME:.2f}.")
         mux(
-            video_for_audio,
-            voice,
+            video_path,
+            plan.voice,
             ambient,
-            probe_duration(video_for_audio) if lead > 0 else duration,
+            probe_duration(video_path) if lead > 0 else plan.duration,
             output,
             lead_sec=lead,
         )
-    emit_progress(total_steps, total_steps, "Завершено")
     print(f"isekai_video ready {output}", flush=True)
+    print(f"Готово: {output}", flush=True)
     return output
 
 
-def maybe_build_long(episode_dir: Path) -> Path | None:
-    voice = episode_dir / "voiceover.mp3"
-    script = episode_dir / "script.md"
-    playlist = False
-    if script.is_file():
-        try:
-            playlist = "## PLAYLIST_SEQUENCE" in script.read_text(encoding="utf-8-sig")
-        except (OSError, UnicodeDecodeError):
-            playlist = False
-    if not voice.is_file():
-        if playlist:
-            raise FileNotFoundError(f"Нет озвучки: {voice}")
-        return None
-    duration = probe_duration(voice)
-    if duration <= 0:
-        raise RuntimeError("У voiceover.mp3 нулевая длина.")
-    from ambient_tail import settings_from_episode
+def build_long(
+    episode_dir: Path,
+    voice: Path,
+    duration: float,
+    tail: AmbientTailSettings | None = None,
+) -> Path:
+    use_tail = tail is not None and tail_seconds(duration, tail) > 1.0
+    total = float(tail.target_total_sec) if use_tail and tail is not None else duration
+    plan = LongBuildPlan(
+        episode_dir=episode_dir,
+        voice=voice,
+        duration=duration,
+        tail=tail if use_tail else None,
+        use_tail=use_tail,
+        total=total,
+    )
+    build_long_video_stage(plan)
+    if plan.use_tail:
+        build_long_ambient_stage(plan)
+        return build_long_mux_stage(plan)
+    return build_long_mux_stage(plan)
 
-    settings = settings_from_episode(episode_dir)
-    extend = tail_seconds(duration, settings) > 1.0
-    if not playlist and duration < LONG_THRESHOLD_SEC and not extend:
+
+def maybe_build_long_staged(episode_dir: Path, stage: str) -> Path | None:
+    plan = inspect_long_episode(episode_dir)
+    if plan is None:
         return None
-    return build_long(episode_dir, voice, duration, settings if extend else None)
+    stage = (stage or "all").strip().lower()
+    if stage == "all":
+        return build_long(plan.episode_dir, plan.voice, plan.duration, plan.tail)
+    if stage == "video":
+        return build_long_video_stage(plan)
+    if stage == "ambient":
+        return build_long_ambient_stage(plan)[0]
+    if stage == "mux":
+        return build_long_mux_stage(plan)
+    raise ValueError(f"Неизвестный этап: {stage!r}. Допустимо: video, ambient, mux, all.")
+
+
+def maybe_build_long(episode_dir: Path) -> Path | None:
+    plan = inspect_long_episode(episode_dir)
+    if plan is None:
+        return None
+    return build_long(plan.episode_dir, plan.voice, plan.duration, plan.tail)
 
 
 if __name__ == "__main__":

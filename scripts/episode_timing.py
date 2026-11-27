@@ -112,6 +112,7 @@ def apply_timing_defaults(cfg: dict[str, Any]) -> dict[str, Any]:
         FPS_INTERVAL_MAX,
         DEFAULT_FPS_INTERVAL_MIN,
     )
+    cfg["dim_during_speech"] = bool(cfg.get("dim_during_speech", True))
     return cfg
 
 

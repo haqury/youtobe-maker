@@ -33,6 +33,7 @@ from episode_review import (
     update_video_segment_note,
 )
 from job_manager import (
+    episode_has_running_job,
     get_job_details,
     get_jobs,
     job_can_restart,
@@ -94,6 +95,7 @@ from playlist_manager import (
     list_episode_dirs,
     create_playlist,
     load_playlists,
+    playlist_id_from_episode_dir,
     next_series_episode_from_folders,
     next_series_episode_id,
     normalize_backlog_frame,
@@ -742,16 +744,15 @@ def render_animate_i2v_panel(
 
     method_labels = {
         "ffmpeg_25d": "⚡ Киношная 2.5D (FFmpeg)",
-        "comfyui": "🧠 AI Video (ComfyUI)",
         "remotion": "⚛️ Remotion Studio",
     }
     method_codes = list(method_labels.keys())
     inferred = infer_animation_method_from_review(review)
     current_mode = str(anim.get("animation_mode", inferred or "ffmpeg_25d"))
     if current_mode in ("comfyui_i2v", "comfyui"):
-        current_mode = "comfyui"
+        current_mode = "ffmpeg_25d"
     elif current_mode not in method_codes:
-        current_mode = inferred or "ffmpeg_25d"
+        current_mode = inferred if inferred in method_codes else "ffmpeg_25d"
 
     method_key = f"anim_method_{ep_key}"
     episode_token = f"anim_method_ep_{ep_key}"
@@ -886,6 +887,16 @@ def render_animate_i2v_panel(
                 epi_save = load_episode_config(episode_dir, channel_slug, channel_dir)
                 persist_episode_config_before_job(episode_dir, ep_key, epi_save)
                 launch_background_job("build_video", episode_dir, "build_sleep_video.py")
+            from studio.long_build_controls import render_long_build_stages
+
+            render_long_build_stages(
+                episode_dir,
+                ep_key,
+                launch_job=launch_background_job,
+                persist_config=persist_episode_config_before_job,
+                channel_slug=channel_slug,
+                channel_dir=channel_dir,
+            )
 
         elif method == "remotion":
             r_status = node_status()
@@ -960,156 +971,6 @@ def render_animate_i2v_panel(
                 epi_save = load_episode_config(episode_dir, channel_slug, channel_dir)
                 persist_episode_config_before_job(episode_dir, ep_key, epi_save)
                 launch_background_job("build_video", episode_dir, "build_remotion_video.py")
-
-        elif method == "comfyui":
-            st.markdown(f"**{comfyui_status_label()}** — блок управления также вверху студии.")
-            st.caption("Модель, качество/скорость, кадры и оценка времени — перед запуском.")
-            animate_pick = st.multiselect(
-                "Кадры для анимации",
-                frame_stem_options,
-                default=default_stems,
-                key=f"animate_pick_{ep_key}",
-            )
-            row_models = st.columns(2)
-            ckpt_options = list_checkpoint_names()
-            clip_options = list_clip_names()
-            ckpt_default = saved.get("ckpt_name")
-            if ckpt_default not in ckpt_options:
-                ckpt_options = [str(ckpt_default), *ckpt_options]
-            clip_default = saved.get("clip_name")
-            if clip_default not in clip_options:
-                clip_options = [str(clip_default), *clip_options]
-            ckpt_name = row_models[0].selectbox(
-                "Модель LTX (checkpoint)",
-                ckpt_options,
-                index=ckpt_options.index(ckpt_default) if ckpt_default in ckpt_options else 0,
-                key=f"i2v_ckpt_{ep_key}",
-                help="Файлы из ComfyUI/models/checkpoints. Не выбирайте fp8-only чекпоинты.",
-            )
-            clip_name = row_models[1].selectbox(
-                "Текстовый энкодер (T5)",
-                clip_options,
-                index=clip_options.index(clip_default) if clip_default in clip_options else 0,
-                key=f"i2v_clip_{ep_key}",
-            )
-            preset_code = st.selectbox(
-                "Профиль скорости / качества",
-                preset_codes,
-                index=preset_idx,
-                format_func=lambda code: preset_labels.get(code, code),
-                key=f"i2v_preset_{ep_key}",
-            )
-            from i2v_settings import apply_preset as _apply_i2v_preset
-
-            if preset_code == "custom":
-                c_w, c_h, c_f, c_s = st.columns(4)
-                width = c_w.number_input("Ширина", min_value=256, max_value=1280, step=32, value=int(saved["width"]))
-                height = c_h.number_input("Высота", min_value=144, max_value=720, step=16, value=int(saved["height"]))
-                num_frames = c_f.number_input(
-                    "Кадров видео",
-                    min_value=9,
-                    max_value=129,
-                    step=8,
-                    value=int(saved["num_frames"]),
-                    help="LTX шаг 8; меньше — быстрее.",
-                )
-                steps = c_s.number_input("Шаги сэмплера", min_value=8, max_value=40, value=int(saved["steps"]))
-            else:
-                preset_vals = _apply_i2v_preset(preset_code)
-                width = int(preset_vals["width"])
-                height = int(preset_vals["height"])
-                num_frames = int(preset_vals["num_frames"])
-                steps = int(preset_vals["steps"])
-                st.caption(
-                    f"Параметры профиля: **{width}×{height}**, "
-                    f"**{num_frames}** кадров, **{steps}** шагов."
-                )
-            with st.expander("Тонкая настройка", expanded=False):
-                c_cfg, c_str, c_to = st.columns(3)
-                cfg = c_cfg.number_input("CFG", min_value=1.0, max_value=8.0, step=0.1, value=float(saved["cfg"]))
-                strength = c_str.number_input(
-                    "Strength I2V",
-                    min_value=0.5,
-                    max_value=1.0,
-                    step=0.01,
-                    value=float(saved["strength"]),
-                    help="Ближе к 1 — ближе к исходному кадру.",
-                )
-                timeout_sec = c_to.number_input(
-                    "Таймаут на 1 кадр (сек)",
-                    min_value=600,
-                    max_value=28800,
-                    step=300,
-                    value=int(saved["timeout_sec"]),
-                )
-
-            settings = normalize_i2v_settings(
-                {
-                    "preset": preset_code,
-                    "ckpt_name": ckpt_name,
-                    "clip_name": clip_name,
-                    "width": width,
-                    "height": height,
-                    "num_frames": num_frames,
-                    "steps": steps,
-                    "cfg": cfg,
-                    "strength": strength,
-                    "timeout_sec": timeout_sec,
-                }
-            )
-            clip_count = len(animate_pick)
-            st.markdown(estimate_total_label(settings, clip_count))
-
-            run_col, save_col = st.columns([1, 1])
-            if save_col.button("💾 Сохранить настройки в эпизод", key=f"i2v_save_{ep_key}", use_container_width=True):
-                picked = list(animate_pick) or default_stems
-                bundle = normalize_animation_settings(
-                    {
-                        "animation_mode": "comfyui",
-                        "comfy_frames": picked,
-                    }
-                )
-                review_save = load_review(episode_dir)
-                review_save["animate_i2v"] = settings
-                review_save["animation"] = bundle
-                review_save["animation_mode"] = "comfyui"
-                review_save["animation_method"] = "comfyui"
-                review_save["animate_frames"] = normalize_animate_frames(picked)
-                save_review(episode_dir, review_save)
-                st.toast("Настройки оживления сохранены")
-                st.rerun()
-
-            if run_col.button(
-                "🎞️ Оживить выбранные кадры",
-                key=f"comfy_anim_{ep_key}",
-                type="primary",
-                use_container_width=True,
-            ):
-                from comfyui_client import is_comfyui_online as _online
-
-                picked = list(animate_pick)
-                if not picked:
-                    st.warning("Выберите хотя бы один кадр в списке выше.")
-                elif not _online(timeout=2.0):
-                    st.error("ComfyUI оффлайн — ▶️ Запустить ComfyUI вверху студии (🟢), затем повторите.")
-                else:
-                    bundle = normalize_animation_settings(
-                        {"animation_mode": "comfyui", "comfy_frames": picked}
-                    )
-                    review_save = load_review(episode_dir)
-                    review_save["animate_frames"] = picked
-                    review_save["animate_i2v"] = settings
-                    review_save["animation"] = bundle
-                    review_save["animation_mode"] = "comfyui"
-                    review_save["animation_method"] = "comfyui"
-                    save_review(episode_dir, review_save)
-                    if ckpt_name.endswith("-fp8.safetensors") or "distilled-fp8" in ckpt_name:
-                        st.error("Выбран fp8-чекпоинт — используйте v0.9.5 + t5xxl_fp16.")
-                    else:
-                        cli = animate_frames_cli_args(settings)
-                        st.info(f"В очередь: {', '.join(picked)} · {estimate_total_label(settings, len(picked))}")
-                        launch_background_job("generation", episode_dir, "animate_frames.py", *cli)
-
 
 def render_comfyui_controls(key_prefix: str) -> None:
     """Блок запуска ComfyUI из Streamlit."""
@@ -1663,6 +1524,9 @@ def read_nav_from_url(channels: list[str]) -> None:
     episode = qp_first(qp, "episode")
     if episode:
         st.session_state.episode_name = episode
+    playlist = qp_first(qp, "playlist")
+    if playlist:
+        st.session_state["_url_playlist"] = playlist
 
 
 def write_nav_to_url() -> None:
@@ -1682,6 +1546,14 @@ def write_nav_to_url() -> None:
             qp["episode"] = episode
     elif "episode" in qp:
         del qp["episode"]
+    channel = st.session_state.get("channel_slug", "")
+    if st.session_state.get("nav_section") == "studio" and channel:
+        playlist = st.session_state.get(f"studio_playlist_{channel}", "")
+        if playlist:
+            if qp_first(qp, "playlist") != playlist:
+                qp["playlist"] = playlist
+        elif "playlist" in qp:
+            del qp["playlist"]
 
 
 def channel_label(slug: str) -> str:
@@ -2686,38 +2558,38 @@ def render_phrase_database(channel: Path, channel_slug: str) -> None:
         return
     import sqlite3
 
-    st.subheader("База фраз и аудио (SQLite)")
-    conn = None
-    try:
-        conn = sqlite3.connect(database)
-        transitions = pd.read_sql(
-            "SELECT id, category, text_en, audio_path, usage_count FROM transitions ORDER BY category, usage_count, id",
-            conn,
-        )
-        phrases = pd.read_sql(
-            """
-            SELECT id, playlist_name, episode_id, semantic_id, role, text_target, text_native,
-                   audio_target_path, audio_native_path, created_at
-            FROM phrases
-            ORDER BY episode_id, semantic_id
-            """,
-            conn,
-        )
-    except sqlite3.Error as exc:
-        st.warning(f"Не удалось прочитать channel.db: {exc}")
-        return
-    finally:
-        if conn is not None:
-            conn.close()
+    with st.expander("База фраз и аудио (SQLite)", expanded=False):
+        conn = None
+        try:
+            conn = sqlite3.connect(database)
+            transitions = pd.read_sql(
+                "SELECT id, category, text_en, audio_path, usage_count FROM transitions ORDER BY category, usage_count, id",
+                conn,
+            )
+            phrases = pd.read_sql(
+                """
+                SELECT id, playlist_name, episode_id, semantic_id, role, text_target, text_native,
+                       audio_target_path, audio_native_path, created_at
+                FROM phrases
+                ORDER BY episode_id, semantic_id
+                """,
+                conn,
+            )
+        except sqlite3.Error as exc:
+            st.warning(f"Не удалось прочитать channel.db: {exc}")
+            return
+        finally:
+            if conn is not None:
+                conn.close()
 
-    tab_transitions, tab_phrases = st.tabs(["Переходы", "Фразы"])
-    with tab_transitions:
-        st.dataframe(transitions, use_container_width=True, hide_index=True)
-        _play_db_audio(channel, transitions, "audio_path", "text_en", f"tr_{channel_slug}")
-    with tab_phrases:
-        st.dataframe(phrases, use_container_width=True, hide_index=True)
-        _play_db_audio(channel, phrases, "audio_target_path", "text_target", f"ph_t_{channel_slug}")
-        _play_db_audio(channel, phrases, "audio_native_path", "text_native", f"ph_n_{channel_slug}")
+        tab_transitions, tab_phrases = st.tabs(["Переходы", "Фразы"])
+        with tab_transitions:
+            st.dataframe(transitions, use_container_width=True, hide_index=True)
+            _play_db_audio(channel, transitions, "audio_path", "text_en", f"tr_{channel_slug}")
+        with tab_phrases:
+            st.dataframe(phrases, use_container_width=True, hide_index=True)
+            _play_db_audio(channel, phrases, "audio_target_path", "text_target", f"ph_t_{channel_slug}")
+            _play_db_audio(channel, phrases, "audio_native_path", "text_native", f"ph_n_{channel_slug}")
 
 
 def _play_db_audio(channel: Path, frame: pd.DataFrame, path_column: str, label_column: str, key: str) -> None:
@@ -2744,7 +2616,6 @@ def _play_db_audio(channel: Path, frame: pd.DataFrame, path_column: str, label_c
 
 def page_studio(channel_slug: str) -> None:
     st.header("🎬 Студия производства и доработки")
-    render_comfyui_controls(f"studio_{channel_slug or 'none'}")
     if not channel_slug:
         st.info("Выберите канал.")
         return
@@ -2755,7 +2626,6 @@ def page_studio(channel_slug: str) -> None:
             "Формат «язык во сне». Сценарий — блоки `[ID|роль|скорость]`, "
             "озвучка — только новые фразы в одну дорожку `voiceover.mp3`."
         )
-        render_phrase_database(ch, channel_slug)
     episodes_root = ch / "episodes"
     episodes_root.mkdir(exist_ok=True)
     episode_by_name = {path.name: path for path in list_episode_dirs(ch)}
@@ -2775,8 +2645,21 @@ def page_studio(channel_slug: str) -> None:
     playlist_key = f"studio_playlist_{channel_slug}"
     if playlist_key not in st.session_state:
         st.session_state[playlist_key] = STANDALONE_ID
+    url_pl = st.session_state.pop("_url_playlist", None)
+    ep_from_url = str(st.session_state.get("episode_name") or "").strip()
+    if ep_from_url:
+        for ep_path in list_episode_dirs(ch):
+            if ep_path.name == ep_from_url:
+                inferred = playlist_id_from_episode_dir(ep_path, ch)
+                if inferred and not url_pl:
+                    st.session_state[playlist_key] = inferred
+                break
     playlists = load_playlists(ch)
     playlist_ids = [STANDALONE_ID, *[str(p["id"]) for p in playlists]]
+    if url_pl:
+        match = next((pid for pid in playlist_ids if pid.lower() == str(url_pl).lower()), None)
+        if match:
+            st.session_state[playlist_key] = match
     playlist_labels = [STANDALONE_UI_LABEL, *[playlist_label(p) for p in playlists]]
     cur_pl = st.session_state[playlist_key]
     if cur_pl not in playlist_ids:
@@ -3332,10 +3215,15 @@ def page_studio(channel_slug: str) -> None:
 
     if episode_dir is not None:
         ep_key = episode_dir.name
-        pin_running = render_studio_progress_pinned(episode_dir, ep_key)
+        pin_running = episode_has_running_job(episode_dir)
+    else:
+        pin_running = False
 
     if not episode_dir:
         return
+
+    if isekai_mode:
+        render_phrase_database(ch, channel_slug)
 
     review = load_review(episode_dir)
     images_dir_early = episode_dir / "images"
