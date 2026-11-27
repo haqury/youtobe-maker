@@ -5,5 +5,32 @@
     "01",
     "02",
     "03"
-  ]
+  ],
+  "animation": {
+    "animation_mode": "ffmpeg_25d",
+    "enable_ken_burns": true,
+    "enable_breathing_light": true,
+    "overlay_file": "rain1.mp4",
+    "overlay_files": [
+      "rain1.mp4",
+      "rain2.mp4",
+      "star.mp4"
+    ],
+    "overlay_opacity": 0.22,
+    "overlay_random_mix": true,
+    "overlay_max_layers": 3,
+    "overlay_variants": 12,
+    "comfy_frames": [
+      "01",
+      "02",
+      "03"
+    ],
+    "remotion_chapter_titles": true,
+    "remotion_particles": true,
+    "remotion_vignette": true,
+    "ken_burns_intensity": 0.85,
+    "remotion_crossfade": 1.5
+  },
+  "animation_mode": "ffmpeg_25d",
+  "animation_method": "ffmpeg_25d"
 }

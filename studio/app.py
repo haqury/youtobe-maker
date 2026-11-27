@@ -1883,6 +1883,13 @@ def render_sidebar_project_update() -> None:
             else:
                 st.error("Обновление не выполнено.")
             st.code(st.session_state["project_update_log"] or "пусто")
+        st.caption(
+            "Локальные правки в смонтированной папке уже на диске контейнера. "
+            "Чтобы Python их подхватил, нужен перезапуск процесса, без git pull."
+        )
+        if st.button("Применить файлы и перезапустить", key="restart_studio_only"):
+            schedule_restart(ROOT)
+            st.success("Контейнер перезапускается. Обновите страницу через несколько секунд.")
 
 
 def sidebar() -> str:

@@ -1,14 +1,14 @@
 {
   "branding": {
-    "use_intro": false,
+    "use_intro": true,
     "use_outro": false,
     "crossfade_sec": 1.0,
     "use_watermark": false,
     "watermark_opacity": 0.25,
-    "intro_text": "",
+    "intro_text": "LumaDream: Learn Spanish",
     "intro_text_start": 1.2,
     "intro_text_duration": 2.6,
-    "intro_fade_sec": 1.0,
+    "intro_fade_sec": 3.0,
     "intro_text_y": 0.0,
     "intro_text_style": "gold_serif",
     "intro_override": false,
