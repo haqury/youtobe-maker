@@ -765,7 +765,7 @@ def render_animate_i2v_panel(
     elif st.session_state.get(method_key) not in method_codes:
         st.session_state[method_key] = current_mode
 
-    with st.expander("🎞️ Оживление / Анимация", expanded=True):
+    with st.expander("🎞️ Оживление / Анимация", expanded=False):
         if hasattr(st, "segmented_control"):
             method = st.segmented_control(
                 "Метод оживления",
@@ -887,17 +887,6 @@ def render_animate_i2v_panel(
                 epi_save = load_episode_config(episode_dir, channel_slug, channel_dir)
                 persist_episode_config_before_job(episode_dir, ep_key, epi_save)
                 launch_background_job("build_video", episode_dir, "build_sleep_video.py")
-            from studio.long_build_controls import render_long_build_stages
-
-            render_long_build_stages(
-                episode_dir,
-                ep_key,
-                launch_job=launch_background_job,
-                persist_config=persist_episode_config_before_job,
-                channel_slug=channel_slug,
-                channel_dir=channel_dir,
-            )
-
         elif method == "remotion":
             r_status = node_status()
             if r_status["ready"]:
@@ -2614,6 +2603,16 @@ def _play_db_audio(channel: Path, frame: pd.DataFrame, path_column: str, label_c
     st.audio(str(options[labels.index(picked)][1]))
 
 
+def episode_staged_video_build(episode_dir: Path) -> bool:
+    """Длинная FFmpeg-сборка (сюжет / хвост / финал), не только sleep-канал."""
+    try:
+        from isekai_video import inspect_long_episode
+
+        return inspect_long_episode(episode_dir) is not None
+    except (FileNotFoundError, RuntimeError, OSError):
+        return False
+
+
 def page_studio(channel_slug: str) -> None:
     st.header("🎬 Студия производства и доработки")
     if not channel_slug:
@@ -2667,135 +2666,23 @@ def page_studio(channel_slug: str) -> None:
         st.session_state[playlist_key] = cur_pl
 
     with col_ep:
-        selected_playlist = playlist_ids[
-            playlist_labels.index(
-                st.selectbox(
-                    "Плейлист",
-                    playlist_labels,
-                    index=playlist_ids.index(cur_pl),
-                    key=f"studio_playlist_select_{channel_slug}",
-                )
-            )
-        ]
-        st.session_state[playlist_key] = selected_playlist
-        new_playlist_key = f"new_playlist_name_{channel_slug}"
-        playlist_error_key = f"playlist_create_error_{channel_slug}"
-        playlist_ok_key = f"playlist_create_ok_{channel_slug}"
-
-        def _create_named_playlist() -> None:
-            name = str(st.session_state.get(new_playlist_key, "")).strip()
-            try:
-                created = create_playlist(ch, title=name)
-            except ValueError as exc:
-                st.session_state[playlist_error_key] = str(exc)
-                st.session_state[playlist_ok_key] = ""
-                return
-            st.session_state[playlist_error_key] = ""
-            st.session_state[playlist_ok_key] = (
-                f"{created['id']}: {created.get('title_ru') or created.get('title_en')}"
-            )
-            st.session_state[playlist_key] = str(created["id"])
-            st.session_state.pop(f"studio_playlist_select_{channel_slug}", None)
-            st.session_state[new_playlist_key] = ""
-
-        st.text_input(
-            "Название нового плейлиста",
-            key=new_playlist_key,
-            placeholder="Например: Ночной лес",
+        from episode_launch_ui import render_episode_launch_controls
+        selected_playlist, episode_dir = render_episode_launch_controls(
+            channel_slug=channel_slug,
+            ch=ch,
+            episodes_root=episodes_root,
+            episode_by_name=episode_by_name,
+            episode_names=episode_names,
+            playlist_key=playlist_key,
+            playlist_ids=playlist_ids,
+            playlist_labels=playlist_labels,
+            write_nav_to_url=write_nav_to_url,
+            remember_episode_title=_remember_episode_title,
+            rename_playlist=_rename_playlist,
+            next_manual_standalone_id=_next_manual_standalone_id,
+            ensure_episode_files=ensure_episode_files,
+            load_channel_backlog=load_channel_backlog,
         )
-        st.button(
-            "Создать плейлист",
-            key=f"create_playlist_{channel_slug}",
-            on_click=_create_named_playlist,
-        )
-        if st.session_state.get(playlist_error_key):
-            st.error(st.session_state[playlist_error_key])
-        elif st.session_state.get(playlist_ok_key):
-            st.success(f"Плейлист {st.session_state[playlist_ok_key]}")
-        if selected_playlist != STANDALONE_ID:
-            current_playlist = playlist_by_id(ch, selected_playlist) or {}
-            rename_key = f"playlist_rename_{channel_slug}_{selected_playlist}"
-            if rename_key not in st.session_state:
-                st.session_state[rename_key] = str(
-                    current_playlist.get("title_ru") or current_playlist.get("title_en") or ""
-                )
-            st.text_input("Название этого плейлиста", key=rename_key)
-            playlist_rename_error = f"playlist_rename_error_{channel_slug}_{selected_playlist}"
-            playlist_rename_ok = f"playlist_rename_ok_{channel_slug}_{selected_playlist}"
-
-            def _save_playlist_name() -> None:
-                renamed = str(st.session_state.get(rename_key, "")).strip()
-                if not renamed:
-                    st.session_state[playlist_rename_error] = "Введите название плейлиста."
-                    st.session_state[playlist_rename_ok] = ""
-                    return
-                _rename_playlist(ch, selected_playlist, renamed)
-                st.session_state[playlist_rename_error] = ""
-                st.session_state[playlist_rename_ok] = "Название плейлиста сохранено."
-                st.session_state.pop(f"studio_playlist_select_{channel_slug}", None)
-                st.session_state.pop(rename_key, None)
-
-            st.button(
-                "Сохранить название плейлиста",
-                key=f"save_playlist_name_{channel_slug}_{selected_playlist}",
-                on_click=_save_playlist_name,
-            )
-            if st.session_state.get(playlist_rename_error):
-                st.error(st.session_state[playlist_rename_error])
-            elif st.session_state.get(playlist_rename_ok):
-                st.success(st.session_state[playlist_rename_ok])
-            series_path = playlist_dir_for_series(ch, selected_playlist)
-            if series_path is not None:
-                series_settings = load_channel_settings(series_path)
-                style_ids = [code for code, _name in INTRO_STYLE_CHOICES]
-                style_labels = [name for _code, name in INTRO_STYLE_CHOICES]
-                current_style = str(series_settings.get("branding", {}).get("intro_text_style") or "gold_serif")
-                if current_style not in style_ids:
-                    current_style = "gold_serif"
-                picked_style = style_ids[
-                    style_labels.index(
-                        st.selectbox(
-                            "Стиль текста интро",
-                            style_labels,
-                            index=style_ids.index(current_style),
-                            key=f"intro_style_{channel_slug}_{selected_playlist}",
-                            help="Верхняя строка — название канала. Под ней первый заголовок из metadata.md этого эпизода.",
-                        )
-                    )
-                ]
-                if st.button(
-                    "Сохранить стиль интро",
-                    key=f"save_intro_style_{channel_slug}_{selected_playlist}",
-                ):
-                    series_settings.setdefault("branding", {})["intro_text_style"] = picked_style
-                    save_channel_settings(series_path, series_settings)
-                    st.success("Стиль интро сохранён для этого плейлиста.")
-        if selected_playlist != STANDALONE_ID:
-                hint_key = f"next_series_hint_{channel_slug}_{selected_playlist}"
-                st.text_input(
-                    "Пожелание к сюжету следующей серии (необязательно)",
-                    key=hint_key,
-                    placeholder="напр.: герой идёт на ночной рынок за травами",
-                )
-                if st.button(
-                    "➕ Следующая серия (Эпизод N+1)",
-                    key=f"studio_next_ep_{channel_slug}_{selected_playlist}",
-                    help="Папка episodes/ + episode_idea.json, без backlog; учёт bible и Recap",
-                ):
-                    with st.spinner("ИИ — следующий выпуск…"):
-                        new_ep_id, err = generate_next_series_episode(
-                            ch,
-                            series_id=selected_playlist,
-                            preference_keywords=st.session_state.get(f"idea_prefs_kw_{channel_slug}", ""),
-                            preference_brief=st.session_state.get(f"idea_prefs_brief_{channel_slug}", ""),
-                            user_hint=st.session_state.get(hint_key, "") or "",
-                        )
-                    if err:
-                        st.error(err)
-                    else:
-                        st.success(f"Добавлено: {new_ep_id} (+ папка в episodes/)")
-                        backlog = load_channel_backlog(ch / "backlog.csv")
-                        st.rerun()
 
         if selected_playlist != STANDALONE_ID:
             pdir = playlist_dir_for_series(ch, selected_playlist)
@@ -2805,7 +2692,7 @@ def page_studio(channel_slug: str) -> None:
                 "characters_visual_lock": "🧙‍♂️ Герои и внешность (Visual Lock)",
                 "lore_and_rules": "🔮 Правила и лор",
             }
-            with st.expander("📖 Этап 1 — Bible плейлиста (НЕ трогает сценарий эпизода)"):
+            with st.expander("📖 Этап 1 — Bible плейлиста (НЕ трогает сценарий эпизода)", expanded=False):
                 if pdir is None:
                     st.caption("Плейлист не найден.")
                 else:
@@ -3004,115 +2891,6 @@ def page_studio(channel_slug: str) -> None:
                         with st.expander("EN-компилят series_bible.md (только чтение)"):
                             st.caption(read_series_bible(ch, selected_playlist)[:4000])
 
-        new_video_key = f"new_video_name_{channel_slug}_{selected_playlist}"
-        video_error_key = f"new_video_error_{channel_slug}_{selected_playlist}"
-        video_ok_key = f"new_video_ok_{channel_slug}_{selected_playlist}"
-
-        def _create_named_video() -> None:
-            video_title = str(st.session_state.get(new_video_key, "")).strip()
-            if not video_title:
-                st.session_state[video_error_key] = "Введите название видео."
-                st.session_state[video_ok_key] = ""
-                return
-            if selected_playlist == STANDALONE_ID:
-                episode_id = _next_manual_standalone_id(ch)
-                episode_num = "1"
-            else:
-                _, from_folders = next_series_episode_from_folders(ch, selected_playlist)
-                _, from_backlog = next_series_episode_id(
-                    load_channel_backlog(ch / "backlog.csv"),
-                    selected_playlist,
-                )
-                episode_num_int = max(from_folders, from_backlog)
-                episode_id = f"{selected_playlist.upper()}E{episode_num_int:02d}"
-                episode_num = str(episode_num_int)
-            if selected_playlist == STANDALONE_ID:
-                folder_root = episodes_root
-            else:
-                playlist_folder = playlist_dir_for_series(ch, selected_playlist)
-                folder_root = (playlist_folder / "episodes") if playlist_folder is not None else episodes_root
-                folder_root.mkdir(parents=True, exist_ok=True)
-            folder = folder_root / f"{episode_id}_{slugify_topic(video_title)}"
-            if folder.exists():
-                st.session_state[video_error_key] = f"Папка уже есть: {folder.name}"
-                st.session_state[video_ok_key] = ""
-                return
-            folder.mkdir(parents=True)
-            ensure_episode_files(folder, topic_en=video_title, topic_ru=video_title)
-            _remember_episode_title(ch, folder, video_title, selected_playlist, episode_num)
-            st.session_state.episode_name = folder.name
-            st.session_state.pop(f"studio_ep_select_{channel_slug}_{selected_playlist}", None)
-            st.session_state[new_video_key] = ""
-            st.session_state[video_error_key] = ""
-            st.session_state[video_ok_key] = folder.name
-
-        st.text_input(
-            "Название нового видео",
-            key=new_video_key,
-            placeholder="Например: Ночь в лесу — урок 1",
-        )
-        st.button(
-            "Создать видео",
-            key=f"create_video_{channel_slug}_{selected_playlist}",
-            on_click=_create_named_video,
-        )
-        if st.session_state.get(video_error_key):
-            st.error(st.session_state[video_error_key])
-        elif st.session_state.get(video_ok_key):
-            st.success(f"Видео создано: {st.session_state[video_ok_key]}")
-
-        filtered_episodes = [
-            name
-            for name in episode_names
-            if folder_matches_playlist(
-                name,
-                backlog,
-                selected_playlist,
-                episode_by_name.get(name),
-            )
-        ]
-        if filtered_episodes:
-            current_ep = st.session_state.episode_name
-            if current_ep not in filtered_episodes:
-                current_ep = filtered_episodes[0]
-            picked_ep = st.selectbox(
-                "Папка эпизода",
-                filtered_episodes,
-                index=filtered_episodes.index(current_ep),
-                format_func=lambda name: format_episode_folder_label(
-                    name, ch, backlog, episode_by_name.get(name)
-                ),
-                key=f"studio_ep_select_{channel_slug}_{selected_playlist}",
-            )
-            st.session_state.episode_name = picked_ep
-            episode_dir = episode_by_name.get(picked_ep) or (episodes_root / picked_ep)
-            ep_key = episode_dir.name
-            ensure_episode_files(episode_dir)
-            write_nav_to_url()
-            current_title_key = f"video_title_{channel_slug}_{episode_dir.name}"
-            if current_title_key not in st.session_state:
-                idea = read_episode_idea(episode_dir)
-                row = backlog_row_by_episode_id(backlog, episode_dir.name.split("_", 1)[0])
-                saved = ""
-                if row is not None:
-                    saved = str(row.get("Topic_RU") or row.get("Topic") or "").strip()
-                st.session_state[current_title_key] = saved or str(idea.get("topic_ru") or idea.get("topic") or "")
-            st.text_input("Название этого видео", key=current_title_key)
-            if st.button("Сохранить название видео", key=f"save_video_title_{channel_slug}_{episode_dir.name}"):
-                current_title = str(st.session_state.get(current_title_key, "")).strip()
-                if not current_title:
-                    st.error("Введите название видео.")
-                else:
-                    ep_id = episode_dir.name.split("_", 1)[0]
-                    row = backlog_row_by_episode_id(backlog, ep_id)
-                    series_id = str(row.get("Series_ID") or selected_playlist) if row is not None else selected_playlist
-                    episode_num = str(row.get("Episode_Num") or "1") if row is not None else "1"
-                    _remember_episode_title(ch, episode_dir, current_title, series_id, episode_num)
-                    st.success("Название видео сохранено.")
-                    st.rerun()
-        else:
-            st.info("Нет папок эпизодов для этого плейлиста — создайте из идеи справа.")
-
     with col_ideas:
         st.markdown("**💡 Идеи в бэклоге**")
         prefs_key = f"idea_prefs_kw_{channel_slug}"
@@ -3150,7 +2928,7 @@ def page_studio(channel_slug: str) -> None:
                     st.rerun()
         else:
             st.caption(
-                f"Плейлист **{selected_playlist}**: новый выпуск — «Следующая серия» слева; "
+                f"Плейлист **{selected_playlist}**: новый выпуск — popover «Следующее видео»; "
                 "сериал из **standalone-идеи** — «Развернуть в многосерийный плейлист»."
             )
         idea_options = filter_backlog_by_playlist(
@@ -3221,6 +2999,11 @@ def page_studio(channel_slug: str) -> None:
 
     if not episode_dir:
         return
+
+    epi_cfg_live = load_episode_config(episode_dir, channel_slug, ch)
+    from tail_controls import sync_tail_session_from_disk
+
+    sync_tail_session_from_disk(ep_key, epi_cfg_live)
 
     if isekai_mode:
         render_phrase_database(ch, channel_slug)
@@ -3303,416 +3086,447 @@ def page_studio(channel_slug: str) -> None:
 
         importlib.reload(isekai_panel)
         from isekai_panel import render_isekai_production
-        render_isekai_production(
-            episode_dir,
-            channel_slug,
-            ep_key,
+
+        _isekai_kw = dict(
+            episode_dir=episode_dir,
+            channel_slug=channel_slug,
+            ep_key=ep_key,
             editor_key=editor_key,
             save_texts=save_episode_text_files,
             launch_job=launch_background_job,
             acknowledge=acknowledge_episode_job_outputs,
             sync_editors=sync_editors_from_disk_if_newer,
+            show_section_headings=False,
         )
+        with st.expander("1 — Сценарий блоками", expanded=False):
+            render_isekai_production(**_isekai_kw, blocks=("script",))
+        with st.expander("2 — Озвучка", expanded=False):
+            render_isekai_production(**_isekai_kw, blocks=("voice",))
     if not isekai_mode:
-        # —— Секция A ——
-        st.markdown("---")
-        st.subheader("А — Сценарий и промпты")
-        st.caption("Документация: `docs/episode-stage-2-script.md` · Bible — отдельно (этап 1).")
+        with st.expander("1 — Сценарий и промпты", expanded=False):
+            st.caption("Документация: `docs/episode-stage-2-script.md` · Bible — отдельно (этап 1).")
 
-        epi_cfg = load_episode_config(episode_dir, channel_slug, ch)
-        plot_on_disk = load_plot_brief(episode_dir)
-        plan_key = f"plot_brief_{ep_key}"
-        if plan_key not in st.session_state and plot_on_disk:
-            st.session_state[plan_key] = plot_on_disk
+            epi_cfg = load_episode_config(episode_dir, channel_slug, ch)
+            plot_on_disk = load_plot_brief(episode_dir)
+            plan_key = f"plot_brief_{ep_key}"
+            if plan_key not in st.session_state and plot_on_disk:
+                st.session_state[plan_key] = plot_on_disk
 
-        dcol1, dcol2, dgen = st.columns([1, 1, 2])
-        with dcol1:
-            st.number_input(
-                "Длительность (мин) — от",
-                min_value=3.0,
-                max_value=90.0,
-                value=float(epi_cfg["target_min_minutes"]),
-                step=1.0,
-                key=f"ep_min_min_{ep_key}",
-            )
-        with dcol2:
-            st.number_input(
-                "Длительность (мин) — до",
-                min_value=3.0,
-                max_value=120.0,
-                value=float(epi_cfg["target_max_minutes"]),
-                step=1.0,
-                key=f"ep_max_min_{ep_key}",
-            )
-        st.caption(episode_plan_summary(episode_dir, channel_slug))
-        tcol1, tcol2, tcol3, tcol4, tcol5 = st.columns([1, 1, 1, 1, 1])
-        manual_frames = epi_cfg.get("target_frame_count")
-        frame_default = int(manual_frames) if manual_frames else 0
-        with tcol1:
-            st.number_input(
-                "Кадров (0 = авто)",
-                min_value=0,
-                max_value=80,
-                value=frame_default,
-                step=1,
-                key=f"ep_frame_count_{ep_key}",
-                help="Влияет на число PROMPT при ИИ-генерации. generate_images.py рисует все строки в файле.",
-            )
-        frame_ui = int(st.session_state.get(f"ep_frame_count_{ep_key}", frame_default))
-        min_v_ui = float(st.session_state.get(f"ep_min_min_{ep_key}", epi_cfg["target_min_minutes"]))
-        max_v_ui = float(st.session_state.get(f"ep_max_min_{ep_key}", epi_cfg["target_max_minutes"]))
-        spf_ui = float(st.session_state.get(f"ep_spf_{ep_key}", epi_cfg.get("seconds_per_frame", 40)))
-        auto_hint = auto_frame_count((min_v_ui + max_v_ui) / 2.0, spf_ui)
-        with tcol2:
-            st.number_input(
-                "Сек/кадр (авто)",
-                min_value=25.0,
-                max_value=60.0,
-                value=float(epi_cfg.get("seconds_per_frame", 40)),
-                step=1.0,
-                key=f"ep_spf_{ep_key}",
-                disabled=frame_ui > 0,
-            )
-            if frame_ui <= 0:
-                st.caption(f"При авто ≈ **{auto_hint}** кадров")
-        with tcol3:
-            st.number_input(
-                "Затухание голоса (с)",
-                min_value=0.0,
-                max_value=120.0,
-                value=float(epi_cfg.get("voice_fade_out_sec", 12)),
-                step=1.0,
-                key=f"ep_voice_fade_{ep_key}",
-            )
-        with tcol4:
-            st.number_input(
-                "Хвост ambient (с)",
-                min_value=0.0,
-                max_value=600.0,
-                value=float(epi_cfg.get("ambient_tail_sec", 0)),
-                step=5.0,
-                key=f"ep_ambient_tail_{ep_key}",
-                help="Короткий хвост MoviePy: последний кадр, если длинный эмбиент-хвост выключен.",
-            )
-        with tcol5:
-            st.write("")
-            if st.button(
-                "💾 Сохранить настройки эпизода",
-                key=f"ep_cfg_save_{ep_key}",
-                use_container_width=True,
-            ):
-                persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
-                st.toast("episode_config.json сохранён")
-                st.rerun()
-        with dgen:
-            st.text_area(
-                "Сюжет / бриф выпуска (RU → plot_brief.txt)",
-                height=100,
-                key=plan_key,
-                placeholder="Рамка выпуска: начало, финал, запреты.",
-            )
-            st.caption("Только для **генерации с нуля** — в переработку не подмешивается.")
-        render_ambient_tail_controls(episode_dir, channel_slug, ep_key)
-        if st.button("✍️ Сгенерировать сценарий с нуля", key=f"ai_pack_{ep_key}", type="primary"):
-            persist_episode_plan_before_job(episode_dir, ep_key, epi_cfg, plan_key)
-            launch_background_job("generation", episode_dir, "generate_episode_pack.py")
-
-        ed_col, tool_col = st.columns([4, 1])
-        with ed_col:
-            acknowledge_episode_job_outputs(episode_dir, ep_key)
-            sync_editors_from_disk_if_newer(channel_slug, files)
-            tabs = st.tabs(list(files.keys()))
-            for tab, (label, path) in zip(tabs, files.items()):
-                with tab:
-                    content = path.read_text(encoding="utf-8-sig") if path.is_file() else ""
-                    size = path.stat().st_size if path.is_file() else 0
-                    st.caption(f"`{path.name}` · {size} байт")
-                    st.text_area(label, content, height=300, key=editor_key(path, channel_slug))
-            if st.button("💾 Сохранить тексты", key=f"save_all_txt_{ep_key}"):
-                n = save_episode_text_files(channel_slug, files)
-                st.success(f"Сохранено файлов: {n}")
-                st.rerun()
-
-        with tool_col:
-            st.markdown("**🛠️ ИИ-переработка**")
-            truth_key = f"truth_source_{ep_key}"
-            if truth_key not in st.session_state:
-                st.session_state[truth_key] = "ru"
-            truth = st.radio(
-                "Источник истины",
-                options=("ru", "en"),
-                format_func=lambda v: (
-                    "🇷🇺 Русский (script_ru.md)" if v == "ru" else "🇬🇧 Английский (script.md)"
-                ),
-                key=truth_key,
-            )
-            st.text_area(
-                "Комментарий / инструкция для ИИ",
-                height=100,
-                key=f"sync_instruction_{ep_key}",
-                placeholder="Напр.: смягчи финал, убери алхимию во 2-й главе.",
-            )
-            st.caption(
-                "Берёт **script_ru.md** или **script.md** (источник истины), правит текст **только по комментарию**, "
-                "синхронизирует второй язык, заново пишет **visual_prompts** и **metadata**. "
-                "`plot_brief` — только у кнопки «Сгенерировать с нуля»."
-            )
-            if st.button("✨ Переработать и синхронизировать", key=f"sync_scripts_{ep_key}", use_container_width=True):
-                instruction = str(st.session_state.get(f"sync_instruction_{ep_key}", "")).strip()
-                if not instruction:
-                    st.error("Заполните комментарий — переработка без plot_brief не запускается.")
-                else:
-                    save_episode_text_files(channel_slug, files)
+            dcol1, dcol2, dgen = st.columns([1, 1, 2])
+            with dcol1:
+                st.number_input(
+                    "Длительность (мин) — от",
+                    min_value=3.0,
+                    max_value=90.0,
+                    value=float(epi_cfg["target_min_minutes"]),
+                    step=1.0,
+                    key=f"ep_min_min_{ep_key}",
+                )
+            with dcol2:
+                st.number_input(
+                    "Длительность (мин) — до",
+                    min_value=3.0,
+                    max_value=120.0,
+                    value=float(epi_cfg["target_max_minutes"]),
+                    step=1.0,
+                    key=f"ep_max_min_{ep_key}",
+                )
+            st.caption(episode_plan_summary(episode_dir, channel_slug))
+            tcol1, tcol2, tcol3, tcol4, tcol5 = st.columns([1, 1, 1, 1, 1])
+            manual_frames = epi_cfg.get("target_frame_count")
+            frame_default = int(manual_frames) if manual_frames else 0
+            with tcol1:
+                st.number_input(
+                    "Кадров (0 = авто)",
+                    min_value=0,
+                    max_value=80,
+                    value=frame_default,
+                    step=1,
+                    key=f"ep_frame_count_{ep_key}",
+                    help="Влияет на число PROMPT при ИИ-генерации. generate_images.py рисует все строки в файле.",
+                )
+            frame_ui = int(st.session_state.get(f"ep_frame_count_{ep_key}", frame_default))
+            min_v_ui = float(st.session_state.get(f"ep_min_min_{ep_key}", epi_cfg["target_min_minutes"]))
+            max_v_ui = float(st.session_state.get(f"ep_max_min_{ep_key}", epi_cfg["target_max_minutes"]))
+            spf_ui = float(st.session_state.get(f"ep_spf_{ep_key}", epi_cfg.get("seconds_per_frame", 40)))
+            auto_hint = auto_frame_count((min_v_ui + max_v_ui) / 2.0, spf_ui)
+            with tcol2:
+                st.number_input(
+                    "Сек/кадр (авто)",
+                    min_value=25.0,
+                    max_value=60.0,
+                    value=float(epi_cfg.get("seconds_per_frame", 40)),
+                    step=1.0,
+                    key=f"ep_spf_{ep_key}",
+                    disabled=frame_ui > 0,
+                )
+                if frame_ui <= 0:
+                    st.caption(f"При авто ≈ **{auto_hint}** кадров")
+            with tcol3:
+                st.number_input(
+                    "Затухание голоса (с)",
+                    min_value=0.0,
+                    max_value=120.0,
+                    value=float(epi_cfg.get("voice_fade_out_sec", 12)),
+                    step=1.0,
+                    key=f"ep_voice_fade_{ep_key}",
+                )
+            with tcol4:
+                st.number_input(
+                    "Хвост ambient (с)",
+                    min_value=0.0,
+                    max_value=600.0,
+                    value=float(epi_cfg.get("ambient_tail_sec", 0)),
+                    step=5.0,
+                    key=f"ep_ambient_tail_{ep_key}",
+                    help="Короткий хвост MoviePy: последний кадр, если длинный эмбиент-хвост выключен.",
+                )
+            with tcol5:
+                st.write("")
+                if st.button(
+                    "💾 Сохранить настройки эпизода",
+                    key=f"ep_cfg_save_{ep_key}",
+                    use_container_width=True,
+                ):
                     persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
-                    (episode_dir / ".sync_instruction.txt").write_text(instruction, encoding="utf-8")
-                    (episode_dir / "sync_instruction_last.txt").write_text(instruction, encoding="utf-8")
-                    launch_background_job(
-                        "generation",
-                        episode_dir,
-                        "sync_episode_pack.py",
-                        "--primary",
-                        truth,
-                    )
-
-            st.markdown("**🕰️ История версий**")
-            snaps = list_episode_snapshots(episode_dir)
-            if snaps:
-                snap_ids = [str(s["id"]) for s in snaps]
-                snap_labels = {str(s["id"]): snapshot_display_line(s) for s in snaps}
-                pick = st.selectbox(
-                    "Версия",
-                    options=snap_ids,
-                    format_func=lambda sid: snap_labels.get(sid, sid),
-                    key=f"history_pick_{ep_key}",
+                    st.toast("episode_config.json сохранён")
+                    st.rerun()
+            with dgen:
+                st.text_area(
+                    "Сюжет / бриф выпуска (RU → plot_brief.txt)",
+                    height=100,
+                    key=plan_key,
+                    placeholder="Рамка выпуска: начало, финал, запреты.",
                 )
-                if st.button("⏪ Восстановить", key=f"history_restore_{ep_key}", use_container_width=True):
-                    err = restore_episode_snapshot(episode_dir, pick)
-                    if err:
-                        st.error(err)
-                    else:
-                        bump_episode_text_editors(episode_dir)
-                        st.success("Версия восстановлена (текущая сохранена в history/)")
-                        st.rerun()
-            else:
-                st.caption("Пока нет снапшотов — появятся после первой ИИ-генерации/переработки.")
+                st.caption("Только для **генерации с нуля** — в переработку не подмешивается.")
+                if st.button("✍️ Сгенерировать сценарий с нуля", key=f"ai_pack_{ep_key}", type="primary"):
+                    persist_episode_plan_before_job(episode_dir, ep_key, epi_cfg, plan_key)
+                    launch_background_job("generation", episode_dir, "generate_episode_pack.py")
 
-        # —— Секция B ——
-        st.markdown("---")
-        st.subheader("Б — Озвучка (Audio)")
-        b_play, b_act = st.columns([3, 1])
-        with b_play:
-            for name, label in (("voiceover.mp3", "EN"), ("voiceover_ru.mp3", "RU")):
-                audio = episode_dir / name
-                if audio.is_file():
-                    st.markdown(f"**{label}**")
-                    st.audio(audio.read_bytes(), format="audio/mp3")
+            ed_col, tool_col = st.columns([4, 1])
+            with ed_col:
+                acknowledge_episode_job_outputs(episode_dir, ep_key)
+                sync_editors_from_disk_if_newer(channel_slug, files)
+                tabs = st.tabs(list(files.keys()))
+                for tab, (label, path) in zip(tabs, files.items()):
+                    with tab:
+                        content = path.read_text(encoding="utf-8-sig") if path.is_file() else ""
+                        size = path.stat().st_size if path.is_file() else 0
+                        st.caption(f"`{path.name}` · {size} байт")
+                        st.text_area(label, content, height=300, key=editor_key(path, channel_slug))
+                if st.button("💾 Сохранить тексты", key=f"save_all_txt_{ep_key}"):
+                    n = save_episode_text_files(channel_slug, files)
+                    st.success(f"Сохранено файлов: {n}")
+                    st.rerun()
+
+            with tool_col:
+                st.markdown("**🛠️ ИИ-переработка**")
+                truth_key = f"truth_source_{ep_key}"
+                if truth_key not in st.session_state:
+                    st.session_state[truth_key] = "ru"
+                truth = st.radio(
+                    "Источник истины",
+                    options=("ru", "en"),
+                    format_func=lambda v: (
+                        "🇷🇺 Русский (script_ru.md)" if v == "ru" else "🇬🇧 Английский (script.md)"
+                    ),
+                    key=truth_key,
+                )
+                st.text_area(
+                    "Комментарий / инструкция для ИИ",
+                    height=100,
+                    key=f"sync_instruction_{ep_key}",
+                    placeholder="Напр.: смягчи финал, убери алхимию во 2-й главе.",
+                )
+                st.caption(
+                    "Берёт **script_ru.md** или **script.md** (источник истины), правит текст **только по комментарию**, "
+                    "синхронизирует второй язык, заново пишет **visual_prompts** и **metadata**. "
+                    "`plot_brief` — только у кнопки «Сгенерировать с нуля»."
+                )
+                if st.button("✨ Переработать и синхронизировать", key=f"sync_scripts_{ep_key}", use_container_width=True):
+                    instruction = str(st.session_state.get(f"sync_instruction_{ep_key}", "")).strip()
+                    if not instruction:
+                        st.error("Заполните комментарий — переработка без plot_brief не запускается.")
+                    else:
+                        save_episode_text_files(channel_slug, files)
+                        persist_episode_config_before_job(episode_dir, ep_key, epi_cfg)
+                        (episode_dir / ".sync_instruction.txt").write_text(instruction, encoding="utf-8")
+                        (episode_dir / "sync_instruction_last.txt").write_text(instruction, encoding="utf-8")
+                        launch_background_job(
+                            "generation",
+                            episode_dir,
+                            "sync_episode_pack.py",
+                            "--primary",
+                            truth,
+                        )
+
+                st.markdown("**🕰️ История версий**")
+                snaps = list_episode_snapshots(episode_dir)
+                if snaps:
+                    snap_ids = [str(s["id"]) for s in snaps]
+                    snap_labels = {str(s["id"]): snapshot_display_line(s) for s in snaps}
+                    pick = st.selectbox(
+                        "Версия",
+                        options=snap_ids,
+                        format_func=lambda sid: snap_labels.get(sid, sid),
+                        key=f"history_pick_{ep_key}",
+                    )
+                    if st.button("⏪ Восстановить", key=f"history_restore_{ep_key}", use_container_width=True):
+                        err = restore_episode_snapshot(episode_dir, pick)
+                        if err:
+                            st.error(err)
+                        else:
+                            bump_episode_text_editors(episode_dir)
+                            st.success("Версия восстановлена (текущая сохранена в history/)")
+                            st.rerun()
                 else:
-                    st.caption(f"{label}: файла нет ({name})")
-        with b_act:
-            if st.button(
-                "🎙️ Сгенерировать / Обновить озвучку (EN + RU)",
-                key=f"voice_{ep_key}",
-                use_container_width=True,
-            ):
-                launch_background_job("generation", episode_dir, "generate_voice.py")
+                    st.caption("Пока нет снапшотов — появятся после первой ИИ-генерации/переработки.")
 
-    # —— Секция C ——
-    st.markdown("---")
-    st.subheader("В — Кадры и обложка (Visuals)")
-    images_dir = episode_dir / "images"
-    images: list[Path] = []
-    image_names: list[str] = []
-    if images_dir.is_dir():
-        images = sorted(
-            path for path in images_dir.iterdir() if path.is_file() and path.suffix.lower() in IMAGE_SUFFIXES
-        )
-        image_names = [path.name for path in images]
-    if images:
-        review = load_review(episode_dir)
-        flagged_on_disk = disk_names_for_flagged(review, image_names)
-        inject_flagged_image_css(flagged_on_disk, ep_key, image_names)
-        st.caption("Проблемные кадры — красная обводка; статус **open** / **ok**")
-        columns = st.columns(min(4, len(images)))
-        for index, image_path in enumerate(images):
-            name = image_path.name
-            is_flagged = is_image_path_flagged(review, name)
-            status = "⚑ open" if is_flagged else "ok"
-            stem = stem_from_filename(name)
-            anim_on = is_animate_frame(review, stem)
-            anim_label = "🎞️ anim" if anim_on else " "
-            with columns[index % len(columns)]:
-                with st.container(border=True, key=image_cell_key(ep_key, name)):
-                    mp4_path = images_dir / f"{stem}.mp4"
-                    if mp4_path.is_file():
-                        st.video(str(mp4_path))
+        with st.expander("2 — Озвучка (Audio)", expanded=False):
+            b_play, b_act = st.columns([3, 1])
+            with b_play:
+                for name, label in (("voiceover.mp3", "EN"), ("voiceover_ru.mp3", "RU")):
+                    audio = episode_dir / name
+                    if audio.is_file():
+                        st.markdown(f"**{label}**")
+                        st.audio(audio.read_bytes(), format="audio/mp3")
                     else:
-                        st.image(str(image_path), width="stretch")
-                    st.caption(f"{status} · {anim_label}")
-                    b_flag, b_anim, b_open = st.columns(3)
-                    flag_help = "Снять пометку" if is_flagged else "Пометить как проблему"
-                    if b_flag.button("⚑", key=f"img_flag_{ep_key}_{name}", help=flag_help, use_container_width=True):
-                        review = load_review(episode_dir)
-                        toggle_problem_image(review, name)
-                        save_review(episode_dir, review)
-                        st.rerun()
-                    anim_help = "Снять с анимации" if anim_on else "Анимировать через ComfyUI"
-                    if b_anim.button("🎞️", key=f"img_anim_{ep_key}_{name}", help=anim_help, use_container_width=True):
-                        review = load_review(episode_dir)
-                        toggle_animate_frame(review, stem)
-                        save_review(episode_dir, review)
-                        st.rerun()
-                    b_open.link_button(
-                        "⛶",
-                        str(image_path.resolve().as_uri()),
-                        help="Открыть в полном размере",
-                        use_container_width=True,
-                    )
-        with st.expander("Пометить несколько кадров одной проблемой"):
-            default_pick = sorted(flagged_on_disk) if flagged_on_disk else image_names[:1]
-            with st.form(key=f"bulk_form_{ep_key}", clear_on_submit=False):
-                bulk_pick = st.multiselect("Кадры", image_names, default=default_pick)
-                bulk_note = st.text_area("Комментарий для PROMPT при регенерации", height=80)
-                submitted = st.form_submit_button("Применить")
-            if submitted and bulk_pick:
-                review = load_review(episode_dir)
-                flag_images_batch(review, bulk_pick, bulk_note)
-                save_review(episode_dir, review)
-                st.rerun()
-    else:
-        st.caption("Папка images/ пуста — запустите генерацию кадров.")
+                        st.caption(f"{label}: файла нет ({name})")
+            with b_act:
+                if st.button(
+                    "🎙️ Сгенерировать / Обновить озвучку (EN + RU)",
+                    key=f"voice_{ep_key}",
+                    use_container_width=True,
+                ):
+                    launch_background_job("generation", episode_dir, "generate_voice.py")
 
-    thumb = episode_dir / "thumbnail.jpg"
-    if thumb.is_file():
-        st.markdown("**Обложка**")
-        st.image(str(thumb), width=360)
-
-    c1, c2, c3, c4 = st.columns(4)
-    if c1.button("🖼️ Сгенерировать недостающие кадры", key=f"img_miss_{ep_key}"):
-        launch_background_job("generation", episode_dir, "generate_images.py")
-    flagged = disk_names_for_flagged(load_review(episode_dir), image_names)
-    if c2.button("🔄 Перегенерировать только помеченные", key=f"img_flagged_{ep_key}"):
-        if not flagged:
-            st.warning("Нет помеченных кадров.")
-        else:
-            launch_background_job("regeneration", episode_dir, "generate_images.py", "--flagged-only")
-    if c3.button("🎨 Обновить обложку", key=f"thumb_{ep_key}"):
-        launch_background_job("generation", episode_dir, "generate_thumbnail.py")
-    with c4:
-        st.caption("Анимация — блок ниже ↓")
-
-    render_animate_i2v_panel(
-        episode_dir,
-        ep_key,
-        frame_stem_options,
-        channel_slug=channel_slug,
-        channel_dir=ch,
-    )
-
-    # —— Секция D ——
-    st.markdown("---")
-    st.subheader("Г — Финальное видео (Final Render)")
-    video = episode_dir / "final_video.mp4"
-    d_v, d_btn = st.columns([3, 1])
-    with d_v:
-        if video.is_file():
-            st.video(str(video))
-        else:
-            st.caption("final_video.mp4 ещё нет.")
-        marker_event = video_marker(key=f"video_marker_{ep_key}")
-        if isinstance(marker_event, dict) and marker_event.get("action") == "save_segment":
-            sig = (
-                round(float(marker_event.get("start", 0)), 2),
-                round(float(marker_event.get("end", 0)), 2),
-                str(marker_event.get("note", "")).strip(),
+    with st.expander("3 — Кадры и обложка (Visuals)", expanded=False):
+        images_dir = episode_dir / "images"
+        images: list[Path] = []
+        image_names: list[str] = []
+        if images_dir.is_dir():
+            images = sorted(
+                path for path in images_dir.iterdir() if path.is_file() and path.suffix.lower() in IMAGE_SUFFIXES
             )
-            dedupe_key = f"last_video_seg_{ep_key}"
-            if st.session_state.get(dedupe_key) != sig:
-                st.session_state[dedupe_key] = sig
-                review = load_review(episode_dir)
-                segments = review.get("video_segments", [])
-                segments.append({"start": sig[0], "end": sig[1], "note": sig[2]})
-                review["video_segments"] = segments
-                save_review(episode_dir, review)
-                st.toast("Участок сохранён")
-                st.rerun()
-
-        review = load_review(episode_dir)
-        st.markdown("**Проблемные участки**")
-        segments = review.get("video_segments", [])
-        if segments:
-            for index, segment in enumerate(segments):
-                start = float(segment.get("start", 0))
-                end = float(segment.get("end", 0))
-                c_time, c_note, c_save, c_del = st.columns([2, 4, 1, 1])
-                c_time.markdown(
-                    f"**{index + 1}.** {format_media_time(start)} — {format_media_time(end)}"
-                )
-                note_val = c_note.text_input(
-                    "Комментарий",
-                    value=str(segment.get("note", "")),
-                    key=f"seg_note_{ep_key}_{index}",
-                    label_visibility="collapsed",
-                )
-                if c_save.button("💾", key=f"seg_save_{ep_key}_{index}", use_container_width=True):
-                    update_video_segment_note(review, index, note_val)
-                    save_review(episode_dir, review)
-                    st.rerun()
-                if c_del.button("✕", key=f"seg_del_{ep_key}_{index}", use_container_width=True):
-                    remove_video_segment(review, index)
+            image_names = [path.name for path in images]
+        if images:
+            review = load_review(episode_dir)
+            flagged_on_disk = disk_names_for_flagged(review, image_names)
+            inject_flagged_image_css(flagged_on_disk, ep_key, image_names)
+            st.caption("Проблемные кадры — красная обводка; статус **open** / **ok**")
+            columns = st.columns(min(4, len(images)))
+            for index, image_path in enumerate(images):
+                name = image_path.name
+                is_flagged = is_image_path_flagged(review, name)
+                status = "⚑ open" if is_flagged else "ok"
+                stem = stem_from_filename(name)
+                anim_on = is_animate_frame(review, stem)
+                anim_label = "🎞️ anim" if anim_on else " "
+                with columns[index % len(columns)]:
+                    with st.container(border=True, key=image_cell_key(ep_key, name)):
+                        mp4_path = images_dir / f"{stem}.mp4"
+                        if mp4_path.is_file():
+                            st.video(str(mp4_path))
+                        else:
+                            st.image(str(image_path), width="stretch")
+                        st.caption(f"{status} · {anim_label}")
+                        b_flag, b_anim, b_open = st.columns(3)
+                        flag_help = "Снять пометку" if is_flagged else "Пометить как проблему"
+                        if b_flag.button("⚑", key=f"img_flag_{ep_key}_{name}", help=flag_help, use_container_width=True):
+                            review = load_review(episode_dir)
+                            toggle_problem_image(review, name)
+                            save_review(episode_dir, review)
+                            st.rerun()
+                        anim_help = "Снять с анимации" if anim_on else "Анимировать через ComfyUI"
+                        if b_anim.button("🎞️", key=f"img_anim_{ep_key}_{name}", help=anim_help, use_container_width=True):
+                            review = load_review(episode_dir)
+                            toggle_animate_frame(review, stem)
+                            save_review(episode_dir, review)
+                            st.rerun()
+                        b_open.link_button(
+                            "⛶",
+                            str(image_path.resolve().as_uri()),
+                            help="Открыть в полном размере",
+                            use_container_width=True,
+                        )
+            with st.expander("Пометить несколько кадров одной проблемой"):
+                default_pick = sorted(flagged_on_disk) if flagged_on_disk else image_names[:1]
+                with st.form(key=f"bulk_form_{ep_key}", clear_on_submit=False):
+                    bulk_pick = st.multiselect("Кадры", image_names, default=default_pick)
+                    bulk_note = st.text_area("Комментарий для PROMPT при регенерации", height=80)
+                    submitted = st.form_submit_button("Применить")
+                if submitted and bulk_pick:
+                    review = load_review(episode_dir)
+                    flag_images_batch(review, bulk_pick, bulk_note)
                     save_review(episode_dir, review)
                     st.rerun()
         else:
-            st.caption("Отметьте участки в плеере или добавьте вручную ниже.")
-        with st.expander("Добавить участок вручную (таймкод)"):
-            with st.form(f"video_mark_form_{ep_key}"):
-                start = st.text_input("Начало (сек или ММ:СС)", value="0:00")
-                end = st.text_input("Конец (сек или ММ:СС)", value="0:30")
-                note = st.text_input("Комментарий")
-                add = st.form_submit_button("Добавить участок")
-            if add:
-                try:
-                    review = load_review(episode_dir)
-                    segments = review.get("video_segments", [])
-                    segments.append(
-                        {
-                            "start": round(parse_timecode(start), 2),
-                            "end": round(parse_timecode(end), 2),
-                            "note": note.strip(),
-                        }
-                    )
-                    review["video_segments"] = segments
-                    save_review(episode_dir, review)
-                    st.rerun()
-                except ValueError as exc:
-                    st.error(str(exc))
+            st.caption("Папка images/ пуста — запустите генерацию кадров.")
 
-    with d_btn:
-        if SLEEP_CHANNEL in channel_slug:
+        thumb = episode_dir / "thumbnail.jpg"
+        if thumb.is_file():
+            st.markdown("**Обложка**")
+            st.image(str(thumb), width=360)
+
+        c1, c2, c3, c4 = st.columns(4)
+        if c1.button("🖼️ Сгенерировать недостающие кадры", key=f"img_miss_{ep_key}"):
+            launch_background_job("generation", episode_dir, "generate_images.py")
+        flagged = disk_names_for_flagged(load_review(episode_dir), image_names)
+        if c2.button("🔄 Перегенерировать только помеченные", key=f"img_flagged_{ep_key}"):
+            if not flagged:
+                st.warning("Нет помеченных кадров.")
+            else:
+                launch_background_job("regeneration", episode_dir, "generate_images.py", "--flagged-only")
+        if c3.button("🎨 Обновить обложку", key=f"thumb_{ep_key}"):
+            launch_background_job("generation", episode_dir, "generate_thumbnail.py")
+        with c4:
+            st.caption("Оживление / сборка — блок **4**")
+
+    frame_stems = frame_stem_options
+    staged_build = episode_staged_video_build(episode_dir)
+
+    with st.expander("4 — Сюжет (видео + звук)", expanded=False):
+        from story_build_controls import render_story_build_block
+
+        render_story_build_block(
+            episode_dir,
+            ep_key,
+            launch_job=launch_background_job,
+            persist_config=persist_episode_config_before_job,
+            channel_slug=channel_slug,
+            channel_dir=ch,
+            render_animation=render_animate_i2v_panel,
+            frame_stem_options=frame_stems,
+        )
+        if not staged_build:
             from animation_settings import load_episode_animation, resolve_video_build_script
 
             build_script = resolve_video_build_script(load_episode_animation(episode_dir))
-        else:
-            build_script = "make_episode.py"
-        if st.button("🎞️ Собрать / Пересобрать видео", key=f"build_vid_{ep_key}", use_container_width=True):
-            epi_save = load_episode_config(episode_dir, channel_slug, ch)
-            persist_episode_config_before_job(episode_dir, ep_key, epi_save)
-            launch_background_job("build_video", episode_dir, build_script)
-        if st.button(
-            "🚀 Применить правки по участкам и пересобрать",
-            key=f"apply_review_{ep_key}",
-            use_container_width=True,
-        ):
-            launch_background_job("regeneration", episode_dir, "apply_review.py")
-        if st.button("🎯 Участки → пометить кадры", key=f"map_seg_{ep_key}", use_container_width=True):
-            added, updated = apply_video_segments_to_images(episode_dir)
-            if added or updated:
-                st.success(f"Пометок: +{added}, обновлено: {updated}")
-                st.rerun()
-            else:
-                st.info("Нет участков с комментариями.")
+            st.caption(f"Короткая сборка (без плейлиста): `{build_script}`.")
+            if st.button("🎞️ Собрать / Пересобрать видео", key=f"build_vid_{ep_key}", use_container_width=True):
+                epi_save = load_episode_config(episode_dir, channel_slug, ch)
+                persist_episode_config_before_job(episode_dir, ep_key, epi_save)
+                launch_background_job("build_video", episode_dir, build_script)
 
-    with st.expander("📋 История фоновых задач"):
-        render_jobs_monitor(episode_dir, ep_key, auto_refresh=False)
+    with st.expander("5 — Хвост (картинка + звук)", expanded=False):
+        if staged_build:
+            from tail_build_controls import render_tail_build_block
+
+            render_tail_build_block(
+                episode_dir,
+                ep_key,
+                launch_job=launch_background_job,
+                channel_slug=channel_slug,
+            )
+        else:
+            from tail_controls import render_ambient_tail_controls
+
+            render_ambient_tail_controls(episode_dir, channel_slug, ep_key)
+
+    with st.expander("6 — Финал и просмотр", expanded=False):
+        if staged_build:
+            from final_mux_controls import render_final_mux_block
+
+            render_final_mux_block(
+                episode_dir,
+                ep_key,
+                launch_job=launch_background_job,
+                persist_config=persist_episode_config_before_job,
+                channel_slug=channel_slug,
+                channel_dir=ch,
+            )
+        video = episode_dir / "final_video.mp4"
+        d_v, d_btn = st.columns([3, 1])
+        with d_v:
+            if video.is_file():
+                st.video(str(video))
+            else:
+                st.caption("final_video.mp4 ещё нет.")
+            marker_event = video_marker(key=f"video_marker_{ep_key}")
+            if isinstance(marker_event, dict) and marker_event.get("action") == "save_segment":
+                sig = (
+                    round(float(marker_event.get("start", 0)), 2),
+                    round(float(marker_event.get("end", 0)), 2),
+                    str(marker_event.get("note", "")).strip(),
+                )
+                dedupe_key = f"last_video_seg_{ep_key}"
+                if st.session_state.get(dedupe_key) != sig:
+                    st.session_state[dedupe_key] = sig
+                    review = load_review(episode_dir)
+                    segments = review.get("video_segments", [])
+                    segments.append({"start": sig[0], "end": sig[1], "note": sig[2]})
+                    review["video_segments"] = segments
+                    save_review(episode_dir, review)
+                    st.toast("Участок сохранён")
+                    st.rerun()
+
+            review = load_review(episode_dir)
+            st.markdown("**Проблемные участки**")
+            segments = review.get("video_segments", [])
+            if segments:
+                for index, segment in enumerate(segments):
+                    start = float(segment.get("start", 0))
+                    end = float(segment.get("end", 0))
+                    c_time, c_note, c_save, c_del = st.columns([2, 4, 1, 1])
+                    c_time.markdown(
+                        f"**{index + 1}.** {format_media_time(start)} — {format_media_time(end)}"
+                    )
+                    note_val = c_note.text_input(
+                        "Комментарий",
+                        value=str(segment.get("note", "")),
+                        key=f"seg_note_{ep_key}_{index}",
+                        label_visibility="collapsed",
+                    )
+                    if c_save.button("💾", key=f"seg_save_{ep_key}_{index}", use_container_width=True):
+                        update_video_segment_note(review, index, note_val)
+                        save_review(episode_dir, review)
+                        st.rerun()
+                    if c_del.button("✕", key=f"seg_del_{ep_key}_{index}", use_container_width=True):
+                        remove_video_segment(review, index)
+                        save_review(episode_dir, review)
+                        st.rerun()
+            else:
+                st.caption("Отметьте участки в плеере или добавьте вручную ниже.")
+            with st.expander("Добавить участок вручную (таймкод)", expanded=False):
+                with st.form(f"video_mark_form_{ep_key}"):
+                    start = st.text_input("Начало (сек или ММ:СС)", value="0:00")
+                    end = st.text_input("Конец (сек или ММ:СС)", value="0:30")
+                    note = st.text_input("Комментарий")
+                    add = st.form_submit_button("Добавить участок")
+                if add:
+                    try:
+                        review = load_review(episode_dir)
+                        segments = review.get("video_segments", [])
+                        segments.append(
+                            {
+                                "start": round(parse_timecode(start), 2),
+                                "end": round(parse_timecode(end), 2),
+                                "note": note.strip(),
+                            }
+                        )
+                        review["video_segments"] = segments
+                        save_review(episode_dir, review)
+                        st.rerun()
+                    except ValueError as exc:
+                        st.error(str(exc))
+
+        with d_btn:
+            if st.button(
+                "🚀 Применить правки по участкам и пересобрать",
+                key=f"apply_review_{ep_key}",
+                use_container_width=True,
+            ):
+                launch_background_job("regeneration", episode_dir, "apply_review.py")
+            if st.button("🎯 Участки → пометить кадры", key=f"map_seg_{ep_key}", use_container_width=True):
+                added, updated = apply_video_segments_to_images(episode_dir)
+                if added or updated:
+                    st.success(f"Пометок: +{added}, обновлено: {updated}")
+                    st.rerun()
+                else:
+                    st.info("Нет участков с комментариями.")
+
+        with st.expander("📋 История фоновых задач"):
+            render_jobs_monitor(episode_dir, ep_key, auto_refresh=False)
 
     if pin_running:
         import time

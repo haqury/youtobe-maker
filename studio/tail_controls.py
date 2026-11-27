@@ -51,6 +51,25 @@ def _fps_fields(ep_key: str, epi_cfg: dict) -> dict:
     }
 
 
+def sync_tail_session_from_disk(ep_key: str, epi_cfg: dict) -> None:
+    """Подставить настройки хвоста с диска в session (блок 4 читает их до отрисовки блока 5)."""
+    token = f"ep_tail_synced_{ep_key}"
+    if st.session_state.get(token):
+        return
+    minutes = float(epi_cfg.get("target_total_minutes", 600) or 0)
+    st.session_state[f"ep_tail_on_{ep_key}"] = bool(epi_cfg.get("ambient_tail_enabled", False))
+    st.session_state[f"ep_tail_preset_{ep_key}"] = preset_code(minutes)
+    st.session_state[f"ep_tail_min_{ep_key}"] = minutes
+    st.session_state[f"ep_tail_cat_{ep_key}"] = str(epi_cfg.get("ambient_category") or "mix")
+    st.session_state[f"ep_tail_vol_{ep_key}"] = int(
+        round(float(epi_cfg.get("ambient_volume", 0.12) or 0.12) * 100)
+    )
+    st.session_state[f"ep_fps_start_{ep_key}"] = int(epi_cfg.get("fps_start", 24) or 24)
+    st.session_state[f"ep_fps_end_{ep_key}"] = int(epi_cfg.get("fps_end", 2) or 2)
+    st.session_state[f"ep_fps_every_{ep_key}"] = float(epi_cfg.get("fps_interval_min", 30) or 30)
+    st.session_state[token] = True
+
+
 def tail_fields_from_session(ep_key: str, epi_cfg: dict) -> dict:
     enabled_key = f"ep_tail_on_{ep_key}"
     if enabled_key not in st.session_state:

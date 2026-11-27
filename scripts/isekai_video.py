@@ -76,6 +76,55 @@ class LongBuildPlan:
     total: float
 
 
+@dataclass(frozen=True)
+class StorySlice:
+    """Фрагмент сюжета по выбранным блокам PLAYLIST (превью / поактовая сборка)."""
+
+    start_sec: float
+    duration_sec: float
+    blocks: tuple[str, ...] = ()
+    playlist_mode: str = "full"
+
+
+def story_slice_from_part(episode_dir: Path, part_index: int) -> StorySlice | None:
+    from isekai_story_blocks import story_segment_for_part
+
+    seg = story_segment_for_part(episode_dir, part_index)
+    if seg is None:
+        return None
+    return StorySlice(
+        start_sec=float(seg["start_sec"]),
+        duration_sec=float(seg["duration_sec"]),
+        blocks=tuple(seg["blocks"]),
+        playlist_mode=str(seg["playlist_mode"]),
+    )
+
+
+def story_slice_from_blocks(
+    episode_dir: Path,
+    blocks: tuple[str, ...],
+    *,
+    playlist_mode: str = "full",
+) -> StorySlice | None:
+    if not blocks:
+        return None
+    from isekai_story_blocks import story_segment_for_blocks
+
+    seg = story_segment_for_blocks(episode_dir, list(blocks), playlist_mode=playlist_mode)
+    if seg is None:
+        return None
+    return StorySlice(
+        start_sec=float(seg["start_sec"]),
+        duration_sec=float(seg["duration_sec"]),
+        blocks=tuple(blocks),
+        playlist_mode=playlist_mode,
+    )
+
+
+STORY_VIDEO_PARTIAL = "story_video_partial.mp4"
+STORY_MUX_PARTIAL = "story_with_audio_partial.mp4"
+
+
 def inspect_long_episode(episode_dir: Path) -> LongBuildPlan | None:
     voice = episode_dir / "voiceover.mp3"
     script = episode_dir / "script.md"
@@ -110,20 +159,37 @@ def inspect_long_episode(episode_dir: Path) -> LongBuildPlan | None:
     )
 
 
-def _write_mux_meta(cache: Path, lead: float, total: float) -> None:
+def _write_mux_meta(
+    cache: Path,
+    lead: float,
+    story_sec: float,
+    full_total: float,
+) -> None:
     cache.mkdir(exist_ok=True)
     (cache / "long_mux_meta.json").write_text(
-        json.dumps({"lead_sec": lead, "total_sec": total}, indent=0),
+        json.dumps(
+            {
+                "lead_sec": lead,
+                "story_sec": story_sec,
+                "total_sec": full_total,
+            },
+            indent=0,
+        ),
         encoding="utf-8",
     )
 
 
-def _read_mux_meta(cache: Path) -> tuple[float, float]:
+def _read_mux_meta(cache: Path) -> tuple[float, float, float]:
     path = cache / "long_mux_meta.json"
     if not path.is_file():
-        return 0.0, 0.0
+        return 0.0, 0.0, 0.0
     data = json.loads(path.read_text(encoding="utf-8"))
-    return float(data.get("lead_sec", 0) or 0), float(data.get("total_sec", 0) or 0)
+    lead = float(data.get("lead_sec", 0) or 0)
+    full = float(data.get("total_sec", 0) or 0)
+    story = float(data.get("story_sec", 0) or 0)
+    if story <= 0:
+        story = full
+    return lead, story, full
 
 
 def _ffmpeg() -> str:
@@ -527,13 +593,32 @@ def _ensure_clip(cache: Path, image: Path, variant: int, fps: int = FPS) -> Path
     return clip
 
 
-def build_long_video_stage(plan: LongBuildPlan) -> Path:
+def _trim_media(source: Path, output: Path, *, start: float, duration: float) -> None:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    args = [
+        "ffmpeg",
+        "-y",
+        "-ss",
+        f"{start:.3f}",
+        "-i",
+        str(source),
+        "-t",
+        f"{duration:.3f}",
+        "-c",
+        "copy",
+        str(output),
+    ]
+    _require(_run(args), f"trim {source.name}")
+
+
+def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None = None) -> Path:
     episode_dir = plan.episode_dir
     voice = plan.voice
     duration = plan.duration
     tail = plan.tail
-    use_tail = plan.use_tail
-    total = plan.total
+    use_tail = plan.use_tail and story_slice is None
+    full_total = plan.total if plan.use_tail else plan.duration
+    total = story_slice.duration_sec if story_slice else plan.duration
     image_dir = episode_dir / "images"
     if not image_dir.is_dir():
         raise FileNotFoundError(f"Нет папки с кадрами: {image_dir}")
@@ -579,7 +664,14 @@ def build_long_video_stage(plan: LongBuildPlan) -> Path:
     intro_source = resolve_intro_source(episode_dir) if branding.get("use_intro") else None
     intro_ready: tuple[Path, float] | None = None
     intro_head: float | None = None
-    if branding.get("use_intro") and intro_source is None:
+    if story_slice is not None:
+        print(
+            f"Поактовая сборка: {', '.join(story_slice.blocks)} · mode={story_slice.playlist_mode} · "
+            f"{story_slice.duration_sec / 60:.1f} мин"
+        )
+    if story_slice is not None:
+        pass
+    elif branding.get("use_intro") and intro_source is None:
         print("Интро включено, но intro.mp4 не найден — сборка без интро.")
     elif intro_source is not None:
         prepared = prepare_intro_clip(
@@ -598,8 +690,20 @@ def build_long_video_stage(plan: LongBuildPlan) -> Path:
             f"Интро: {intro_source.name}, {intro_dur:.1f} с, переход {crossfade:.1f} с, "
             f"речь с {max(0.0, intro_dur - crossfade):.1f} с."
         )
-    print(f"Длинный ролик: озвучка {duration / 60:.1f} мин, кадров {len(images)} (ffmpeg, без MoviePy).")
-    print(f"FPS: {describe_fps_schedule(total, fps_start, fps_end, fps_every)}")
+    print(
+        f"Длинный ролик: озвучка {duration / 60:.1f} мин, "
+        f"видеодорожка до {total / 60:.1f} мин "
+        f"({'хвост вкл' if use_tail else 'без хвоста на таймлайне'}), "
+        f"кадров {len(images)} (ffmpeg, без MoviePy)."
+    )
+    print(
+        f"FPS сюжета ({total / 60:.1f} мин): "
+        f"{describe_fps_schedule(total, fps_start, fps_end, fps_every)}"
+    )
+    if use_tail:
+        print(
+            f"Хвост на таймлайне ({full_total / 60:.1f} мин всего) — отдельный этап tail_video."
+        )
 
     ov_durations = {path: probe_duration(path) for path in overlay_paths}
     ov_pool = build_overlay_variants(
@@ -640,6 +744,8 @@ def build_long_video_stage(plan: LongBuildPlan) -> Path:
     )
     for stale in cache.glob("batch_*.mp4"):
         stale.unlink(missing_ok=True)
+    for stale in cache.glob("tail_batch_*.mp4"):
+        stale.unlink(missing_ok=True)
     unique: dict[tuple, Path] = {}
     sequence: list[Path] = []
     dim_start = (
@@ -659,10 +765,10 @@ def build_long_video_stage(plan: LongBuildPlan) -> Path:
         for k in range(BATCH_SIZE):
             occ = batch * BATCH_SIZE + k
             img_i = occ % len(images)
-            variant = (occ // len(images)) % 4 if use_tail else 0
+            variant = 0
             slots.append((img_i, variant, batch_fps))
             paths.append(_ensure_clip(cache, images[img_i], variant, batch_fps))
-        if use_tail and dim_start is not None:
+        if dim_start is not None:
             b0 = brightness_at(start_t, dim_start)
             b1 = brightness_at(end_t, dim_start)
             if abs(b0 - b1) < 0.03:
@@ -709,11 +815,178 @@ def build_long_video_stage(plan: LongBuildPlan) -> Path:
         emit_progress(len(images) + 3, total_steps, "Интро xfade (-c copy)")
         video_for_audio, lead = attach_intro(video_all, prepared, crossfade, fps_start, cache)
         print(f"Интро вклеено, речь сдвинута на {lead:.1f} с, эмбиент с 00:00.")
-    _write_mux_meta(cache, lead, total)
-    mark_video_stage(episode_dir, video_for_audio)
-    emit_progress(total_steps, total_steps, "Видеодорожка готова")
-    print(f"Готово: этап video — {video_for_audio}", flush=True)
+    story_probe = probe_duration(video_for_audio)
+    if story_slice is not None:
+        partial_out = cache / STORY_VIDEO_PARTIAL
+        if abs(story_probe - story_slice.duration_sec) > 2.0:
+            _trim_media(
+                video_for_audio,
+                partial_out,
+                start=0.0,
+                duration=story_slice.duration_sec,
+            )
+            video_for_audio = partial_out
+        else:
+            shutil.copy2(video_for_audio, partial_out)
+            video_for_audio = partial_out
+        print(f"Превью-видео сюжета: {video_for_audio.name}")
+    else:
+        _write_mux_meta(cache, lead, story_probe, full_total)
+        mark_video_stage(episode_dir, video_for_audio)
+    emit_progress(total_steps, total_steps, "Видеодорожка сюжета готова")
+    print(f"Готово: этап video (сюжет) — {video_for_audio}", flush=True)
     return video_for_audio
+
+
+def build_story_mux_stage(plan: LongBuildPlan, story_slice: StorySlice | None = None) -> Path:
+    from long_build_stages import STORY_WITH_AUDIO, mark_story_mux_stage, video_for_mux
+
+    episode_dir = plan.episode_dir
+    cache = episode_dir / CACHE_NAME
+    if story_slice is not None:
+        video_path = cache / STORY_VIDEO_PARTIAL
+        if not video_path.is_file():
+            raise RuntimeError("Сначала соберите этап video для выбранных актов.")
+        voice_clip = cache / f"_voice_slice_{story_slice.start_sec:.0f}.mp3"
+        _trim_media(
+            plan.voice,
+            voice_clip,
+            start=story_slice.start_sec,
+            duration=story_slice.duration_sec,
+        )
+        output = cache / STORY_MUX_PARTIAL
+        vid_dur = probe_duration(video_path)
+        ambient = _ambient_for(episode_dir)
+        mux(video_path, voice_clip, ambient, vid_dur, output, lead_sec=0.0)
+        print(f"Готово: этап story_mux (по актам) — {output.name}", flush=True)
+        return output
+    video_path = video_for_mux(episode_dir)
+    if video_path is None:
+        raise RuntimeError("Сначала соберите этап video (сюжет).")
+    lead, _, _ = _read_mux_meta(cache)
+    output = cache / STORY_WITH_AUDIO
+    vid_dur = probe_duration(video_path)
+    ambient = _ambient_for(episode_dir)
+    if ambient is None:
+        print("Сюжет: только voiceover (фон не найден).")
+    else:
+        print(f"Сюжет: voiceover + {ambient.name}.")
+    mux(video_path, plan.voice, ambient, vid_dur, output, lead_sec=lead)
+    mark_story_mux_stage(episode_dir)
+    print(f"Готово: этап story_mux — {output.name}", flush=True)
+    return output
+
+
+def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
+    from long_build_stages import TAIL_VIDEO, mark_tail_video_stage, video_for_mux
+
+    if not plan.use_tail or plan.tail is None:
+        print("Хвост на таймлайне отключён — этап tail_video пропущен.")
+        return None
+    episode_dir = plan.episode_dir
+    story_path = video_for_mux(episode_dir)
+    if story_path is None:
+        raise RuntimeError("Сначала соберите видео сюжета (этап video).")
+    t0 = probe_duration(story_path)
+    t1 = plan.total
+    if t1 <= t0 + 5.0:
+        print(f"Хвост видео: 0 с (сюжет уже {t0 / 60:.1f} мин, цель {t1 / 60:.1f} мин).")
+        return None
+
+    cache = episode_dir / CACHE_NAME
+    cache.mkdir(exist_ok=True)
+    image_dir = episode_dir / "images"
+    images = list_still_images(image_dir)
+    tail = plan.tail
+    duration = plan.duration
+    from animation_settings import load_episode_animation, resolve_overlay_paths
+    from episode_timing import describe_fps_schedule, episode_timing_from_config, fps_at
+
+    timing = episode_timing_from_config(episode_dir)
+    fps_start = int(timing["fps_start"])
+    fps_end = int(timing["fps_end"])
+    fps_every = float(timing["fps_interval_min"])
+    anim = load_episode_animation(episode_dir)
+    overlay_paths = resolve_overlay_paths(anim, episode_dir)
+    overlay_opacity = float(anim.get("overlay_opacity", 0.22) or 0.22)
+    overlay_random_mix = bool(anim.get("overlay_random_mix", True))
+    overlay_max_layers = int(anim.get("overlay_max_layers", 3) or 3)
+    overlay_variants_count = int(anim.get("overlay_variants", 12) or 12)
+    ov_durations = {path: probe_duration(path) for path in overlay_paths}
+    ov_pool = build_overlay_variants(
+        overlay_paths,
+        ov_durations,
+        base_opacity=overlay_opacity,
+        random_mix=overlay_random_mix,
+        max_layers=overlay_max_layers,
+        variant_count=overlay_variants_count,
+        rng=random.Random(episode_seed(episode_dir, "overlays_tail")),
+    )
+    batch_len = BATCH_SIZE * CLIP_SEC - (BATCH_SIZE - 1) * XFADE_SEC
+    span = t1 - t0
+    batch_count = max(1, math.ceil(span / batch_len))
+    dim_start = dim_start_for(duration, dim_during_speech=tail.dim_during_speech)
+    print(f"Хвост видео: {t0 / 60:.1f}–{t1 / 60:.1f} мин, batch {batch_count}.")
+    print(f"FPS хвост: {describe_fps_schedule(t1, fps_start, fps_end, fps_every)}")
+    for stale in cache.glob("tail_batch_*.mp4"):
+        stale.unlink(missing_ok=True)
+    ov_schedule = (
+        pick_batch_overlay_variant(
+            batch_count,
+            len(ov_pool),
+            random.Random(episode_seed(episode_dir, "overlay_tail_seq")),
+        )
+        if ov_pool
+        else []
+    )
+    unique: dict[tuple, Path] = {}
+    sequence: list[Path] = []
+    global_batch = int(t0 // batch_len)
+    for batch in range(batch_count):
+        start_t = t0 + batch * batch_len
+        end_t = min(t1, start_t + batch_len)
+        batch_fps = fps_at(start_t, t1, fps_start, fps_end, fps_every)
+        b0 = brightness_at(start_t, dim_start)
+        b1 = brightness_at(end_t, dim_start)
+        paths: list[Path] = []
+        slots: list[tuple[int, int, int]] = []
+        ramp: tuple[float, float, float] | None = None
+        for k in range(BATCH_SIZE):
+            occ = global_batch + batch * BATCH_SIZE + k
+            img_i = occ % len(images)
+            variant = (occ // len(images)) % 4
+            slots.append((img_i, variant, batch_fps))
+            paths.append(_ensure_clip(cache, images[img_i], variant, batch_fps))
+        if abs(b0 - b1) < 0.03:
+            brightness = (b0 + b1) / 2.0
+            key = tuple(slots) + (round(brightness, 2),)
+        else:
+            ramp = (b0, b1, batch_len)
+            key = tuple(slots) + ("ramp", round(b0, 2), round(b1, 2))
+        if ov_pool:
+            ov_idx = ov_schedule[batch]
+            key = key + ("ov_v", ov_idx, round(overlay_opacity, 2))
+            batch_overlays = ov_pool[ov_idx]
+        else:
+            batch_overlays = None
+        if key not in unique:
+            target = cache / f"tail_batch_{len(unique):04d}.mp4"
+            encode_batch(
+                paths,
+                target,
+                brightness if ramp is None else (b0 + b1) / 2.0,
+                ramp,
+                batch_fps,
+                timeline_fps=fps_start,
+                overlays=batch_overlays,
+            )
+            unique[key] = target
+        sequence.append(unique[key])
+    tail_out = cache / TAIL_VIDEO
+    concat_copy(sequence, tail_out, cache / "_tail_batches.txt")
+    mark_tail_video_stage(episode_dir)
+    print(f"Готово: этап tail_video — {tail_out.name}", flush=True)
+    return tail_out
 
 
 def build_long_ambient_stage(plan: LongBuildPlan) -> tuple[Path, Path]:
@@ -750,11 +1023,19 @@ def build_long_mux_stage(plan: LongBuildPlan) -> Path:
     video_path = video_for_mux(episode_dir)
     if video_path is None:
         raise RuntimeError("Сначала соберите этап video.")
-    lead, total_dur = _read_mux_meta(cache)
+    lead, _story_sec, total_dur = _read_mux_meta(cache)
     if total_dur <= 0:
         total_dur = plan.total
     output = episode_dir / OUTPUT_NAME
     emit_progress(1, 1, f"Mux {OUTPUT_NAME}")
+    from long_build_stages import tail_video_path
+
+    tail_vid = tail_video_path(episode_dir)
+    if plan.use_tail and tail_vid.is_file() and tail_vid.stat().st_size > 4096:
+        combined = cache / "video_combined_for_mux.mp4"
+        concat_copy([video_path, tail_vid], combined, cache / "_full_video_concat.txt")
+        video_path = combined
+        print(f"Склейка видео: сюжет + хвост → {combined.name}")
     if plan.use_tail and plan.tail is not None:
         if not ambient_stage_ready(episode_dir):
             raise RuntimeError("Сначала соберите этап ambient (build_sleep_video.py --stage ambient).")
@@ -815,26 +1096,55 @@ def build_long(
         total=total,
     )
     build_long_video_stage(plan)
+    build_story_mux_stage(plan)
     if plan.use_tail:
+        build_tail_video_stage(plan)
         build_long_ambient_stage(plan)
-        return build_long_mux_stage(plan)
     return build_long_mux_stage(plan)
 
 
-def maybe_build_long_staged(episode_dir: Path, stage: str) -> Path | None:
+def maybe_build_long_staged(
+    episode_dir: Path,
+    stage: str,
+    *,
+    blocks: tuple[str, ...] | None = None,
+    playlist_mode: str = "full",
+    play_part: int | None = None,
+) -> Path | None:
     plan = inspect_long_episode(episode_dir)
     if plan is None:
         return None
     stage = (stage or "all").strip().lower()
+    if play_part is not None:
+        story_slice = story_slice_from_part(episode_dir, play_part - 1)
+        if story_slice is None:
+            raise RuntimeError(
+                "Не удалось оценить таймкоды части плейлиста (нужны voiceover.mp3 и audio_cache)."
+            )
+    else:
+        story_slice = story_slice_from_blocks(episode_dir, blocks or (), playlist_mode=playlist_mode)
+        if blocks and story_slice is None:
+            raise RuntimeError("Не удалось оценить таймкоды для выбранных блоков (нужен audio_cache).")
     if stage == "all":
+        if story_slice is not None:
+            raise RuntimeError("Поактовая сборка: только --stage video или story_mux.")
         return build_long(plan.episode_dir, plan.voice, plan.duration, plan.tail)
     if stage == "video":
-        return build_long_video_stage(plan)
+        return build_long_video_stage(plan, story_slice)
+    if stage == "story_mux":
+        return build_story_mux_stage(plan, story_slice)
+    if stage in ("tail_video", "tail"):
+        from long_build_stages import video_for_mux as _video_for_mux
+
+        out = build_tail_video_stage(plan)
+        return out if out is not None else _video_for_mux(plan.episode_dir)
     if stage == "ambient":
         return build_long_ambient_stage(plan)[0]
     if stage == "mux":
         return build_long_mux_stage(plan)
-    raise ValueError(f"Неизвестный этап: {stage!r}. Допустимо: video, ambient, mux, all.")
+    raise ValueError(
+        f"Неизвестный этап: {stage!r}. Допустимо: video, story_mux, tail_video, ambient, mux, all."
+    )
 
 
 def maybe_build_long(episode_dir: Path) -> Path | None:

@@ -472,11 +472,24 @@ def close_clips(clips: list) -> None:
     gc.collect()
 
 
-def build(episode_dir: Path, *, stage: str = "all") -> Path:
+def build(
+    episode_dir: Path,
+    *,
+    stage: str = "all",
+    blocks: tuple[str, ...] | None = None,
+    playlist_mode: str = "full",
+    play_part: int | None = None,
+) -> Path:
     from isekai_video import maybe_build_long, maybe_build_long_staged
 
     if stage and stage != "all":
-        staged = maybe_build_long_staged(episode_dir, stage)
+        staged = maybe_build_long_staged(
+            episode_dir,
+            stage,
+            blocks=blocks,
+            playlist_mode=playlist_mode,
+            play_part=play_part,
+        )
         if staged is not None:
             return staged
         raise RuntimeError(
@@ -636,17 +649,41 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--stage",
-        choices=("all", "video", "ambient", "mux"),
+        choices=("all", "video", "story_mux", "tail_video", "ambient", "mux"),
         default="all",
-        help="Длинный ролик (isekai): video → ambient → mux по отдельности; all = всё сразу",
+        help="Длинный ролик: video (сюжет) → story_mux → tail_video → ambient → mux; all = всё",
+    )
+    parser.add_argument(
+        "--play-part",
+        type=int,
+        default=None,
+        help="Часть плейлиста: 1 = первая строка PLAY: в script.md.",
+    )
+    parser.add_argument(
+        "--blocks",
+        default="",
+        help="По блокам (устарело, лучше --play-part).",
+    )
+    parser.add_argument(
+        "--playlist-mode",
+        choices=("full", "target_only", "shuffle_target"),
+        default="full",
+        help="Какой mode в PLAYLIST считать для --blocks.",
     )
     args = parser.parse_args(argv)
     episode_dir = args.episode.expanduser().resolve()
     if not episode_dir.is_dir():
         print(f"Папка не найдена: {episode_dir}", file=sys.stderr)
         return 1
+    block_tuple = tuple(part.strip() for part in args.blocks.split(",") if part.strip())
     try:
-        output = build(episode_dir, stage=args.stage)
+        output = build(
+            episode_dir,
+            stage=args.stage,
+            blocks=block_tuple or None,
+            playlist_mode=args.playlist_mode,
+            play_part=args.play_part,
+        )
     except (FileNotFoundError, RuntimeError, OSError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

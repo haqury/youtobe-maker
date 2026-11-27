@@ -7,10 +7,14 @@ from pathlib import Path
 CACHE_NAME = ".video_cache"
 VIDEO_WITH_INTRO = "video_with_intro.mp4"
 VIDEO_ALL = "video_all.mp4"
+TAIL_VIDEO = "tail_video.mp4"
+STORY_WITH_AUDIO = "story_with_audio.mp4"
 AMBIENT_BED = "ambient_bed.m4a"
 AMBIENT_TAIL = "ambient_tail.m4a"
 OUTPUT_NAME = "final_video.mp4"
 STAGE_VIDEO_OK = "long_stage_video.ok"
+STAGE_STORY_MUX_OK = "long_stage_story_mux.ok"
+STAGE_TAIL_VIDEO_OK = "long_stage_tail_video.ok"
 STAGE_AMBIENT_OK = "long_stage_ambient.ok"
 
 
@@ -79,3 +83,37 @@ def ambient_bed_path(episode_dir: Path) -> Path:
 
 def ambient_tail_path(episode_dir: Path) -> Path:
     return cache_dir(episode_dir) / AMBIENT_TAIL
+
+
+def tail_video_path(episode_dir: Path) -> Path:
+    return cache_dir(episode_dir) / TAIL_VIDEO
+
+
+def story_with_audio_path(episode_dir: Path) -> Path:
+    return cache_dir(episode_dir) / STORY_WITH_AUDIO
+
+
+def story_mux_ready(episode_dir: Path) -> bool:
+    cache = cache_dir(episode_dir)
+    path = cache / STORY_WITH_AUDIO
+    marker = cache / STAGE_STORY_MUX_OK
+    return (marker.is_file() and path.is_file() and path.stat().st_size > 4096)
+
+
+def tail_video_ready(episode_dir: Path) -> bool:
+    cache = cache_dir(episode_dir)
+    path = cache / TAIL_VIDEO
+    marker = cache / STAGE_TAIL_VIDEO_OK
+    return (marker.is_file() and path.is_file() and path.stat().st_size > 4096)
+
+
+def mark_story_mux_stage(episode_dir: Path) -> None:
+    cache = cache_dir(episode_dir)
+    cache.mkdir(exist_ok=True)
+    (cache / STAGE_STORY_MUX_OK).write_text("ok\n", encoding="utf-8")
+
+
+def mark_tail_video_stage(episode_dir: Path) -> None:
+    cache = cache_dir(episode_dir)
+    cache.mkdir(exist_ok=True)
+    (cache / STAGE_TAIL_VIDEO_OK).write_text("ok\n", encoding="utf-8")

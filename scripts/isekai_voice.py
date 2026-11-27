@@ -92,6 +92,13 @@ def is_isekai_script(text: str) -> bool:
     return bool(DETECT_RE.search(text)) and bool(PLAYLIST_RE.search(text))
 
 
+def is_native_role(role: str) -> bool:
+    if is_target_role(role):
+        return False
+    low = role.lower()
+    return "native" in low or low.startswith("transitions_bank") or low.startswith("narrator_native")
+
+
 def is_target_role(role: str) -> bool:
     """Фразы сна: слот содержит _TARGET_ и это не повтор _slow или _repeat.
 
@@ -204,6 +211,86 @@ def build_plan(text: str) -> list[Step]:
         raise SystemExit("В PLAYLIST_SEQUENCE нет строк PLAY:.")
     plan: list[Step] = []
     for play in plays:
+        plan.extend(plan_for_play(blocks, play))
+    return plan
+
+
+def build_plan_filtered(
+    text: str,
+    *,
+    block_names: set[str] | None = None,
+    play_mode: str | None = None,
+    speech_lang: str = "all",
+) -> list[Step]:
+    blocks, plays = parse_script(text)
+    if not plays:
+        raise SystemExit("В PLAYLIST_SEQUENCE нет строк PLAY:.")
+    if block_names:
+        plays = [play for play in plays if play.block in block_names]
+    if play_mode:
+        plays = [play for play in plays if play.mode == play_mode]
+    if not plays:
+        raise SystemExit("Нет PLAY для выбранных блоков/режима.")
+    plan: list[Step] = []
+    for play in plays:
+        plan.extend(plan_for_play(blocks, play))
+    lang = (speech_lang or "all").strip().lower()
+    if lang in {"", "all", "full"}:
+        return plan
+    filtered: list[Step] = []
+    for step in plan:
+        if step.line is None:
+            if lang != "target":
+                filtered.append(step)
+            continue
+        if lang == "target" and is_target_role(step.line.role):
+            filtered.append(step)
+        elif lang == "native" and is_native_role(step.line.role):
+            filtered.append(step)
+    if not any(step.line is not None for step in filtered):
+        raise SystemExit(f"Нет реплик для speech-lang={speech_lang!r}.")
+    return filtered
+
+
+def play_groups_from_text(text: str) -> list[list[Play]]:
+    """Список PLAY-строк: каждая строка file → список Play (по одному на блок в строке)."""
+    blocks, plays = parse_script(text)
+    if not plays:
+        return []
+    groups: list[list[Play]] = []
+    in_playlist = False
+    play_idx = 0
+    for raw in text.splitlines():
+        line = raw.strip()
+        if PLAYLIST_RE.match(line):
+            in_playlist = True
+            continue
+        if not in_playlist:
+            continue
+        match = PLAY_RE.match(line)
+        if not match:
+            continue
+        names = [name.strip().rstrip(",") for name in match.group(1).split(",") if name.strip()]
+        group: list[Play] = []
+        for _name in names:
+            if play_idx >= len(plays):
+                break
+            group.append(plays[play_idx])
+            play_idx += 1
+        if group:
+            groups.append(group)
+    if not groups:
+        return [plays]
+    return groups
+
+
+def build_plan_for_play_part(text: str, part_index: int) -> list[Step]:
+    blocks, _plays = parse_script(text)
+    groups = play_groups_from_text(text)
+    if part_index < 0 or part_index >= len(groups):
+        raise SystemExit(f"Нет части плейлиста #{part_index + 1} (всего {len(groups)}).")
+    plan: list[Step] = []
+    for play in groups[part_index]:
         plan.extend(plan_for_play(blocks, play))
     return plan
 
@@ -390,9 +477,7 @@ def _take_path(cache: Path, line: Line, voice: str, bias: float = 1.0, pitch: st
     return cache / filename
 
 
-async def render(episode_dir: Path, script_path: Path) -> Path:
-    text = script_path.read_text(encoding="utf-8-sig")
-    plan = build_plan(text)  # падает до сети, если блок/режим неизвестны
+async def _render_plan(episode_dir: Path, plan: list[Step], output: Path) -> Path:
     settings = load_isekai_settings(episode_dir)
     bias = speech_speed_bias(settings)
     pitch = speech_pitch(settings)
@@ -429,10 +514,73 @@ async def render(episode_dir: Path, script_path: Path) -> Path:
             line = step.line
             source = speech_files[(line.chunk_id, line.role, line.speed, line.text)]
             parts.append(ensure_tempo(source, step.speed_mult))
-    output = episode_dir / "voiceover.mp3"
+    output.parent.mkdir(parents=True, exist_ok=True)
     concat_to_mp3(parts, output, cache)
     print(f"Isekai: {len(parts)} фрагментов -> {output.name}")
     return output
+
+
+async def render(episode_dir: Path, script_path: Path) -> Path:
+    text = script_path.read_text(encoding="utf-8-sig")
+    plan = build_plan(text)
+    return await _render_plan(episode_dir, plan, episode_dir / "voiceover.mp3")
+
+
+async def render_blocks(
+    episode_dir: Path,
+    *,
+    block_names: list[str],
+    play_mode: str = "full",
+    speech_lang: str = "all",
+    output: Path | None = None,
+) -> Path:
+    script_path = episode_dir / "script.md"
+    text = script_path.read_text(encoding="utf-8-sig")
+    plan = build_plan_filtered(
+        text,
+        block_names=set(block_names),
+        play_mode=play_mode,
+        speech_lang=speech_lang,
+    )
+    if output is None:
+        safe = "_".join(block_names)[:80]
+        output = episode_dir / ".video_cache" / f"voice_segment_{play_mode}_{speech_lang}_{safe}.mp3"
+    return await _render_plan(episode_dir, plan, output)
+
+
+def _filter_plan_speech_lang(plan: list[Step], speech_lang: str) -> list[Step]:
+    lang = (speech_lang or "all").strip().lower()
+    if lang in {"", "all", "full"}:
+        return plan
+    filtered: list[Step] = []
+    for step in plan:
+        if step.line is None:
+            if lang != "target":
+                filtered.append(step)
+            continue
+        if lang == "target" and is_target_role(step.line.role):
+            filtered.append(step)
+        elif lang == "native" and is_native_role(step.line.role):
+            filtered.append(step)
+    if not any(step.line is not None for step in filtered):
+        raise SystemExit(f"Нет реплик для speech-lang={speech_lang!r}.")
+    return filtered
+
+
+async def render_play_part(
+    episode_dir: Path,
+    part_index: int,
+    *,
+    speech_lang: str = "all",
+    output: Path | None = None,
+) -> Path:
+    script_path = episode_dir / "script.md"
+    text = script_path.read_text(encoding="utf-8-sig")
+    plan = build_plan_for_play_part(text, part_index)
+    plan = _filter_plan_speech_lang(plan, speech_lang)
+    if output is None:
+        output = episode_dir / ".video_cache" / f"voice_part_{part_index + 1:02d}.mp3"
+    return await _render_plan(episode_dir, plan, output)
 
 
 def phrase_inventory(episode_dir: Path, text: str | None = None) -> dict:
@@ -615,12 +763,70 @@ def self_test() -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = sys.argv[1:] if argv is None else argv
-    if not args or args == ["--self-test"]:
+    import argparse
+    import asyncio
+
+    parser = argparse.ArgumentParser(description="Isekai: self-test или сборка сегмента озвучки.")
+    parser.add_argument("--self-test", action="store_true")
+    parser.add_argument("episode", nargs="?", type=Path, help="Папка эпизода")
+    parser.add_argument(
+        "--play-part",
+        type=int,
+        default=None,
+        help="Часть плейлиста: 1 = первая строка PLAY: в script.md.",
+    )
+    parser.add_argument(
+        "--blocks",
+        default="",
+        help="Устарело: лучше --play-part. Блоки через запятую.",
+    )
+    parser.add_argument(
+        "--playlist-mode",
+        choices=MODES,
+        default="full",
+        help="Режим PLAY в плейлисте для выбранных блоков.",
+    )
+    parser.add_argument(
+        "--speech-lang",
+        choices=("all", "target", "native"),
+        default="all",
+        help="all = как в mode; target/native — только реплики выбранного языка.",
+    )
+    args = parser.parse_args(argv)
+    if args.self_test or (not args.episode and not argv):
         self_test()
         return 0
-    print("Использование: python scripts/isekai_voice.py [--self-test]", file=sys.stderr)
-    return 2
+    if not args.episode:
+        parser.print_help(file=sys.stderr)
+        return 2
+    episode_dir = args.episode.expanduser().resolve()
+    try:
+        if args.play_part is not None:
+            asyncio.run(
+                render_play_part(
+                    episode_dir,
+                    args.play_part - 1,
+                    speech_lang=args.speech_lang,
+                )
+            )
+        else:
+            blocks = [part.strip() for part in args.blocks.split(",") if part.strip()]
+            if not blocks:
+                print("Укажите --play-part N или --blocks ACT_…", file=sys.stderr)
+                return 1
+            asyncio.run(
+                render_blocks(
+                    episode_dir,
+                    block_names=blocks,
+                    play_mode=args.playlist_mode,
+                    speech_lang=args.speech_lang,
+                )
+            )
+    except (SystemExit, RuntimeError, OSError) as exc:
+        print(str(exc), file=sys.stderr)
+        return 1
+    print("Готово: сегмент озвучки")
+    return 0
 
 
 if __name__ == "__main__":

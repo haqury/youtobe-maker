@@ -98,20 +98,43 @@ def _can_stage_long(episode_dir: Path) -> bool:
         from isekai_video import inspect_long_episode
 
         plan = inspect_long_episode(episode_dir)
-        return plan is not None and plan.use_tail
+        return plan is not None
     except (FileNotFoundError, RuntimeError, OSError):
         return False
 
 
-def _render_stage_previews(episode_dir: Path, ep_key: str) -> None:
+def _render_stage_previews(
+    episode_dir: Path,
+    ep_key: str,
+    *,
+    key_ns: str,
+    show_video: bool = False,
+    show_ambient: bool = False,
+    show_final: bool = False,
+) -> None:
     cache = episode_dir / ".video_cache"
     v_ok = video_stage_ready(episode_dir)
     a_ok = ambient_stage_ready(episode_dir)
-    if not (v_ok or a_ok or mux_stage_ready(episode_dir)):
+    if show_video and not v_ok:
+        show_video = False
+    if show_ambient and not a_ok:
+        show_ambient = False
+    if not (show_video or show_ambient or show_final):
         return
 
-    with st.expander("👁 Превью после этапов", expanded=v_ok or a_ok):
-        if v_ok:
+    title = {
+        "show_video": "👁 Превью видеодорожки",
+        "show_ambient": "👁 Превью эмбиента",
+    }
+    if show_video:
+        label = title["show_video"]
+    elif show_ambient:
+        label = title["show_ambient"]
+    else:
+        label = "👁 Итог сборки"
+
+    with st.expander(label, expanded=False):
+        if show_video:
             video_path = video_for_mux(episode_dir)
             if video_path and video_path.is_file():
                 dur = probe_duration(video_path)
@@ -134,13 +157,17 @@ def _render_stage_previews(episode_dir: Path, ep_key: str) -> None:
                 pcol1, pcol2 = st.columns(2)
                 preview_start = cache / "preview_video_start.mp4"
                 preview_tail_vid = cache / "preview_video_at_voice.mp4"
-                if pcol1.button("Срез: начало", key=f"prev_v0_{ep_key}"):
+                if pcol1.button("Срез: начало", key=f"prev_v0_{key_ns}_{ep_key}"):
                     try:
                         _clip_preview(video_path, preview_start, start=0.0)
                         st.toast("Готово: начало")
                     except RuntimeError as exc:
                         st.error(str(exc))
-                if pcol2.button("Срез: после озвучки", key=f"prev_vvoice_{ep_key}", disabled=voice_sec <= 0):
+                if pcol2.button(
+                    "Срез: после озвучки",
+                    key=f"prev_vvoice_{key_ns}_{ep_key}",
+                    disabled=voice_sec <= 0,
+                ):
                     try:
                         start = max(0.0, voice_sec + 4.0)
                         _clip_preview(video_path, preview_tail_vid, start=start)
@@ -154,7 +181,7 @@ def _render_stage_previews(episode_dir: Path, ep_key: str) -> None:
                     st.caption("После озвучки (≈ хвост видео)")
                     st.video(str(preview_tail_vid))
 
-        if a_ok:
+        if show_ambient:
             bed = ambient_bed_path(episode_dir)
             tail = ambient_tail_path(episode_dir)
             st.markdown("**Эмбиент (этап ②)**")
@@ -167,10 +194,13 @@ def _render_stage_previews(episode_dir: Path, ep_key: str) -> None:
                     max(0.0, bed_d - 60.0),
                     0.0,
                     step=60.0,
-                    key=f"bed_off_{ep_key}",
+                    key=f"bed_off_{key_ns}_{ep_key}",
                 )
                 preview_bed = cache / "preview_ambient_bed.m4a"
-                if st.button("Подготовить фрагмент bed (60 с)", key=f"prev_bed_{ep_key}"):
+                if st.button(
+                    "Подготовить фрагмент bed (60 с)",
+                    key=f"prev_bed_{key_ns}_{ep_key}",
+                ):
                     try:
                         _clip_preview(bed, preview_bed, start=start, seconds=60.0)
                         st.rerun()
@@ -182,7 +212,10 @@ def _render_stage_previews(episode_dir: Path, ep_key: str) -> None:
                 tail_d = probe_duration(tail)
                 st.caption(f"Хвост после речи: `{tail.name}` · {_fmt_duration(tail_d)} · {_human_size(tail)}")
                 preview_tail = cache / "preview_ambient_tail.m4a"
-                if st.button("Прослушать начало хвоста (60 с)", key=f"prev_tail_{ep_key}"):
+                if st.button(
+                    "Прослушать начало хвоста (60 с)",
+                    key=f"prev_tail_{key_ns}_{ep_key}",
+                ):
                     try:
                         _clip_preview(tail, preview_tail, start=0.0, seconds=60.0)
                         st.rerun()
@@ -191,9 +224,130 @@ def _render_stage_previews(episode_dir: Path, ep_key: str) -> None:
                 if preview_tail.is_file():
                     st.audio(str(preview_tail))
 
-        final = episode_dir / "final_video.mp4"
-        if final.is_file():
-            st.markdown(f"**Итог:** `final_video.mp4` · {_fmt_duration(probe_duration(final))}")
+        if show_final:
+            final = episode_dir / "final_video.mp4"
+            if final.is_file():
+                st.markdown(
+                    f"**Итог:** `final_video.mp4` · {_fmt_duration(probe_duration(final))}"
+                )
+
+
+def render_long_build_ambient_stage(
+    episode_dir: Path,
+    ep_key: str,
+    *,
+    launch_job,
+) -> bool:
+    """Этап ② — звуковой хвост (блок 5)."""
+    if not _can_stage_long(episode_dir):
+        return False
+    v_ok = video_stage_ready(episode_dir)
+    a_ok = ambient_stage_ready(episode_dir)
+    st.caption("② Уникальный эмбиент под речь и после неё (.video_cache).")
+    if st.button(
+        "② Собрать звуковой хвост",
+        key=f"long_amb_{ep_key}",
+        use_container_width=True,
+        disabled=not v_ok,
+        help="Нужен готовый этап ① (видеодорожка).",
+    ):
+        launch_job(
+            "build_video",
+            episode_dir,
+            "build_sleep_video.py",
+            "--stage",
+            "ambient",
+        )
+    st.caption("✅ Эмбиент готов" if a_ok else "⬜ Эмбиент")
+    if a_ok:
+        _render_stage_previews(
+            episode_dir, ep_key, key_ns="d_amb", show_ambient=True
+        )
+    return True
+
+
+def render_long_build_video_stage(
+    episode_dir: Path,
+    ep_key: str,
+    *,
+    launch_job,
+    persist_config,
+    channel_slug: str,
+    channel_dir: Path,
+) -> bool:
+    """Этап ① — сборка видеодорожки (блок 4)."""
+    if not _can_stage_long(episode_dir):
+        return False
+    from studio_ai import load_episode_config
+
+    v_ok = video_stage_ready(episode_dir)
+    st.markdown("**Длинная сборка — этап ①**")
+    st.caption("Batch, оверлеи, concat, интро → кэш в `.video_cache`.")
+    c1, c2 = st.columns(2)
+    with c1:
+        st.caption("✅ Видеодорожка готова" if v_ok else "⬜ Видеодорожка")
+        if st.button("① Собрать видеодорожку", key=f"long_vid_{ep_key}", use_container_width=True):
+            epi = load_episode_config(episode_dir, channel_slug, channel_dir)
+            persist_config(episode_dir, ep_key, epi)
+            launch_job("build_video", episode_dir, "build_sleep_video.py", "--stage", "video")
+    with c2:
+        if st.button("▶ Всё сразу (①+②+③)", key=f"long_all_{ep_key}", use_container_width=True):
+            epi = load_episode_config(episode_dir, channel_slug, channel_dir)
+            persist_config(episode_dir, ep_key, epi)
+            launch_job("build_video", episode_dir, "build_sleep_video.py")
+    if v_ok:
+        _render_stage_previews(episode_dir, ep_key, key_ns="g_vid", show_video=True)
+    return True
+
+
+def render_long_build_mux_stage(
+    episode_dir: Path,
+    ep_key: str,
+    *,
+    launch_job,
+) -> bool:
+    """Этап ③ — склейка в final_video.mp4 (блок 5)."""
+    if not _can_stage_long(episode_dir):
+        return False
+
+    v_ok = video_stage_ready(episode_dir)
+    a_ok = ambient_stage_ready(episode_dir)
+    m_ok = mux_stage_ready(episode_dir)
+    st.markdown("**Длинная сборка — этап ③**")
+    st.caption("Голос + bed + tail на видеодорожку → `final_video.mp4`.")
+    st.caption(
+        f"{'✅ Видео' if v_ok else '⬜ Видео'} · {'✅ Эмбиент' if a_ok else '⬜ Эмбиент'}"
+    )
+    if st.button(
+        "③ Объединить в final_video",
+        key=f"long_mux_{ep_key}",
+        use_container_width=True,
+        disabled=not (v_ok and a_ok),
+        help="Нужны готовые этапы ① и ② (блок 4 и настройки хвоста в блоке 5).",
+    ):
+        launch_job("build_video", episode_dir, "build_sleep_video.py", "--stage", "mux")
+    st.caption("✅ final_video.mp4" if m_ok else "⬜ Склейка")
+    if m_ok:
+        _render_stage_previews(episode_dir, ep_key, key_ns="d_mux", show_final=True)
+    return True
+
+
+def render_long_build_video_mux(
+    episode_dir: Path,
+    ep_key: str,
+    *,
+    launch_job,
+    persist_config,
+    channel_slug: str,
+    channel_dir: Path,
+) -> bool:
+    """Совместимость: ① + ③ одним вызовом."""
+    a = render_long_build_video_stage(
+        episode_dir, ep_key, launch_job=launch_job, persist_config=persist_config,
+        channel_slug=channel_slug, channel_dir=channel_dir,
+    )
+    render_long_build_mux_stage(episode_dir, ep_key, launch_job=launch_job)
+    return a
 
 
 def render_long_build_stages(
@@ -205,81 +359,10 @@ def render_long_build_stages(
     channel_slug: str,
     channel_dir: Path,
 ) -> bool:
-    """Кнопки video → ambient → mux. Возвращает True, если блок показан."""
-    if not _can_stage_long(episode_dir):
-        return False
-
-    from studio_ai import load_episode_config
-
-    v_ok = video_stage_ready(episode_dir)
-    a_ok = ambient_stage_ready(episode_dir)
-    m_ok = mux_stage_ready(episode_dir)
-
-    st.markdown("**Длинная сборка (3 этапа)**")
-    st.caption(
-        "1) Вся видеодорожка до целевой длины · 2) уникальный эмбиент под речь и хвост · "
-        "3) склейка в `final_video.mp4`. Можно гнать этапы по очереди — кэш в `.video_cache`."
+    """Совместимость: полный трёхэтапный блок."""
+    render_long_build_video_stage(
+        episode_dir, ep_key, launch_job=launch_job, persist_config=persist_config,
+        channel_slug=channel_slug, channel_dir=channel_dir,
     )
-    c1, c2, c3 = st.columns(3)
-    with c1:
-        st.caption("✅ Видео готово" if v_ok else "⬜ Видео")
-        if st.button(
-            "① Видео",
-            key=f"long_vid_{ep_key}",
-            use_container_width=True,
-            help="Batch + оверлеи + concat + интро",
-        ):
-            epi = load_episode_config(episode_dir, channel_slug, channel_dir)
-            persist_config(episode_dir, ep_key, epi)
-            launch_job(
-                "build_video",
-                episode_dir,
-                "build_sleep_video.py",
-                "--stage",
-                "video",
-            )
-    with c2:
-        st.caption("✅ Эмбиент готов" if a_ok else "⬜ Эмбиент")
-        disabled = not v_ok
-        if st.button(
-            "② Хвост (звук)",
-            key=f"long_amb_{ep_key}",
-            use_container_width=True,
-            disabled=disabled,
-            help="Нужен готовый этап ①",
-        ):
-            launch_job(
-                "build_video",
-                episode_dir,
-                "build_sleep_video.py",
-                "--stage",
-                "ambient",
-            )
-    with c3:
-        st.caption("✅ final_video" if m_ok else "⬜ Склейка")
-        disabled = not (v_ok and a_ok)
-        if st.button(
-            "③ Объединить",
-            key=f"long_mux_{ep_key}",
-            use_container_width=True,
-            disabled=disabled,
-            help="Голос + bed + tail на видео",
-        ):
-            launch_job(
-                "build_video",
-                episode_dir,
-                "build_sleep_video.py",
-                "--stage",
-                "mux",
-            )
-    if st.button(
-        "▶ Всё сразу (как раньше)",
-        key=f"long_all_{ep_key}",
-        use_container_width=True,
-    ):
-        epi = load_episode_config(episode_dir, channel_slug, channel_dir)
-        persist_config(episode_dir, ep_key, epi)
-        launch_job("build_video", episode_dir, "build_sleep_video.py")
-
-    _render_stage_previews(episode_dir, ep_key)
-    return True
+    render_long_build_ambient_stage(episode_dir, ep_key, launch_job=launch_job)
+    return render_long_build_mux_stage(episode_dir, ep_key, launch_job=launch_job)
