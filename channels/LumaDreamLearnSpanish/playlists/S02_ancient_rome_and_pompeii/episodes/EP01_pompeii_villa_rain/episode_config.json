@@ -7,8 +7,11 @@
   "seconds_per_frame": 40.0,
   "voice_fade_out_sec": 12.0,
   "ambient_tail_sec": 0.0,
-  "ambient_tail_enabled": false,
+  "ambient_tail_enabled": true,
   "target_total_minutes": 600.0,
   "ambient_category": "mix",
-  "ambient_volume": 0.12
+  "ambient_volume": 0.12,
+  "fps_start": 24,
+  "fps_end": 2,
+  "fps_interval_min": 5.0
 }

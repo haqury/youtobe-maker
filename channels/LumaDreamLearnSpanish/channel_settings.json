@@ -4,7 +4,15 @@
     "use_outro": false,
     "crossfade_sec": 1.0,
     "use_watermark": false,
-    "watermark_opacity": 0.25
+    "watermark_opacity": 0.25,
+    "intro_text": "LumaDream: Learn Spanish",
+    "intro_text_start": 1.2,
+    "intro_text_duration": 2.6,
+    "intro_fade_sec": 3.0,
+    "intro_text_y": 0.0,
+    "intro_text_style": "gold_serif",
+    "intro_override": false,
+    "apply_intro_to_series": true
   },
   "audio": {
     "voice_en": "en-US-AndrewMultilingualNeural",
