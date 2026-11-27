@@ -639,10 +639,14 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
             f"Эмбиент-хвост: речь {duration / 60:.1f} мин, итог {total / 60:.1f} мин, "
             f"категория {tail.category}, громкость {tail.volume:.0%}."
         )
-        dim_at = dim_start_for(duration, dim_during_speech=tail.dim_during_speech)
+        dim_at = dim_start_for(
+            duration,
+            dim_during_speech=tail.dim_during_speech,
+            dim_start_sec=tail.dim_start_sec,
+        )
         print(
-            f"Затемнение до {int(brightness_at(10**9, dim_at) * 100)}% "
-            f"с {dim_at / 60:.1f} мин."
+            f"Затемнение до {int(tail.dim_min_brightness * 100)}% "
+            f"с {dim_at / 60:.1f} мин (хвост; сюжет в блоке 4 без затемнения)."
         )
     from animation_settings import load_episode_animation, resolve_overlay_paths
     from episode_timing import describe_fps_schedule, episode_timing_from_config, fps_at
@@ -748,11 +752,9 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
         stale.unlink(missing_ok=True)
     unique: dict[tuple, Path] = {}
     sequence: list[Path] = []
-    dim_start = (
-        dim_start_for(duration, dim_during_speech=tail.dim_during_speech)
-        if use_tail and tail is not None
-        else None
-    )
+    # Сюжет (этап video): полная яркость на всём таймлайне речи
+    dim_start = None
+    dim_kw: dict = {}
     emit_progress(len(images) + 1, total_steps, f"Batch xfade (всего {batch_count})")
     for batch in range(batch_count):
         start_t = batch * batch_len
@@ -769,8 +771,8 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
             slots.append((img_i, variant, batch_fps))
             paths.append(_ensure_clip(cache, images[img_i], variant, batch_fps))
         if dim_start is not None:
-            b0 = brightness_at(start_t, dim_start)
-            b1 = brightness_at(end_t, dim_start)
+            b0 = brightness_at(start_t, dim_start, **dim_kw)
+            b1 = brightness_at(end_t, dim_start, **dim_kw)
             if abs(b0 - b1) < 0.03:
                 brightness = (b0 + b1) / 2.0
                 key = tuple(slots) + (round(brightness, 2),)
@@ -925,8 +927,16 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
     batch_len = BATCH_SIZE * CLIP_SEC - (BATCH_SIZE - 1) * XFADE_SEC
     span = t1 - t0
     batch_count = max(1, math.ceil(span / batch_len))
-    dim_start = dim_start_for(duration, dim_during_speech=tail.dim_during_speech)
-    print(f"Хвост видео: {t0 / 60:.1f}–{t1 / 60:.1f} мин, batch {batch_count}.")
+    dim_start = dim_start_for(
+        duration,
+        dim_during_speech=tail.dim_during_speech,
+        dim_start_sec=tail.dim_start_sec,
+    )
+    dim_kw = {"dim_floor": tail.dim_min_brightness, "dim_fade_sec": tail.dim_fade_sec}
+    print(
+        f"Хвост видео: {t0 / 60:.1f}–{t1 / 60:.1f} мин, batch {batch_count}, "
+        f"затемнение до {int(tail.dim_min_brightness * 100)}%."
+    )
     print(f"FPS хвост: {describe_fps_schedule(t1, fps_start, fps_end, fps_every)}")
     for stale in cache.glob("tail_batch_*.mp4"):
         stale.unlink(missing_ok=True)
@@ -946,8 +956,8 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
         start_t = t0 + batch * batch_len
         end_t = min(t1, start_t + batch_len)
         batch_fps = fps_at(start_t, t1, fps_start, fps_end, fps_every)
-        b0 = brightness_at(start_t, dim_start)
-        b1 = brightness_at(end_t, dim_start)
+        b0 = brightness_at(start_t, dim_start, **dim_kw)
+        b1 = brightness_at(end_t, dim_start, **dim_kw)
         paths: list[Path] = []
         slots: list[tuple[int, int, int]] = []
         ramp: tuple[float, float, float] | None = None

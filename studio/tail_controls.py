@@ -67,6 +67,12 @@ def sync_tail_session_from_disk(ep_key: str, epi_cfg: dict) -> None:
     st.session_state[f"ep_fps_start_{ep_key}"] = int(epi_cfg.get("fps_start", 24) or 24)
     st.session_state[f"ep_fps_end_{ep_key}"] = int(epi_cfg.get("fps_end", 2) or 2)
     st.session_state[f"ep_fps_every_{ep_key}"] = float(epi_cfg.get("fps_interval_min", 30) or 30)
+    st.session_state[f"ep_dim_speech_{ep_key}"] = bool(epi_cfg.get("dim_during_speech", True))
+    st.session_state[f"ep_dim_floor_{ep_key}"] = int(
+        round(float(epi_cfg.get("dim_min_brightness", 0.12) or 0.12) * 100)
+    )
+    st.session_state[f"ep_dim_start_{ep_key}"] = float(epi_cfg.get("dim_start_minutes", 37.5) or 37.5)
+    st.session_state[f"ep_dim_fade_{ep_key}"] = float(epi_cfg.get("dim_fade_sec", 90) or 90)
     st.session_state[token] = True
 
 
@@ -77,9 +83,13 @@ def tail_fields_from_session(ep_key: str, epi_cfg: dict) -> dict:
             "ambient_tail_enabled": bool(epi_cfg.get("ambient_tail_enabled", False)),
             "target_total_minutes": float(epi_cfg.get("target_total_minutes", 600) or 0),
             "ambient_category": str(epi_cfg.get("ambient_category") or "mix"),
-            "ambient_volume": float(epi_cfg.get("ambient_volume", 0.12) or 0.12),
-            **_fps_fields(ep_key, epi_cfg),
-        }
+        "ambient_volume": float(epi_cfg.get("ambient_volume", 0.12) or 0.12),
+        "dim_during_speech": bool(epi_cfg.get("dim_during_speech", True)),
+        "dim_min_brightness": float(epi_cfg.get("dim_min_brightness", 0.12) or 0.12),
+        "dim_start_minutes": float(epi_cfg.get("dim_start_minutes", 37.5) or 37.5),
+        "dim_fade_sec": float(epi_cfg.get("dim_fade_sec", 90) or 90),
+        **_fps_fields(ep_key, epi_cfg),
+    }
     choice = str(st.session_state.get(f"ep_tail_preset_{ep_key}", "600"))
     minutes = float(st.session_state.get(f"ep_tail_min_{ep_key}", 600) or 0)
     if choice == "none":
@@ -91,6 +101,13 @@ def tail_fields_from_session(ep_key: str, epi_cfg: dict) -> dict:
         "target_total_minutes": minutes,
         "ambient_category": str(st.session_state.get(f"ep_tail_cat_{ep_key}", "mix")),
         "ambient_volume": max(0.05, min(0.30, percent / 100.0)),
+        "dim_during_speech": bool(st.session_state.get(f"ep_dim_speech_{ep_key}", True)),
+        "dim_min_brightness": max(
+            0.05,
+            min(1.0, int(st.session_state.get(f"ep_dim_floor_{ep_key}", 12)) / 100.0),
+        ),
+        "dim_start_minutes": float(st.session_state.get(f"ep_dim_start_{ep_key}", 37.5) or 37.5),
+        "dim_fade_sec": float(st.session_state.get(f"ep_dim_fade_{ep_key}", 90) or 90),
         **_fps_fields(ep_key, epi_cfg),
     }
 
@@ -182,6 +199,44 @@ def render_ambient_tail_controls(episode_dir: Path, channel_slug: str, ep_key: s
             disabled=not enabled,
             help="Тихий фон под речь и чистый эмбиент в хвосте.",
         )
+    st.markdown("**Затемнение картинки**")
+    st.checkbox(
+        "Темнеть во время речи (с минуты ниже)",
+        value=bool(epi_cfg.get("dim_during_speech", True)),
+        key=f"ep_dim_speech_{ep_key}",
+        help="Выключи, если картинка должна оставаться яркой всю озвучку. "
+        "Этап сюжета (блок 4) затемнение не применяет.",
+    )
+    d1, d2, d3 = st.columns(3)
+    with d1:
+        st.slider(
+            "Мин. яркость, %",
+            min_value=5,
+            max_value=80,
+            value=int(round(float(epi_cfg.get("dim_min_brightness", 0.12) or 0.12) * 100)),
+            step=1,
+            key=f"ep_dim_floor_{ep_key}",
+            help="Было 12% — почти чёрный экран. Для видимой картинки: 30–50%.",
+        )
+    with d2:
+        st.number_input(
+            "Старт затемнения, мин",
+            min_value=0.0,
+            max_value=240.0,
+            value=float(epi_cfg.get("dim_start_minutes", 37.5) or 37.5),
+            step=2.5,
+            key=f"ep_dim_start_{ep_key}",
+            help="Раньше фиксировано 37.5 мин.",
+        )
+    with d3:
+        st.number_input(
+            "Длительность fade, с",
+            min_value=15.0,
+            max_value=600.0,
+            value=float(epi_cfg.get("dim_fade_sec", 90) or 90),
+            step=5.0,
+            key=f"ep_dim_fade_{ep_key}",
+        )
     st.markdown("**Частота кадров**")
     fps1, fps2, fps3 = st.columns(3)
     with fps1:
@@ -237,7 +292,9 @@ def render_ambient_tail_controls(episode_dir: Path, channel_slug: str, ep_key: s
         int(fields["fps_end"]),
         float(fields["fps_interval_min"]),
     ))
+    floor_pct = int(round(float(fields["dim_min_brightness"]) * 100))
     st.caption(
-        "Оверлей из блока анимации кладётся на всю сборку FFmpeg, включая хвост. "
-        "С ~37.5 минуты или с начала хвоста картинка плавно темнеет до 12% яркости."
+        f"Оверлей — на хвост и финал. Затемнение: до **{floor_pct}%** яркости "
+        f"({'во время речи с ' + str(fields['dim_start_minutes']) + ' мин' if fields['dim_during_speech'] else 'только после речи'}). "
+        "Блок 4 (сюжет) — всегда без затемнения."
     )
