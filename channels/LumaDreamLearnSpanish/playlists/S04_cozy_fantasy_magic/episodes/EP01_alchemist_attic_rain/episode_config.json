@@ -11,6 +11,10 @@
   "target_total_minutes": 600.0,
   "ambient_category": "mix",
   "ambient_volume": 0.12,
+  "dim_during_speech": false,
+  "dim_min_brightness": 0.25,
+  "dim_start_minutes": 37.5,
+  "dim_fade_sec": 90.0,
   "fps_start": 24,
   "fps_end": 2,
   "fps_interval_min": 5.0

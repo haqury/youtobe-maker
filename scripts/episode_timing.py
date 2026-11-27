@@ -17,6 +17,15 @@ DEFAULT_AMBIENT_CATEGORY = "mix"
 DEFAULT_FPS_START = 24
 DEFAULT_FPS_END = 2
 DEFAULT_FPS_INTERVAL_MIN = 30.0
+DEFAULT_DIM_MIN_BRIGHTNESS = 0.12
+DEFAULT_DIM_START_MINUTES = 37.5
+DEFAULT_DIM_FADE_SEC = 90.0
+DIM_MIN_BRIGHTNESS_MIN = 0.05
+DIM_MIN_BRIGHTNESS_MAX = 1.0
+DIM_START_MINUTES_MIN = 0.0
+DIM_START_MINUTES_MAX = 240.0
+DIM_FADE_SEC_MIN = 15.0
+DIM_FADE_SEC_MAX = 600.0
 
 FRAME_COUNT_MIN = 8
 FRAME_COUNT_MAX = 80
@@ -113,6 +122,25 @@ def apply_timing_defaults(cfg: dict[str, Any]) -> dict[str, Any]:
         DEFAULT_FPS_INTERVAL_MIN,
     )
     cfg["dim_during_speech"] = bool(cfg.get("dim_during_speech", True))
+    cfg["dim_min_brightness"] = _clamp_float(
+        cfg.get("dim_min_brightness", DEFAULT_DIM_MIN_BRIGHTNESS),
+        DIM_MIN_BRIGHTNESS_MIN,
+        DIM_MIN_BRIGHTNESS_MAX,
+        DEFAULT_DIM_MIN_BRIGHTNESS,
+    )
+    cfg["dim_start_minutes"] = _clamp_float(
+        cfg.get("dim_start_minutes", DEFAULT_DIM_START_MINUTES),
+        DIM_START_MINUTES_MIN,
+        DIM_START_MINUTES_MAX,
+        DEFAULT_DIM_START_MINUTES,
+    )
+    cfg["dim_start_sec"] = cfg["dim_start_minutes"] * 60.0
+    cfg["dim_fade_sec"] = _clamp_float(
+        cfg.get("dim_fade_sec", DEFAULT_DIM_FADE_SEC),
+        DIM_FADE_SEC_MIN,
+        DIM_FADE_SEC_MAX,
+        DEFAULT_DIM_FADE_SEC,
+    )
     return cfg
 
 

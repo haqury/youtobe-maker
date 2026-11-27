@@ -51,6 +51,9 @@ class AmbientTailSettings:
     voice_fade_out_sec: float
     # False = затемнение только с начала эмбиент-хвоста, не во время речи
     dim_during_speech: bool = True
+    dim_min_brightness: float = DIM_LEVEL
+    dim_start_sec: float = DIM_START_SEC
+    dim_fade_sec: float = DIM_FADE_SEC
 
 
 @dataclass(frozen=True)
@@ -126,26 +129,42 @@ def tail_seconds(voice_sec: float, settings: AmbientTailSettings) -> float:
     return max(0.0, settings.target_total_sec - voice_sec)
 
 
-def dim_start_for(voice_sec: float, *, dim_during_speech: bool = True) -> float:
+def dim_start_for(
+    voice_sec: float,
+    *,
+    dim_during_speech: bool = True,
+    dim_start_sec: float | None = None,
+) -> float:
     """Момент старта затемнения по шкале времени ролика.
 
-    dim_during_speech=True (сон): с ~37.5 мин или с начала хвоста — что наступит раньше.
+    dim_during_speech=True (сон): с dim_start_sec или с начала хвоста — что наступит раньше.
     dim_during_speech=False: только с конца озвучки (начало эмбиент-хвоста).
     """
     voice_sec = max(0.0, voice_sec)
     if not dim_during_speech:
         return voice_sec
-    return min(DIM_START_SEC, voice_sec)
+    start = float(dim_start_sec if dim_start_sec is not None else DIM_START_SEC)
+    return min(max(0.0, start), voice_sec)
 
 
-def brightness_at(t: float, dim_start: float) -> float:
+def brightness_at(
+    t: float,
+    dim_start: float,
+    *,
+    dim_floor: float | None = None,
+    dim_fade_sec: float | None = None,
+) -> float:
+    floor = float(dim_floor if dim_floor is not None else DIM_LEVEL)
+    floor = min(1.0, max(0.05, floor))
+    fade = float(dim_fade_sec if dim_fade_sec is not None else DIM_FADE_SEC)
+    fade = max(1.0, fade)
     if t <= dim_start:
         return 1.0
-    if t >= dim_start + DIM_FADE_SEC:
-        return DIM_LEVEL
-    progress = (t - dim_start) / DIM_FADE_SEC
+    if t >= dim_start + fade:
+        return floor
+    progress = (t - dim_start) / fade
     smooth = progress * progress * (3.0 - 2.0 * progress)
-    return 1.0 + (DIM_LEVEL - 1.0) * smooth
+    return 1.0 + (floor - 1.0) * smooth
 
 
 def describe_tail(
@@ -191,6 +210,9 @@ def settings_from_episode(episode_dir: Path) -> AmbientTailSettings:
         volume=float(timing["ambient_volume"]),
         voice_fade_out_sec=float(timing["voice_fade_out_sec"]),
         dim_during_speech=bool(timing.get("dim_during_speech", True)),
+        dim_min_brightness=float(timing.get("dim_min_brightness", DIM_LEVEL)),
+        dim_start_sec=float(timing.get("dim_start_sec", DIM_START_SEC)),
+        dim_fade_sec=float(timing.get("dim_fade_sec", DIM_FADE_SEC)),
     )
 
 
