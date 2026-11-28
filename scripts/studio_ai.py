@@ -1494,6 +1494,15 @@ def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path)
     if float(base["target_max_minutes"]) < float(base["target_min_minutes"]):
         base["target_max_minutes"] = base["target_min_minutes"]
     base["update_bible_recap"] = bool(data.get("update_bible_recap", False)) if isinstance(data, dict) else False
+    if isinstance(data, dict):
+        for key in (
+            "dim_during_speech",
+            "dim_min_brightness",
+            "dim_start_minutes",
+            "dim_fade_sec",
+        ):
+            if key in data:
+                base[key] = data[key]
     return apply_timing_defaults(base)
 
 

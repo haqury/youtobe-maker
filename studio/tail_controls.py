@@ -6,7 +6,7 @@ from pathlib import Path
 
 import streamlit as st
 
-from episode_timing import describe_fps_schedule
+from episode_timing import DEFAULT_DIM_MIN_BRIGHTNESS, describe_fps_schedule
 from ambient_tail import (
     category_label,
     describe_tail,
@@ -69,7 +69,7 @@ def sync_tail_session_from_disk(ep_key: str, epi_cfg: dict) -> None:
     st.session_state[f"ep_fps_every_{ep_key}"] = float(epi_cfg.get("fps_interval_min", 30) or 30)
     st.session_state[f"ep_dim_speech_{ep_key}"] = bool(epi_cfg.get("dim_during_speech", True))
     st.session_state[f"ep_dim_floor_{ep_key}"] = int(
-        round(float(epi_cfg.get("dim_min_brightness", 0.12) or 0.12) * 100)
+        round(float(epi_cfg.get("dim_min_brightness", DEFAULT_DIM_MIN_BRIGHTNESS) or DEFAULT_DIM_MIN_BRIGHTNESS) * 100)
     )
     st.session_state[f"ep_dim_start_{ep_key}"] = float(epi_cfg.get("dim_start_minutes", 37.5) or 37.5)
     st.session_state[f"ep_dim_fade_{ep_key}"] = float(epi_cfg.get("dim_fade_sec", 90) or 90)
@@ -85,7 +85,9 @@ def tail_fields_from_session(ep_key: str, epi_cfg: dict) -> dict:
             "ambient_category": str(epi_cfg.get("ambient_category") or "mix"),
         "ambient_volume": float(epi_cfg.get("ambient_volume", 0.12) or 0.12),
         "dim_during_speech": bool(epi_cfg.get("dim_during_speech", True)),
-        "dim_min_brightness": float(epi_cfg.get("dim_min_brightness", 0.12) or 0.12),
+        "dim_min_brightness": float(
+            epi_cfg.get("dim_min_brightness", DEFAULT_DIM_MIN_BRIGHTNESS) or DEFAULT_DIM_MIN_BRIGHTNESS
+        ),
         "dim_start_minutes": float(epi_cfg.get("dim_start_minutes", 37.5) or 37.5),
         "dim_fade_sec": float(epi_cfg.get("dim_fade_sec", 90) or 90),
         **_fps_fields(ep_key, epi_cfg),
@@ -104,7 +106,10 @@ def tail_fields_from_session(ep_key: str, epi_cfg: dict) -> dict:
         "dim_during_speech": bool(st.session_state.get(f"ep_dim_speech_{ep_key}", True)),
         "dim_min_brightness": max(
             0.05,
-            min(1.0, int(st.session_state.get(f"ep_dim_floor_{ep_key}", 12)) / 100.0),
+            min(
+                1.0,
+                int(st.session_state.get(f"ep_dim_floor_{ep_key}", round(DEFAULT_DIM_MIN_BRIGHTNESS * 100))) / 100.0,
+            ),
         ),
         "dim_start_minutes": float(st.session_state.get(f"ep_dim_start_{ep_key}", 37.5) or 37.5),
         "dim_fade_sec": float(st.session_state.get(f"ep_dim_fade_{ep_key}", 90) or 90),
@@ -213,10 +218,10 @@ def render_ambient_tail_controls(episode_dir: Path, channel_slug: str, ep_key: s
             "Мин. яркость, %",
             min_value=5,
             max_value=80,
-            value=int(round(float(epi_cfg.get("dim_min_brightness", 0.12) or 0.12) * 100)),
+            value=int(round(float(epi_cfg.get("dim_min_brightness", DEFAULT_DIM_MIN_BRIGHTNESS) or DEFAULT_DIM_MIN_BRIGHTNESS) * 100)),
             step=1,
             key=f"ep_dim_floor_{ep_key}",
-            help="Было 12% — почти чёрный экран. Для видимой картинки: 30–50%.",
+            help="Нижний уровень яркости после fade. По умолчанию 50%.",
         )
     with d2:
         st.number_input(

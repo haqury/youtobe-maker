@@ -17,7 +17,7 @@ DEFAULT_AMBIENT_CATEGORY = "mix"
 DEFAULT_FPS_START = 24
 DEFAULT_FPS_END = 2
 DEFAULT_FPS_INTERVAL_MIN = 30.0
-DEFAULT_DIM_MIN_BRIGHTNESS = 0.12
+DEFAULT_DIM_MIN_BRIGHTNESS = 0.50
 DEFAULT_DIM_START_MINUTES = 37.5
 DEFAULT_DIM_FADE_SEC = 90.0
 DIM_MIN_BRIGHTNESS_MIN = 0.05
@@ -208,4 +208,9 @@ def episode_timing_from_config(episode_dir: Path) -> dict[str, Any]:
         "fps_start": int(cfg["fps_start"]),
         "fps_end": int(cfg["fps_end"]),
         "fps_interval_min": float(cfg["fps_interval_min"]),
+        "dim_during_speech": bool(cfg["dim_during_speech"]),
+        "dim_min_brightness": float(cfg["dim_min_brightness"]),
+        "dim_start_minutes": float(cfg["dim_start_minutes"]),
+        "dim_start_sec": float(cfg["dim_start_sec"]),
+        "dim_fade_sec": float(cfg["dim_fade_sec"]),
     }

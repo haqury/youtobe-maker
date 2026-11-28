@@ -69,9 +69,9 @@ def test_tail_and_dim() -> None:
     assert dim_start_for(90 * 60, dim_during_speech=False) == 90 * 60
     assert brightness_at(0, 100) == 1
     assert brightness_at(100, 100) == 1
-    assert abs(brightness_at(100 + 90, 100) - 0.12) < 1e-6
+    assert abs(brightness_at(100 + 90, 100) - 0.50) < 1e-6
     mid = brightness_at(100 + 45, 100)
-    assert 0.12 < mid < 1
+    assert 0.50 < mid < 1
 
 
 def test_describe_and_categories(tmp: Path) -> None:

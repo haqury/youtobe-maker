@@ -31,7 +31,7 @@ CHUNK_SIZE = 6
 
 DIM_START_SEC = 37.5 * 60
 DIM_FADE_SEC = 90.0
-DIM_LEVEL = 0.12
+DIM_LEVEL = 0.50
 
 CATEGORY_LABELS = {
     "mix": "Случайный микс",

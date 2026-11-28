@@ -21,7 +21,7 @@ def render_tail_build_block(
         video_stage_ready,
     )
     from studio.long_build_controls import _can_stage_long, _render_stage_previews
-    from tail_controls import render_ambient_tail_controls
+    from tail_controls import render_ambient_tail_controls, save_tail_fields
 
     if not _can_stage_long(episode_dir):
         return False
@@ -52,6 +52,7 @@ def render_tail_build_block(
             use_container_width=True,
             disabled=not v_ok,
         ):
+            save_tail_fields(episode_dir, channel_slug, ep_key)
             launch_job(
                 "build_video",
                 episode_dir,
@@ -67,6 +68,7 @@ def render_tail_build_block(
             use_container_width=True,
             disabled=not v_ok,
         ):
+            save_tail_fields(episode_dir, channel_slug, ep_key)
             launch_job("build_video", episode_dir, "build_sleep_video.py", "--stage", "ambient")
     if tv_ok:
         tv = tail_video_path(episode_dir)
