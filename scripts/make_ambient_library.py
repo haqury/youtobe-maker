@@ -64,17 +64,9 @@ class Sos:
 
 
 def ffmpeg_bin() -> str:
-    try:
-        import imageio_ffmpeg
+    import imageio_ffmpeg
 
-        return imageio_ffmpeg.get_ffmpeg_exe()
-    except ImportError:
-        import shutil
-
-        exe = shutil.which("ffmpeg")
-        if exe:
-            return exe
-        raise
+    return imageio_ffmpeg.get_ffmpeg_exe()
 
 
 def ensure_lame(ffmpeg: str) -> None:
@@ -186,7 +178,7 @@ def make_events(kind: str, duration: float, rng: np.random.Generator) -> list[tu
         specs.append(("crackle", 1.3))
     elif kind == "room":
         specs.append(("tick", 0.045))
-    events: list[tuple[int, str, float, float, float]] = []
+    events: list[tuple[int, np.ndarray]] = []
     for impulse, rate in specs:
         count = int(rng.poisson(duration * rate))
         if count <= 0:

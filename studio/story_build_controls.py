@@ -18,27 +18,6 @@ def _before_video_job(episode_dir: Path, ep_key: str, persist_config, channel_sl
     persist_config(episode_dir, ep_key, epi)
 
 
-def _render_animation_section(
-    render_animation: Callable[..., None] | None,
-    episode_dir: Path,
-    ep_key: str,
-    frame_stem_options: list[str] | None,
-    *,
-    channel_slug: str,
-    channel_dir: Path,
-) -> None:
-    if render_animation is None or frame_stem_options is None:
-        return
-    if st.checkbox("🎞️ Оживление / Анимация", value=False, key=f"story_anim_open_{ep_key}"):
-        import inspect
-
-        params = inspect.signature(render_animation).parameters
-        kwargs: dict = {"channel_slug": channel_slug, "channel_dir": channel_dir}
-        if "use_expander" in params:
-            kwargs["use_expander"] = False
-        render_animation(episode_dir, ep_key, frame_stem_options, **kwargs)
-
-
 def render_story_build_block(
     episode_dir: Path,
     ep_key: str,
@@ -55,14 +34,15 @@ def render_story_build_block(
 
     if not _can_stage_long(episode_dir):
         st.warning("Нет voiceover.mp3 или эпизод не подходит для длинной FFmpeg-сборки.")
-        _render_animation_section(
-            render_animation,
-            episode_dir,
-            ep_key,
-            frame_stem_options,
-            channel_slug=channel_slug,
-            channel_dir=channel_dir,
-        )
+        if render_animation is not None and frame_stem_options is not None:
+            with st.expander("🎞️ Оживление / Анимация", expanded=False):
+                render_animation(
+                    episode_dir,
+                    ep_key,
+                    frame_stem_options,
+                    channel_slug=channel_slug,
+                    channel_dir=channel_dir,
+                )
         return False
 
     from isekai_video import inspect_long_episode
@@ -82,14 +62,15 @@ def render_story_build_block(
             epi = load_episode_config(episode_dir, channel_slug, channel_dir)
             persist_config(episode_dir, ep_key, epi)
             launch_job("build_video", episode_dir, script)
-        _render_animation_section(
-            render_animation,
-            episode_dir,
-            ep_key,
-            frame_stem_options,
-            channel_slug=channel_slug,
-            channel_dir=channel_dir,
-        )
+        if render_animation is not None and frame_stem_options is not None:
+            with st.expander("🎞️ Оживление / Анимация", expanded=False):
+                render_animation(
+                    episode_dir,
+                    ep_key,
+                    frame_stem_options,
+                    channel_slug=channel_slug,
+                    channel_dir=channel_dir,
+                )
         return False
 
     st.markdown("**Сюжет (вся озвучка)**")
@@ -124,12 +105,13 @@ def render_story_build_block(
     elif v_ok:
         _render_stage_previews(episode_dir, ep_key, key_ns="story_vid", show_video=True)
 
-    _render_animation_section(
-        render_animation,
-        episode_dir,
-        ep_key,
-        frame_stem_options,
-        channel_slug=channel_slug,
-        channel_dir=channel_dir,
-    )
+    if render_animation is not None and frame_stem_options is not None:
+        with st.expander("🎞️ Оживление / Анимация", expanded=False):
+            render_animation(
+                episode_dir,
+                ep_key,
+                frame_stem_options,
+                channel_slug=channel_slug,
+                channel_dir=channel_dir,
+            )
     return True

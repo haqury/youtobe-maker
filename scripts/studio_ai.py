@@ -1455,7 +1455,6 @@ def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path)
         "fps_start": 24,
         "fps_end": 2,
         "fps_interval_min": 30.0,
-        "dim_during_speech": True,
     }
     if not path.is_file():
         return apply_timing_defaults(base)
@@ -1491,7 +1490,6 @@ def load_episode_config(episode_dir: Path, channel_slug: str, channel_dir: Path)
             "fps_start": 24,
             "fps_end": 2,
             "fps_interval_min": 30.0,
-            "dim_during_speech": True,
         }
     if float(base["target_max_minutes"]) < float(base["target_min_minutes"]):
         base["target_max_minutes"] = base["target_min_minutes"]

@@ -35,8 +35,6 @@ from job_progress import emit_progress
 from long_build_stages import (
     AMBIENT_BED,
     AMBIENT_TAIL,
-    STAGE_STORY_MUX_OK,
-    STAGE_TAIL_VIDEO_OK,
     mark_ambient_stage,
     mark_video_stage,
     video_for_mux,
@@ -204,25 +202,6 @@ def _ffmpeg() -> str:
         if exe:
             return exe
         raise
-
-
-_CFR_FLAGS_CACHE: tuple[str, str] | None = None
-
-
-def _cfr_flags() -> tuple[str, str]:
-    global _CFR_FLAGS_CACHE
-    if _CFR_FLAGS_CACHE is not None:
-        return _CFR_FLAGS_CACHE
-    proc = subprocess.run(
-        [_ffmpeg(), "-hide_banner", "-h", "full"],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        check=False,
-    )
-    _CFR_FLAGS_CACHE = ("-fps_mode", "cfr") if "-fps_mode" in (proc.stdout or "") else ("-vsync", "cfr")
-    return _CFR_FLAGS_CACHE
 
 
 def _run(args: list[str]) -> subprocess.CompletedProcess:
@@ -531,7 +510,7 @@ def encode_batch(
     cmd = [
         *args, "-filter_complex", graph, "-map", f"[{last}]", "-an",
         "-c:v", "libx264", "-preset", "veryfast", "-crf", "23",
-        "-pix_fmt", "yuv420p", "-r", str(out_fps), *_cfr_flags(), "-threads", "2",
+        "-pix_fmt", "yuv420p", "-r", str(out_fps), "-fps_mode", "cfr", "-threads", "2",
     ]
     if keyframe_at is not None and keyframe_at > 0:
         cmd += ["-force_key_frames", f"{float(keyframe_at):.3f}"]
@@ -617,18 +596,18 @@ def _ensure_clip(cache: Path, image: Path, variant: int, fps: int = FPS) -> Path
 def _trim_media(source: Path, output: Path, *, start: float, duration: float) -> None:
     output.parent.mkdir(parents=True, exist_ok=True)
     args = [
+        "ffmpeg",
+        "-y",
         "-ss",
-        f"{max(0.0, start):.3f}",
+        f"{start:.3f}",
         "-i",
         str(source),
         "-t",
-        f"{max(0.05, duration):.3f}",
+        f"{duration:.3f}",
         "-c",
         "copy",
+        str(output),
     ]
-    if start > 0:
-        args += ["-avoid_negative_ts", "make_zero"]
-    args.append(str(output))
     _require(_run(args), f"trim {source.name}")
 
 
@@ -854,10 +833,6 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
             video_for_audio = partial_out
         print(f"Превью-видео сюжета: {video_for_audio.name}")
     else:
-        if intro_ready is None:
-            (cache / "video_with_intro.mp4").unlink(missing_ok=True)
-        (cache / STAGE_STORY_MUX_OK).unlink(missing_ok=True)
-        (cache / STAGE_TAIL_VIDEO_OK).unlink(missing_ok=True)
         _write_mux_meta(cache, lead, story_probe, full_total)
         mark_video_stage(episode_dir, video_for_audio)
     emit_progress(total_steps, total_steps, "Видеодорожка сюжета готова")
@@ -976,7 +951,7 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
     )
     unique: dict[tuple, Path] = {}
     sequence: list[Path] = []
-    global_batch = max(1, math.ceil(t0 / batch_len))
+    global_batch = int(t0 // batch_len)
     for batch in range(batch_count):
         start_t = t0 + batch * batch_len
         end_t = min(t1, start_t + batch_len)
@@ -987,7 +962,7 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
         slots: list[tuple[int, int, int]] = []
         ramp: tuple[float, float, float] | None = None
         for k in range(BATCH_SIZE):
-            occ = (global_batch + batch) * BATCH_SIZE + k
+            occ = global_batch + batch * BATCH_SIZE + k
             img_i = occ % len(images)
             variant = (occ // len(images)) % 4
             slots.append((img_i, variant, batch_fps))
@@ -1071,8 +1046,6 @@ def build_long_mux_stage(plan: LongBuildPlan) -> Path:
         concat_copy([video_path, tail_vid], combined, cache / "_full_video_concat.txt")
         video_path = combined
         print(f"Склейка видео: сюжет + хвост → {combined.name}")
-    elif plan.use_tail and probe_duration(video_path) + 10.0 < total_dur:
-        raise RuntimeError("Сначала соберите этап tail_video (видео хвоста в блоке 5).")
     if plan.use_tail and plan.tail is not None:
         if not ambient_stage_ready(episode_dir):
             raise RuntimeError("Сначала соберите этап ambient (build_sleep_video.py --stage ambient).")

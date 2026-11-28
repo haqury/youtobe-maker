@@ -23,36 +23,9 @@ AMBIENT_FADE_SEC = 1.5
 
 
 def _ffmpeg() -> str:
-    try:
-        import imageio_ffmpeg
+    import imageio_ffmpeg
 
-        return imageio_ffmpeg.get_ffmpeg_exe()
-    except ImportError:
-        import shutil
-
-        exe = shutil.which("ffmpeg")
-        if exe:
-            return exe
-        raise
-
-
-_CFR_FLAGS_CACHE: tuple[str, str] | None = None
-
-
-def _cfr_flags() -> tuple[str, str]:
-    global _CFR_FLAGS_CACHE
-    if _CFR_FLAGS_CACHE is not None:
-        return _CFR_FLAGS_CACHE
-    proc = subprocess.run(
-        [_ffmpeg(), "-hide_banner", "-h", "full"],
-        capture_output=True,
-        text=True,
-        encoding="utf-8",
-        errors="replace",
-        check=False,
-    )
-    _CFR_FLAGS_CACHE = ("-fps_mode", "cfr") if "-fps_mode" in (proc.stdout or "") else ("-vsync", "cfr")
-    return _CFR_FLAGS_CACHE
+    return imageio_ffmpeg.get_ffmpeg_exe()
 
 
 def _run(args: list[str]) -> subprocess.CompletedProcess[str]:
@@ -424,7 +397,8 @@ def _encode_cfr(source: Path, dest: Path, fps: int, duration: float | None = Non
         "yuv420p",
         "-r",
         str(fps),
-        *_cfr_flags(),
+        "-fps_mode",
+        "cfr",
         "-threads",
         "2",
         str(dest),
@@ -489,7 +463,8 @@ def attach_intro(
                 "yuv420p",
                 "-r",
                 str(fps),
-                *_cfr_flags(),
+                "-fps_mode",
+                "cfr",
                 "-threads",
                 "2",
                 str(opening),

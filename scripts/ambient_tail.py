@@ -292,17 +292,9 @@ def plan_segments(
 
 
 def _ffmpeg() -> str:
-    try:
-        import imageio_ffmpeg
+    import imageio_ffmpeg
 
-        return imageio_ffmpeg.get_ffmpeg_exe()
-    except ImportError:
-        import shutil
-
-        exe = shutil.which("ffmpeg")
-        if exe:
-            return exe
-        raise
+    return imageio_ffmpeg.get_ffmpeg_exe()
 
 
 def _run(args: list[str]) -> subprocess.CompletedProcess[str]:

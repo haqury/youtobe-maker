@@ -96,40 +96,12 @@ def test_review_roundtrip_preserves_multi_overlays() -> None:
         assert abs(loaded["overlay_opacity"] - 0.24) < 1e-6
 
 
-def _make_synthetic_overlay(path: Path, color: str = "0x334455", dur: float = 5.0) -> Path:
-    proc = _run(
-        [
-            "-f",
-            "lavfi",
-            "-i",
-            f"color=c={color}:s=1280x720:r=24:d={dur:.2f}",
-            "-c:v",
-            "libx264",
-            "-preset",
-            "veryfast",
-            "-pix_fmt",
-            "yuv420p",
-            str(path),
-        ]
-    )
-    if proc.returncode != 0:
-        raise RuntimeError(proc.stderr[-600:])
-    return path
-
-
 def test_resolve_real_overlays() -> None:
     disk_files = list_overlay_files()
-    if len(disk_files) >= 3:
-        auto_paths = resolve_overlay_paths({"overlay_files": ["auto"]})
-        assert [p.name for p in auto_paths] == disk_files
-        assert resolve_overlay_path({"overlay_files": ["auto"]}) == OVERLAYS_DIR / disk_files[0]
-    with tempfile.TemporaryDirectory() as tmp:
-        ep = Path(tmp) / "EP01_test"
-        images = ep / "images"
-        images.mkdir(parents=True)
-        (images / "local_ov.mp4").write_bytes(b"fake")
-        resolved = resolve_overlay_paths({"overlay_files": ["local_ov.mp4"]}, ep)
-        assert resolved == [images / "local_ov.mp4"]
+    assert len(disk_files) >= 3
+    auto_paths = resolve_overlay_paths({"overlay_files": ["auto"]})
+    assert [p.name for p in auto_paths] == disk_files
+    assert resolve_overlay_path({"overlay_files": ["auto"]}) == OVERLAYS_DIR / disk_files[0]
 
 
 def test_random_stacking_and_schedule_diversity() -> None:
@@ -172,25 +144,28 @@ def test_random_stacking_and_schedule_diversity() -> None:
 def test_encode_batch_multi_overlay_ffmpeg_smoke() -> None:
     with tempfile.TemporaryDirectory() as tmp:
         root = Path(tmp)
-        clip = _make_synthetic_overlay(root / "clip.mp4", color="0x162238", dur=4.0)
-        names = ("rain_loop.mp4", "ash_embers_loop.mp4", "falling_stars_loop.mp4")
-        ov_paths: list[Path] = []
-        for idx, name in enumerate(names):
-            real = OVERLAYS_DIR / name
-            if real.is_file() and real.stat().st_size > 1000:
-                ov_paths.append(real)
-            else:
-                ov_paths.append(
-                    _make_synthetic_overlay(
-                        root / name,
-                        color=("0x203040", "0x302010", "0x101830")[idx],
-                        dur=4.0,
-                    )
-                )
+        clip = root / "clip.mp4"
+        proc = _run(
+            [
+                "-f",
+                "lavfi",
+                "-i",
+                "color=c=0x162238:s=1280x720:r=24:d=4",
+                "-c:v",
+                "libx264",
+                "-preset",
+                "veryfast",
+                "-pix_fmt",
+                "yuv420p",
+                str(clip),
+            ]
+        )
+        if proc.returncode != 0:
+            raise RuntimeError(proc.stderr[-600:])
         specs = (
-            OverlayLayerSpec(ov_paths[0], 0.22, start_sec=1.5, hflip=True),
-            OverlayLayerSpec(ov_paths[1], 0.19, start_sec=2.0, hflip=False),
-            OverlayLayerSpec(ov_paths[2], 0.17, start_sec=1.2, hflip=True),
+            OverlayLayerSpec(OVERLAYS_DIR / "rain_loop.mp4", 0.22, start_sec=1.5, hflip=True),
+            OverlayLayerSpec(OVERLAYS_DIR / "ash_embers_loop.mp4", 0.19, start_sec=3.0, hflip=False),
+            OverlayLayerSpec(OVERLAYS_DIR / "falling_stars_loop.mp4", 0.17, start_sec=2.2, hflip=True),
         )
         out = root / "batch_multi.mp4"
         encode_batch([clip], out, brightness=0.35, fps=24, overlays=specs)
