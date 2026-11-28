@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 from typing import Any
 
-from channel_settings import channel_dir_from_episode
+from channel_settings import channel_root_from_episode
 
 DEFAULT_SECONDS_PER_FRAME = 40.0
 DEFAULT_VOICE_FADE_OUT_SEC = 12.0
@@ -193,7 +193,7 @@ def resolve_target_frame_count(cfg: dict[str, Any]) -> tuple[int, bool]:
 def episode_timing_from_config(episode_dir: Path) -> dict[str, Any]:
     from studio_ai import load_episode_config
 
-    channel_dir = channel_dir_from_episode(episode_dir)
+    channel_dir = channel_root_from_episode(episode_dir)
     channel_slug = channel_dir.name
     cfg = load_episode_config(episode_dir, channel_slug, channel_dir)
     return {
@@ -208,4 +208,5 @@ def episode_timing_from_config(episode_dir: Path) -> dict[str, Any]:
         "fps_start": int(cfg["fps_start"]),
         "fps_end": int(cfg["fps_end"]),
         "fps_interval_min": float(cfg["fps_interval_min"]),
+        "dim_during_speech": bool(cfg.get("dim_during_speech", True)),
     }

@@ -133,7 +133,9 @@ def _render_stage_previews(
     else:
         label = "👁 Итог сборки"
 
-    with st.expander(label, expanded=False):
+    with st.container(border=True):
+        if not st.checkbox(label, value=False, key=f"stage_prev_open_{key_ns}_{ep_key}"):
+            return
         if show_video:
             video_path = video_for_mux(episode_dir)
             if video_path and video_path.is_file():

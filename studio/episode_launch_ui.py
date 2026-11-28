@@ -245,38 +245,37 @@ def render_episode_launch_controls(
                 video_title = str(st.session_state.get(new_video_key, "")).strip()
                 if not video_title:
                     st.error("Введите название.")
-                elif selected_playlist == STANDALONE_ID:
-                    episode_id = next_manual_standalone_id(ch)
-                    episode_num = "1"
-                    folder_root = episodes_root
                 else:
-                    _, from_folders = next_series_episode_from_folders(ch, selected_playlist)
-                    _, from_backlog = next_series_episode_id(
-                        backlog,
-                        selected_playlist,
-                    )
-                    episode_num_int = max(from_folders, from_backlog)
-                    episode_id = f"{selected_playlist.upper()}E{episode_num_int:02d}"
-                    episode_num = str(episode_num_int)
-                    playlist_folder = playlist_dir_for_series(ch, selected_playlist)
-                    folder_root = (
-                        (playlist_folder / "episodes") if playlist_folder is not None else episodes_root
-                    )
-                    folder_root.mkdir(parents=True, exist_ok=True)
-                if selected_playlist == STANDALONE_ID:
-                    folder_root = episodes_root
-                folder = folder_root / f"{episode_id}_{slugify_episode_slug(video_title)}"
-                if folder.exists():
-                    st.error(f"Папка уже есть: {folder.name}")
-                else:
-                    folder.mkdir(parents=True)
-                    ensure_episode_files(folder, topic_en=video_title, topic_ru=video_title)
-                    remember_episode_title(ch, folder, video_title, selected_playlist, episode_num)
-                    st.session_state.episode_name = folder.name
-                    st.session_state.pop(f"studio_ep_select_{channel_slug}_{selected_playlist}", None)
-                    st.session_state[new_video_key] = ""
-                    st.success(folder.name)
-                    st.rerun()
+                    if selected_playlist == STANDALONE_ID:
+                        episode_id = next_manual_standalone_id(ch)
+                        episode_num = "1"
+                        folder_root = episodes_root
+                    else:
+                        _, from_folders = next_series_episode_from_folders(ch, selected_playlist)
+                        _, from_backlog = next_series_episode_id(
+                            backlog,
+                            selected_playlist,
+                        )
+                        episode_num_int = max(from_folders, from_backlog)
+                        episode_id = f"{selected_playlist.upper()}E{episode_num_int:02d}"
+                        episode_num = str(episode_num_int)
+                        playlist_folder = playlist_dir_for_series(ch, selected_playlist)
+                        folder_root = (
+                            (playlist_folder / "episodes") if playlist_folder is not None else episodes_root
+                        )
+                        folder_root.mkdir(parents=True, exist_ok=True)
+                    folder = folder_root / f"{episode_id}_{slugify_episode_slug(video_title)}"
+                    if folder.exists():
+                        st.error(f"Папка уже есть: {folder.name}")
+                    else:
+                        folder.mkdir(parents=True)
+                        ensure_episode_files(folder, topic_en=video_title, topic_ru=video_title)
+                        remember_episode_title(ch, folder, video_title, selected_playlist, episode_num)
+                        st.session_state.episode_name = folder.name
+                        st.session_state.pop(f"studio_ep_select_{channel_slug}_{selected_playlist}", None)
+                        st.session_state[new_video_key] = ""
+                        st.success(folder.name)
+                        st.rerun()
 
     with c3:
         with _popover("➕ Следующее видео"):

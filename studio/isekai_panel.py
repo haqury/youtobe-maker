@@ -238,12 +238,13 @@ def render_isekai_production(
                 for row in inventory["rows"]
             ]
             st.dataframe(table, hide_index=True, use_container_width=True)
-            with st.expander("Как плейлист растягивает эти фразы", expanded=False):
-                for play in inventory["plays"]:
-                    st.write(
-                        f"`{play['block']}` · {play['mode']} · повтор {play['repeat']} · "
-                        f"темп ×{play['speed_mult']} · пауза {play['extra_pause']} с"
-                    )
+            if st.checkbox("Как плейлист растягивает эти фразы", key=f"isekai_pl_expand_{ep_key}"):
+                with st.container(border=True):
+                    for play in inventory["plays"]:
+                        st.write(
+                            f"`{play['block']}` · {play['mode']} · повтор {play['repeat']} · "
+                            f"темп ×{play['speed_mult']} · пауза {play['extra_pause']} с"
+                        )
 
     if not show_voice:
         return

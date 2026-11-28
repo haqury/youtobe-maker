@@ -16,7 +16,12 @@ def render_final_mux_block(
     channel_slug: str,
     channel_dir: Path,
 ) -> bool:
-    from long_build_stages import ambient_stage_ready, mux_stage_ready, video_stage_ready
+    from long_build_stages import (
+        ambient_stage_ready,
+        mux_stage_ready,
+        tail_video_ready,
+        video_stage_ready,
+    )
     from studio.long_build_controls import _can_stage_long, _render_stage_previews
 
     if not _can_stage_long(episode_dir):
@@ -28,18 +33,27 @@ def render_final_mux_block(
     except (FileNotFoundError, RuntimeError, OSError):
         plan = None
 
+    use_tail = bool(plan and plan.use_tail)
     v_ok = video_stage_ready(episode_dir)
-    a_ok = ambient_stage_ready(episode_dir) if plan and plan.use_tail else True
+    tv_ok = tail_video_ready(episode_dir) if use_tail else True
+    a_ok = ambient_stage_ready(episode_dir) if use_tail else True
     m_ok = mux_stage_ready(episode_dir)
     st.caption("⑤ Склейка сюжета + хвоста + полное сведение → `final_video.mp4`.")
-    st.caption(
-        f"{'✅ Сюжет' if v_ok else '⬜ Сюжет'} · "
-        f"{'✅ Хвост' if a_ok else '⬜ Хвост'} · "
-        f"{'✅ final' if m_ok else '⬜ final'}"
-    )
+    if use_tail:
+        st.caption(
+            f"{'✅ Сюжет' if v_ok else '⬜ Сюжет'} · "
+            f"{'✅ Видео хвоста' if tv_ok else '⬜ Видео хвоста'} · "
+            f"{'✅ Эмбиент' if a_ok else '⬜ Эмбиент'} · "
+            f"{'✅ final' if m_ok else '⬜ final'}"
+        )
+    else:
+        st.caption(
+            f"{'✅ Сюжет' if v_ok else '⬜ Сюжет'} · "
+            f"{'✅ final' if m_ok else '⬜ final'}"
+        )
     c1, c2 = st.columns(2)
     with c1:
-        disabled = not v_ok or (plan.use_tail if plan else False) and not a_ok
+        disabled = not v_ok or (use_tail and not (tv_ok and a_ok))
         if st.button(
             "⑤ Финальная склейка",
             key=f"final_mux_{ep_key}",

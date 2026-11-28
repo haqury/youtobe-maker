@@ -286,7 +286,13 @@ def format_job_interval(job: dict) -> str:
     return f"{started} → {finished}"
 
 
-def render_jobs_monitor(episode_dir: Path, ep_key: str, *, auto_refresh: bool = True) -> None:
+def render_jobs_monitor(
+    episode_dir: Path,
+    ep_key: str,
+    *,
+    auto_refresh: bool = True,
+    use_expanders: bool = True,
+) -> None:
     st.subheader("📋 Очередь и история генераций")
     ep_path = episode_job_path(episode_dir)
     jobs = get_jobs(80)
@@ -312,21 +318,30 @@ def render_jobs_monitor(episode_dir: Path, ep_key: str, *, auto_refresh: bool = 
     st.markdown("**Журнал**")
     if not jobs:
         st.caption("Запусков пока нет.")
-    for job in jobs:
+    for idx, job in enumerate(jobs):
         type_badge = JOB_TYPE_LABELS.get(str(job.get("type")), str(job.get("type")))
         status_badge = JOB_STATUS_LABELS.get(str(job.get("status")), str(job.get("status")))
         ep_label = format_job_episode_label(str(job.get("episode", "")))
         title = f"`{job.get('id', '—')}` · {type_badge} · {status_badge} · {ep_label}"
-        with st.expander(title, expanded=False):
+        box = st.expander(title, expanded=False) if use_expanders else st.container(border=True)
+        with box:
+            if not use_expanders:
+                st.markdown(title)
             st.caption(format_job_interval(job))
             if job.get("step_text"):
                 st.write(job["step_text"])
-            details = get_job_details(str(job.get("id")))
-            log_text = (details or {}).get("log_tail") or ""
-            if log_text:
-                st.code(log_text, language="text")
-            else:
-                st.caption("Лог пуст или ещё не создан.")
+            show_log = (
+                True
+                if use_expanders
+                else st.checkbox("Показать лог", key=f"job_log_{ep_key}_{job.get('id', idx)}")
+            )
+            if show_log:
+                details = get_job_details(str(job.get("id")))
+                log_text = (details or {}).get("log_tail") or ""
+                if log_text:
+                    st.code(log_text, language="text")
+                else:
+                    st.caption("Лог пуст или ещё не создан.")
             offer_restart_job(job, key=f"restart_job_monitor_{job.get('id')}")
 
     if auto_refresh and running:
@@ -705,8 +720,9 @@ def render_animate_i2v_panel(
     *,
     channel_slug: str,
     channel_dir: Path,
+    use_expander: bool = True,
 ) -> None:
-    """Оживление / Анимация: 2.5D FFmpeg или ComfyUI I2V."""
+    """Оживление / Анимация: 2.5D FFmpeg или Remotion."""
     from animation_settings import (
         infer_animation_method_from_review,
         list_overlay_files,
@@ -765,7 +781,14 @@ def render_animate_i2v_panel(
     elif st.session_state.get(method_key) not in method_codes:
         st.session_state[method_key] = current_mode
 
-    with st.expander("🎞️ Оживление / Анимация", expanded=False):
+    panel_box = (
+        st.expander("🎞️ Оживление / Анимация", expanded=False)
+        if use_expander
+        else st.container(border=True)
+    )
+    with panel_box:
+        if not use_expander:
+            st.markdown("**🎞️ Оживление / Анимация**")
         if hasattr(st, "segmented_control"):
             method = st.segmented_control(
                 "Метод оживления",
@@ -2895,7 +2918,10 @@ def page_studio(channel_slug: str) -> None:
                                 st.rerun()
 
                     if bible and bible.is_file():
-                        with st.expander("EN-компилят series_bible.md (только чтение)"):
+                        if st.checkbox(
+                            "EN-компилят series_bible.md (только чтение)",
+                            key=f"bible_en_ro_{channel_slug}_{selected_playlist}",
+                        ):
                             st.caption(read_series_bible(ch, selected_playlist)[:4000])
 
     with col_ideas:
@@ -3356,17 +3382,21 @@ def page_studio(channel_slug: str) -> None:
                             help="Открыть в полном размере",
                             use_container_width=True,
                         )
-            with st.expander("Пометить несколько кадров одной проблемой"):
-                default_pick = sorted(flagged_on_disk) if flagged_on_disk else image_names[:1]
-                with st.form(key=f"bulk_form_{ep_key}", clear_on_submit=False):
-                    bulk_pick = st.multiselect("Кадры", image_names, default=default_pick)
-                    bulk_note = st.text_area("Комментарий для PROMPT при регенерации", height=80)
-                    submitted = st.form_submit_button("Применить")
-                if submitted and bulk_pick:
-                    review = load_review(episode_dir)
-                    flag_images_batch(review, bulk_pick, bulk_note)
-                    save_review(episode_dir, review)
-                    st.rerun()
+            if st.checkbox(
+                "⚑ Пометить несколько кадров одной проблемой",
+                key=f"bulk_flag_open_{ep_key}",
+            ):
+                with st.container(border=True):
+                    default_pick = sorted(flagged_on_disk) if flagged_on_disk else image_names[:1]
+                    with st.form(key=f"bulk_form_{ep_key}", clear_on_submit=False):
+                        bulk_pick = st.multiselect("Кадры", image_names, default=default_pick)
+                        bulk_note = st.text_area("Комментарий для PROMPT при регенерации", height=80)
+                        submitted = st.form_submit_button("Применить")
+                    if submitted and bulk_pick:
+                        review = load_review(episode_dir)
+                        flag_images_batch(review, bulk_pick, bulk_note)
+                        save_review(episode_dir, review)
+                        st.rerun()
         else:
             st.caption("Папка images/ пуста — запустите генерацию кадров.")
 
@@ -3494,28 +3524,32 @@ def page_studio(channel_slug: str) -> None:
                         st.rerun()
             else:
                 st.caption("Отметьте участки в плеере или добавьте вручную ниже.")
-            with st.expander("Добавить участок вручную (таймкод)", expanded=False):
-                with st.form(f"video_mark_form_{ep_key}"):
-                    start = st.text_input("Начало (сек или ММ:СС)", value="0:00")
-                    end = st.text_input("Конец (сек или ММ:СС)", value="0:30")
-                    note = st.text_input("Комментарий")
-                    add = st.form_submit_button("Добавить участок")
-                if add:
-                    try:
-                        review = load_review(episode_dir)
-                        segments = review.get("video_segments", [])
-                        segments.append(
-                            {
-                                "start": round(parse_timecode(start), 2),
-                                "end": round(parse_timecode(end), 2),
-                                "note": note.strip(),
-                            }
-                        )
-                        review["video_segments"] = segments
-                        save_review(episode_dir, review)
-                        st.rerun()
-                    except ValueError as exc:
-                        st.error(str(exc))
+            if st.checkbox(
+                "➕ Добавить участок вручную (таймкод)",
+                key=f"manual_seg_open_{ep_key}",
+            ):
+                with st.container(border=True):
+                    with st.form(f"video_mark_form_{ep_key}"):
+                        start = st.text_input("Начало (сек или ММ:СС)", value="0:00")
+                        end = st.text_input("Конец (сек или ММ:СС)", value="0:30")
+                        note = st.text_input("Комментарий")
+                        add = st.form_submit_button("Добавить участок")
+                    if add:
+                        try:
+                            review = load_review(episode_dir)
+                            segments = review.get("video_segments", [])
+                            segments.append(
+                                {
+                                    "start": round(parse_timecode(start), 2),
+                                    "end": round(parse_timecode(end), 2),
+                                    "note": note.strip(),
+                                }
+                            )
+                            review["video_segments"] = segments
+                            save_review(episode_dir, review)
+                            st.rerun()
+                        except ValueError as exc:
+                            st.error(str(exc))
 
         with d_btn:
             if st.button(
@@ -3532,8 +3566,8 @@ def page_studio(channel_slug: str) -> None:
                 else:
                     st.info("Нет участков с комментариями.")
 
-        with st.expander("📋 История фоновых задач"):
-            render_jobs_monitor(episode_dir, ep_key, auto_refresh=False)
+        if st.checkbox("📋 История фоновых задач", key=f"jobs_hist_open_{ep_key}"):
+            render_jobs_monitor(episode_dir, ep_key, auto_refresh=False, use_expanders=False)
 
     if pin_running:
         import time
