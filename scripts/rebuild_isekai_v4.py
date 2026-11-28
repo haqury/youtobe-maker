@@ -102,11 +102,6 @@ def format_story_bundle(sid: int, scene: Scene, *, with_target: bool) -> list[st
     return lines
 
 
-def _quick_en_gloss(es: str) -> str:
-    """Грубый fallback, если нет перевода — LLM должен заменить в recall."""
-    return es
-
-
 def build_story_body(scenes: dict[int, Scene], header_lines: list[str]) -> str:
     out: list[str] = header_lines + [""]
     for act in range(1, 7):
@@ -142,15 +137,24 @@ def _hook_block(scenes: dict[int, Scene]) -> list[str]:
 def recall_prompt(batch: list[Scene], target_lang: str) -> list[dict[str, str]]:
     items = []
     for sc in batch:
-        items.append(f"ID {sc.scene_id:03d} EN scene:\n{sc.native}")
+        items.append(
+            f"ID {sc.scene_id:03d} — condense and translate ONLY this native scene:\n{sc.native}"
+        )
     user = (
-        "For each ID, output exactly one block in this format (no markdown fences):\n"
-        "[ID|NARRATOR_NATIVE_en|0.88] 2-3 sentences, 25-35 English words, second person.\n"
+        "For each ID, output exactly one block (no markdown fences).\n"
+        "The native paragraph above is the only source. Same objects, same actions, same order.\n"
+        "Do not add anything that is not in that paragraph.\n"
+        "Do not copy a short lesson phrase. Do not use a stock frame "
+        "(Tú estás aquí, El aire es suave, La noche es tranquila, Tú puedes descansar).\n"
+        "Do not paste English words into the target line.\n"
+        "[ID|NARRATOR_NATIVE_en|0.80] 2-3 sentences, 25-35 English words, second person, condensation of that scene.\n"
         "[PAUSE|2.0]\n"
-        f"[ID|NARRATOR_TARGET_{target_lang}|0.78] 4-5 simple A1 Spanish sentences, 30-40 words, full meaning of the EN scene.\n"
+        f"[ID|NARRATOR_TARGET_{target_lang}|0.75] 4-5 simple A1 sentences, 25-40 words, "
+        "1:1 translation of the English line you just wrote. Present tense. "
+        "Do not start every sentence with Tú.\n"
         "[PAUSE|2.0]\n"
-        f"[ID|NARRATOR_TARGET_{target_lang}_repeat|0.74] exact repeat of TARGET line.\n"
-        "[PAUSE|3.0]\n\n"
+        f"[ID|NARRATOR_TARGET_{target_lang}_repeat|0.70] exact copy of the TARGET line.\n"
+        "[PAUSE|4.0]\n\n"
         "IDs must start at "
         + f"{batch[0].scene_id:03d} and be consecutive.\n\n"
         + "\n\n".join(items)
@@ -158,50 +162,53 @@ def recall_prompt(batch: list[Scene], target_lang: str) -> list[dict[str, str]]:
     return [
         {
             "role": "system",
-            "content": "You write sleep-language recall blocks. Output only the tagged lines.",
+            "content": (
+                "You write sleep-language recall by pairing each scene with its retelling. "
+                "Output only the tagged lines."
+            ),
         },
         {"role": "user", "content": user},
     ]
 
 
-def _trim_words(text: str, n: int) -> str:
-    words = text.split()
-    if len(words) <= n:
-        return text.strip()
-    return " ".join(words[:n]).strip() + "…"
+PLOT_ID_OFFSET = 216
 
 
-def _spanish_recall_from_story(story_id: int, native: str, target_hint: str) -> str:
-    short = _trim_words(target_hint or native, 8).rstrip("…")
-    parts = [
-        "Tú estás aquí.",
-        short if short and not short.startswith("Tú") else "La noche es tranquila.",
-        "El aire es suave.",
-        "El sonido es lento.",
-        "Tú puedes descansar.",
+def plot_id_for(scene_id: int) -> int:
+    return scene_id + PLOT_ID_OFFSET
+
+
+def plot_target_prompt(batch: list[Scene], target_lang: str) -> list[dict[str, str]]:
+    items = []
+    for sc in batch:
+        items.append(
+            f"ID {plot_id_for(sc.scene_id):03d} — retell ONLY this native scene, 1:1:\n{sc.native}"
+        )
+    user = (
+        "For each ID output exactly two lines (no markdown fences):\n"
+        f"[ID|NARRATOR_TARGET_{target_lang}|0.75] 4-6 simple A1 sentences in {target_lang}. "
+        "Present tense. Same objects, same actions, same order as the native scene. "
+        "No new details. This is the scene itself in the target language, not a slogan.\n"
+        "[PAUSE|2.5]\n"
+        "Do not write a native-language line. Do not write a translation gloss. Do not write _repeat.\n"
+        "Do not use a stock frame (Tú estás aquí, El aire es suave, La noche es tranquila, "
+        "Tú puedes descansar) unless those words are actually in the scene.\n"
+        "Do not paste the native language into the target line.\n"
+        "Do not start every sentence with Tú.\n\n"
+        "IDs must start at "
+        + f"{plot_id_for(batch[0].scene_id):03d} and follow the list.\n\n"
+        + "\n\n".join(items)
+    )
+    return [
+        {
+            "role": "system",
+            "content": (
+                "You retell each sleep scene in the target language, one scene per ID, "
+                "matching the native plot exactly. Output only the tagged lines."
+            ),
+        },
+        {"role": "user", "content": user},
     ]
-    return " ".join(parts[:5])
-
-
-def generate_recall_mechanical(scenes: dict[int, Scene]) -> str:
-    blocks: list[str] = []
-    for recall_num, (lo, hi) in enumerate([(109, 144), (145, 180), (181, 216)], start=1):
-        blocks.append(f"## BLOCK: RECALL_{recall_num}")
-        for recall_id in range(lo, hi + 1):
-            story_id = recall_id - 108
-            src = scenes.get(story_id)
-            if not src or not src.native:
-                continue
-            en = _trim_words(src.native, 32)
-            es = _spanish_recall_from_story(story_id, src.native, src.target)
-            blocks.append(f"[{recall_id:03d}|NARRATOR_NATIVE_en|0.88] {en}")
-            blocks.append("[PAUSE|2.0]")
-            blocks.append(f"[{recall_id:03d}|NARRATOR_TARGET_es|0.78] {es}")
-            blocks.append("[PAUSE|2.0]")
-            blocks.append(f"[{recall_id:03d}|NARRATOR_TARGET_es_repeat|0.78] {es}")
-            blocks.append("[PAUSE|3.0]")
-        blocks.append("")
-    return "\n".join(blocks)
 
 
 def generate_recall(scenes: dict[int, Scene], target_lang: str = "es") -> str:
@@ -227,6 +234,31 @@ def generate_recall(scenes: dict[int, Scene], target_lang: str = "es") -> str:
     return "\n".join(blocks)
 
 
+def generate_plot_target(scenes: dict[int, Scene], target_lang: str = "es") -> str:
+    """Основной сюжет ещё раз, целиком на выбранном языке. Сцена N → ID N+216."""
+    blocks: list[str] = []
+    ranges = ((1, 36, 1), (37, 72, 2), (73, 108, 3))
+    for lo, hi, num in ranges:
+        blocks.append(f"## BLOCK: PLOT_TARGET_{num}")
+        chunk = [
+            scenes[sid]
+            for sid in range(lo, hi + 1)
+            if scenes.get(sid) and scenes[sid].native
+        ]
+        for i in range(0, len(chunk), 6):
+            batch = chunk[i : i + 6]
+            text, err = generate_text(
+                plot_target_prompt(batch, target_lang),
+                temperature=0.35,
+                max_tokens=8000,
+            )
+            if err or not text.strip():
+                raise SystemExit(err or "Пустой сюжет на выбранном языке")
+            blocks.append(text.strip())
+        blocks.append("")
+    return "\n".join(blocks)
+
+
 def playlist_block(act_names: dict[int, str]) -> str:
     a1 = f"ACT_1_{act_names.get(1, 'SCENE')}"
     a2 = f"ACT_2_{act_names.get(2, 'SCENE')}"
@@ -240,10 +272,143 @@ def playlist_block(act_names: dict[int, str]) -> str:
             f"PLAY: {a1}, {a2}, {a3} (mode=full, repeat=1)",
             f"PLAY: {a4}, {a5}, {a6} (mode=full, repeat=1)",
             "PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=full, repeat=1)",
-            "PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.88, extra_pause=4.0, repeat=1)",
+            "PLAY: PLOT_TARGET_1, PLOT_TARGET_2, PLOT_TARGET_3 (mode=full, speed_mult=0.82, repeat=1)",
             "",
         ]
     )
+
+
+def language_parts(scenes: dict[int, Scene], act_names: dict[int, str], target_lang: str) -> str:
+    return "\n".join(
+        [
+            generate_recall(scenes, target_lang),
+            generate_plot_target(scenes, target_lang),
+            playlist_block(act_names),
+        ]
+    )
+
+
+def split_act_body(text: str) -> str:
+    """Оставить основной сюжет на родном языке, убрать старые RECALL / PLOT / плейлист."""
+    kept: list[str] = []
+    for line in text.splitlines():
+        stripped = line.strip()
+        if (
+            stripped.startswith("## BLOCK: RECALL")
+            or stripped.startswith("## BLOCK: PLOT_TARGET")
+            or stripped.startswith("## PLAYLIST")
+        ):
+            break
+        kept.append(line)
+    return "\n".join(kept).rstrip() + "\n"
+
+
+def fill_native_scenes(scenes: dict[int, Scene], brief: str) -> None:
+    """Дописать недостающие сцены 001–108 моделью, без копирования чужих абзацев."""
+    if all(scenes.get(i) and scenes[i].native for i in range(1, 109)):
+        return
+    if not brief:
+        raise SystemExit("Нет родного сюжета 001–108 и нет брифа.")
+    for start in range(1, 109, 18):
+        missing = [
+            i
+            for i in range(start, min(start + 18, 109))
+            if i not in scenes or not scenes[i].native
+        ]
+        if not missing:
+            continue
+        prev_id = start - 1
+        last = "The night is just beginning."
+        if prev_id >= 1 and scenes.get(prev_id) and scenes[prev_id].native:
+            last = scenes[prev_id].native
+        text, err = generate_text(
+            story_extend_prompt(missing, brief, last),
+            temperature=0.4,
+            max_tokens=8000,
+        )
+        if err or not text.strip():
+            raise SystemExit(err or "Пустой ответ при дописывании сюжета")
+        for raw in text.splitlines():
+            match = LINE_RE.match(raw.strip())
+            if not match or match.group(2) != "NARRATOR_NATIVE_en":
+                continue
+            sid = int(match.group(1))
+            if not 1 <= sid <= 108:
+                continue
+            if sid not in scenes:
+                scenes[sid] = Scene(sid)
+            scenes[sid].native = match.group(4).strip()
+            act = act_for_id(sid)
+            scenes[sid].act_block = f"ACT_{act}_{ACT_NAMES.get(act, 'SCENE')}"
+    still = [i for i in range(1, 109) if i not in scenes or not scenes[i].native]
+    if still:
+        shown = ", ".join(f"{i:03d}" for i in still[:12])
+        raise SystemExit(f"Модель не дописала сцены: {shown}")
+
+
+def assert_three_parts(body: str) -> None:
+    required = (
+        "RECALL_1",
+        "RECALL_2",
+        "RECALL_3",
+        "PLOT_TARGET_1",
+        "PLOT_TARGET_2",
+        "PLOT_TARGET_3",
+    )
+    if not is_isekai_script(body):
+        raise SystemExit("Результат не прошёл is_isekai_script")
+    blocks, plays = parse_script(body)
+    build_plan(body)
+    missing = [name for name in required if not blocks.get(name)]
+    if missing:
+        raise SystemExit("В сценарии нет частей: " + ", ".join(missing))
+    played = {play.block for play in plays}
+    if not played.issuperset(required):
+        raise SystemExit("PLAYLIST не проигрывает RECALL и PLOT_TARGET")
+
+
+def write_three_part_script(episode_dir: Path) -> int:
+    """Акты на родном языке + RECALL сопоставлением + тот же сюжет на выбранном языке."""
+    from isekai_config import load_isekai_settings
+
+    episode_dir = episode_dir.resolve()
+    script_path = episode_dir / "script.md"
+    text = script_path.read_text(encoding="utf-8-sig") if script_path.is_file() else ""
+    settings = load_isekai_settings(episode_dir)
+    target_lang = (settings.get("TARGET_LANG") or "es").strip()
+    native_lang = (settings.get("NATIVE_LANG") or "en").strip()
+    brief_path = episode_dir / "plot_brief.txt"
+    brief = brief_path.read_text(encoding="utf-8-sig").strip() if brief_path.is_file() else ""
+    if not brief:
+        brief_m = re.search(r"^# BRIEF:\s*(.+)$", text, re.M)
+        brief = brief_m.group(1).strip() if brief_m else ""
+
+    ACT_NAMES.clear()
+    for match in BLOCK_RE.finditer(text):
+        num = int(re.search(r"ACT_(\d)", match.group(1)).group(1))
+        if num <= 6:
+            ACT_NAMES[num] = match.group(1).split("_", 2)[-1]
+
+    scenes = parse_scenes_001_108(text) if text else {}
+    complete = all(scenes.get(i) and scenes[i].native for i in range(1, 109))
+    if complete:
+        act_body = split_act_body(text)
+    else:
+        fill_native_scenes(scenes, brief)
+        header = extract_header(text) if text else [
+            f"# EPISODE: {episode_dir.name}",
+            f"# TARGET_LANG: {target_lang}",
+            f"# NATIVE_LANG: {native_lang}",
+            f"# BRIEF: {brief}",
+        ]
+        act_body = build_story_body(scenes, header)
+    body = act_body.rstrip() + "\n\n" + language_parts(scenes, ACT_NAMES, target_lang)
+    if not body.endswith("\n"):
+        body += "\n"
+    assert_three_parts(body)
+    script_path.write_text(body, encoding="utf-8")
+    print(f"Записан {script_path.name}: родной сюжет, RECALL, сюжет на {target_lang}")
+    return 0
 
 
 def story_extend_prompt(missing: list[int], brief: str, last_native: str) -> list[dict[str, str]]:
@@ -375,11 +540,15 @@ def pad_scenes_to_108(scenes: dict[int, Scene]) -> None:
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Пересборка isekai script.md под v4")
     parser.add_argument("episode_dir", type=Path)
-    parser.add_argument("--recall", action="store_true", help="Добавить RECALL_1–3")
+    parser.add_argument(
+        "--recall",
+        action="store_true",
+        help="Дописать RECALL и сюжет на выбранном языке (PLOT_TARGET) через модель, 1:1 со сценами",
+    )
     parser.add_argument(
         "--recall-llm",
         action="store_true",
-        help="RECALL через LLM (иначе механическая черновая сборка)",
+        help="Совместимость: то же, что --recall. Шаблонная сборка больше не используется.",
     )
     parser.add_argument("--story-ai", action="store_true", help="Дописать пропущенные 001-108")
     parser.add_argument("--skip-llm", action="store_true", help="Без вызовов LLM (перевод _translate = первая фраза native)")
@@ -420,24 +589,25 @@ def main(argv: list[str] | None = None) -> int:
 
     header = extract_header(text)
     body = build_story_body(scenes, header)
-    if args.recall:
-        if args.recall_llm:
-            body += "\n" + generate_recall(scenes, "es")
-        else:
-            body += "\n" + generate_recall_mechanical(scenes)
-    body += playlist_block(ACT_NAMES)
+    if args.recall or args.recall_llm:
+        if args.skip_llm:
+            raise SystemExit(
+                "RECALL и сюжет на выбранном языке пишутся моделью по тексту сцен. Уберите --skip-llm."
+            )
+        lang_m = re.search(r"^# TARGET_LANG:\s*(\S+)", text, re.M)
+        target_lang = lang_m.group(1).strip() if lang_m else "es"
+        body += "\n" + language_parts(scenes, ACT_NAMES, target_lang)
+    else:
+        body += playlist_block(ACT_NAMES)
 
     if not args.no_write:
         script_path.write_text(body, encoding="utf-8")
         print(f"Записан {script_path}")
-    if args.recall:
-        if not is_isekai_script(body):
-            raise SystemExit("Результат не прошёл is_isekai_script")
-        parse_script(body)
-        build_plan(body)
+    if args.recall or args.recall_llm:
+        assert_three_parts(body)
         print("Проверка parse_script / build_plan: OK")
     else:
-        print("Сюжет готов. Для полного v4 добавь флаг --recall.")
+        print("Сюжет готов. Для RECALL и сюжета на выбранном языке добавь флаг --recall.")
     return 0
 
 

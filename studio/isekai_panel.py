@@ -154,9 +154,9 @@ def render_isekai_production(
             st.subheader("1 — Сценарий блоками")
         st.caption(
             f"Урок: **{target}**, пояснения: **{native}**. "
-            "Каждая фраза пишется один раз. Ночную длину задаёт PLAYLIST_SEQUENCE."
+            "В script.md три части: сюжет на родном языке, RECALL, тот же сюжет на выбранном языке."
         )
-        st.caption("`script_ru.md` этот формат не озвучивает. Перевод уже в строках MENTOR_NATIVE.")
+        st.caption("`script_ru.md` этот формат не озвучивает. Перевод сюжета пишется в блоках PLOT_TARGET.")
 
         brief_key = f"isekai_brief_{ep_key}"
         brief_path = episode_dir / "plot_brief.txt"
@@ -177,7 +177,10 @@ def render_isekai_production(
         ):
             brief_path.write_text(str(st.session_state.get(brief_key, "")).strip() + "\n", encoding="utf-8")
             launch_job("generation", episode_dir, "generate_isekai_script.py")
-            st.caption("Старый script.md заменится только если модель вернула правильную разметку.")
+            st.caption(
+                "Дописывает RECALL и сюжет на выбранном языке. "
+                "Готовые акты 001–108 не переписывает."
+            )
 
         acknowledge(episode_dir, ep_key)
         sync_editors(channel_slug, files)
