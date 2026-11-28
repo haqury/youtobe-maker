@@ -6,7 +6,7 @@
 
 1. 10 Hours — Learn Spanish While You Sleep | Ancient Maya Temple Rain Journey (Ep. 1) [A1 Comprehensible Input]
 2. Learn Spanish A1 at Night | Warm Rain Beside an Ancient Maya Temple (Episode 1)
-3. Spanish for a Long Night | Jungle Rain, a Local Guide, and a Quiet Temple (Ep. 1)
+3. Spanish for a Long Night | Warm Jungle Rain and a Quiet Maya Observatory (Ep. 1)
 
 ### Description
 
@@ -14,7 +14,7 @@ Episode 1 of Ancient Americas & Maya/Aztec Mysteries: Learn Spanish While Sleepi
 
 You walk alone at night through warm rain in an ancient Maya jungle, along a wet stone path toward a quiet observatory above the trees. No guide, no dialogue — only the forest, the rain, and simple Spanish phrases for rest.
 
-Level A1 comprehensible input. Short phrases, slow speech, and long quiet pauses. Words you hear: hola, buenas noches, amigo, guía, aquí, tranquilo, noche, lluvia, agua, fuego, calor, bosque, árbol, grande, antiguo, piedra, templo, cielo, luna, estrella, mirar, escuchar, descansar.
+Level A1 comprehensible input. Short phrases, slow speech, and long quiet pauses. Words you hear: lluvia, camino, árbol, noche, piedra, agua, bosque, fuego, calor, taza, barro, estrella, luz, puerta, casa, suelo, pared, dulce, cacao, tranquilo, suave.
 
 The spoken story, with pauses, runs about three hours. After that, the pictures and the rain continue, up to ten hours, for a long night listen.
 
@@ -30,7 +30,7 @@ learn spanish while sleeping, spanish comprehensible input, spanish A1, learn sp
 
 ### Thumbnail brief
 
-Night rain in a Maya jungle. A low stone shelter with a small fire at the foot of a dark temple. A local guide in a woven cloak, seen from behind, with a dim lantern. No face in focus. No words on the image.
+First-person view of warm night rain in a Maya jungle along a wet stone stair leading toward a quiet stone observatory with one warm amber doorway. No people. No words on the image.
 
 ## Russian Metadata
 
@@ -42,7 +42,7 @@ Night rain in a Maya jungle. A low stone shelter with a small fire at the foot o
 
 Первый выпуск плейлиста «Ancient Americas & Maya/Aztec Mysteries: Learn Spanish While Sleeping».
 
-Ночь, тёплый дождь, тропический лес. Спокойный местный проводник Матео в тканом плаще с тусклым фонарём ведёт тебя к сухому каменному укрытию у древнего храма, где горит маленький костёр. Ночная стражница с деревянным факелом коротко здоровается и уходит, а вы остаётесь отдыхать.
+Ночь, тёплый дождь, тропический лес майя. Ты идёшь один по влажной каменной тропе, поднимаешься по древним ступеням через мост над тихой рекой и входишь в сухую каменную обсерваторию, где у низких углей ждёт тёплый какао и вырезанные на стене звёзды. Никаких гидов и диалогов — только шум дождя, спокойный голос и короткие испанские фразы для отдыха.
 
 Уровень A1, понятный ввод: короткие фразы и длинные паузы. Речь с паузами звучит около трёх часов, дальше картинка и дождь длятся до десяти.
 

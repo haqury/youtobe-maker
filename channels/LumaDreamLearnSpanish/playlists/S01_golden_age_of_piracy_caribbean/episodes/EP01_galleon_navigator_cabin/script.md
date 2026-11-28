@@ -2,7 +2,7 @@
 # TARGET_LANG: es
 # NATIVE_LANG: en
 # BRIEF: Ночная навигаторская каюта испанского галеона в тихих водах Карибского моря: дубовая дверь и медный фонарь, широкий стол с морскими картами, чернильница, перо, латунный компас и бортовой журнал, кормовые окна с видом на тёмный кильватер и звёзды, узкая койка у обшивки под мягким пледом. Слова: madera, mesa, mapa, luz, vela, noche, mar, agua, viento, silencio, puerta, ventana, cielo, estrella, brújula, libro, tinta, pluma, silla, manta, calma, suave.
-# Оценка хронометража: речь ~220–240 мин. Остаток до 600 мин — тихий фон.
+# Оценка хронометража: фаза 1 ~29 мин, фаза 2 ~30 мин, фаза 3 ~108 мин, фаза 4 ~45 мин, речь ~212 мин. Остаток до 600 мин — тихий фон на сборке.
 
 ## BLOCK: ACT_1_THE_CABIN_DOOR
 [000|NARRATOR_NATIVE_en|0.88] Let the weight of the day slide off your shoulders and settle down into the floor beneath your feet. Unclench your jaw, let your hands hang loose at your sides, and allow your breathing to find an easy, unhurried pace. Nothing that happened earlier asks for your attention anymore. You have plenty of time to simply stand here and rest.
@@ -11,6 +11,7 @@
 [PAUSE|4.0]
 [000|NARRATOR_NATIVE_en_lantern|0.88] Most of this journey unfolds in English, keeping the scene clear and restful as you move through the cabin at your own speed. Every once in a while, a short Spanish phrase enters naturally, spoken slowly and translated right beside the moment. There is no lesson waiting for you here and nothing you need to memorize before drifting off.
 [PAUSE|3.5]
+[IMAGE|01] First-person night view through an open oak cabin door with an iron latch into a warm candlelit wooden ship cabin, no people
 [001|NARRATOR_NATIVE_en|0.85] Your palm rests against the heavy iron latch at the threshold of the stern cabin. Stepping down over the low oak sill, your boots meet wide floorboards worn smooth by decades of quiet watches. The air inside feels instantly calmer than the open quarterdeck behind you, holding the dry warmth of seasoned timber and clean sea salt.
 [PAUSE|1.5]
 [002|NARRATOR_NATIVE_en|0.85] Pausing just inside the doorway, you feel the long, unhurried lift and settle of the galleon beneath your soles. A mild Caribbean breeze drifts forward from the stern windows, carrying away the faint smell of hemp tar from the upper rigging. Your shoulders drop a fraction lower as your eyes adjust to the amber glow ahead.
@@ -39,8 +40,9 @@
 [PAUSE|1.5]
 [010|NARRATOR_NATIVE_en|0.85] Letting your knuckles brush lightly across the cedar paneling as you pass, you notice how smooth the timber has grown under salt air and careful polishing. Every seam between the boards feels even and dry. Your hand moves unhurriedly along the grain, grounding your attention in the solid, reassuring craft of the shipwrights who built this room.
 [PAUSE|1.5]
-[011|NARRATOR_NATIVE_en|0.85] A comforting blend of scents lingers in the still air: warm beeswax, dry cedarwood, old cotton paper, and clean ocean salt. None of the smells are sharp or heavy. They hang together softly around the rafters, turning the whole cabin into a sheltered pocket of calm floating high above the dark swells of the sea.
+[011|NARRATOR_NATIVE_en|0.85] A comforting blend of scents lingers in the still air. You smell warm beeswax, dry cedarwood, old cotton paper, and clean ocean salt. None of the smells are sharp or heavy. They hang together softly around the rafters, turning the whole cabin into a sheltered pocket of calm floating high above the dark swells of the sea.
 [PAUSE|1.5]
+[IMAGE|02] First-person night view of a hanging brass lantern glowing over curved timber hull ribs, bookshelves, sea chart, and hourglass, no people
 [012|NARRATOR_NATIVE_en|0.85] Near the center beam overhead, a four-sided brass lantern hangs from a curved iron bracket on a short link chain. As the galleon leans almost imperceptibly to port and glides upright again, the heavy lantern swings like a slow pendulum. Its copper cap gleams softly, catching tiny reflections from the dark windowpanes at the stern.
 [PAUSE|1.5]
 [013|NARRATOR_NATIVE_en|0.85] Inside the thick glass cage of the lantern, a tall beeswax candle burns with a steady, golden teardrop flame. Warm amber light spills down over the oak beams and settles across the wide table waiting in the middle of the floor. The glow stays calm and unwavering, protected from drafts by the fitted brass frame.
@@ -65,6 +67,7 @@
 [PAUSE|1.5]
 
 ## BLOCK: ACT_2_THE_CHART_TABLE
+[IMAGE|03] First-person night view of a wide mahogany table with an unrolled Caribbean sea chart, four brass weights, wooden ruler, quill, and paned stern windows, no people
 [019|NARRATOR_NATIVE_en|0.85] Reaching the long edge of the chart table, you lay both palms gently along its rounded mahogany rim. Heavy iron knees bolt the four thick legs straight into the deck planks below, keeping the entire frame motionless against the ocean roll. The wood feels cool at first touch, then slowly absorbs the quiet warmth of your hands.
 [PAUSE|1.5]
 [020|NARRATOR_NATIVE_en|0.85] Running your thumbs along the beveled border, you feel tiny brass nail heads set flush into the dark grain at even intervals. Years of salt voyages and beeswax cloth rubs have given the tabletop a deep, satin sheen that catches the lantern light without glaring. Every scratch along the edge tells of patient hours spent plotting safe water.
@@ -105,6 +108,7 @@
 [PAUSE|2.0]
 [032|NARRATOR_NATIVE_en|0.85] Resting beside the chart lies a long mahogany parallel ruler joined by two hinged strips of polished brass. You touch the smooth wood down its center, worn paler by years of sliding gently across coastal charts. Lifting one bar half an inch and letting it settle back produces a soft, dry tap on the table.
 [PAUSE|1.5]
+[IMAGE|04] First-person night view of a painted compass rose on an open chart, brass dividers, candlestick, and a carved oak leather navigator chair, no people
 [033|NARRATOR_NATIVE_en|0.85] Shifting your attention away from the open parchment, you look toward the heavy carved oak chair tucked neatly beneath the starboard edge of the table. Its dark leather seat and curved wooden backrest shine softly in the lantern glow, hollowed slightly from decades of quiet watches. Brass tacks line the perimeter of the leather like tiny, patient stars.
 [PAUSE|1.5]
 [034|NARRATOR_NATIVE_en|0.85] Stepping calmly around the corner of the table, you lay one hand across the top rail of the oak chair. The carved wood feels thick, smooth, and slightly warmed by the cabin air. Gentle wear along the curved armrests fits naturally beneath your palm, inviting you to slow down even further and take your weight off your feet.
@@ -121,6 +125,7 @@
 ## BLOCK: ACT_3_THE_INSTRUMENTS
 [037|NARRATOR_NATIVE_en|0.85] Seated comfortably at the mahogany table, you look just beyond the unrolled chart toward the navigator's working instruments arranged along the starboard edge. Warm candlelight touches beveled brass rings, clear glass domes, and dark polished wood. Every tool sits neatly within arm's reach, waiting quietly in its own velvet-lined cradle without cluttering the wide surface.
 [PAUSE|1.5]
+[IMAGE|05] First-person night view of a brass gimbaled compass inside an open green-lined cedarwood box beside a warm lantern, no people
 [038|NARRATOR_NATIVE_en|0.85] Closest to your right elbow rests a square cedarwood box with its hinged lid folded softly back against the tabletop. Inside, a deep green baize lining holds a round gimbaled compass suspended on twin brass rings. Whenever the ship rolls lightly over a smooth swell, the inner bowl stays perfectly level like dark water in a cup.
 [PAUSE|1.5]
 [039|NARRATOR_NATIVE_en|0.85] Leaning near the glass face, you watch the painted paper card float inside its sealed ring without a single tremor. Tiny black points mark the winds and quarters around a slender, quiet needle tipped in dull silver. A faint reflection of the overhead lantern hovers gently across the beveled crystal, shifting half a finger's width with the hull.
@@ -133,10 +138,12 @@
 [PAUSE|2.0]
 [041|NARRATOR_NATIVE_en|0.85] Beside the compass box lies a pair of curved brass dividers with slender, tapered points gleaming faintly in the amber glow. You pick them up between thumb and forefinger, feeling the smooth hinge open with firm, oiled resistance. Setting the points lightly against the wood, you feel how balanced and light the metal feels across your knuckles.
 [PAUSE|1.5]
+[IMAGE|06] First-person night view of a tall oak and leather hourglass beside a hanging brass astrolabe on a wooden bulkhead, no people
 [042|NARRATOR_NATIVE_en|0.85] A few inches farther back stands a tall hourglass framed in turned oak posts and dark leather bindings. Fine pale sand lies almost completely settled in the lower bulb, heaped into a soft little cone. Only a whisper-thin thread of grains still trickles downward, keeping quiet time without a tick or chime anywhere in the room.
 [PAUSE|1.5]
 [043|NARRATOR_NATIVE_en|0.85] Your gaze moves to a heavy brass astrolabe hanging from a small leather loop beside a wooden shelf. Its pierced circular plate catches warm lantern glints along etched degree marks and delicate star pointers. Gently steadying the cool disc with two fingers, you let its weight rest still against the cedar paneling behind the desk.
 [PAUSE|1.5]
+[IMAGE|07] First-person night view of a green soapstone inkwell, white seabird quill in a wooden tray, and thick leather ship logbook on a dark mat, no people
 [044|NARRATOR_NATIVE_en|0.85] Returning your attention to the near side of the table, you notice a thick square inkwell carved from dark green soapstone. A small hinged pewter cap sits tilted open, revealing a smooth circle of black liquid deep inside the well. The stone feels surprisingly cool against your index finger, holding the lingering chill of the lower hold.
 [PAUSE|1.5]
 [045|NARRATOR_NATIVE_en|0.85] Looking down into the open soapstone well, you see the quiet mirror of the ceiling lantern reflected cleanly across the dark surface. No ripple breaks the black liquid while the ship glides across the calm swell. A faint scent of crushed oak galls and cedar resin rises softly around the rim of the heavy stone block.
@@ -175,6 +182,7 @@
 ## BLOCK: ACT_4_THE_STERN_WINDOWS
 [055|NARRATOR_NATIVE_en|0.82] Crossing the last few paces to the aft bulkhead, you come to rest before the wide row of slanted stern windows. Thick oak mullions frame dozens of small, slightly wavy panes of hand-blown glass tilted outward over the sea. Low wooden bench lockers run underneath the sill, offering a comfortable place to lean your elbows against the frame.
 [PAUSE|1.5]
+[IMAGE|08] First-person night view of slanted paned stern windows with one central casement open to a starry Caribbean sea, no people
 [056|NARRATOR_NATIVE_en|0.82] Reaching up to a small brass hook, you unfasten one of the central casements and swing it gently inward on oiled hinges. At once, the wide Caribbean night opens right in front of your face without a barrier. Fresh, salt-sweet sea air pours softly across your forehead, cooling your skin and lifting the quiet warmth from your neck.
 [PAUSE|1.5]
 [056|NARRATOR_TARGET_es|0.75] La ventana está abierta. El aire entra despacio.
@@ -193,6 +201,7 @@
 [PAUSE|1.5]
 [060|NARRATOR_NATIVE_en_translate|0.82] The wind is warm and gentle.
 [PAUSE|2.5]
+[IMAGE|09] First-person night view from the stern gallery looking down at pale foam wake and blue-green sea luminescence on dark water, no people
 [061|NARRATOR_NATIVE_en|0.82] Opening your eyes again, you notice faint blue-green sparks shimmering deep inside the ship's dark wake below the rudder. Tiny lantern-like flecks of sea luminescence drift upward in swirling trails before fading peacefully back into the black currents. Each soft flicker disappears as quietly as breath on glass, replaced immediately by another drifting trail beneath the stern.
 [PAUSE|1.5]
 [062|NARRATOR_NATIVE_en|0.82] Beyond the trailing white foam, the broad Caribbean stretches out in long, dark swells that catch faint silver edges from the overhead starlight. No distant merchant sail or rocky island silhouette breaks the smooth curve of the sea horizon tonight. Only open water lies around the galleon in every direction, vast and untroubled beneath the quiet tropical dark.
@@ -207,6 +216,7 @@
 [PAUSE|2.5]
 [065|NARRATOR_NATIVE_en|0.82] Letting your gaze lift gradually from the dark wake toward the distant horizon, you find the thin silver line where ocean meets night. No clouds hang low over the water tonight, leaving the whole sweep of the southern sky clear from east to west. Your eyes rest easily on that wide, unbroken distance without needing to focus closely.
 [PAUSE|1.5]
+[IMAGE|10] First-person night view from the stern window across dark ship rigging toward the calm ocean horizon and Milky Way starry sky, no people
 [066|NARRATOR_NATIVE_en|0.82] Above the dark sails and the faint outline of the mizzen shrouds, the Caribbean sky opens into a deep, velvety vault of midnight blue. Thousands of pinprick lights spread out from horizon to zenith, sharper and steadier out here over open ocean than over any town. Looking upward makes the cabin around you feel small, warm, and deeply sheltered.
 [PAUSE|1.5]
 [067|NARRATOR_NATIVE_en|0.82] Near the southern rim of the sky, unfamiliar constellations wheel slowly above the masthead while familiar northern lights hang low behind the yardarms. Everything overhead moves at a pace too slow for the eye to catch, turning calmly over the quiet sea. A cool clarity settles inside your mind as you watch the vast expanse above.
@@ -285,6 +295,7 @@
 [PAUSE|1.5]
 [089|NARRATOR_NATIVE_en_translate|0.82] There is no hurry here. There is calm in the cabin.
 [PAUSE|2.5]
+[IMAGE|11] First-person night view of a built-in wooden berth alcove with drawn linen curtain, white pillow, folded blanket, and unlit brass sconce, no people
 [090|NARRATOR_NATIVE_en|0.82] Pulling the soft linen curtain a little wider along its smooth wooden rod, you see the narrow built-in bunk waiting neatly beneath a small brass reading sconce that stays unlit. Clean white sheets and a folded woven blanket lie smoothed out along the firm mattress. Everything inside the sheltered alcove looks welcoming, simple, and deeply restful.
 [PAUSE|1.5]
 
@@ -319,6 +330,7 @@
 [PAUSE|1.5]
 [099|NARRATOR_NATIVE_en_translate|0.82] You listen to the water outside. The sea moves the ship slowly.
 [PAUSE|2.5]
+[IMAGE|12] First-person night view from inside the curtained wooden berth looking out toward the swaying brass lantern, chart table, and stern windows, no people
 [100|NARRATOR_NATIVE_en|0.82] Opening your eyes one last time toward the middle of the room, you watch the brass lantern swinging almost imperceptibly above the dark chart table. Its tiny flame has settled even lower inside the glass cage now, casting only a faint, honeyed glow across the edge of the rolled parchment and closed logbook. Deep brown shadows fill the corners calmly.
 [PAUSE|1.5]
 [101|NARRATOR_NATIVE_en|0.82] The hanging curtain beside your berth filters that amber light into a soft, diffused dusk over the pillow and folded blanket. Nothing bright touches your eyelids anymore. Only a faint ribbon of warm gold outlines the curved doorway arch and the carved oak chair resting motionless beside the table. The whole room looks like a quiet painting settled for the night.
@@ -351,6 +363,7 @@
 [PAUSE|2.5]
 
 ## BLOCK: RECALL_1
+[IMAGE|01] First-person night view through an open oak cabin door with an iron latch into a warm candlelit wooden ship cabin, no people
 [109|NARRATOR_NATIVE_en|0.80] Your palm rests on the iron latch at the cabin door. You step over the oak threshold onto smooth wooden floorboards. The warm air smells of dry wood and salt.
 [PAUSE|2.0]
 [109|NARRATOR_TARGET_es|0.75] Tu mano toca el metal en la puerta. Pasas el umbral de roble sobre las tablas lisas del suelo. El aire es cálido. Huele a madera seca y sal.
@@ -389,9 +402,9 @@
 [PAUSE|4.0]
 [115|NARRATOR_NATIVE_en|0.80] The warm evening air feels soft against your face and hands. A slow draft cools your skin near the doorway. Every step feels lighter in this calm room.
 [PAUSE|2.0]
-[115|NARRATOR_TARGET_es|0.75] El aire cálido de la tarde toca tu cara. Toca también tus manos. Una brisa lenta refresca tu piel cerca de la puerta. Cada paso es más ligero aquí.
+[115|NARRATOR_TARGET_es|0.75] El aire cálido de la noche toca tu cara. Toca también tus manos. Una brisa lenta refresca tu piel cerca de la puerta. Cada paso es más ligero aquí.
 [PAUSE|2.0]
-[115|NARRATOR_TARGET_es_repeat|0.70] El aire cálido de la tarde toca tu cara. Toca también tus manos. Una brisa lenta refresca tu piel cerca de la puerta. Cada paso es más ligero aquí.
+[115|NARRATOR_TARGET_es_repeat|0.70] El aire cálido de la noche toca tu cara. Toca también tus manos. Una brisa lenta refresca tu piel cerca de la puerta. Cada paso es más ligero aquí.
 [PAUSE|4.0]
 [116|NARRATOR_NATIVE_en|0.80] You take a slow step forward toward the dark glass at the stern. Deep blue night fills every small windowpane. Out over the water, the tropical night stays gentle.
 [PAUSE|2.0]
@@ -417,6 +430,7 @@
 [PAUSE|2.0]
 [119|NARRATOR_TARGET_es_repeat|0.70] Olores suaves de cera y cedro llenan el aire. Hay también olor a papel viejo. La sal limpia del mar acompaña la madera. Nada pesa en el aire.
 [PAUSE|4.0]
+[IMAGE|02] First-person night view of a hanging brass lantern glowing over curved timber hull ribs, bookshelves, sea chart, and hourglass, no people
 [120|NARRATOR_NATIVE_en|0.80] A brass lantern hangs from the center beam on a short iron chain. As the ship leans slightly, the lamp swings like a slow pendulum. Its copper top gleams softly.
 [PAUSE|2.0]
 [120|NARRATOR_TARGET_es|0.75] Una lámpara de metal cuelga del techo con una cadena corta. El barco se inclina un poco. La lámpara va de lado a lado. Su parte alta brilla suave.
@@ -455,10 +469,11 @@
 [PAUSE|4.0]
 [126|NARRATOR_NATIVE_en|0.80] You walk out of the doorway shadow into the warm circle of candlelight. Ahead stands the navigator's broad wooden table. Your fingers open to touch the smooth surface.
 [PAUSE|2.0]
-[126|NARRATOR_TARGET_es|0.75] Sales de la sombra hacia el círculo cálido de luz. Delante está la mesa ancha de madera oscura. Tus manos se abren despacio. Quieren tocar la superficie lisa y firme.
+[126|NARRATOR_TARGET_es|0.75] Sales de la sombra hacia el círculo cálido de luz. Delante está la mesa ancha de madera oscura. Tus manos se abren despacio. Quieren tocar la superficie lisa.
 [PAUSE|2.0]
-[126|NARRATOR_TARGET_es_repeat|0.70] Sales de la sombra hacia el círculo cálido de luz. Delante está la mesa ancha de madera oscura. Tus manos se abren despacio. Quieren tocar la superficie lisa y firme.
+[126|NARRATOR_TARGET_es_repeat|0.70] Sales de la sombra hacia el círculo cálido de luz. Delante está la mesa ancha de madera oscura. Tus manos se abren despacio. Quieren tocar la superficie lisa.
 [PAUSE|4.0]
+[IMAGE|03] First-person night view of a wide mahogany table with an unrolled Caribbean sea chart, four brass weights, wooden ruler, quill, and paned stern windows, no people
 [127|NARRATOR_NATIVE_en|0.80] You lay both palms along the rounded edge of the heavy chart table. Thick iron brackets hold the legs firm on the floor. The cool wood warms under your hands.
 [PAUSE|2.0]
 [127|NARRATOR_TARGET_es|0.75] Pones ambas manos sobre el borde redondo de la mesa. El hierro fuerte sujeta las patas al suelo. La madera fresca recibe tu calor. Se vuelve tibia bajo tus manos.
@@ -543,6 +558,7 @@
 [PAUSE|2.0]
 [140|NARRATOR_TARGET_es_repeat|0.70] Junto al mapa hay una regla larga de madera con dos piezas de metal. El centro de la madera es más claro. Tocas una barra despacio. Suena suave en la mesa.
 [PAUSE|4.0]
+[IMAGE|04] First-person night view of a painted compass rose on an open chart, brass dividers, candlestick, and a carved oak leather navigator chair, no people
 [141|NARRATOR_NATIVE_en|0.80] You look toward the heavy carved oak chair tucked under the side of the table. Its dark leather cushion shines softly in the lamplight. Small brass tacks line the edge.
 [PAUSE|2.0]
 [141|NARRATOR_TARGET_es|0.75] Miras hacia la silla pesada de madera bajo el borde de la mesa. Su cuero oscuro brilla suave bajo la luz. Pequeños clavos dorados rodean la silla. Siguen todo el borde.
@@ -575,6 +591,7 @@
 [PAUSE|2.0]
 [145|NARRATOR_TARGET_es_repeat|0.70] Estás sentado en la mesa grande. Miras los instrumentos a la derecha. La luz cálida toca el metal y el cristal. Cada objeto espera en silencio.
 [PAUSE|4.0]
+[IMAGE|05] First-person night view of a brass gimbaled compass inside an open green-lined cedarwood box beside a warm lantern, no people
 [146|NARRATOR_NATIVE_en|0.80] Near your right elbow sits a square cedar box with an open lid. Green cloth inside cradles a round brass compass. Even when the ship rolls, the bowl stays level.
 [PAUSE|2.0]
 [146|NARRATOR_TARGET_es|0.75] Junto a tu codo derecho hay una caja cuadrada de cedro. Tiene la tapa abierta. La tela verde guarda una brújula redonda de metal. El barco gira y el centro sigue nivelado.
@@ -583,9 +600,9 @@
 [PAUSE|4.0]
 [147|NARRATOR_NATIVE_en|0.80] You lean near the glass face and watch the painted card float still. Black points circle a thin silver needle. A soft lantern reflection shifts gently across the crystal.
 [PAUSE|2.0]
-[147|NARRATOR_TARGET_es|0.75] Miras cerca del cristal y ves el papel quieto. Puntos negros rodean una aguja fina. Un reflejo de la lámpara toca el vidrio. Se mueve muy despacio.
+[147|NARRATOR_TARGET_es|0.75] Te acercas al cristal y ves el disco pintado flotar quieto. Puntos negros rodean una aguja fina de plata. Un reflejo suave de la lámpara toca el vidrio. Se mueve muy despacio.
 [PAUSE|2.0]
-[147|NARRATOR_TARGET_es_repeat|0.70] Miras cerca del cristal y ves el papel quieto. Puntos negros rodean una aguja fina. Un reflejo de la lámpara toca el vidrio. Se mueve muy despacio.
+[147|NARRATOR_TARGET_es_repeat|0.70] Te acercas al cristal y ves el disco pintado flotar quieto. Puntos negros rodean una aguja fina de plata. Un reflejo suave de la lámpara toca el vidrio. Se mueve muy despacio.
 [PAUSE|4.0]
 [148|NARRATOR_NATIVE_en|0.80] Your fingertips rest on the cool wooden rim of the compass box. The thin metal needle holds steady without effort. It points north while the ship glides through darkness.
 [PAUSE|2.0]
@@ -595,10 +612,11 @@
 [PAUSE|4.0]
 [149|NARRATOR_NATIVE_en|0.80] Beside the box lies a pair of curved brass dividers gleaming in the light. You open the smooth hinge gently between two fingers. The balanced metal feels light and calm.
 [PAUSE|2.0]
-[149|NARRATOR_TARGET_es|0.75] Al lado de la caja hay una pieza curva de metal brillante. Abres despacio la unión suave entre dos dedos. El metal equilibrado es ligero. También se siente tranquilo.
+[149|NARRATOR_TARGET_es|0.75] Al lado de la caja hay un compás curvo de metal. Brilla suave bajo la luz. Abres despacio la unión suave entre dos dedos. El metal equilibrado es ligero y calmo.
 [PAUSE|2.0]
-[149|NARRATOR_TARGET_es_repeat|0.70] Al lado de la caja hay una pieza curva de metal brillante. Abres despacio la unión suave entre dos dedos. El metal equilibrado es ligero. También se siente tranquilo.
+[149|NARRATOR_TARGET_es_repeat|0.70] Al lado de la caja hay un compás curvo de metal. Brilla suave bajo la luz. Abres despacio la unión suave entre dos dedos. El metal equilibrado es ligero y calmo.
 [PAUSE|4.0]
+[IMAGE|06] First-person night view of a tall oak and leather hourglass beside a hanging brass astrolabe on a wooden bulkhead, no people
 [150|NARRATOR_NATIVE_en|0.80] Farther back stands a tall hourglass framed in oak posts and dark leather. Pale sand sits heaped inside the bottom glass bulb. Thin grains trickle down without a sound.
 [PAUSE|2.0]
 [150|NARRATOR_TARGET_es|0.75] Más atrás hay un reloj alto de arena con madera y cuero oscuro. La arena clara descansa abajo. Un hilo fino de granos cae. No hace ningún ruido.
@@ -607,10 +625,11 @@
 [PAUSE|4.0]
 [151|NARRATOR_NATIVE_en|0.80] You look at a round brass astrolabe hanging from a small leather loop. Warm candlelight shines along its etched circles and star pointers. Two fingers steady the cool metal disc.
 [PAUSE|2.0]
-[151|NARRATOR_TARGET_es|0.75] Miras un disco redondo de metal colgado de cuero. La luz cálida brilla en sus círculos y estrellas. Dos dedos sostienen el disco. Calman el metal fresco.
+[151|NARRATOR_TARGET_es|0.75] Miras un disco redondo de metal colgado de cuero. La luz cálida brilla en sus círculos. Ilumina también sus estrellas. Dos dedos sostienen quieto el disco fresco.
 [PAUSE|2.0]
-[151|NARRATOR_TARGET_es_repeat|0.70] Miras un disco redondo de metal colgado de cuero. La luz cálida brilla en sus círculos y estrellas. Dos dedos sostienen el disco. Calman el metal fresco.
+[151|NARRATOR_TARGET_es_repeat|0.70] Miras un disco redondo de metal colgado de cuero. La luz cálida brilla en sus círculos. Ilumina también sus estrellas. Dos dedos sostienen quieto el disco fresco.
 [PAUSE|4.0]
+[IMAGE|07] First-person night view of a green soapstone inkwell, white seabird quill in a wooden tray, and thick leather ship logbook on a dark mat, no people
 [152|NARRATOR_NATIVE_en|0.80] Near the front of the table sits a square green stone inkwell. Its small metal cap stays open over black liquid. The carved stone feels cool against your index finger.
 [PAUSE|2.0]
 [152|NARRATOR_TARGET_es|0.75] Cerca del frente de la mesa hay un bote cuadrado de piedra verde. Su tapa pequeña queda abierta sobre líquido negro. La piedra tallada está fresca. Toca tu dedo.
@@ -637,9 +656,9 @@
 [PAUSE|4.0]
 [156|NARRATOR_NATIVE_en|0.80] Next to the tray stands a small brass shaker filled with fine sand. Beside it lie a little horn knife and folded cloth. Every simple tool rests in quiet order.
 [PAUSE|2.0]
-[156|NARRATOR_TARGET_es|0.75] Junto a la bandeja hay un bote pequeño de metal con arena fina. Al lado hay un cuchillo pequeño y una tela doblada. Cada objeto simple descansa en orden tranquilo.
+[156|NARRATOR_TARGET_es|0.75] Junto a la bandeja hay un bote pequeño de metal con arena fina. Al lado hay un cuchillo pequeño. También hay una tela doblada. Cada objeto simple descansa en orden tranquilo.
 [PAUSE|2.0]
-[156|NARRATOR_TARGET_es_repeat|0.70] Junto a la bandeja hay un bote pequeño de metal con arena fina. Al lado hay un cuchillo pequeño y una tela doblada. Cada objeto simple descansa en orden tranquilo.
+[156|NARRATOR_TARGET_es_repeat|0.70] Junto a la bandeja hay un bote pequeño de metal con arena fina. Al lado hay un cuchillo pequeño. También hay una tela doblada. Cada objeto simple descansa en orden tranquilo.
 [PAUSE|4.0]
 [157|NARRATOR_NATIVE_en|0.80] You look once more at the pale quill resting neatly in its wood tray. Warm candlelight touches its white spine. A faint draft barely moves the soft edge of the feather.
 [PAUSE|2.0]
@@ -655,9 +674,9 @@
 [PAUSE|4.0]
 [159|NARRATOR_NATIVE_en|0.80] You turn one thick paper page gently and hear a dry rustle. Neat rows of dates and winds fill the left side. Opposite them, tomorrow's page stays smooth and blank.
 [PAUSE|2.0]
-[159|NARRATOR_TARGET_es|0.75] Pasas una hoja gruesa despacio y escuchas un sonido seco. Filas limpias de fechas llenan el lado izquierdo. Enfrente hay otra hoja. La página nueva sigue lisa y blanca.
+[159|NARRATOR_TARGET_es|0.75] Pasas una hoja gruesa despacio y escuchas un sonido seco. Filas ordenadas de fechas y vientos llenan el lado izquierdo. Enfrente espera la página de mañana. Sigue lisa y limpia.
 [PAUSE|2.0]
-[159|NARRATOR_TARGET_es_repeat|0.70] Pasas una hoja gruesa despacio y escuchas un sonido seco. Filas limpias de fechas llenan el lado izquierdo. Enfrente hay otra hoja. La página nueva sigue lisa y blanca.
+[159|NARRATOR_TARGET_es_repeat|0.70] Pasas una hoja gruesa despacio y escuchas un sonido seco. Filas ordenadas de fechas y vientos llenan el lado izquierdo. Enfrente espera la página de mañana. Sigue lisa y limpia.
 [PAUSE|4.0]
 [160|NARRATOR_NATIVE_en|0.80] Your eyes rest on steady columns written across days of fair winds and clear skies. No hurried blot marks the clean margin. The quiet entries make the voyage feel safe.
 [PAUSE|2.0]
@@ -683,6 +702,7 @@
 [PAUSE|2.0]
 [163|NARRATOR_TARGET_es_repeat|0.70] Caminas hasta la pared del fondo frente a las ventanas inclinadas. La madera gruesa sujeta muchos cristales pequeños. Los vidrios son claros. Hay bancos bajos debajo de las ventanas.
 [PAUSE|4.0]
+[IMAGE|08] First-person night view of slanted paned stern windows with one central casement open to a starry Caribbean sea, no people
 [164|NARRATOR_NATIVE_en|0.80] You unfasten a small brass hook and swing one window pane gently inward. The open Caribbean night meets your face at once. Cool salt air enters slowly around your neck.
 [PAUSE|2.0]
 [164|NARRATOR_TARGET_es|0.75] Sueltas un gancho pequeño de metal y abres una hoja del cristal hacia dentro. La noche abierta toca tu cara. La ventana está abierta. El aire entra despacio junto a tu cuello.
@@ -713,6 +733,7 @@
 [PAUSE|2.0]
 [168|NARRATOR_TARGET_es_repeat|0.70] Cierras los ojos unos segundos para sentir el aire del mar. Detrás, la lámpara sigue tranquila dentro de la cabina. El viento es cálido. Llega muy suave a tu cara.
 [PAUSE|4.0]
+[IMAGE|09] First-person night view from the stern gallery looking down at pale foam wake and blue-green sea luminescence on dark water, no people
 [169|NARRATOR_NATIVE_en|0.80] Opening your eyes, you see faint blue-green sparks glowing deep in the dark wake. Tiny points of sea light drift upward in slow swirls. Each soft sparkle fades peacefully away.
 [PAUSE|2.0]
 [169|NARRATOR_TARGET_es|0.75] Abres los ojos y ves chispas azules y verdes en el agua oscura. Pequeños puntos de luz suben despacio. Giran en círculos suaves. Cada brillo desaparece en calma.
@@ -743,6 +764,7 @@
 [PAUSE|2.0]
 [173|NARRATOR_TARGET_es_repeat|0.70] Tu mirada sube despacio del agua hacia la línea clara del fondo. No hay nubes en el cielo. Está limpio de este a oeste. Tus ojos descansan en esa distancia.
 [PAUSE|4.0]
+[IMAGE|10] First-person night view from the stern window across dark ship rigging toward the calm ocean horizon and Milky Way starry sky, no people
 [174|NARRATOR_NATIVE_en|0.80] Above the dark sails, the Caribbean sky opens into a deep vault of midnight blue. Thousands of clear lights spread from horizon to zenith. The cabin behind feels warmly sheltered.
 [PAUSE|2.0]
 [174|NARRATOR_TARGET_es|0.75] Sobre las velas oscuras, el cielo forma un techo de azul profundo. Miles de luces claras cubren todo el cielo. Atrás queda la cabina. Está cálida y bien protegida.
@@ -769,9 +791,9 @@
 [PAUSE|4.0]
 [178|NARRATOR_NATIVE_en|0.80] Soft clusters of white and pale gold stars sprinkle thickly across the dark night band. They shine evenly like distant harbor lanterns in calm air. Your gaze drifts without effort.
 [PAUSE|2.0]
-[178|NARRATOR_TARGET_es|0.75] Grupos suaves de estrellas blancas y doradas cubren la franja oscura. Brillan de forma pareja como luces de puerto en aire tranquilo. Tu mirada camina despacio. No hace ningún esfuerzo.
+[178|NARRATOR_TARGET_es|0.75] Grupos suaves de estrellas blancas y doradas cubren la franja oscura. Brillan de forma pareja como luces de puerto. El aire está muy tranquilo. Tu mirada pasa sin esfuerzo.
 [PAUSE|2.0]
-[178|NARRATOR_TARGET_es_repeat|0.70] Grupos suaves de estrellas blancas y doradas cubren la franja oscura. Brillan de forma pareja como luces de puerto en aire tranquilo. Tu mirada camina despacio. No hace ningún esfuerzo.
+[178|NARRATOR_TARGET_es_repeat|0.70] Grupos suaves de estrellas blancas y doradas cubren la franja oscura. Brillan de forma pareja como luces de puerto. El aire está muy tranquilo. Tu mirada pasa sin esfuerzo.
 [PAUSE|4.0]
 [179|NARRATOR_NATIVE_en|0.80] Listening to the quiet wake below while watching the still lights above slows your breath. Nothing asks for action tonight. Each star shines in silence, and the sky is calm.
 [PAUSE|2.0]
@@ -807,9 +829,9 @@
 [PAUSE|4.0]
 [184|NARRATOR_NATIVE_en|0.80] Your palm brushes the wooden compass box, leaving the glass face clear. A tiny warm glint catches the brass ring with each gentle swell. Nothing on the desk needs tending.
 [PAUSE|2.0]
-[184|NARRATOR_TARGET_es|0.75] Tu mano pasa sobre la caja y deja limpio el cristal. Una luz cálida toca el anillo de metal con cada ola suave. El brillo es pequeño. Nada en la mesa pide trabajo.
+[184|NARRATOR_TARGET_es|0.75] Tu mano pasa sobre la caja y deja limpio el cristal. Un brillo pequeño y cálido toca el anillo de metal. Llega con cada ola suave. Nada en la mesa pide trabajo.
 [PAUSE|2.0]
-[184|NARRATOR_TARGET_es_repeat|0.70] Tu mano pasa sobre la caja y deja limpio el cristal. Una luz cálida toca el anillo de metal con cada ola suave. El brillo es pequeño. Nada en la mesa pide trabajo.
+[184|NARRATOR_TARGET_es_repeat|0.70] Tu mano pasa sobre la caja y deja limpio el cristal. Un brillo pequeño y cálido toca el anillo de metal. Llega con cada ola suave. Nada en la mesa pide trabajo.
 [PAUSE|4.0]
 [185|NARRATOR_NATIVE_en|0.80] Looking up at the dark ceiling beams, you watch the brass lantern swing slowly. Each easy arc follows the calm waves under the keel. Your breathing becomes deeper and slower.
 [PAUSE|2.0]
@@ -819,9 +841,9 @@
 [PAUSE|4.0]
 [186|NARRATOR_NATIVE_en|0.80] Inside the glass cage, the beeswax candle burns lower near the middle of the night. Liquid gold pools around the wick. Warm droplets rest cooled along the side of the wax.
 [PAUSE|2.0]
-[186|NARRATOR_TARGET_es|0.75] Dentro del cristal, la vela baja despacio en mitad de la noche. Cera líquida dorada rodea la mecha. Las gotas tibias ya frías descansan al lado. Están sobre la cera.
+[186|NARRATOR_TARGET_es|0.75] Dentro del cristal, la vela baja despacio en mitad de la noche. Cera líquida dorada rodea la mecha. Unas gotas frías descansan al lado. Están sobre la columna de cera.
 [PAUSE|2.0]
-[186|NARRATOR_TARGET_es_repeat|0.70] Dentro del cristal, la vela baja despacio en mitad de la noche. Cera líquida dorada rodea la mecha. Las gotas tibias ya frías descansan al lado. Están sobre la cera.
+[186|NARRATOR_TARGET_es_repeat|0.70] Dentro del cristal, la vela baja despacio en mitad de la noche. Cera líquida dorada rodea la mecha. Unas gotas frías descansan al lado. Están sobre la columna de cera.
 [PAUSE|4.0]
 [187|NARRATOR_NATIVE_en|0.80] You trim the dark wick slightly with the small brass wheel under the frame. The flame shrinks to a steady honey teardrop. The candle is small now, and its light is soft.
 [PAUSE|2.0]
@@ -837,9 +859,9 @@
 [PAUSE|4.0]
 [189|NARRATOR_NATIVE_en|0.80] You turn toward the starboard wall, where a small wooden shelf holds quiet books. Faint golden glow touches half of the curved cedar ribs. Your footsteps make scarcely any sound.
 [PAUSE|2.0]
-[189|NARRATOR_TARGET_es|0.75] Miras hacia la pared derecha con un estante de libros quietos. La luz dorada toca la mitad de las vigas curvas. Tus pasos casi no suenan.
+[189|NARRATOR_TARGET_es|0.75] Miras hacia la pared derecha con un estante estrecho. Allí hay libros quietos. La luz dorada toca la mitad de las vigas curvas. Tus pasos casi no suenan.
 [PAUSE|2.0]
-[189|NARRATOR_TARGET_es_repeat|0.70] Miras hacia la pared derecha con un estante de libros quietos. La luz dorada toca la mitad de las vigas curvas. Tus pasos casi no suenan.
+[189|NARRATOR_TARGET_es_repeat|0.70] Miras hacia la pared derecha con un estante estrecho. Allí hay libros quietos. La luz dorada toca la mitad de las vigas curvas. Tus pasos casi no suenan.
 [PAUSE|4.0]
 [190|NARRATOR_NATIVE_en|0.80] Resting your arm against an oak post, you feel the ship breathe beneath your palm. A gentle timber creak travels through the floor and fades. The hull rocks like a cradle.
 [PAUSE|2.0]
@@ -885,10 +907,11 @@
 [PAUSE|4.0]
 [197|NARRATOR_NATIVE_en|0.80] Stopping by the alcove, you listen to the deep hush filling every corner of the room. Above the rafters, the sails stay quiet. There is no hurry here, only calm.
 [PAUSE|2.0]
-[197|NARRATOR_TARGET_es|0.75] Te detienes junto al rincón y escuchas el silencio en el cuarto. Arriba, las velas están quietas. No hay prisa aquí. Solo hay calma.
+[197|NARRATOR_TARGET_es|0.75] Te detienes junto al rincón y escuchas el silencio profundo en el cuarto. Arriba, las velas del barco están quietas. No hay prisa aquí. Solo hay calma.
 [PAUSE|2.0]
-[197|NARRATOR_TARGET_es_repeat|0.70] Te detienes junto al rincón y escuchas el silencio en el cuarto. Arriba, las velas están quietas. No hay prisa aquí. Solo hay calma.
+[197|NARRATOR_TARGET_es_repeat|0.70] Te detienes junto al rincón y escuchas el silencio profundo en el cuarto. Arriba, las velas del barco están quietas. No hay prisa aquí. Solo hay calma.
 [PAUSE|4.0]
+[IMAGE|11] First-person night view of a built-in wooden berth alcove with drawn linen curtain, white pillow, folded blanket, and unlit brass sconce, no people
 [198|NARRATOR_NATIVE_en|0.80] You draw the soft linen curtain wider along its smooth wooden rod. Clean white sheets and a folded woven blanket wait on the narrow mattress. The sheltered bunk looks peaceful.
 [PAUSE|2.0]
 [198|NARRATOR_TARGET_es|0.75] Abres un poco más la cortina suave de tela sobre la madera. Sábanas blancas y limpias esperan sobre el colchón estrecho. También hay una manta doblada. El rincón parece muy tranquilo.
@@ -933,9 +956,9 @@
 [PAUSE|4.0]
 [205|NARRATOR_NATIVE_en|0.80] With your ear against the pillow, the sound of ocean water outside becomes clear and steady. A soft ribbon of sea glides past the oak planks. Nothing splashes loudly tonight.
 [PAUSE|2.0]
-[205|NARRATOR_TARGET_es|0.75] Con la oreja en la almohada, el sonido del agua fuera es claro y firme. Una línea suave de mar pasa junto a las tablas. Nada golpea fuerte esta noche.
+[205|NARRATOR_TARGET_es|0.75] Con la oreja en la almohada, el sonido del agua afuera es claro. Suena firme y parejo. Una línea suave de mar pasa junto a las tablas. Nada golpea fuerte esta noche.
 [PAUSE|2.0]
-[205|NARRATOR_TARGET_es_repeat|0.70] Con la oreja en la almohada, el sonido del agua fuera es claro y firme. Una línea suave de mar pasa junto a las tablas. Nada golpea fuerte esta noche.
+[205|NARRATOR_TARGET_es_repeat|0.70] Con la oreja en la almohada, el sonido del agua afuera es claro. Suena firme y parejo. Una línea suave de mar pasa junto a las tablas. Nada golpea fuerte esta noche.
 [PAUSE|4.0]
 [206|NARRATOR_NATIVE_en|0.80] Now and then, a faint wooden groan rises from the deep hull timbers and fades away. The old ship knows her steady path across the dark water without your help.
 [PAUSE|2.0]
@@ -949,6 +972,7 @@
 [PAUSE|2.0]
 [207|NARRATOR_TARGET_es_repeat|0.70] Cierras un poco los ojos y escuchas el mar junto a la madera. Cada ola sube el barco y lo baja despacio. Escuchas el agua afuera. El mar mueve el barco despacio.
 [PAUSE|4.0]
+[IMAGE|12] First-person night view from inside the curtained wooden berth looking out toward the swaying brass lantern, chart table, and stern windows, no people
 [208|NARRATOR_NATIVE_en|0.80] Opening your eyes one last time, you see the brass lantern swaying faintly above the dark table. Its small flame casts a pale honey glow on the map. Shadows fill corners.
 [PAUSE|2.0]
 [208|NARRATOR_TARGET_es|0.75] Abres los ojos una vez más. Ves la lámpara de metal moverse suave sobre la mesa oscura. Su llama pequeña da una luz pálida al mapa. Las sombras llenan las esquinas.
@@ -957,9 +981,9 @@
 [PAUSE|4.0]
 [209|NARRATOR_NATIVE_en|0.80] The linen curtain softens that amber light into a gentle dusk across your pillow and blanket. Nothing bright reaches your eyes anymore. Only a faint gold line outlines the chair.
 [PAUSE|2.0]
-[209|NARRATOR_TARGET_es|0.75] La cortina de tela suaviza esa luz sobre la almohada y la manta. Nada brillante llega ya a tus ojos. Solo una línea débil de oro marca la silla.
+[209|NARRATOR_TARGET_es|0.75] La cortina de tela suaviza esa luz sobre la almohada. Suaviza también la manta. Nada brillante llega ya a tus ojos. Solo una línea débil de oro marca la silla.
 [PAUSE|2.0]
-[209|NARRATOR_TARGET_es_repeat|0.70] La cortina de tela suaviza esa luz sobre la almohada y la manta. Nada brillante llega ya a tus ojos. Solo una línea débil de oro marca la silla.
+[209|NARRATOR_TARGET_es_repeat|0.70] La cortina de tela suaviza esa luz sobre la almohada. Suaviza también la manta. Nada brillante llega ya a tus ojos. Solo una línea débil de oro marca la silla.
 [PAUSE|4.0]
 [210|NARRATOR_NATIVE_en|0.80] Letting your eyelids drop shut, you feel the distant candle warmth fade behind them. The window glass grows dark around the quiet alcove. The candlelight is low over the corner.
 [PAUSE|2.0]
@@ -969,15 +993,15 @@
 [PAUSE|4.0]
 [211|NARRATOR_NATIVE_en|0.80] A final mild breeze slips through the upper vents and brushes gently across your forehead. It carries the clean scent of open ocean. Inside your blanket, the air stays warm.
 [PAUSE|2.0]
-[211|NARRATOR_TARGET_es|0.75] Una última brisa suave pasa por arriba y toca tu frente. Trae el olor limpio del mar abierto. Dentro de la manta, el aire sigue cálido.
+[211|NARRATOR_TARGET_es|0.75] Una última brisa suave pasa por arriba. Toca despacio tu frente. Trae el olor limpio del mar abierto. Dentro de la manta, el aire sigue muy cálido.
 [PAUSE|2.0]
-[211|NARRATOR_TARGET_es_repeat|0.70] Una última brisa suave pasa por arriba y toca tu frente. Trae el olor limpio del mar abierto. Dentro de la manta, el aire sigue cálido.
+[211|NARRATOR_TARGET_es_repeat|0.70] Una última brisa suave pasa por arriba. Toca despacio tu frente. Trae el olor limpio del mar abierto. Dentro de la manta, el aire sigue muy cálido.
 [PAUSE|4.0]
 [212|NARRATOR_NATIVE_en|0.80] Your jaw softens and your fingers uncurl completely across the cotton hem. Every tiny muscle around your eyes releases its hold. Nothing asks to be checked on the table tonight.
 [PAUSE|2.0]
-[212|NARRATOR_TARGET_es|0.75] Tu boca se relaja y tus dedos se abren sobre el borde de tela. Cada músculo pequeño alrededor de tus ojos descansa. Nada pide atención sobre la mesa esta noche.
+[212|NARRATOR_TARGET_es|0.75] Tu boca se relaja despacio. Tus dedos se abren sobre el borde de tela. Cada músculo pequeño alrededor de tus ojos descansa. Nada pide atención sobre la mesa esta noche.
 [PAUSE|2.0]
-[212|NARRATOR_TARGET_es_repeat|0.70] Tu boca se relaja y tus dedos se abren sobre el borde de tela. Cada músculo pequeño alrededor de tus ojos descansa. Nada pide atención sobre la mesa esta noche.
+[212|NARRATOR_TARGET_es_repeat|0.70] Tu boca se relaja despacio. Tus dedos se abren sobre el borde de tela. Cada músculo pequeño alrededor de tus ojos descansa. Nada pide atención sobre la mesa esta noche.
 [PAUSE|4.0]
 [213|NARRATOR_NATIVE_en|0.80] Overhead, the steady trade wind keeps the sails full and quiet. Inside the cabin, hours stretch out into unbroken peace. The wind is very gentle, and night moves in silence.
 [PAUSE|2.0]
@@ -1004,8 +1028,242 @@
 [216|NARRATOR_TARGET_es_repeat|0.70] La cabina de madera y el mar grande descansan juntos en paz. Todo está protegido bajo las estrellas y el roble firme. Todo está en calma. El mar y la noche descansan.
 [PAUSE|4.0]
 
+## BLOCK: PLOT_TARGET_1
+[IMAGE|01] First-person night view through an open oak cabin door with an iron latch into a warm candlelit wooden ship cabin, no people
+[217|NARRATOR_TARGET_es|0.75] Tu palma descansa sobre el cierre pesado de hierro en la puerta de la cabina. Bajas el escalón de roble hacia las tablas lisas del suelo. El aire de adentro es más calmo y huele a madera seca y sal.
+[PAUSE|2.5]
+[218|NARRATOR_TARGET_es|0.75] Haces una pausa justo dentro de la puerta y sientes el movimiento lento del barco bajo tus pies. Una brisa suave del mar entra desde las ventanas de atrás. Tus hombros bajan un poco bajo la luz dorada.
+[PAUSE|2.5]
+[219|NARRATOR_TARGET_es|0.75] Llevas una mano atrás y empujas la puerta gruesa de roble sin ningún ruido. El cierre de hierro cae suave en su pieza de metal. Ahora la cabina iluminada por la lámpara queda del todo privada y tranquila.
+[PAUSE|2.5]
+[220|NARRATOR_TARGET_es|0.75] Tus dedos quedan un instante sobre las tablas anchas de la puerta cerrada. Bajo la madera lisa sientes el rumor constante del agua profunda en el timón. Cada unión guarda bien el calor suave del cuarto.
+[PAUSE|2.5]
+[221|NARRATOR_TARGET_es|0.75] Giras despacio lejos de la entrada y miras la curva larga y baja de la cabina. Arriba, las vigas oscuras cruzan de lado a lado. Junto a las paredes, armarios ordenados y ganchos guardan cuerdas y mapas enrollados.
+[PAUSE|2.5]
+[222|NARRATOR_TARGET_es|0.75] Muy arriba sobre las tablas del techo, una pieza de madera da un sonido bajo y suave. Ninguna voz llega hasta aquí entre las vigas gruesas. Tu respiración se vuelve larga al ritmo lento del suelo.
+[PAUSE|2.5]
+[223|NARRATOR_TARGET_es|0.75] El calor suave de la noche en el mar suaviza cada rincón del cuarto. Una brisa lenta refresca tu piel entre los cristales de atrás y la puerta cerrada. Nada pesa sobre ti y cada paso es más ligero.
+[PAUSE|2.5]
+[224|NARRATOR_TARGET_es|0.75] Das un paso lento sobre las tablas y miras hacia la fila ancha de cristales en el fondo del barco. La noche azul oscura llena cada vidrio pequeño. Afuera, la noche sobre el agua es tranquila y suave.
+[PAUSE|2.5]
+[225|NARRATOR_TARGET_es|0.75] Tu mirada sigue las curvas de madera que suben limpias por la pared derecha. La luz pálida toca cada borde liso con tonos cálidos. Un bolso de tela y un abrigo de lana cuelgan de ganchos y oscilan despacio.
+[PAUSE|2.5]
+[226|NARRATOR_TARGET_es|0.75] Dejas que los nudillos rocen despacio la madera de cedro al pasar. Cada unión entre las tablas está pareja y seca. Tu mano sigue las líneas de la madera sin prisa, sintiendo el trabajo firme del barco.
+[PAUSE|2.5]
+[227|NARRATOR_TARGET_es|0.75] Una mezcla amable de aromas flota en el aire quieto. Huele a cera tibia, cedro seco, papel viejo y sal limpia de mar. Ningún olor es fuerte. Todo envuelve el cuarto como un refugio calmo sobre las olas oscuras.
+[PAUSE|2.5]
+[IMAGE|02] First-person night view of a hanging brass lantern glowing over curved timber hull ribs, bookshelves, sea chart, and hourglass, no people
+[228|NARRATOR_TARGET_es|0.75] Cerca de la viga del centro cuelga una lámpara de metal de cuatro lados en una cadena corta. Cuando el barco se inclina apenas y vuelve al centro, la lámpara se mece como un péndulo lento sobre el cuarto.
+[PAUSE|2.5]
+[229|NARRATOR_TARGET_es|0.75] Dentro del cristal grueso de la lámpara, una vela alta arde con una llama firme y dorada. La luz cálida baja por las vigas de roble y descansa sobre la mesa ancha del centro, quieta dentro del marco.
+[PAUSE|2.5]
+[230|NARRATOR_TARGET_es|0.75] Sombras blandas caminan despacio por el techo curvo cada vez que la lámpara se mueve un poco. No hay rincones duros, solo luz color miel hacia la madera oscura. Tus ojos se sienten pesados viendo la llama pareja.
+[PAUSE|2.5]
+[231|NARRATOR_TARGET_es|0.75] Haces una pausa junto a un poste tallado y dejas pasar la ola suave debajo de tus botas. Tu peso cambia lento hacia delante y atrás sobre la ola ancha. Tus rodillas quedan sueltas con el mar.
+[PAUSE|2.5]
+[232|NARRATOR_TARGET_es|0.75] Más allá de las tablas gruesas bajo tus pies, el mar hace un susurro bajo y continuo al abrirse el agua. Un toque leve de espuma suena en el timón y se apaga pronto detrás de la madera seca.
+[PAUSE|2.5]
+[233|NARRATOR_TARGET_es|0.75] De pie en el centro del suelo ancho, sientes lo hondo que es el silencio en la cabina. Hasta el sonido alto de las velas parece muy lejos. Todo espera sin prisa mientras la noche se extiende en calma.
+[PAUSE|2.5]
+[234|NARRATOR_TARGET_es|0.75] Sales de la sombra de la puerta hacia el círculo dorado de la vela y cruzas los últimos pasos hacia el centro. Delante espera la mesa grande y oscura brillando bajo la lámpara. Tus dedos buscan la madera lisa.
+[PAUSE|2.5]
+[IMAGE|03] First-person night view of a wide mahogany table with an unrolled Caribbean sea chart, four brass weights, wooden ruler, quill, and paned stern windows, no people
+[235|NARRATOR_TARGET_es|0.75] Llegas al borde largo de la mesa y apoyas ambas palmas en su madera redonda. Piezas fuertes de hierro sujetan las cuatro patas al suelo contra el vaivén del mar. La madera fresca toma poco a poco tu calor.
+[PAUSE|2.5]
+[236|NARRATOR_TARGET_es|0.75] Pasas los pulgares por el borde liso y sientes pequeños clavos de metal en línea pareja. Años de viajes y cera dan a la mesa un brillo satinado bajo la lámpara. Cada marca habla de horas calmas sobre el agua.
+[PAUSE|2.5]
+[237|NARRATOR_TARGET_es|0.75] Sobre la superficie ancha, todo descansa en orden antes de la guardia nocturna. Rollos de papel esperan bajo tiras finas de cuero y una regla recta descansa paralela al borde. Nada estorba tus brazos bajo la luz.
+[PAUSE|2.5]
+[238|NARRATOR_TARGET_es|0.75] Te inclinas apenas sobre el borde y pruebas la firmeza de la mesa grande. Aunque una ola larga levanta el barco y lo baja, ningún objeto tiembla ni resbala encima. La mesa está grande, firme y quieta.
+[PAUSE|2.5]
+[239|NARRATOR_TARGET_es|0.75] En el centro bajo la luz dorada descansa una hoja grande de papel claro abierta de lado a lado. Cuatro pesas redondas de metal sujetan las esquinas. Líneas suaves de pliegues cruzan el papel limpio y guardado con cuidado.
+[PAUSE|2.5]
+[240|NARRATOR_TARGET_es|0.75] Al inclinarte más cerca, sientes el olor seco de papel viejo y tinta suave sobre la hoja abierta. Tus dedos rozan el borde inferior como una tela fina. El papel sigue fresco y seco pese al aire cálido.
+[PAUSE|2.5]
+[241|NARRATOR_TARGET_es|0.75] Tus ojos siguen costas finas dibujadas en tinta oscura sobre el papel claro. Pequeñas bahías, puntas de roca y líneas de coral cruzan la página con letra ordenada junto a cada puerto tranquilo y cada abrigo seguro.
+[PAUSE|2.5]
+[242|NARRATOR_TARGET_es|0.75] Cerca de la esquina baja del mapa hay una estrella pintada en rojo apagado, azul y oro. Muchas líneas finas salen sobre el mar blanco como radios quietos. Tu dedo índice sigue una línea recta hacia el fondo.
+[PAUSE|2.5]
+[243|NARRATOR_TARGET_es|0.75] Bajo la luz cálida de la vela, las islas grandes se extienden en paz sobre la mesa. Pintura azul clara señala las aguas bajas frente al mar profundo. Guardas silencio un instante mirando el mapa antiguo y abierto.
+[PAUSE|2.5]
+[244|NARRATOR_TARGET_es|0.75] Una línea fina camina entre dos pasos estrechos de islas con números pequeños de profundidad. Junto a una playa curva, una pequeña cruz señala agua dulce detrás de las palmas. Todo en el mapa es claro y calmo.
+[PAUSE|2.5]
+[245|NARRATOR_TARGET_es|0.75] Levantas una pesa pequeña de metal en la palma y sientes su peso frío y firme. Un anillo suave en lo alto permite tomarla sin tocar la tinta. La dejas otra vez sobre la esquina y el papel queda plano.
+[PAUSE|2.5]
+[246|NARRATOR_TARGET_es|0.75] Tu mirada pasa del borde pintado del mapa hacia la pared oscura de madera. Más allá de esas tablas está el mismo mar dibujado en tinta y azul claro. Saber que el agua es ancha y honda da paz.
+[PAUSE|2.5]
+[247|NARRATOR_TARGET_es|0.75] Escuchas atento junto al mapa y oyes solo el roce blando de las olas por la madera debajo del agua. No hay golpes en la proa ni viento fuerte en las cuerdas. El mar está en calma bajo el casco.
+[PAUSE|2.5]
+[248|NARRATOR_TARGET_es|0.75] Junto al mapa descansa una regla doble de madera unida por dos piezas de metal brillante. Tocas el centro liso, más claro por años de uso lento sobre los mapas. Una barra da un toque seco sobre la mesa.
+[PAUSE|2.5]
+[IMAGE|04] First-person night view of a painted compass rose on an open chart, brass dividers, candlestick, and a carved oak leather navigator chair, no people
+[249|NARRATOR_TARGET_es|0.75] Dejas el mapa abierto y miras hacia la silla pesada de roble bajo el lado derecho de la mesa. Su asiento de cuero oscuro y su respaldo curvo brillan suave en la luz. Clavos dorados rodean todo el borde.
+[PAUSE|2.5]
+[250|NARRATOR_TARGET_es|0.75] Caminas con calma por la esquina de la mesa y apoyas una mano en la parte alta de la silla. La madera tallada es gruesa, lisa y algo tibia. Sus brazos curvos te invitan a descansar los pies.
+[PAUSE|2.5]
+[251|NARRATOR_TARGET_es|0.75] Corres la silla firme unos centímetros atrás sobre las tablas con un leve susurro de madera. El asiento queda entre el mapa abierto y las ventanas oscuras de atrás. Todo espera cerca de la mesa a tu alcance.
+[PAUSE|2.5]
+[252|NARRATOR_TARGET_es|0.75] Te sientas despacio en el cuero blando, relajas las piernas y apoyas la espalda en el respaldo curvo de roble. Tus brazos descansan en el borde fresco de la mesa mientras la lámpara sostiene arriba su luz dorada.
+[PAUSE|2.5]
+
+## BLOCK: PLOT_TARGET_2
+[253|NARRATOR_TARGET_es|0.75] Sentado ante la mesa grande, miras más allá del mapa los instrumentos de trabajo en el borde derecho. La luz cálida toca anillos de metal, cristal claro y madera oscura. Cada objeto espera ordenado en su sitio.
+[PAUSE|2.5]
+[IMAGE|05] First-person night view of a brass gimbaled compass inside an open green-lined cedarwood box beside a warm lantern, no people
+[254|NARRATOR_TARGET_es|0.75] Junto al codo derecho descansa una caja cuadrada de cedro con la tapa abierta hacia atrás. Adentro, tela verde guarda una brújula redonda sobre dos anillos de metal. Cuando el barco gira, el centro sigue nivelado como agua quieta.
+[PAUSE|2.5]
+[255|NARRATOR_TARGET_es|0.75] Te acercas al cristal y ves el papel pintado flotar dentro de su anillo sin ningún temblor. Puntos negros rodean una aguja fina de plata. Un leve reflejo de la lámpara pasa muy despacio sobre el vidrio.
+[PAUSE|2.5]
+[256|NARRATOR_TARGET_es|0.75] Tus dedos tocan suaves el borde fresco de cedro y miran la aguja oscura firme sobre su señal. Aunque la popa se mueve sobre las olas largas, esa punta de metal apunta al norte sin esfuerzo en la oscuridad.
+[PAUSE|2.5]
+[257|NARRATOR_TARGET_es|0.75] Al lado de la caja hay unas puntas curvas de metal que brillan suave en la luz cálida. Las tomas entre dos dedos y sientes la unión lisa abrirse con calma. El metal equilibrado parece ligero en tus nudillos.
+[PAUSE|2.5]
+[IMAGE|06] First-person night view of a tall oak and leather hourglass beside a hanging brass astrolabe on a wooden bulkhead, no people
+[258|NARRATOR_TARGET_es|0.75] Un poco más atrás se alza un reloj alto de arena con postes de roble y cuero oscuro. Arena clara descansa ya casi toda abajo en un pequeño cono blando. Un hilo muy fino sigue bajando sin ningún sonido.
+[PAUSE|2.5]
+[259|NARRATOR_TARGET_es|0.75] Tu mirada pasa a un disco pesado de metal colgado de una tira de cuero junto a un estante. Sus círculos grabados y puntas de estrellas atrapan brillos cálidos. Dos dedos sostienen el disco frío contra la pared.
+[PAUSE|2.5]
+[IMAGE|07] First-person night view of a green soapstone inkwell, white seabird quill in a wooden tray, and thick leather ship logbook on a dark mat, no people
+[260|NARRATOR_TARGET_es|0.75] De vuelta al frente de la mesa ves un tintero cuadrado tallado en piedra verde oscura. Su tapa pequeña de metal queda abierta sobre un círculo negro de líquido. La piedra tallada está fresca bajo tu dedo índice.
+[PAUSE|2.5]
+[261|NARRATOR_TARGET_es|0.75] Miras dentro del tintero abierto y ves el espejo quieto de la lámpara en la superficie negra. Ninguna onda rompe la tinta oscura y fría mientras el barco avanza calmo. Sube un olor suave a resina y madera.
+[PAUSE|2.5]
+[262|NARRATOR_TARGET_es|0.75] Sobre una bandeja de madera con surco junto a la piedra descansa una pluma larga y clara de ave marina. Sus bordes blancos hacen una curva limpia hacia la punta. Al rozar tu muñeca se siente casi sin peso.
+[PAUSE|2.5]
+[263|NARRATOR_TARGET_es|0.75] Levantas la pluma por su caña fina y la sostienes sin esfuerzo durante una respiración. La punta está limpia y seca tras la nota de la tarde. La dejas otra vez en el surco sin hacer ningún ruido.
+[PAUSE|2.5]
+[264|NARRATOR_TARGET_es|0.75] Al lado de la bandeja espera un bote redondo de metal con arena fina y tapa de pequeños agujeros. Junto a él hay un cuchillo pequeño y una tela seca doblada. Cada herramienta simple habla de calma diaria.
+[PAUSE|2.5]
+[265|NARRATOR_TARGET_es|0.75] Miras una vez más la pluma pálida sobre su surco de madera y ves su línea limpia bajo la vela. Hasta la brisa más leve apenas mueve el borde blanco y suave. Todo en la mesa espera tranquilo al alba.
+[PAUSE|2.5]
+[266|NARRATOR_TARGET_es|0.75] Justo a tu izquierda descansa un libro grueso de cuero sobre una tela oscura de lana. Los cierres de metal quedan sueltos a los lados para abrir plano las hojas. La tapa marrón se siente tibia bajo tu mano.
+[PAUSE|2.5]
+[267|NARRATOR_TARGET_es|0.75] Pasas despacio una hoja gruesa de papel desde la esquina y oyes un susurro seco entre tus manos. Filas ordenadas de fechas y vientos llenan el lado izquierdo. Enfrente, la página de mañana sigue lisa y limpia.
+[PAUSE|2.5]
+[268|NARRATOR_TARGET_es|0.75] Tus ojos se detienen en las líneas parejas escritas durante días de buen viento y cielo claro. Ninguna mancha apurada rompe el borde limpio. Leer esas notas tranquilas hace que todo el viaje parezca seguro, lento y medido.
+[PAUSE|2.5]
+[269|NARRATOR_TARGET_es|0.75] Dejas la palma ligera sobre la página blanca de la derecha y sientes la textura blanda del papel hecho a mano. El libro pesado descansa plano junto al mapa y la tinta. Queda abierto aquí bajo la luz dorada.
+[PAUSE|2.5]
+[270|NARRATOR_TARGET_es|0.75] Empujas apenas la silla de roble y te levantas sin prisa junto a la mesa grande. Tus piernas están descansadas al girar hacia la fila ancha de cristales de atrás. La noche azul espera justo detrás de la madera.
+[PAUSE|2.5]
+[271|NARRATOR_TARGET_es|0.75] Cruzas los últimos pasos hasta la pared del fondo y te detienes ante las ventanas inclinadas de popa. Marcos gruesos de roble sostienen muchos cristales pequeños sobre el mar. Bancos bajos de madera corren debajo del borde.
+[PAUSE|2.5]
+[IMAGE|08] First-person night view of slanted paned stern windows with one central casement open to a starry Caribbean sea, no people
+[272|NARRATOR_TARGET_es|0.75] Alzas la mano hacia un gancho pequeño de metal, sueltas una hoja del centro y la abres despacio hacia dentro. La noche abierta aparece delante de tu cara. La ventana está abierta y el aire con sal entra despacio.
+[PAUSE|2.5]
+[273|NARRATOR_TARGET_es|0.75] Apoyas ambos antebrazos en la madera ancha y respiras aire limpio de mar abierto, lejos de todo puerto. No hay polvo ni humo, solo aire tibio suavizado por la medianoche. Tu pecho sube y baja sin ningún esfuerzo.
+[PAUSE|2.5]
+[274|NARRATOR_TARGET_es|0.75] Bajo el marco inclinado, la madera tallada baja hacia el agua donde el timón corta la noche sin ruido. Miras abajo las dos líneas de espuma blanca que se abren detrás del barco sobre el mar casi negro.
+[PAUSE|2.5]
+[275|NARRATOR_TARGET_es|0.75] Un viento suave pasa parejo por tus mejillas y mueve apenas los puños de tus mangas. No trae frío ni golpes fuertes, sino aire continuo. Al oírlo rodear la madera de afuera, tus hombros sueltan toda tensión.
+[PAUSE|2.5]
+[276|NARRATOR_TARGET_es|0.75] Cierras los ojos unos segundos lentos para sentir esa brisa tibia del mar sobre tu cara. Detrás, la lámpara colgante sigue quieta en la cabina protegida. El viento es cálido y suave al ritmo parejo del agua abierta.
+[PAUSE|2.5]
+[IMAGE|09] First-person night view from the stern gallery looking down at pale foam wake and blue-green sea luminescence on dark water, no people
+[277|NARRATOR_TARGET_es|0.75] Abres los ojos y notas chispas suaves de azul y verde brillar hondo en la estela oscura bajo el timón. Pequeñas luces del mar suben girando despacio y se apagan en paz, seguidas enseguida por otro rastro bajo popa.
+[PAUSE|2.5]
+[278|NARRATOR_TARGET_es|0.75] Más allá de la espuma blanca, el mar ancho forma olas largas y oscuras con bordes de plata bajo las estrellas. Ninguna vela lejana ni isla rompe la línea lisa del fondo. Solo agua abierta rodea el barco en calma.
+[PAUSE|2.5]
+[279|NARRATOR_TARGET_es|0.75] Te inclinas un poco más sobre el borde liso de roble y miras una ola baja pasar en silencio bajo la popa. Su sonido blando se une al murmullo continuo del casco. Mirar el agua calma tus ojos cansados.
+[PAUSE|2.5]
+[280|NARRATOR_TARGET_es|0.75] Donde la luz débil de la cabina sale por la ventana abierta, pequeños reflejos dorados bailan un instante sobre el agua oscura. Más lejos, la luz de las estrellas toca las ondas suaves. El agua brilla en la oscuridad.
+[PAUSE|2.5]
+[281|NARRATOR_TARGET_es|0.75] Subes la mirada poco a poco desde el agua hacia la línea fina de plata donde el mar encuentra la noche. No hay nubes bajas y todo el cielo del sur queda limpio de este a oeste ante tus ojos.
+[PAUSE|2.5]
+[IMAGE|10] First-person night view from the stern window across dark ship rigging toward the calm ocean horizon and Milky Way starry sky, no people
+[282|NARRATOR_TARGET_es|0.75] Sobre las velas oscuras y la línea tenue de las cuerdas, el cielo abre una bóveda profunda de azul medianoche. Miles de puntos claros cubren todo lo alto con luz firme, haciendo que la cabina parezca tibia y segura.
+[PAUSE|2.5]
+[283|NARRATOR_TARGET_es|0.75] Cerca del borde sur, figuras de estrellas giran despacio sobre el mástil alto mientras luces conocidas esperan tras las cuerdas. Todo arriba se mueve tan lento que parece quieto. Una claridad fresca llena con calma tu mente.
+[PAUSE|2.5]
+[284|NARRATOR_TARGET_es|0.75] Apoyas la barbilla un momento sobre las manos cruzadas en la madera y miras la gran quietud de arriba. Ninguna luz de tierra compite con esa noche azul. El cielo es ancho y oscuro sobre la madera del barco.
+[PAUSE|2.5]
+[285|NARRATOR_TARGET_es|0.75] Eliges una estrella clara y firme sobre el borde derecho y la ves subir apenas cuando el barco baja suave. Luego vuelve tranquila detrás de una cuerda tensa de cáñamo, dejando un breve reflejo sobre una ola lejana.
+[PAUSE|2.5]
+[286|NARRATOR_TARGET_es|0.75] Alrededor de esa luz brillante, grupos de estrellas blancas y de oro pálido cubren la franja oscura del cielo. Brillan parejo sin parpadear duro, como luces lejanas sobre un puerto tranquilo. Tu mirada pasa sin esfuerzo entre ellas.
+[PAUSE|2.5]
+[287|NARRATOR_TARGET_es|0.75] Al oír el agua abajo mientras miras esas luces quietas arriba, el tiempo va más despacio en tu pecho. Nada pide acción esta noche. Cada estrella brilla en silencio y el cielo está en calma igual que la cabina.
+[PAUSE|2.5]
+[288|NARRATOR_TARGET_es|0.75] Te enderezas despacio del borde de roble y cierras la hoja de cristal hasta que el gancho entra suave en su sitio. La brisa baja ahora por las rendijas altas. Vuelves al cuarto dorado listo para descansar más hondo.
+[PAUSE|2.5]
+
+## BLOCK: PLOT_TARGET_3
+[289|NARRATOR_TARGET_es|0.75] Caminas con calma de vuelta hacia la mesa grande y sientes otra vez el calor suave de la cabina en tus hombros. El frescor del mar se funde en el aire dorado. Todo espera tranquilo bajo la lámpara colgante.
+[PAUSE|2.5]
+[290|NARRATOR_TARGET_es|0.75] De pie junto al libro abierto, levantas la tapa pesada de cuero sobre la página blanca y las hojas descansan con un suspiro blando. Aprietas los dos cierres de metal en su lugar hasta cerrar el libro por hoy.
+[PAUSE|2.5]
+[291|NARRATOR_TARGET_es|0.75] Colocas el libro cerrado en orden sobre la tela oscura junto al borde de la regla de madera. Al lado, la tapa pequeña del tintero de piedra baja con un clic leve. El libro está cerrado y hay silencio.
+[PAUSE|2.5]
+[292|NARRATOR_TARGET_es|0.75] Pasas la palma por la tapa de cedro de la brújula y dejas el cristal descubierto y la aguja sigue su guardia bajo la lámpara. Un brillo dorado toca el anillo en cada ola suave. Nada necesita cuidado.
+[PAUSE|2.5]
+[293|NARRATOR_TARGET_es|0.75] Miras hacia las vigas altas del techo y ves la lámpara pesada seguir su arco lento de un lado a otro. Cada vaivén sigue el ritmo largo de las olas debajo del casco. Tu respiración se vuelve más honda.
+[PAUSE|2.5]
+[294|NARRATOR_TARGET_es|0.75] Dentro del cristal de la lámpara, la vela alta baja casi a la mitad de su guardia nocturna. Un pequeño espejo de cera líquida dorada rodea la mecha curva, mientras gotas frías descansan al lado sobre la columna blanca.
+[PAUSE|2.5]
+[295|NARRATOR_TARGET_es|0.75] Alzas la mano a la rueda pequeña bajo el marco y recortas con calma la punta oscura de la mecha. La llama baja hasta ser una gota tranquila de miel dorada. La vela es pequeña ahora y muy suave.
+[PAUSE|2.5]
+[296|NARRATOR_TARGET_es|0.75] Bajo esta luz más baja, la madera de la mesa toma un tono marrón más profundo. El mapa claro pierde todo brillo fuerte y toma el color cálido de la almendra. Sombras suaves entran desde los armarios hacia el centro.
+[PAUSE|2.5]
+[297|NARRATOR_TARGET_es|0.75] Giras despacio hacia la pared derecha, donde un estante estrecho guarda pequeños libros del mar y un arco de metal. La luz baja deja las vigas de cedro medio en sombra. Tus pasos casi no suenan sobre las tablas.
+[PAUSE|2.5]
+[298|NARRATOR_TARGET_es|0.75] Apoyas el antebrazo contra un poste firme de roble junto a la pared y sientes respirar todo el barco bajo tu palma. Un sonido leve de madera cruza el suelo y se apaga como una cuna lenta en agua tranquila.
+[PAUSE|2.5]
+[299|NARRATOR_TARGET_es|0.75] Con una mano todavía sobre el poste sólido, notas lo grata que es la temperatura de la madera bajo tus dedos. Ni húmeda ni fría, guarda el calor del día en su veta. La madera es cálida, oscura y firme.
+[PAUSE|2.5]
+[300|NARRATOR_TARGET_es|0.75] Dejas caer el brazo a tu lado y descansas junto al banco bajo de madera bajo las ventanas de popa. Aunque están cerradas, puntos finos de estrellas brillan a través del vidrio ondulado y se juntan con la luz dorada.
+[PAUSE|2.5]
+[301|NARRATOR_TARGET_es|0.75] Miras por los cristales cuadrados oscuros una vez más antes de ir a la cama. La cinta blanca de la estela se pierde en el agua negra debajo de muchas constelaciones claras que avanzan en armonía con el casco.
+[PAUSE|2.5]
+[302|NARRATOR_TARGET_es|0.75] Te detienes una respiración lenta junto al marco y sientes el contraste tranquilo entre la madera cálida adentro y la gran noche afuera. La ventana muestra la noche y el cielo tiene muchas estrellas quietas sobre el mar.
+[PAUSE|2.5]
+[303|NARRATOR_TARGET_es|0.75] Giras suave lejos del cristal y miras atrás la mesa grande bajo poca luz de vela. Las cuatro pesas de metal brillan tenues sobre las esquinas del mapa. Tu mente está clara y lisa como la página cerrada.
+[PAUSE|2.5]
+[304|NARRATOR_TARGET_es|0.75] En el lado izquierdo en sombra cuelga una cortina gruesa de tela sobre anillos de madera junto a un rincón recogido. Detrás espera una cama estrecha entre dos vigas curvas fuera del viento. Das dos pasos lentos hacia allá.
+[PAUSE|2.5]
+[305|NARRATOR_TARGET_es|0.75] Te detienes junto al rincón de madera y escuchas el hondo silencio que llena ya todo el cuarto. Arriba de las vigas, hasta las cuerdas están quietas en el viento suave. No hay prisa aquí y hay calma en la cabina.
+[PAUSE|2.5]
+[IMAGE|11] First-person night view of a built-in wooden berth alcove with drawn linen curtain, white pillow, folded blanket, and unlit brass sconce, no people
+[306|NARRATOR_TARGET_es|0.75] Corres un poco más la cortina suave de lino por su barra lisa y ves la cama estrecha bajo una pequeña lámpara apagada. Sábanas blancas limpias y una manta doblada esperan en el colchón firme, todo sencillo y sereno.
+[PAUSE|2.5]
+[307|NARRATOR_TARGET_es|0.75] Sueltas tus botas pesadas junto al escalón bajo, las quitas una a una y las dejas en orden debajo de la cama. Las tablas frescas están lisas bajo los pies. Cuelgas tu abrigo en un gancho y quedas ligero.
+[PAUSE|2.5]
+[308|NARRATOR_TARGET_es|0.75] Te sientas suave en el borde de la cama y sientes el colchón firme ceder apenas bajo tu peso. Un borde bajo de madera guarda las sábanas y tablas de cedro cubren la pared. La cama es cómoda y huele bien.
+[PAUSE|2.5]
+[309|NARRATOR_TARGET_es|0.75] Subes con calma las piernas sobre la sábana limpia, estiras los tobillos hacia el fondo y dejas las pantorrillas sueltas. Tu espalda descansa pareja en el colchón firme y tu cabeza cae sobre la almohada fresca con un suspiro suave.
+[PAUSE|2.5]
+[310|NARRATOR_TARGET_es|0.75] Alcanzas hacia los pies la manta doblada de algodón y la subes despacio sobre tus rodillas y tu pecho. El tejido abierto es ligero en el aire tibio sin dar calor pesado. Acomodas una esquina suave bajo tu hombro.
+[PAUSE|2.5]
+[311|NARRATOR_TARGET_es|0.75] Acostado quieto bajo la tela, sientes cómo el vaivén suave del barco mece todo tu cuerpo en el rincón estrecho. Cuando el casco se inclina a un lado, la pared de cedro te sostiene y luego vuelves al centro nivelado.
+[PAUSE|2.5]
+[312|NARRATOR_TARGET_es|0.75] Tus dedos descansan en el borde cosido de la manta de algodón hasta quedar quietos. La tela toma pronto el calor de tu piel sin esfuerzo. La manta es suave y ligera y da un calor agradable mientras descansas.
+[PAUSE|2.5]
+[313|NARRATOR_TARGET_es|0.75] Con una oreja de lado sobre la almohada de plumas, el sonido del mar fuera del casco grueso es claro y parejo. Una cinta continua de agua pasa junto a las tablas bajas, sin golpes fuertes, solo un susurro paciente.
+[PAUSE|2.5]
+[314|NARRATOR_TARGET_es|0.75] De vez en cuando sube un sonido bajo desde la madera honda del fondo, dura medio segundo y vuelve al rumor del agua. Esa voz antigua suena tranquila, y el barco conoce bien su camino en la noche.
+[PAUSE|2.5]
+[315|NARRATOR_TARGET_es|0.75] Entrecierras los ojos en el rincón oscuro y escuchas el diálogo calmo entre las tablas de roble y las olas de afuera. Cada ola sube el barco y lo baja despacio. Escuchas el agua afuera en el mismo ritmo tranquilo.
+[PAUSE|2.5]
+[IMAGE|12] First-person night view from inside the curtained wooden berth looking out toward the swaying brass lantern, chart table, and stern windows, no people
+[316|NARRATOR_TARGET_es|0.75] Abres los ojos una última vez hacia el centro del cuarto y ves la lámpara de metal mecerse apenas sobre la mesa oscura. Su llama pequeña da solo un brillo pálido al mapa y al libro mientras sombras calmas llenan las esquinas.
+[PAUSE|2.5]
+[317|NARRATOR_TARGET_es|0.75] La cortina junto a la cama filtra esa luz dorada en una penumbra suave sobre tu almohada y tu manta. Nada brillante toca ya tus párpados. Solo una línea débil de oro marca el arco de la puerta y la silla quieta.
+[PAUSE|2.5]
+[318|NARRATOR_TARGET_es|0.75] Cierras por completo los párpados y sientes bajar detrás el calor lejano de la vela. Hasta los reflejos pálidos de las ventanas se apagan en sombra tranquila. La luz de la vela es baja y la sombra cubre el rincón.
+[PAUSE|2.5]
+[319|NARRATOR_TARGET_es|0.75] Una última brisa suave pasa por las rendijas altas, roza tu frente y trae el olor limpio del mar abierto. Pasa sobre la cortina de lino sin mover el calor recogido bajo la manta, dejando el aire calmo adentro.
+[PAUSE|2.5]
+[320|NARRATOR_TARGET_es|0.75] Tu boca se suelta, la lengua descansa suave y tus dedos se abren sobre el borde de algodón. Cada músculo pequeño alrededor de los ojos descansa mientras te hundes un poco más en el colchón. Nada queda por revisar hoy.
+[PAUSE|2.5]
+[321|NARRATOR_TARGET_es|0.75] Muy arriba, el viento constante llena las velas en silencio y guarda el rumbo sin voces. Aquí abajo en la cabina protegida, las horas corren sin fin en paz. El viento es muy suave y la noche avanza en silencio.
+[PAUSE|2.5]
+[322|NARRATOR_TARGET_es|0.75] Sientes el sube y baja lento de tu pecho seguir el giro suave del barco de madera y dejas ir cada pensamiento como espuma detrás del timón. Permaneces bien cuidado dentro de la cabina tibia sobre el agua oscura.
+[PAUSE|2.5]
+[323|NARRATOR_TARGET_es|0.75] El murmullo lejano de la estela baja aún más y se une a la quietud detrás de la cortina de lino. Luz de vela, cedro y sal del mar se vuelven una sola sensación amable que sostiene todo tu cuerpo en calma.
+[PAUSE|2.5]
+[324|NARRATOR_TARGET_es|0.75] Aquí en el centro de la noche tranquila del Caribe, la cabina de madera y el mar abierto descansan juntos en paz honda. Quédate aquí en ese ritmo suave bajo las estrellas y el roble firme. Todo está en calma.
+[PAUSE|2.5]
+
 ## PLAYLIST_SEQUENCE
 PLAY: ACT_1_THE_CABIN_DOOR, ACT_2_THE_CHART_TABLE, ACT_3_THE_INSTRUMENTS (mode=full, repeat=1)
 PLAY: ACT_4_THE_STERN_WINDOWS, ACT_5_THE_LANTERN_GLOW, ACT_6_THE_BERTH_AT_REST (mode=full, repeat=1)
 PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=full, repeat=1)
-PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.82, extra_pause=5.0, repeat=1)
+PLAY: PLOT_TARGET_1, PLOT_TARGET_2, PLOT_TARGET_3 (mode=full, speed_mult=0.82, repeat=1)
