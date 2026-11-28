@@ -22,6 +22,7 @@ if str(_SCRIPTS) not in sys.path:
 from isekai_config import load_isekai_settings, speech_pitch, speech_speed_bias
 
 SPEECH_RE = re.compile(r"^\[(\d+)\|([A-Za-z][A-Za-z0-9_]*)\|(\d+(?:\.\d+)?)\]\s+(\S.*?)\s*$")
+IMAGE_RE = re.compile(r"^\[IMAGE\|(\d+)\]\s+(\S.*?)\s*$", re.IGNORECASE)
 DETECT_RE = re.compile(r"^\[\d+\|[A-Za-z][A-Za-z0-9_]*\|\d+(?:\.\d+)?\]\s+\S", re.MULTILINE)
 PLAYLIST_RE = re.compile(r"^##[ \t]+PLAYLIST_SEQUENCE[ \t]*$", re.MULTILINE)
 BLOCK_RE = re.compile(r"^##[ \t]+BLOCK:[ \t]*(\S+)[ \t]*$")
@@ -70,6 +71,18 @@ class Pause:
 
 
 @dataclass(frozen=True)
+class ImageCue:
+    """Смена кадра в этом месте сценария. В озвучку не входит."""
+
+    image_id: str
+    prompt: str
+
+    @property
+    def seconds(self) -> float:
+        return 0.0
+
+
+@dataclass(frozen=True)
 class Play:
     block: str
     mode: str
@@ -81,11 +94,12 @@ class Play:
 
 @dataclass(frozen=True)
 class Step:
-    """Один шаг плана: речь (с множителем темпа) или тишина."""
+    """Один шаг плана: речь (с множителем темпа), тишина или смена кадра."""
 
     line: Line | None
     seconds: float
     speed_mult: float = 1.0
+    image_id: str | None = None
 
 
 def is_isekai_script(text: str) -> bool:
@@ -152,6 +166,10 @@ def parse_script(text: str) -> tuple[dict[str, list[Line | Pause]], list[Play]]:
                 Line(speech.group(1), speech.group(2), float(speech.group(3)), speech.group(4))
             )
             continue
+        image = IMAGE_RE.match(line)
+        if image:
+            blocks[current].append(ImageCue(f"{int(image.group(1)):02d}", image.group(2).strip()))
+            continue
         pause = PAUSE_RE.match(line)
         if pause:
             blocks[current].append(Pause(float(pause.group(1))))
@@ -192,6 +210,8 @@ def plan_for_play(blocks: dict[str, list[Line | Pause]], play: Play) -> list[Ste
                     steps.append(Step(item, 0.0, play.speed_mult))
                     if play.apply_full_extra and play.extra_pause > 0:
                         steps.append(Step(None, play.extra_pause))
+                elif isinstance(item, ImageCue):
+                    steps.append(Step(None, 0.0, play.speed_mult, item.image_id))
                 else:
                     steps.append(Step(None, item.seconds))
             continue
@@ -509,6 +529,8 @@ async def _render_plan(episode_dir: Path, plan: list[Step], output: Path) -> Pat
     parts: list[Path] = []
     for step in plan:
         if step.line is None:
+            if step.seconds <= 0:
+                continue
             parts.append(ensure_silence(cache, step.seconds))
         else:
             line = step.line

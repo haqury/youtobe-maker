@@ -83,6 +83,35 @@ def block_time_ranges(episode_dir: Path) -> list[dict]:
     return rows
 
 
+def image_switch_schedule(episode_dir: Path) -> list[tuple[float, str]]:
+    """Моменты смены кадра по плейлисту: (секунда, номер кадра '01'). Пусто, если меток нет."""
+    script = episode_dir / "script.md"
+    if not script.is_file():
+        return []
+    text = script.read_text(encoding="utf-8-sig")
+    blocks, plays = parse_script(text)
+    if not plays:
+        return []
+    if not any(getattr(item, "prompt", None) and getattr(item, "image_id", None) for items in blocks.values() for item in items):
+        return []
+    from isekai_config import load_isekai_settings, speech_pitch, speech_speed_bias
+
+    settings = load_isekai_settings(episode_dir)
+    bias = speech_speed_bias(settings)
+    pitch = speech_pitch(settings)
+    cache = episode_dir / "audio_cache"
+    voices: dict[str, str] = {}
+    cursor = 0.0
+    switches: list[tuple[float, str]] = []
+    for play in plays:
+        for step in plan_for_play(blocks, play):
+            image_id = getattr(step, "image_id", None)
+            if image_id:
+                switches.append((round(cursor, 3), str(image_id)))
+            cursor += _step_duration(step, cache, settings, bias, pitch, voices)
+    return switches
+
+
 @dataclass(frozen=True)
 class PlaylistPart:
     """Одна строка PLAY: … в script.md — ровно как в PLAYLIST_SEQUENCE."""

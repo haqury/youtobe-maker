@@ -57,6 +57,14 @@ globs: ["templates/template_isekai_sleep/**", "channels/**"]
 
 В `RECALL` допустим второй целевой слот `NARRATOR_TARGET_<язык>_repeat`. Это медленный повтор той же фразы, голос тот же `MENTOR_TARGET`. В `mode=target_only` слоты с суффиксом `_repeat` не озвучиваются.
 
+## Смена кадра
+
+В том месте блока, где картинка должна смениться, одна строка:
+
+`[IMAGE|01] A narrow stone lane at night, rain on the roofs, a wooden door under a short eave, warm light in a high window`
+
+Номер — файл `images/01.jpg`. Текст — что нарисовано, по-английски, без людей и текста в кадре. Строка не озвучивается. Пока нет следующей метки, на экране остаётся этот кадр. В каждом проходе, где картинка меняется (`ACT`, `RECALL`, `PLOT_TARGET`), метки стоят в своих блоках. Сборка в момент смены растворяет кадры через прозрачность 1.5 с. `generate_images.py` берёт описания из этих строк.
+
 ## Четыре фазы
 
 Сюжет и порядок сцен берутся только из `# BRIEF:` эпизода. В `ACT_1`–`ACT_6` красота только в `NARRATOR_NATIVE`: связные предложения, свет, звук, запах, фактура места. `NARRATOR_TARGET` — A1: настоящее время, короткая мысль в актах 1–3, 1–2 предложения в актах 4–6; без придаточных, прошедшего и сослагательного. **Испанский:** без роботического «Tú» в каждой строке — см. QA. **Словарь:** все ключевые слова из `Слова:` в `# BRIEF:` должны появиться в `NARRATOR_TARGET` в сюжетных актах. Внутри реплик нет других скобок, HTML и markdown.
@@ -128,6 +136,7 @@ globs: ["templates/template_isekai_sleep/**", "channels/**"]
     [PAUSE|3.5]
     [001|NARRATOR_NATIVE_en|0.85] The nearest surface is cool under your hand. A small sound repeats in the same place. The air does not hurry. You stay with that sound.
     [PAUSE|1.5]
+    [IMAGE|01] Cool stone under a hand at night, one small repeating sound, dim air, no people
     [002|NARRATOR_NATIVE_en|0.85] The same place is still around you. The light is lower than before. A quiet texture meets your hand.
     [PAUSE|1.5]
     [007|NARRATOR_NATIVE_en|0.85] Rain gathers in the seam between two stones and runs toward the gutter in a thin line.

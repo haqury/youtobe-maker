@@ -53,6 +53,7 @@ WIDTH, HEIGHT, FPS = 1280, 720, 24
 CLIP_SEC = 12
 ZOOM_END = 1.07
 XFADE_SEC = 0.5
+IMAGE_FADE_SEC = 1.5
 BATCH_SIZE = 6
 AMBIENT_VOLUME = 0.08
 DURATION_RE = re.compile(r"Duration:\s*(\d+):(\d+):(\d+(?:\.\d+)?)")
@@ -246,6 +247,115 @@ def list_still_images(folder: Path) -> list[Path]:
         if match:
             by_stem.setdefault(match.group(1), path)
     return [by_stem[key] for key in sorted(by_stem)]
+
+
+def _stem_index(images: list[Path], stem: str) -> int | None:
+    key = f"{int(stem):02d}"
+    for index, path in enumerate(images):
+        match = FRAME_STEM_RE.match(path.name)
+        if match and match.group(1) == key:
+            return index
+    return None
+
+
+def plan_fade_batches(
+    t0: float,
+    t1: float,
+    image_at,
+) -> list[dict]:
+    """Клипы 12 с. На смене кадра растворение IMAGE_FADE_SEC, иначе короткий xfade.
+
+    Следующий batch начинается на том же кадре, которым закончился предыдущий,
+    чтобы склейка файлов не резала смену картинки.
+    """
+    batches: list[dict] = []
+    t = float(t0)
+    guard = 0
+    while t < t1 - 0.2 and guard < 20000:
+        guard += 1
+        starts = [t]
+        imgs = [int(image_at(min(t, t1 - 0.01)))]
+        fades: list[float] = []
+        while len(imgs) < BATCH_SIZE:
+            prev = starts[-1]
+            short_at = prev + CLIP_SEC - XFADE_SEC
+            long_at = prev + CLIP_SEC - IMAGE_FADE_SEC
+            if short_at >= t1 - 0.05:
+                break
+            probe_long = min(max(long_at, prev + 0.2), t1 - 0.01)
+            probe_short = min(short_at, t1 - 0.01)
+            img_long = int(image_at(probe_long))
+            img_short = int(image_at(probe_short))
+            if img_long != imgs[-1] or img_short != imgs[-1]:
+                fade = IMAGE_FADE_SEC
+                nxt = prev + CLIP_SEC - fade
+                img = int(image_at(min(nxt, t1 - 0.01)))
+                if img == imgs[-1]:
+                    fade = XFADE_SEC
+                    nxt = short_at
+                    img = img_short
+            else:
+                fade = XFADE_SEC
+                nxt = short_at
+                img = img_short
+            if nxt <= prev + 0.2:
+                break
+            fades.append(fade)
+            imgs.append(img)
+            starts.append(nxt)
+            if nxt >= t1 - 0.05:
+                break
+        if len(imgs) == BATCH_SIZE:
+            pending_at = starts[-1] + CLIP_SEC - XFADE_SEC
+            if pending_at < t1 - 0.05:
+                pending = int(image_at(min(pending_at, t1 - 0.01)))
+                if pending != imgs[-1] and len(starts) >= 2:
+                    imgs[-1] = pending
+                    fades[-1] = IMAGE_FADE_SEC
+                    starts[-1] = starts[-2] + CLIP_SEC - IMAGE_FADE_SEC
+        dur = len(imgs) * CLIP_SEC - sum(fades)
+        if dur <= 0.2:
+            break
+        batches.append(
+            {
+                "start": starts[0],
+                "end": starts[0] + dur,
+                "imgs": imgs,
+                "fades": fades,
+            }
+        )
+        t = starts[0] + dur
+    return batches
+
+
+def image_at_from_schedule(images: list[Path], switches: list[tuple[float, str]]):
+    """Функция секунда → индекс файла. Нет метки — None (старый круг кадров)."""
+    if not switches:
+        return None
+    by_stem: dict[str, int] = {}
+    for index, path in enumerate(images):
+        match = FRAME_STEM_RE.match(path.name)
+        if match:
+            by_stem[match.group(1)] = index
+    missing: set[str] = set()
+
+    def image_at(t: float) -> int:
+        stem = switches[0][1]
+        for ts, image_id in switches:
+            if t + 0.02 >= ts:
+                stem = image_id
+            else:
+                break
+        key = f"{int(stem):02d}"
+        found = by_stem.get(key)
+        if found is None:
+            if key not in missing:
+                missing.add(key)
+                print(f"Кадр {key} из сценария не найден в images/, беру первый файл.")
+            return 0
+        return found
+
+    return image_at
 
 
 def _ambient_for(episode_dir: Path) -> Path | None:
@@ -450,8 +560,9 @@ def encode_batch(
     overlay_opacity: float = 0.22,
     keyframe_at: float | None = None,
     overlays: list[OverlayLayerSpec] | tuple[OverlayLayerSpec, ...] | None = None,
+    fades: list[float] | None = None,
 ) -> None:
-    """До 6 клипов с xfade 0.5 с в один batch (без O(n^2) пере-кодирования)."""
+    """До 6 клипов. Смена картинки — растворение 1.5 с, тот же кадр — 0.5 с."""
     fps = max(1, int(fps))
     args: list[str] = []
     for clip in clips:
@@ -459,11 +570,17 @@ def encode_batch(
     prep = [f"[{i}:v]settb=AVTB,fps={fps},format=yuv420p[p{i}]" for i in range(len(clips))]
     chain: list[str] = []
     last = "p0"
+    fades = list(fades) if fades is not None else [XFADE_SEC] * (len(clips) - 1)
+    cursor = 0.0
     for i in range(1, len(clips)):
-        offset = i * (CLIP_SEC - XFADE_SEC)
+        fade = min(CLIP_SEC - 0.2, max(0.2, float(fades[i - 1] if i - 1 < len(fades) else XFADE_SEC)))
+        offset = cursor + CLIP_SEC - fade
         out = f"x{i}"
-        chain.append(f"[{last}][p{i}]xfade=transition=fade:duration={XFADE_SEC}:offset={offset:.3f}[{out}]")
+        chain.append(
+            f"[{last}][p{i}]xfade=transition=fade:duration={fade:.3f}:offset={offset:.3f}[{out}]"
+        )
         last = out
+        cursor = offset
     graph = ";".join(prep + chain)
     if len(clips) == 1:
         graph = prep[0].replace("[p0]", "[x0]")
@@ -735,8 +852,16 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
         emit_progress(index, total_steps, f"Клип {index}/{len(images)}: {image.name}")
         _ensure_clip(cache, image, 0, fps_start)
 
+    from isekai_story_blocks import image_switch_schedule
+
+    image_at = image_at_from_schedule(images, image_switch_schedule(episode_dir))
+    planned = plan_fade_batches(0.0, total, image_at) if image_at else None
     batch_len = BATCH_SIZE * CLIP_SEC - (BATCH_SIZE - 1) * XFADE_SEC
-    batch_count = max(1, math.ceil(total / batch_len))
+    batch_count = len(planned) if planned else max(1, math.ceil(total / batch_len))
+    if planned:
+        print(
+            f"Кадры по [IMAGE] в сценарии: растворение {IMAGE_FADE_SEC:.1f} с при смене картинки."
+        )
     ov_schedule = (
         pick_batch_overlay_variant(
             batch_count,
@@ -757,17 +882,26 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
     dim_kw: dict = {}
     emit_progress(len(images) + 1, total_steps, f"Batch xfade (всего {batch_count})")
     for batch in range(batch_count):
-        start_t = batch * batch_len
-        end_t = min(total, start_t + batch_len)
+        spec = planned[batch] if planned else None
+        start_t = spec["start"] if spec else batch * batch_len
+        end_t = min(total, spec["end"] if spec else start_t + batch_len)
+        this_len = (spec["end"] - spec["start"]) if spec else batch_len
         batch_fps = fps_at(start_t, total, fps_start, fps_end, fps_every)
         brightness = 1.0
         ramp: tuple[float, float, float] | None = None
         paths: list[Path] = []
         slots: list[tuple[int, int, int]] = []
-        for k in range(BATCH_SIZE):
-            occ = batch * BATCH_SIZE + k
-            img_i = occ % len(images)
-            variant = 0
+        img_list = spec["imgs"] if spec else None
+        fade_list = spec["fades"] if spec else None
+        count = len(img_list) if img_list else BATCH_SIZE
+        for k in range(count):
+            if img_list:
+                img_i = img_list[k]
+                variant = 0
+            else:
+                occ = batch * BATCH_SIZE + k
+                img_i = occ % len(images)
+                variant = 0
             slots.append((img_i, variant, batch_fps))
             paths.append(_ensure_clip(cache, images[img_i], variant, batch_fps))
         if dim_start is not None:
@@ -777,7 +911,7 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
                 brightness = (b0 + b1) / 2.0
                 key = tuple(slots) + (round(brightness, 2),)
             else:
-                ramp = (b0, b1, batch_len)
+                ramp = (b0, b1, this_len)
                 key = tuple(slots) + ("ramp", round(b0, 2), round(b1, 2))
         else:
             key = tuple(slots)
@@ -787,7 +921,7 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
             batch_overlays = ov_pool[ov_idx]
             key = key + ("ov_v", ov_idx, round(overlay_opacity, 2))
         keyframe_at: float | None = None
-        if intro_head is not None and start_t <= intro_head < start_t + batch_len:
+        if intro_head is not None and start_t <= intro_head < start_t + this_len:
             keyframe_at = intro_head - start_t
             key = key + ("kf", round(keyframe_at, 3))
         if key not in unique:
@@ -801,6 +935,7 @@ def build_long_video_stage(plan: LongBuildPlan, story_slice: StorySlice | None =
                 timeline_fps=fps_start,
                 keyframe_at=keyframe_at,
                 overlays=batch_overlays,
+                fades=fade_list,
             )
             unique[key] = target
         sequence.append(unique[key])
@@ -926,7 +1061,11 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
     )
     batch_len = BATCH_SIZE * CLIP_SEC - (BATCH_SIZE - 1) * XFADE_SEC
     span = t1 - t0
-    batch_count = max(1, math.ceil(span / batch_len))
+    from isekai_story_blocks import image_switch_schedule
+
+    image_at = image_at_from_schedule(images, image_switch_schedule(episode_dir))
+    planned = plan_fade_batches(t0, t1, image_at) if image_at else None
+    batch_count = len(planned) if planned else max(1, math.ceil(span / batch_len))
     dim_start = dim_start_for(
         duration,
         dim_during_speech=tail.dim_during_speech,
@@ -953,25 +1092,34 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
     sequence: list[Path] = []
     global_batch = int(t0 // batch_len)
     for batch in range(batch_count):
-        start_t = t0 + batch * batch_len
-        end_t = min(t1, start_t + batch_len)
+        spec = planned[batch] if planned else None
+        start_t = spec["start"] if spec else t0 + batch * batch_len
+        end_t = min(t1, spec["end"] if spec else start_t + batch_len)
+        this_len = (spec["end"] - spec["start"]) if spec else batch_len
         batch_fps = fps_at(start_t, t1, fps_start, fps_end, fps_every)
         b0 = brightness_at(start_t, dim_start, **dim_kw)
         b1 = brightness_at(end_t, dim_start, **dim_kw)
         paths: list[Path] = []
         slots: list[tuple[int, int, int]] = []
         ramp: tuple[float, float, float] | None = None
-        for k in range(BATCH_SIZE):
-            occ = global_batch + batch * BATCH_SIZE + k
-            img_i = occ % len(images)
-            variant = (occ // len(images)) % 4
+        img_list = spec["imgs"] if spec else None
+        fade_list = spec["fades"] if spec else None
+        count = len(img_list) if img_list else BATCH_SIZE
+        for k in range(count):
+            if img_list:
+                img_i = img_list[k]
+                variant = 0
+            else:
+                occ = global_batch + batch * BATCH_SIZE + k
+                img_i = occ % len(images)
+                variant = (occ // len(images)) % 4
             slots.append((img_i, variant, batch_fps))
             paths.append(_ensure_clip(cache, images[img_i], variant, batch_fps))
         if abs(b0 - b1) < 0.03:
             brightness = (b0 + b1) / 2.0
             key = tuple(slots) + (round(brightness, 2),)
         else:
-            ramp = (b0, b1, batch_len)
+            ramp = (b0, b1, this_len)
             key = tuple(slots) + ("ramp", round(b0, 2), round(b1, 2))
         if ov_pool:
             ov_idx = ov_schedule[batch]
@@ -989,6 +1137,7 @@ def build_tail_video_stage(plan: LongBuildPlan) -> Path | None:
                 batch_fps,
                 timeline_fps=fps_start,
                 overlays=batch_overlays,
+                fades=fade_list,
             )
             unique[key] = target
         sequence.append(unique[key])

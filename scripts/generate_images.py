@@ -155,6 +155,26 @@ def extract_prompts(text: str) -> list[str]:
     return extract_prompts_from_blob(text)
 
 
+def load_script_image_prompts(script_path: Path) -> list[str]:
+    """Описания [IMAGE|NN] из script.md. Позиция в списке = номер кадра минус 1."""
+    if not script_path.is_file():
+        return []
+    found: dict[int, str] = {}
+    for raw in script_path.read_text(encoding="utf-8-sig").splitlines():
+        match = re.match(r"^\[IMAGE\|(\d+)\]\s+(\S.*?)\s*$", raw.strip(), re.IGNORECASE)
+        if not match:
+            continue
+        number = int(match.group(1))
+        if number > 0 and number not in found:
+            found[number] = match.group(2).strip()
+    if not found:
+        return []
+    prompts = [""] * max(found)
+    for number, text in found.items():
+        prompts[number - 1] = text
+    return prompts
+
+
 def load_visual_prompts(prompts_path: Path, *, rewrite: bool = True) -> list[str]:
     raw = prompts_path.read_text(encoding="utf-8-sig")
     prompts = extract_prompts(raw)
@@ -645,14 +665,19 @@ def regenerate_flagged_images(
 
 
 def generate(episode_dir: Path) -> int:
+    script_prompts = load_script_image_prompts(episode_dir / "script.md")
     prompts_path = episode_dir / "visual_prompts.md"
-    if not prompts_path.is_file():
-        raise FileNotFoundError(f"Нет файла: {prompts_path}")
-    prompts = load_visual_prompts(prompts_path)
-    if not prompts:
-        raise RuntimeError(
-            "В visual_prompts.md нет промптов. Нужна строка вида: PROMPT: ..."
-        )
+    if script_prompts and any(item.strip() for item in script_prompts):
+        prompts = script_prompts
+        print(f"Кадры из [IMAGE] в script.md: {sum(1 for item in prompts if item.strip())} описаний.")
+    else:
+        if not prompts_path.is_file():
+            raise FileNotFoundError(f"Нет файла: {prompts_path}")
+        prompts = load_visual_prompts(prompts_path)
+        if not prompts:
+            raise RuntimeError(
+                "В visual_prompts.md нет промптов. Нужна строка вида: PROMPT: ..."
+            )
 
     image_dir = episode_dir / "images"
     image_dir.mkdir(parents=True, exist_ok=True)
@@ -704,6 +729,8 @@ def generate(episode_dir: Path) -> int:
     emit_progress(0, total, "Подготовка генерации кадров")
     try:
         for number, prompt in enumerate(prompts, start=1):
+            if not str(prompt).strip():
+                continue
             destination = image_dir / f"{number:02d}.jpg"
             stem = f"{number:02d}"
             emit_progress(number, total, f"Кадр {stem}.jpg")
