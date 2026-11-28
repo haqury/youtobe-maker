@@ -2,170 +2,179 @@
 # TARGET_LANG: es
 # NATIVE_LANG: en
 # BRIEF: Римская вилла в Помпеях во время ночного дождя, атриум и бассейн имплювий. Факт: дождевую воду собирали через отверстие в крыше в подземную цистерну. Слова: дом, дождь, вода, крыша, сад, тишина, ночь.
-# Оценка хронометража: фаза 1 ~28 мин, фаза 2 ~29 мин, фаза 3 ~105 мин, фаза 4 ~44 мин чистого испанского без повтора, речь ~206 мин. Остаток до 600 минут — тихий дождь на сборке.
+# Оценка хронометража: фаза 1 ~29 мин, фаза 2 ~30 мин, фаза 3 ~108 мин, фаза 4 ~45 мин, речь ~212 мин. Остаток до 600 мин — тихий дождь на сборке.
 
 ## BLOCK: ACT_1_NIGHT_RAIN
-[000|NARRATOR_NATIVE_en|0.88] Let the day slip from your shoulders, and let your hands rest open. Nothing you did today needs you now. The night can be slow.
+[000|NARRATOR_NATIVE_en|0.88] Let the day slip from your shoulders, and let your hands rest open. Nothing you did today needs you now. The night can keep its own slow pace while you simply listen.
 [PAUSE|3.5]
-[000|NARRATOR_NATIVE_en_scene|0.88] Warm rain finds the stone street of Pompeii, and the air smells of wet dust and bay. Water ticks in the dark joints of the paving.
+[000|NARRATOR_NATIVE_en_scene|0.88] Warm storm rain falls over a quiet stone street in Pompeii, and the night air smells of wet basalt, dust, and crushed bay leaves. Water gathers in the dark seams between the paving blocks.
 [PAUSE|4.0]
-[000|NARRATOR_NATIVE_en_lantern|0.88] Most of the night stays in English, and now and then a short Spanish phrase passes through, easy and slow. You can let the words arrive without holding them.
+[000|NARRATOR_NATIVE_en_lantern|0.88] Most of the night stays in English, and every so often a calm Spanish phrase passes by, slow and easy. There is no lesson here and nothing to memorize, so you can simply stay in the story.
 [PAUSE|3.5]
-[001|NARRATOR_NATIVE_en|0.85] You are in the rain, and the rain is warm on your hair. The street stones are dark, close-fitted, and slick under your feet. Water runs along the raised edge of the walk and keeps to the middle of the road. A house lamp burns a little way ahead and does not flicker. You let the first minute be only that.
+[IMAGE|01] First-person night view of a wet basalt street in Pompeii, warm rain, a small oil lamp in a doorway ahead, no people
+[001|NARRATOR_NATIVE_en|0.85] You stand in warm night rain on a quiet basalt street in Pompeii while drops tap lightly against your hair and collar. The dark volcanic blocks fit tightly together, polished slick under your soles. Rainwater gathers along the raised stone curbs and runs down the center of the roadway. Far ahead, a small house lamp burns steadily inside a doorway.
 [PAUSE|1.5]
 [001|NARRATOR_TARGET_es|0.78] La noche trae lluvia cálida.
 [PAUSE|1.5]
 [001|NARRATOR_NATIVE_en_translate|0.85] The night brings warm rain.
 [PAUSE|2.0]
-[002|NARRATOR_NATIVE_en|0.85] The paving is a patchwork of large blocks, each one a slightly different grey. Rain gathers in the seams and draws thin bright lines toward the gutter. Your foot prefers the crown of the stone, where the water is thinnest. The sound of it is low and near the ground. The lamp stays the same size for a while.
+[002|NARRATOR_NATIVE_en|0.85] Looking down at the paving, you see a patchwork of wide grey stones, each block shaped slightly differently by old wheel tracks. Rainwater fills the narrow seams and draws thin silver threads toward the gutter. Your sandals settle onto the higher crown of each block where the surface holds less flow. Around your ankles, the sound stays low and gentle.
 [PAUSE|1.5]
-[003|NARRATOR_NATIVE_en|0.85] Wheel ruts hold a finger of rain and shine like two dark ribbons. You stay on the sidewalk, above them. The curb is high enough that the flow does not reach your ankle. A bay leaf rides one rut and turns slowly. You watch it pass and keep your own pace.
+[003|NARRATOR_NATIVE_en|0.85] Deep wagon ruts hold a finger of dark rainwater and gleam like two quiet ribbons along the stone lane. You stay comfortably on the raised sidewalk above the stream. The stone curb rises high enough that passing water never touches the edge of your sandals. One fallen bay leaf floats inside a rut, turning once before drifting out of sight.
 [PAUSE|1.5]
-[004|NARRATOR_NATIVE_en|0.85] Flat blocks cross the street from walk to walk, set so a person can stay out of the stream. You step onto the first. Rain taps the stone beside your foot and jumps. The next block is one easy stride away. The house lamp does not move while you cross.
+[IMAGE|02] First-person view of raised stepping stones across a rainy street, water in the ruts, no people
+[004|NARRATOR_NATIVE_en|0.85] Ahead, tall flat stepping stones span the roadway from sidewalk to sidewalk so walkers can cross without wading through the gutter. You lift your foot cleanly onto the nearest stone block. Raindrops ping against the flat top beside your toes and bounce away in tiny beads. The next crossing stone waits one easy stride away under the steady doorway lamp.
 [PAUSE|1.5]
-[005|NARRATOR_NATIVE_en|0.85] On the far walk the plaster wall is warm under its wet skin, the day's heat still in it. Your sleeve brushes the surface and comes away cool. A faded red band runs along the wall at shoulder height. Rain darkens the color and then lets it fade again. The street begins to narrow.
+[005|NARRATOR_NATIVE_en|0.85] On the opposite sidewalk, the stuccoed house wall still holds a mild pocket of daytime warmth beneath its wet surface. Your sleeve brushes lightly along the plaster and feels cool against your wrist. At shoulder height runs a faded band of Roman red ochre, darkened briefly wherever rainwater streaks downward. Gradually, the shadowed street begins to narrow ahead.
 [PAUSE|1.5]
-[006|NARRATOR_NATIVE_en|0.85] A shuttered shop sits under a deep overhang, its jars stacked dry in the shadow. Rain leaves the lip of that roof in one steady thread. The thread breaks on the paving behind you with a small bright sound. You do not stop to count the jars. The lamp ahead is larger by a step.
+[006|NARRATOR_NATIVE_en|0.85] A shuttered corner shop sits tucked beneath a deep tiled overhang, its clay storage jars kept completely dry in the dark recess. Rain slides from the lip of those roof tiles in one thin, unbroken curtain. Behind your heels, the curtain breaks against the basalt stones in a soft steady murmur. Ahead, the doorway lamp shines a little brighter now.
 [PAUSE|1.5]
-[007|NARRATOR_NATIVE_en|0.85] At the corner a stone basin takes a pipe of rain and spills the extra into the street. The water in the basin is dark and moving. You pass it. The smell there is wet stone and a little iron. Then the street is only rain again, and the house is closer.
+[007|NARRATOR_NATIVE_en|0.85] At the corner stands a weathered stone street fountain catching a spout of rainwater and spilling the extra cleanly into the gutter. The water inside the square basin looks dark, deep, and calm despite the steady tapping above. Passing beside it, you smell wet limestone mixed faintly with cool iron. Soon only the warm rain remains around your steps.
 [PAUSE|1.5]
-[007|NARRATOR_TARGET_es|0.78] El agua es fría.
+[007|NARRATOR_TARGET_es|0.78] El agua está fría.
 [PAUSE|1.5]
 [007|NARRATOR_NATIVE_en_translate|0.85] The water is cold.
 [PAUSE|2.0]
-[008|NARRATOR_NATIVE_en|0.85] The sky is one low cloud, with no moon and no edge. Thunder stays far enough that it is only a soft change in the air, not a crack. Your shoulders carry a thin weight of water. The weight is even, and you stop noticing it. What you notice is the lamp.
+[008|NARRATOR_NATIVE_en|0.85] Above the rooftops, the night sky forms one broad sheet of soft cloud without moonlight or sharp edges. Distant thunder moves once behind the dark hills, more like a quiet shift in air pressure than a sound. Your shoulders hold only a light, even sheen of warm rainwater. Nothing pulls at your pace while the small lamp waits ahead.
 [PAUSE|1.5]
-[009|NARRATOR_NATIVE_en|0.85] A wooden shutter ticks once in a draft and then rests. The tick is the only sharp sound on the street, and after it the rain seems rounder. You pass the shutter, and the smell of dry wood leaks out for a moment before the wet dust returns. The house lamp is a little nearer. Your pace stays even.
+[009|NARRATOR_NATIVE_en|0.85] Along the upper wall of an empty house, a wooden shutter taps once in a passing breeze and settles still again. That brief wood note makes the surrounding rain sound rounder and softer by comparison. For two paces you catch the dry scent of cypress planks leaking from behind the sill. Then wet stone returns, and the villa stands nearby.
 [PAUSE|1.5]
-[010|NARRATOR_NATIVE_en|0.85] The house shows itself as a plain front, taller than the shops, with a door of dark wood. The lamp sits in a niche beside the door, a small oil flame under a clay lip. Rain beads on the wood and runs to the threshold. The threshold is one step up from the flowing street. You are near enough to feel the flame's small heat on your cheek.
+[IMAGE|03] First-person view of a tall wooden house door and a niche lamp, rain on the threshold, no people
+[010|NARRATOR_NATIVE_en|0.85] The villa shows a quiet, plain facade taller than the nearby shops, centered around a tall door of dark seasoned wood. Beside the frame, an oil lamp burns warmly inside a shallow wall niche sheltered under terracotta tiles. Raindrops bead down the dark timber panels and run off the stone threshold. You step up from the street into gentle warmth.
 [PAUSE|1.5]
-[011|NARRATOR_NATIVE_en|0.85] A bronze ring hangs on the door, cold under your fingers and then only metal. You do not need to pull hard, and the door gives inward on a quiet hinge. Warm air comes out and meets the rain on your face. Under that air is a green smell, leaves somewhere inside. The street stays loud at your heels.
+[011|NARRATOR_NATIVE_en|0.85] A heavy bronze ring hangs at the center of the dark door, cool beneath your fingers for a heartbeat before warming quickly. Without needing strength, you press the door inward on quiet iron pivots. Dry, mild air drifts out from the house to meet the rain on your cheeks. Beneath that warmth rises the clean green scent of garden leaves.
 [PAUSE|1.5]
 [011|NARRATOR_TARGET_es|0.78] Tocas la puerta de la casa.
 [PAUSE|1.5]
 [011|NARRATOR_NATIVE_en_translate|0.85] You touch the door of the house.
 [PAUSE|2.0]
-[012|NARRATOR_NATIVE_en|0.85] You step up, and the lintel takes the rain off your head. Your feet are still wet. The corridor inside is dim, paved with small pale stones, and it runs straight. At the far end a softer dark shows, broken by leaves. You let the door rest almost shut behind you.
+[012|NARRATOR_NATIVE_en|0.85] Stepping over the raised stone threshold, you pass beneath the wide timber lintel and out of the rain altogether. Your sandals remain damp against a straight entrance corridor paved in small, pale limestone chips. Far down the dim passage, shadows soften around a glimpse of wet greenery. Letting the street stay outside, you push the tall door nearly shut.
 [PAUSE|1.5]
-[013|NARRATOR_NATIVE_en|0.85] The corridor holds the last of the street's noise and thins it. Your steps sound closer here, one and then another, on the pale stones. A painted border of leaves runs at knee height, worn soft by time and by the low light, and you do not study it. The green smell grows as you walk. Water from your hem taps the floor in a small, even line.
+[013|NARRATOR_NATIVE_en|0.85] Inside the thick stone passage, the roar of the street rain thins down to a faint, distant hush. Each slow footstep sounds clearer on the pale mosaic floor without ever echoing sharply. Along both walls, a painted border of green vines runs quietly at knee height through the dimness. Ahead, the herbal scent of damp foliage grows deeper with every step.
 [PAUSE|1.5]
-[014|NARRATOR_NATIVE_en|0.85] Halfway along, a side opening lets in a slice of rainy air and then closes again as you pass. The slice smells of wet plaster. Your hand trails the wall and finds it dry. The lamp from the street is gone. A different, warmer light is waiting past the garden.
+[014|NARRATOR_NATIVE_en|0.85] Halfway down the entrance hall, a narrow side opening lets in one brief thread of cool rain air before passing out of sight. Trailing your fingertips along the plaster wall, you find the painted lime completely dry and smooth. Behind you, the street niche lamp disappears from view. Ahead beyond the open leaves waits a softer, golden glow.
 [PAUSE|1.5]
-[015|NARRATOR_NATIVE_en|0.85] You hear the rain change from the street's spread hiss into leaves taking drops, a softer and more broken sound. The corridor ends in a covered walk. Beyond the columns a small garden drinks the night. Your shoulder brushes the last wall as the walk opens. You slow without deciding to, and the new sound comes closer with each step.
+[IMAGE|04] First-person view of a small Roman garden in night rain, rosemary and bay under a covered walk, no people
+[015|NARRATOR_NATIVE_en|0.85] Before you reach the end, the sound of rain changes from the street's steady hiss into softer drops tapping across living leaves. The dim passage opens onto a sheltered colonnade wrapping around a small open garden. Your shoulder clears the plaster corner as cool herbal air greets your forehead. Every unhurried step draws that quiet green sound closer.
 [PAUSE|1.5]
-[016|NARRATOR_NATIVE_en|0.85] Your eyes adjust, and the garden is not a blur. It is paths, pots, and a roof that keeps a dry strip for your feet. The house around it is quiet in the way of thick walls, with no voice, only water and leaves. You step out of the corridor and under the walk. The dry strip takes your wet shoes without a splash.
+[016|NARRATOR_NATIVE_en|0.85] As your eyes settle into the dim light, the little courtyard reveals narrow gravel paths, clay pots, and a tiled roof keeping a dry walkway for your feet. Thick villa walls shelter the entire garden from wind, leaving only rainwater and stillness. You step out of the hallway onto the protected paving. Dry limestone receives your damp sandals without a splash.
 [PAUSE|1.5]
-[017|NARRATOR_NATIVE_en|0.85] The first column is cool and pale where a far lamp reaches it. Rain freckles the open bed and misses the strip where you stand. Rosemary brushes your sleeve and leaves a clean scent on the wet cloth. You are inside the villa now, with the street only a rumor behind the door. The covered walk waits, dry under your feet.
+[017|NARRATOR_NATIVE_en|0.85] The nearest plastered column feels cool and slightly rough where distant lamplight grazes one side of its fluting. Rain darkens the garden soil just inches past the dry stone border where you stand. Reaching out, a sprig of rosemary brushes your cuff and leaves a crisp herbal trace on the cloth. Inside these quiet walls, the street feels miles away.
 [PAUSE|1.5]
 [017|NARRATOR_TARGET_es|0.78] El aire huele bien.
 [PAUSE|1.5]
 [017|NARRATOR_NATIVE_en_translate|0.85] The air smells good.
 [PAUSE|2.0]
-[018|NARRATOR_NATIVE_en|0.85] You stand one breath under the eaves and let the new sound settle: drops on leaves, a thread of water from a pot, your own sleeve finished dripping. The covered walk turns left around the garden. You follow it, because the warmer light is on that side. Rosemary stays on your sleeve. The street does not follow you in.
+[018|NARRATOR_NATIVE_en|0.85] You pause for one unhurried breath beneath the eaves while the garden sounds settle cleanly into place. You hear water on leaves, a slow drip from a terracotta rim, and silence from your coat sleeve. Turning left, the covered walk traces the courtyard toward a warmer honey glow ahead. With rosemary lingering on your wrist, you follow the dry paving onward.
 [PAUSE|1.5]
 
 ## BLOCK: ACT_2_INNER_GARDEN
-[019|NARRATOR_NATIVE_en|0.85] The walk is a square of roof on posts, and the garden is the open middle. Rain falls there freely and darkens the soil. Bay and rosemary stand in clay pots along the inner edge, their leaves shining and then dull. The dry strip under the eaves is wide enough for your feet. You keep to it.
+[019|NARRATOR_NATIVE_en|0.85] The colonnade forms a square shelter on slender posts around the open heart of the garden. Overhead, night rain falls freely into the square of dark soil and clipped bushes. Neat clay pots of bay laurel and rosemary line the inner border, shining briefly whenever drops land. The dry tiled border remains plenty wide enough for your unhurried steps.
 [PAUSE|1.5]
-[020|NARRATOR_NATIVE_en|0.85] A pot at the corner tips a steady thread onto the gravel. The thread has worn a dark cup in the stones. You step around it. The splash is small and regular, a second clock beside the rain. The column beside the pot is fluted and cool when your fingers find it.
+[020|NARRATOR_NATIVE_en|0.85] Near the corner of the bed, a wide terracotta pot tips a thin, steady thread of overflow water onto the dark gravel. Over many rains, that quiet stream has hollowed a smooth dark cup between the pebbles. You step easily around the wet stone edge without breaking stride. Beside the pot, a fluted column waits cool and steady beneath your passing fingertips.
 [PAUSE|1.5]
 [020|NARRATOR_TARGET_es|0.78] La lluvia toca las hojas.
 [PAUSE|1.5]
 [020|NARRATOR_NATIVE_en_translate|0.85] The rain touches the leaves.
 [PAUSE|2.0]
-[021|NARRATOR_NATIVE_en|0.85] Between the columns the garden looks deeper than it is. Wet leaves stack the dark into layers. A single pale flower, closed for the night, holds a drop on its lip. You do not pick it. The scent of rosemary is enough, clean and a little sharp in the damp.
+[021|NARRATOR_NATIVE_en|0.85] Seen through the columns, the little courtyard appears deeper and calmer than its true size. Glossy wet leaves stack the darkness into layered shades of charcoal and moss green. One small pale blossom, folded closed for the night, balances a bright raindrop along its petal edge. Leaving it untouched, you breathe in the clean, sharp comfort of damp rosemary.
 [PAUSE|1.5]
-[022|NARRATOR_NATIVE_en|0.85] Your breath finds the pace of the drops without effort, a handful of taps in and another handful out. The covered walk gives your step a soft echo and then lets it go. Nothing answers the echo. The villa keeps its quiet on purpose. Your shoulders loosen under the low roof.
+[022|NARRATOR_NATIVE_en|0.85] Your breathing falls naturally into the unhurried rhythm of the courtyard without needing any guidance from your thoughts. Each soft inhale spans a gentle scatter of leaf taps, and each exhale rests into the hush afterward. Beneath the wooden roof, your sandals make only a faint brush that vanishes right away. Your shoulders drop comfortably beneath the low tiles.
 [PAUSE|1.5]
-[023|NARRATOR_NATIVE_en|0.85] The gravel path across the garden is almost black, washed free of dust. You stay on the paved walk and only look at the path. It leads to a wider doorway on the far side, where the light is honey-colored and still. Rain cannot quite reach that doorway. The stones there look dry.
+[IMAGE|05] First-person view from a column into a gravel garden path, wet leaves, warm lamplight, no people
+[023|NARRATOR_NATIVE_en|0.85] Through the middle of the garden, a narrow gravel path gleams nearly black, washed clean of every grain of daytime dust. Staying under the dry colonnade, you simply watch the wet stones glisten across the open yard. The gravel path leads straight toward a wider doorway on the far wall. Inside that portal waits a calm, honey-gold pool of lamplight.
 [PAUSE|1.5]
-[024|NARRATOR_NATIVE_en|0.85] Along the inner wall a painted garden repeats the real one, leaves and a thin blue band, soft in the low light. You glance and then look back at the living leaves. The painted ones do not move. The real ones nod under the drops. The difference is the whole pleasure of the place.
+[024|NARRATOR_NATIVE_en|0.85] Along the plastered back wall of the walk, painted frescoes mirror the living courtyard with delicate green branches and a faded blue sky band. You glance across the painted leaves for a quiet second, then turn back toward the real garden. Painted fronds stay completely motionless against the plaster. Outside in the night rain, living twigs nod gently under every passing drop.
 [PAUSE|1.5]
-[025|NARRATOR_NATIVE_en|0.85] A gap in the eaves lets one line of rain onto the walk. You hear it before you see it, a brighter tick on stone. You shift half a step and the line misses your shoulder. The rest of the walk is faithful. Your sleeve, almost dry, stays almost dry.
+[025|NARRATOR_NATIVE_en|0.85] Where two roof tiles meet imperfectly overhead, a narrow thread of rain slips straight onto the edge of the stone walk. You notice its brighter tick against the limestone before your eyes spot the falling water. Moving half a step inward lets the stray line pass cleanly beside your shoulder. Every other tile along the colonnade keeps your dry sleeve safe.
 [PAUSE|1.5]
 [025|NARRATOR_TARGET_es|0.78] Oyes el agua en la piedra.
 [PAUSE|1.5]
 [025|NARRATOR_NATIVE_en_translate|0.85] You hear the water on the stone.
 [PAUSE|2.0]
-[026|NARRATOR_NATIVE_en|0.85] Under the next roof the air is warmer than the street by a clear margin. The walls have been holding the day and now they lend it back. Your wrists feel it first. The garden stays the cool part, open to the sky. You walk the boundary between the two.
+[026|NARRATOR_NATIVE_en|0.85] Turning along the next side of the square walk, you feel the air grow noticeably milder than the rain-cooled street outside. Thick masonry walls absorbed sun throughout the afternoon and now release their gentle warmth into the shelter. Your hands and wrists notice the mild comfort right away. Meanwhile, the open courtyard stays cool beside you under dark sky.
 [PAUSE|1.5]
-[027|NARRATOR_NATIVE_en|0.85] A small stone trough sits at the garden's edge, meant for the plants, not for the whole roof. It is full, and the trickle runs along a cut groove and disappears into the soil. This is a little water. Somewhere ahead the house deals with the rain of the entire roof. You can already hear that larger sound.
+[027|NARRATOR_NATIVE_en|0.85] Tucked near the garden border rests a shallow stone trough built to water the herbs rather than hold the roof's full shower. Rain already fills it to the lip, sending a narrow overflow down a cut groove into the soil. That gentle trickle belongs only to the plants. Somewhere beyond the far doorway, you begin to hear a fuller, deeper water sound.
 [PAUSE|1.5]
-[028|NARRATOR_NATIVE_en|0.85] The larger sound is round, not a scatter of leaves but one open fall into a held basin. It comes from the far doorway. Each few steps make it clearer and less mixed with the garden. You do not hurry toward it. The rosemary keeps offering its scent, and you accept.
+[028|NARRATOR_NATIVE_en|0.85] That deeper sound is round and gathered, not the loose scatter of leaves, like steady rain dropping into a wide stone basin. It floats cleanly through the open doorway ahead of you. With every unhurried pace along the colonnade, the water note separates softly from the leaf patter behind. Still, there is no hurry to reach the threshold.
 [PAUSE|1.5]
-[029|NARRATOR_NATIVE_en|0.85] A moth circles the far lamp and then leaves the glow. You see only the movement, not a threat, a small pale change in the light. The rain continues as if the moth were not there. Your hand rests on another column. The stone has the same coolness as the first.
+[029|NARRATOR_NATIVE_en|0.85] Near the far doorway, a pale night moth traces one slow circle around the warm oil lamp and drifts quietly back into the dark leaves. Its small flicker of motion feels gentle and completely unhurried against the calm stone. Overhead, the rain continues uninterrupted as if nothing stirred at all. Resting one hand on another column, you feel the same steady coolness.
 [PAUSE|1.5]
-[030|NARRATOR_NATIVE_en|0.85] The walk's ceiling is low beams, close enough to notice, far enough not to touch. Between the beams the wood is dark and dry. A single drop that found a crack shines and does not fall while you watch. Then it falls, on the garden side. The beams over you stay faithful.
+[030|NARRATOR_NATIVE_en|0.85] Above your head, the walkway ceiling shows low, dark cedar beams spaced cleanly across dry roof planks. High enough never to crowd you, they keep the covered path snug and protected. One bright raindrop clings inside a narrow joint between two outer boards and hangs shining for several seconds. At last it lets go on the garden side, leaving the timber dry.
 [PAUSE|1.5]
-[030|NARRATOR_TARGET_es|0.78] El techo del jardín es bajo.
+[030|NARRATOR_TARGET_es|0.78] El techo del paseo es bajo.
 [PAUSE|1.5]
-[030|NARRATOR_NATIVE_en_translate|0.85] The garden roof is low.
+[030|NARRATOR_NATIVE_en_translate|0.85] The walk's ceiling is low.
 [PAUSE|2.0]
-[031|NARRATOR_NATIVE_en|0.85] You pass a row of smaller pots, mint among them, the leaves softer than the rosemary. One leaf tips and gives its drop to the next. The chain ends in the soil. The smell is sweet and green and very near. You breathe it once, fully, and the rain seems farther.
+[031|NARRATOR_NATIVE_en|0.85] Along the final stretch of border stand low terracotta bowls holding sweet mint with leaves softer and rounder than the rosemary. One broad leaf tips gently under its share of rain and passes the drop smoothly to the leaf below. Soon the last drop disappears quietly into dark garden earth. Breathing in that clean, cool mint makes the outer street feel even farther.
 [PAUSE|1.5]
-[032|NARRATOR_NATIVE_en|0.85] At the last turn the covered walk opens its view. The doorway ahead is a rectangle of warmer light, and inside it a floor of cut stone begins. Rain-light moves on that floor, broken, restless, and gold at the near edge. You understand you are about to leave the garden. The garden does not ask you to stay.
+[032|NARRATOR_NATIVE_en|0.85] At the final corner of the courtyard, the covered walk opens wide toward the main interior hall of the villa. Through the broad stone doorway, you glimpse smooth cut paving bathed in warm amber lamplight. Broken reflections of falling water shimmer gently across the far floor tiles. You realize the quiet garden walk has nearly come to its peaceful close.
 [PAUSE|1.5]
-[033|NARRATOR_NATIVE_en|0.85] Your fingers leave the last column. The print of cool fades on your skin. Gravel crunches once where the walk and the path meet, under your heel, and then you are on the dry paving. The open fall of water is close now, a steady voice. The garden's leaf-sound drops behind your shoulders.
+[033|NARRATOR_NATIVE_en|0.85] Your fingertips lift gently away from the last fluted column, letting its cool stone impression fade cleanly from your palm. One faint crunch of gravel sounds beneath your heel where the garden path joins the doorway stone. Immediately afterward, dry fitted paving steadies your stride. Behind your back, the whisper of rain through leaves softens into distance.
 [PAUSE|1.5]
-[034|NARRATOR_NATIVE_en|0.85] You pause with the garden still at your back and the lit room in front of you. Wet leaves, dry stone, and the smell of rosemary on your sleeve. The villa has already given you a quiet court. The next room is where the roof gathers the whole night. You take the step.
+[034|NARRATOR_NATIVE_en|0.85] You stand still for one calm moment on the threshold between wet courtyard and warm interior room. Behind you rest damp herbs and rosemary scent lingering along your wool cuff. Ahead waits the sheltered heart of the house, where the roof gathers the whole night rain into one place. Without any haste, you step smoothly across the stone threshold.
 [PAUSE|1.5]
-[035|NARRATOR_NATIVE_en|0.85] The air changes as you cross the last step. Garden-cool slides off your face, and the room's warmer breath meets you. The floor underfoot is larger stones, even and swept, with no grit from the path. A shine of water moves at the center, not at your feet. You are in the atrium, and the open fall of rain is the voice of the room.
+[IMAGE|06] First-person view of a Roman atrium at night, rain falling through a square roof opening into a shallow pool, no people
+[035|NARRATOR_NATIVE_en|0.85] Stepping inside, you feel cool garden damp lift gently from your cheeks as the wide atrium greets you with milder air. Smooth rectangular flagstones lie clean and swept beneath your feet without a speck of outdoor gravel. Ahead in the center of the room, golden lamplight ripples across open water. Rain falling through a square roof opening fills the space with calm.
 [PAUSE|1.5]
 [035|NARRATOR_TARGET_es|0.78] El suelo es de piedra.
 [PAUSE|1.5]
 [035|NARRATOR_NATIVE_en_translate|0.85] The floor is made of stone.
 [PAUSE|2.0]
-[036|NARRATOR_NATIVE_en|0.85] Behind you the garden keeps raining on its leaves. Ahead, rain falls in one place only, through a square cut in the roof. The rest of this room is covered. You stop just inside, so you can see the square and the pool together. The house has brought you to its open heart.
+[036|NARRATOR_NATIVE_en|0.85] Behind the doorway, the quiet courtyard keeps raining softly onto its clay pots and rosemary branches. Ahead, the entire shower enters through one neat square cut straight through the tiled atrium roof. Every surrounding wall and colonnade remains sheltered, dry, and peaceful under the beams. Stopping a few paces inside, you take in both sky and water together.
 [PAUSE|1.5]
 
 ## BLOCK: ACT_3_ATRIUM_POOL
-[037|NARRATOR_NATIVE_en|0.85] The roof does not cover the middle. A wide square is open to the cloud, and the rain comes through it in a soft column. Below the column a shallow pool is set into the floor. This basin is the impluvium. The opening above it lets the night in and keeps the walls dry.
+[037|NARRATOR_NATIVE_en|0.85] The high atrium roof leaves its center completely open to the night cloud, letting warm rain descend in a soft, steady column. Directly underneath sits a shallow rectangular pool set neatly into the stone paving, known as the impluvium. Its broad, quiet basin catches every drop without letting spray wander across the room. Thus the villa welcomes the weather while staying dry.
 [PAUSE|1.5]
-[038|NARRATOR_NATIVE_en|0.85] Each drop opens a circle on the water. The circle travels, weakens, and dies before the rim. Another begins in a different place. A lamp on a side table turns the near water gold and leaves the far side in a quieter dark. You stand on stone the splash does not reach.
+[IMAGE|07] Close first-person view of rain circles on the impluvium, gold lamp light on the near water, dry stone rim, no people
+[038|NARRATOR_NATIVE_en|0.85] Each falling drop opens a crisp silver circle across the dark surface of the shallow basin. That ring travels outward, softens gradually, and fades out cleanly before ever touching the carved stone rim. Beside the water, an oil lamp turns the near edge pale gold while leaving the far side shadowy. Standing just back, your shoes remain on completely dry paving.
 [PAUSE|1.5]
 [038|NARRATOR_TARGET_es|0.78] La lluvia cae adentro.
 [PAUSE|1.5]
 [038|NARRATOR_NATIVE_en_translate|0.85] The rain falls inside.
 [PAUSE|2.0]
-[039|NARRATOR_NATIVE_en|0.85] The pool is a broad, low rectangle, deeper than a dish and shallower than a step. You can see the pale bottom when a circle passes and the water settles. The bottom is stone, clean, with no litter. The rings overlap and then leave a clear patch again. The villa lets the rain arrive and does not let the room grow wild.
+[039|NARRATOR_NATIVE_en|0.85] Looking closely across the impluvium, you see the basin is deeper than a dish yet shallower than a single stone stair step. Whenever ripples quiet between showers, the pale marble bottom shows clean and clear without fallen leaves or silt. Overlapping rings braid together and smoothly unwrap back into still glass. Nothing in the atrium looks restless or wild.
 [PAUSE|1.5]
-[040|NARRATOR_NATIVE_en|0.85] Around the pool the floor is a simple pattern of light and dark pieces, dry under your shoes. Your faint wet prints fade as you shift your weight. The room smells of wet lime and of water that has not stood long. High walls hold the sound in, so the fall feels nearer than the street ever did. You hear your own step only when you mean to.
+[040|NARRATOR_NATIVE_en|0.85] Around all four sides of the pool stretches a simple black-and-white stone mosaic, completely dry beneath your soles. Any faint damp print left by your sandals fades quickly into the mild indoor warmth. The sheltered air carries the clean, mineral scent of wet lime plaster and fresh rainwater. Tall surrounding walls hold the soft water sound close without harsh echoes.
 [PAUSE|1.5]
-[041|NARRATOR_NATIVE_en|0.85] You look along the ceiling, and the tiles slope inward, all of them, toward the open square. Rain that lands anywhere on this roof slides to that lip and then lets go. You can hear the slide as a smoother whisper above the brighter fall. The whole roof has agreed to one place. The walls stay out of the weather.
+[IMAGE|08] First-person view looking up at roof tiles sloping toward an open square of rainy sky, no people
+[041|NARRATOR_NATIVE_en|0.85] Lifting your gaze along the high ceiling, you see all four slopes of terracotta roof tiles angling inward toward the square sky opening. Every drop falling across this wide roof glides down those clay channels to the inner edge before letting go. Above the brighter splash in the pool, you hear that smooth slide as a soft wooden whisper. The entire house cooperates quietly.
 [PAUSE|1.5]
-[042|NARRATOR_NATIVE_en|0.85] You walk the long side, a hand's width back from the rim. Cool air comes down with the rain and meets the warmer air at your collar. Your face, still damp from the street, dries a little even while the sound stays wet. The second lamp at the far end is lower, almost level with the water. It shows the rim as a clean line.
+[042|NARRATOR_NATIVE_en|0.85] You stroll slowly along the pool's longer edge, staying a comfortable hand's width back from the carved rim. Cool night air glides downward beside the rain column and meets the warm indoor air gently at your collar. Your face feels nearly dry now even while the room remains filled with water music. Beyond the pool, a lower bronze lamp outlines the far rim.
 [PAUSE|1.5]
-[043|NARRATOR_NATIVE_en|0.85] No moon shows in the square. Only cloud, and the silver stitches of the rain. The opening is large enough for the weather and small enough that the room still feels held. You tip your head for a moment and then bring it level. The pool is the part meant for the eyes.
+[043|NARRATOR_NATIVE_en|0.85] Above the inward-sloping tiles, no moon yet breaks through the square of dark cloud, leaving only soft silver threads of falling rain. The roof opening feels generous enough to invite the night inside while small enough that the hall stays cozy and enclosed. After tilting your chin upward for a moment, you let your eyes settle peacefully back onto the water.
 [PAUSE|1.5]
 [043|NARRATOR_TARGET_es|0.78] La gota toca el agua.
 [PAUSE|1.5]
 [043|NARRATOR_NATIVE_en_translate|0.85] The drop touches the water.
 [PAUSE|2.0]
-[044|NARRATOR_NATIVE_en|0.85] A wide ring starts when several drops land together. It runs almost to the near rim and fails there, against the stone. The level of the water does not climb. Whatever the roof keeps adding, the basin does not keep all of it. Somewhere in the floor the extra is leaving.
+[044|NARRATOR_NATIVE_en|0.85] Several heavy raindrops land closely together and send a wider ring rolling toward the near stone edge. Just as it reaches the smooth vertical wall of the basin, the wave flattens out and disappears. Noticeably, the water level inside the impluvium never climbs higher against the marble. Whatever extra rain the roof continues adding must be slipping quietly away below.
 [PAUSE|1.5]
-[045|NARRATOR_NATIVE_en|0.85] You come closer until a few fine drops reach your toes and no farther. The rim is smooth, a little lower than your knee, polished by years of water. Your knee finds dry stone when you crouch. From here the pool is a quiet field of rings. The bottom stays visible between them.
+[045|NARRATOR_NATIVE_en|0.85] Stepping slightly closer, you stop just where two or three fine stray drops mist your sandals and go no farther. The carved stone rim sits slightly below knee height, worn velvet-smooth by decades of steady water. As you crouch lightly beside it, your knees rest easily on dry mosaic. From this low level, the pool becomes a peaceful mirror of widening rings.
 [PAUSE|1.5]
-[046|NARRATOR_NATIVE_en|0.85] Near one corner of the bottom the stone changes. A darker mouth waits there, not wide, and the water draws toward it in a slow sheet. This is where the impluvium lets the rain go on. The pool is the visible part. The rest of the path is downward, under the floor, into the cistern the house keeps for drier days.
+[IMAGE|09] First-person view of a darker drain mouth in the corner of the shallow pool, no people
+[046|NARRATOR_NATIVE_en|0.85] Near the far corner of the basin floor, the pale stonework opens into a small, darker drain mouth cut smoothly into the marble. Water glides calmly toward that narrow opening in a thin, unhurried sheet. Through this drain, the villa directs its rain downward beneath the floor into a cool stone cistern built to store water for dry summer months.
 [PAUSE|1.5]
-[047|NARRATOR_NATIVE_en|0.85] You do not reach into the water. You only see the mouth and hear, under the brighter fall, a softer answer from below, a drop, a pause, and a lower drop. The villa is storing the night in the dark under the floor. The sound is patient, and it does not ask you to follow it yet. Your hands stay still a moment longer.
+[047|NARRATOR_NATIVE_en|0.85] You keep both hands calmly resting near your knees without dipping a finger into the cool basin. Watching the darker drain mouth, you begin to distinguish a faint second rhythm underneath the open roof splash: one soft drop, a quiet gap, and a lower echo far beneath the paving. The house is steadily saving the night down in the dark below.
 [PAUSE|1.5]
-[048|NARRATOR_NATIVE_en|0.85] The lamp's reflection sits on the near water like a broken coin. A drop strikes it, the coin scatters, and the pieces gather again. You watch that happen twice. It is the same kindness both times. The room can be this small and still be the center of the house.
+[048|NARRATOR_NATIVE_en|0.85] Across the near corner of the pool, the lamp's reflection rests on the dark surface like a round gold coin. A raindrop strikes its center, scatters the brightness into soft sparks, and moments later the pieces drift back together into one calm gleam. Watching that gentle mending happen twice brings an easy quiet. Even a single square room can feel complete.
 [PAUSE|1.5]
-[049|NARRATOR_NATIVE_en|0.85] You rest a palm on the rim, and the stone is cool, not cold. Rain flicks one knuckle and stops, while the rest of your hand stays in the dry air. Two weathers meet on that width of stone, the open roof and the sheltered walk. Your shoulders drop without a decision. The pool keeps its rings.
+[049|NARRATOR_NATIVE_en|0.85] You lay one open palm gently along the broad carved rim of the impluvium, finding the stone mildly cool without a chill. One stray raindrop touches your outer knuckle and stops, while the rest of your hand remains dry under the sheltered eaves. Two calm weathers share that narrow band of limestone together. Without thinking, your shoulders soften lower.
 [PAUSE|1.5]
 [049|NARRATOR_TARGET_es|0.78] Tu mano toca la piedra.
 [PAUSE|1.5]
 [049|NARRATOR_NATIVE_en_translate|0.85] Your hand touches the stone.
 [PAUSE|2.0]
-[050|NARRATOR_NATIVE_en|0.85] Standing again, you see the square of sky unchanged. The tiles still shine along the lip and go matte as they shed their water. The garden's leaf-sound is a thin border around this stronger fall. You know the shape of the house now. Street, corridor, garden, and this pool collecting the roof.
+[050|NARRATOR_NATIVE_en|0.85] Rising effortlessly to your feet, you see the square sky opening above still pouring rain cleanly down its invisible walls. Along the inner edge, wet terracotta tiles catch faint amber light before returning to matte clay. From the garden behind you drifts only a thin thread of leaf sound. By now you know the whole shape of this sheltering Roman house.
 [PAUSE|1.5]
-[051|NARRATOR_NATIVE_en|0.85] The cistern itself is not in this room. It is the lower quiet you can hear and not yet see, and the darker mouth in the pool is its doorway. The water keeps moving, and the basin does not rise. You leave the downward path where it is. The pool is enough to stand beside.
+[051|NARRATOR_NATIVE_en|0.85] The underground cistern itself lies hidden beyond the bright atrium, reached only by water sliding down through the dark drain mouth. Yet even from where you stand, you sense that lower quiet supporting the floor beneath your shoes. While rain keeps arriving, the basin stays balanced and calm at the exact same mark. For now, standing beside the pool is enough.
 [PAUSE|1.5]
-[052|NARRATOR_NATIVE_en|0.85] A longer breath, and the rhythm of the drops becomes the rhythm of the room. In the street the rain was weather on your clothes. Here it is the house at work, orderly and calm. The lamps do not smoke, and the floor around you stays dry. Your hands hang open.
+[052|NARRATOR_NATIVE_en|0.85] Drawing a slower breath, you let the steady tempo of falling drops become the natural pulse of the entire room. Out in the street, the rain felt cool across your coat and hair; here inside the villa, water works quietly in peaceful order. Both oil lamps burn cleanly without smoke, and the mosaic remains dry around your feet.
 [PAUSE|1.5]
-[053|NARRATOR_NATIVE_en|0.85] If the rain lasts, the roof will keep sending it to the square, and the square will keep giving it to the basin. If it thins, the last circles will fade more slowly. You do not have to choose. You let both possibilities rest. The villa already knows what to do with a wet night.
+[053|NARRATOR_NATIVE_en|0.85] Whether this warm shower continues past midnight, the inward roof will keep guiding rain toward the pool and down to the cistern below. And whenever clouds thin later on, the final widening circles will simply slow down into dark glass. Neither outcome asks for any choice or attention from you. The house already knows how to hold a rainy night.
 [PAUSE|1.5]
-[054|NARRATOR_NATIVE_en|0.85] You stay at the rim, with rain in the open roof and gold light on the near water. A small dark mouth takes the extra downward toward the cistern. The garden is behind you, and the street is farther, and neither one calls. This is the atrium. The night can be this quiet.
+[054|NARRATOR_NATIVE_en|0.85] For one more quiet minute you linger beside the rim under open rainy sky and gentle gold lamplight. Near the far corner, that small dark drain carries the extra water downward toward the waiting vault beneath the stones. Behind you rests the rosemary garden, and outside sleeps the street. Inside this sheltered atrium, the evening rests in complete peace.
 [PAUSE|1.5]
 [054|NARRATOR_TARGET_es|0.78] La casa está en calma.
 [PAUSE|1.5]
@@ -173,845 +182,1096 @@
 [PAUSE|2.0]
 
 ## BLOCK: ACT_4_CISTERN_PASSAGE
-[055|NARRATOR_NATIVE_en|0.82] You leave the pool and follow the dry wall to the corner. A low opening waits there, no taller than your shoulder. Cooler air spills out and finds your knees first. The rain stays loud behind you, and the pool you left stays bright with rain.
+[IMAGE|10] First-person view of a cool stone passage and a round cistern opening in the floor, water sounding below, no people
+[055|NARRATOR_NATIVE_en|0.82] Stepping quietly away from the glowing rim, you follow the dry mosaic wall toward the far shadowy corner of the atrium. Waiting there is a low arched stone opening scarcely taller than your shoulder. Cool mineral air drifts outward across your ankles before reaching your hands. Behind you, rain keeps drumming bright silver circles onto the pool.
 [PAUSE|1.5]
-[056|NARRATOR_NATIVE_en|0.82] The opening is a worn stone frame. You bend and look through. The passage beyond is narrow and longer than the lamp can show. Your hand meets the near wall, and the wall is dry, and that dry cool stone steadies your palm.
+[056|NARRATOR_NATIVE_en|0.82] The doorway sits inside a worn frame of dark volcanic tufa, smooth along the inner edges from centuries of passing hands. Leaning down gently, you look into a narrow stone corridor stretching farther than the atrium lamp can reach. When your palm meets the near wall, the block feels dry and steady. That cool stone anchors your balance comfortably.
 [PAUSE|1.5]
-[057|NARRATOR_NATIVE_en|0.82] You step in. The ceiling passes close to your hair, then gives you a little room. The air has already left the warm atrium behind. Your shoulders turn so the walls can accept you, and the warm room stays at your back.
+[057|NARRATOR_NATIVE_en|0.82] You duck gently across the low threshold and step fully inside the quiet stone passage. At first the arched ceiling passes close above your hair before lifting slightly higher ahead. Almost immediately, the mild air of the warm atrium settles behind your back. Turning your shoulders slightly lets you fit comfortably between the smooth masonry walls.
 [PAUSE|1.5]
-[057|NARRATOR_TARGET_es|0.75] Entras con los hombros un poco de lado. El techo bajo pasa cerca del pelo, y la sala cálida queda a la espalda.
+[057|NARRATOR_TARGET_es|0.75] Entras con los hombros un poco de lado. El techo bajo pasa cerca del pelo, y la sala cálida queda atrás.
 [PAUSE|1.5]
-[057|NARRATOR_NATIVE_en_translate|0.82] You step in with your shoulders slightly turned. The low ceiling passes near your hair, and the warm room stays at your back.
+[057|NARRATOR_NATIVE_en_translate|0.82] You step in with your shoulders slightly turned. The low ceiling passes near your hair, and the warm room stays behind.
 [PAUSE|2.5]
-[058|NARRATOR_NATIVE_en|0.82] A darker band marks the lower wall, where damp has lived. Above it the stone is only cool. You keep your sleeve off that band. The smell is deep stone, clean and still, and no garden scent has followed you in.
+[058|NARRATOR_NATIVE_en|0.82] Near the bottom of the corridor, a slightly darker band runs along the lower stone blocks where ground damp has lingered through older winters. Above that quiet line, the masonry remains cleanly cool and dry to the touch. You keep your coat cuff comfortably clear of the lower band. The still air smells purely of deep limestone without any garden leaves.
 [PAUSE|1.5]
-[059|NARRATOR_NATIVE_en|0.82] The floor slopes down by less than a step. You take it slowly, with short steps in the narrow width. The atrium rain grows softer as you go. The passage takes that sound and thins it, and the corner behind you thins to a murmur.
+[059|NARRATOR_NATIVE_en|0.82] Beneath your sandals, the smooth paving stones tilt gently downward by less than the height of a single stair step. Taking short, unhurried paces down the corridor keeps your balance effortless in the dimness. With every meter forward, the bright splash of the atrium pool softens behind you. Soon that lively rain narrows into a gentle, padded murmur.
 [PAUSE|1.5]
-[060|NARRATOR_NATIVE_en|0.82] One hand keeps the wall in the dim light. The other hangs open at your side. The floor slopes down softly, and your steps follow that slope without hurry.
+[060|NARRATOR_NATIVE_en|0.82] Resting one open hand lightly against the cool plaster wall guides your path effortlessly through the soft dimness. Your opposite arm hangs loose and relaxed beside your hip with nothing to carry or balance. Following that gentle downward incline feels completely natural beneath your heels. No sudden turns or steep drops interrupt the calm slope ahead.
 [PAUSE|1.5]
-[060|NARRATOR_TARGET_es|0.75] Una mano sigue la pared en la penumbra. La otra mano cuelga libre junto a tu cuerpo, y tus pasos van con la pendiente suave.
+[060|NARRATOR_TARGET_es|0.75] Una mano sigue la pared en la penumbra. La otra cuelga libre junto a tu cuerpo, y tus pasos siguen la pendiente suave.
 [PAUSE|1.5]
-[060|NARRATOR_NATIVE_en_translate|0.82] One hand follows the wall in the dimness. The other hand hangs free beside your body, and your steps match the gentle slope.
+[060|NARRATOR_NATIVE_en_translate|0.82] One hand follows the wall in the dimness. The other hangs free beside your body, and your steps follow the gentle slope.
 [PAUSE|2.5]
-[061|NARRATOR_NATIVE_en|0.82] Behind you the pool is a bright murmur, no longer a voice filling a room. Ahead, the passage offers only gray shapes. Your eyes accept the gray. It is enough to walk by, and your feet trust the nearer gray stones.
+[061|NARRATOR_NATIVE_en|0.82] Behind your heels, the atrium pool has become a soft silver hush no longer filling the air around you. Ahead in the corridor, shapes soften into quiet shades of slate and pale ash gray. Your eyes settle comfortably into that restful twilight without straining for sharper edges. Under every sandal, the fitted floor stones stay level and trustworthy.
 [PAUSE|1.5]
-[062|NARRATOR_NATIVE_en|0.82] The passage turns once, to the left, with no door in the corner. After the turn, warmth is only a feeling on your back. The air here is the coolest of the night. You let it settle on your face, and the cool settles on your eyelashes.
+[062|NARRATOR_NATIVE_en|0.82] Gradually, the narrow stone passage bends once gently to the left without any closed door or wooden barrier at the corner. Once you round that smooth turn, the warm atrium air stays behind like a distant shawl. Cool underground stillness settles cleanly against your cheeks and temples. Your eyelashes relax in the refreshing, quiet air.
 [PAUSE|1.5]
-[063|NARRATOR_NATIVE_en|0.82] The smell changes from leaf to stored water. It is mineral and calm, like a cool jar kept shut. You breathe it in. The cool reaches your chest more than your hands, and the green of the garden is gone.
+[063|NARRATOR_NATIVE_en|0.82] As you move deeper along the quiet hall, the crisp scent of wet rosemary leaves gives way to clean, stored water. The fragrance feels pure, mineral, and deeply still, like cold spring water resting inside an earthenware jar. Breathing slowly inward draws that mild coolness down into your chest. Here under the house, every garden green lies far behind.
 [PAUSE|1.5]
-[063|NARRATOR_TARGET_es|0.75] El olor de las hojas se va del aire. Ahora el aire huele a agua guardada y a piedra, y el verde del jardín ya no está.
+[063|NARRATOR_TARGET_es|0.75] El olor de las hojas se va del aire. Ahora huele a agua guardada y a piedra, y el jardín ya no está.
 [PAUSE|1.5]
-[063|NARRATOR_NATIVE_en_translate|0.82] The smell of the leaves goes out of the air. Now the air smells of stored water and stone, and the green of the garden is gone.
+[063|NARRATOR_NATIVE_en_translate|0.82] The smell of the leaves goes out of the air. Now it smells of stored water and stone, and the garden is gone.
 [PAUSE|2.5]
-[064|NARRATOR_NATIVE_en|0.82] A thin thread of the lamp still reaches the turn and shows the next stones. You bring no flame of your own. The house light stays at your back, and you trust it. The floor under you is sure, and the next stone shows itself clearly.
+[064|NARRATOR_NATIVE_en|0.82] Even past the corner, one slender ribbon of golden lamplight still reaches softly from the atrium to touch the nearest flagstones. You carry no torch or flickering candle of your own through the hallway. Trusting the house light behind your shoulder keeps both hands unburdened and calm. Ahead, the smooth grey paving shows every next step clearly.
 [PAUSE|1.5]
-[065|NARRATOR_NATIVE_en|0.82] The walls ease apart, and your shoulders drop. The ceiling lets you stand straight. The stone underfoot is smoother, a place where steps have often ended. You are near the last of the passage, and the dark ring in the floor is close.
+[065|NARRATOR_NATIVE_en|0.82] After several unhurried paces, the close corridor walls widen slightly into a small vaulted chamber, letting your shoulders loosen completely. Overhead, the smooth stone arch lifts higher so you can stand comfortably tall. Under your sandals, the paving turns velvety smooth where generations of quiet footsteps paused. Just ahead in the floor waits a low dark circle.
 [PAUSE|1.5]
-[066|NARRATOR_NATIVE_en|0.82] A round curb rises from the floor, a low ring of fitted stone. Beside it a heavy cover stands on edge, set aside and still. The opening inside the ring is dark. This is the mouth of the cistern, and the shaft under the ring is open.
+[066|NARRATOR_NATIVE_en|0.82] Rising cleanly from the chamber paving sits a low circular curb built of tight-fitting grey stone blocks. Resting upright against the nearby wall stands its heavy circular lid, set carefully aside and still. Inside that stone ring opens a dark, silent shaft descending straight beneath the villa floor. You have arrived calmly beside the open mouth of the cistern.
 [PAUSE|1.5]
-[066|NARRATOR_TARGET_es|0.75] En el suelo hay un borde redondo de piedra. La tapa grande descansa a un lado del hueco, y el pozo bajo el anillo está abierto.
+[066|NARRATOR_TARGET_es|0.75] En el suelo hay un borde redondo de piedra. La tapa grande descansa a un lado, y el pozo está abierto.
 [PAUSE|1.5]
-[066|NARRATOR_NATIVE_en_translate|0.82] There is a round stone rim in the floor. The large cover rests beside the opening, and the shaft under the ring is open.
+[066|NARRATOR_NATIVE_en_translate|0.82] There is a round stone rim in the floor. The large cover rests beside it, and the shaft is open.
 [PAUSE|2.5]
-[067|NARRATOR_NATIVE_en|0.82] You stop with your toes short of that curb. The opening is for seeing, not for a step. Cool air rises and cools your chin. The rain you left is only a soft thickness of sound, and your heels stay on the flat floor.
+[067|NARRATOR_NATIVE_en|0.82] You halt easily with the tips of your sandals stopping a hand's width short of the raised stone ring. This quiet curb exists only for watching and listening, never for stepping farther. Mild cool air rises steadily upward from the shaft to cool your chin and cheeks. Far above, the atrium shower sounds like soft felt wrapped around timber.
 [PAUSE|1.5]
-[068|NARRATOR_NATIVE_en|0.82] The inner face of the cover is dry above and dark along its lower rim. It rests on its edge, and you leave it there. Your fingers stay on your own sleeve. The ring of the hatch is the only edge you need, and the stone ring is enough to know.
+[068|NARRATOR_NATIVE_en|0.82] Glancing beside the curb, you notice the inner face of the heavy lid looks dry along its top edge and softly darkened near the floor. It leans steady and balanced against the corner, needing nobody to shift or close it. Your hands rest easily on your sleeves instead of reaching for anything. The stone ring itself offers plenty to hold your gaze.
 [PAUSE|1.5]
-[069|NARRATOR_NATIVE_en|0.82] You lower one knee on dry stone beside the curb. The shaft below is a dark column of fitted blocks. Far down, a single small sound answers the house. You wait, and you do not follow it, and the blocks go down out of the lamp.
+[069|NARRATOR_NATIVE_en|0.82] Slowly, you lower one knee onto the dry limestone slab right beside the low circular curb. Peering downward, you trace a deep cylindrical shaft lined with tight courses of dark fitted blocks descending past the faint lamplight. Far below in the quiet dark, one tiny liquid note answers the sleeping villa. You remain completely still without leaning over.
 [PAUSE|1.5]
-[069|NARRATOR_TARGET_es|0.75] Apoyas una rodilla en la piedra seca. Abajo el pozo oscuro da un sonido pequeño, y los bloques bajan fuera de la luz.
+[069|NARRATOR_TARGET_es|0.75] Apoyas una rodilla en la piedra seca. Abajo el pozo oscuro da un sonido pequeño y tranquilo.
 [PAUSE|1.5]
-[069|NARRATOR_NATIVE_en_translate|0.82] You rest one knee on the dry stone. Below, the dark shaft gives a small sound, and the blocks go down out of the light.
+[069|NARRATOR_NATIVE_en_translate|0.82] You rest one knee on the dry stone. Below, the dark shaft gives a small, quiet sound.
 [PAUSE|2.5]
-[070|NARRATOR_NATIVE_en|0.82] The sound is one drop, then quiet, then the sense of depth. It is precise, and it is not loud. The cistern lies under the atrium, and the rain's path ends in it. You have found the store without entering it, and your knee stays on the dry side.
+[070|NARRATOR_NATIVE_en|0.82] What rises from the deep vault is a single crisp drop followed by wide silence and an easy sense of depth. Nothing sounds rushed, noisy, or unsteady down inside that hidden chamber. Directly beneath the bright atrium floor, this stone cistern receives the end of the roof rain's long journey. Resting beside the rim, you witness that calm store effortlessly.
 [PAUSE|1.5]
-[071|NARRATOR_NATIVE_en|0.82] You do not set a foot over the ring. The curb stays between you and the shaft. Both hands rest on your raised knee. The way back is short, and you know it, and a thread of light still marks the turn.
+[071|NARRATOR_NATIVE_en|0.82] You keep both feet comfortably grounded outside the curb, letting the solid ring stand calmly between your knees and the deep shaft. Both palms rest loosely over your raised knee without gripping or fidgeting. Whenever you wish to return, the corridor back to the warm atrium lies only a few steps behind. Every stone around you feels settled and kind.
 [PAUSE|1.5]
-[072|NARRATOR_NATIVE_en|0.82] You remain for the next drop. Cool air keeps your face clear. The warm room is only a turn away, and it is still yours. For this breath the dark water below is the quiet center, and you let one more drop arrive.
+[072|NARRATOR_NATIVE_en|0.82] Staying effortlessly at rest, you wait calmly for the next slow drop to fall through the darkness below. Cool mineral air keeps your forehead light and clear while warm room stillness waits just around the corner. Right now, this quiet underground water feels like the calm heart of the entire house. You let another gentle drop arrive in its own time.
 [PAUSE|1.5]
-[072|NARRATOR_TARGET_es|0.75] Esperas otra gota junto al borde seco. El centro quieto de la casa es esta agua, y otra gota puede caer con calma.
+[072|NARRATOR_TARGET_es|0.75] Esperas otra gota junto al borde seco. El centro tranquilo de la casa es esta agua quieta.
 [PAUSE|1.5]
-[072|NARRATOR_NATIVE_en_translate|0.82] You wait for another drop beside the dry rim. This water is the quiet center of the house, and another drop can fall calmly.
+[072|NARRATOR_NATIVE_en_translate|0.82] You wait for another drop beside the dry rim. The quiet center of the house is this still water.
 [PAUSE|2.5]
 
 ## BLOCK: ACT_5_UNDERGROUND_WATER
-[073|NARRATOR_NATIVE_en|0.82] The next drop lands where the last one did. You hear it as a round tick, small as a seed. The shaft takes the tick and returns it softer. Nothing else in the dark moves, and the dark gives nothing else back.
+[073|NARRATOR_NATIVE_en|0.82] After a long, peaceful wait, the next drop lands cleanly in the exact same spot far below. Its sound arrives as a round, gentle tick, smaller than a falling seed against still water. The stone-lined shaft catches that tiny note and softens its echo upward. Nothing else shifts anywhere in the quiet dark, and the vault returns to complete stillness.
 [PAUSE|1.5]
-[074|NARRATOR_NATIVE_en|0.82] A second drop follows after a patient gap. The gap is longer than the rain on the roof. Down here the water arrives one drop at a time, done with its path. You listen without counting, and the gap between them feels wide and easy.
+[074|NARRATOR_NATIVE_en|0.82] A second drop follows only after a wide, unhurried pause far longer than the shower drumming across the atrium tiles above. Down inside the cistern, water arrives one finished drop at a time after completing its quiet path through stone and drain. Listening without counting any seconds lets the gap widen comfortably. Even silence here feels soft and generous.
 [PAUSE|1.5]
-[075|NARRATOR_NATIVE_en|0.82] A faint shine sits far below, not a lamp, only water remembering light. It is a dull coin of gray. A drop strikes it, the coin trembles, and the gray returns. You watch that from the dry knee, and the gray lies flat again after it.
+[075|NARRATOR_NATIVE_en|0.82] Looking straight down into the shaft, your eyes catch a faint pale shine far below—not any lamp, only stored rainwater remembering light from above. It rests like a dull silver-grey coin floating inside dark stone. When one drop touches it, the pale disc trembles gently and settles flat again. Watching from your dry knee feels deeply soothing.
 [PAUSE|1.5]
-[075|NARRATOR_TARGET_es|0.75] Muy abajo hay un brillo gris y quieto. La gota toca el brillo y el agua tiembla, y el gris vuelve a quedar quieto.
+[075|NARRATOR_TARGET_es|0.75] Muy abajo hay un brillo gris y quieto. La gota toca el agua, y el brillo vuelve a quedar plano.
 [PAUSE|1.5]
-[075|NARRATOR_NATIVE_en_translate|0.82] Far below there is a gray, still shine. The drop touches the shine and the water trembles, and the gray lies still again.
+[075|NARRATOR_NATIVE_en_translate|0.82] Far below there is a gray, still shine. The drop touches the water, and the shine lies flat again.
 [PAUSE|2.5]
-[076|NARRATOR_NATIVE_en|0.82] Air from the shaft is steady on your brow, cooler than the passage. It smells of stone that stays wet, and of nothing green. You let it touch you. You do not lean your weight past the curb, and your weight stays on the near stone.
+[076|NARRATOR_NATIVE_en|0.82] Rising steadily from the dark opening, cool air brushes calmly across your brow, milder and fresher than the corridor behind you. It holds only the clean mineral scent of damp stone with no trace of wet earth or garden stems. You let that gentle breath cool your forehead without leaning forward past the rim. Your balance stays comfortably anchored on dry stone.
 [PAUSE|1.5]
-[077|NARRATOR_NATIVE_en|0.82] The rhythm below is slower than the pool in the atrium. Up there, many drops share one voice. Here, one drop, and then a quiet that makes it clear. Your ears prefer this slower clock, and the difference is easy for your ears.
+[077|NARRATOR_NATIVE_en|0.82] Down in this hidden chamber, time keeps a noticeably slower measure than the lively pool upstairs in the atrium. Up there under the open sky, hundreds of raindrops blend into one bright chorus; down here, one quiet note leaves wide room around itself. Listening closely, your ears naturally prefer this unhurried tempo. Every pause feels wide enough to rest inside.
 [PAUSE|1.5]
-[078|NARRATOR_NATIVE_en|0.82] Your breath finds the gap between drops, quiet on the way in and a soft tick on the way out. The match is easy, and you do not force it. The cistern asks nothing but listening. Your shoulders stay loose on the dry stone, and the next quiet arrives right on time.
+[078|NARRATOR_NATIVE_en|0.82] Gradually, your breathing settles comfortably into the wide pause between drops without trying to shape either inhale or exhale. Air enters quietly across the peaceful stillness and slips outward softly just as a drop touches water far below. Matching that slow rhythm requires zero effort from your chest. Your shoulders remain loose and warm above the cool limestone curb.
 [PAUSE|1.5]
-[078|NARRATOR_TARGET_es|0.75] Respiras en la pausa entre las gotas. Escuchas el golpe suave del fondo, y la pausa siguiente llega a su tiempo.
+[078|NARRATOR_TARGET_es|0.75] Respiras despacio entre las gotas. Escuchas el toque suave del fondo, y el silencio sigue con calma.
 [PAUSE|1.5]
-[078|NARRATOR_NATIVE_en_translate|0.82] You breathe in the pause between the drops. You hear the soft strike from the bottom, and the next pause arrives on time.
+[078|NARRATOR_NATIVE_en_translate|0.82] You breathe slowly between the drops. You hear the soft touch from the bottom, and the silence continues calmly.
 [PAUSE|2.5]
-[079|NARRATOR_NATIVE_en|0.82] The shaft walls are dark blocks, close together, going down out of clear sight. You see the first course. The second is already shadow. The shine lives below those shadows, and the well is calm, and only the drops mark that calm surface.
+[079|NARRATOR_NATIVE_en|0.82] Tracing the shaft wall downward, you see the top course of volcanic blocks clearly lit by the faint corridor glow. Just one row lower, fitted stonework slips smoothly into soft charcoal shadow. Far beneath those darkened rings waits the calm grey reflection of stored rainwater. Nothing down inside that quiet well moves except single drops arriving on schedule.
 [PAUSE|1.5]
-[080|NARRATOR_NATIVE_en|0.82] Another drop finds the same place and the same soft answer. The drops would continue if you stood up now. You stay for a few more, because the sound is steady. The curb under your hands does not change, and you are in no hurry to leave it.
+[080|NARRATOR_NATIVE_en|0.82] Another single drop lands cleanly in the exact same center and sends back the identical soft echo from the water. Even if you rose and walked away right now, this patient rhythm would keep flowing faithfully through the night. Knowing that makes staying a little longer feel completely free. Your hands rest warmly along the unchanging curb.
 [PAUSE|1.5]
-[081|NARRATOR_NATIVE_en|0.82] At the turn behind you, a thread of warm light marks the way back. It does not reach the water. It only keeps the passage from closing into a solid dark. You know which way the atrium lies, and you could turn back toward it anytime.
+[081|NARRATOR_NATIVE_en|0.82] Turning your gaze briefly toward the corridor bend behind your shoulder, you see that thin thread of amber lamplight still holding steady. It cannot reach the dark water below, yet it keeps the doorway back to the warm room open and clear. You know the exact short path back to the atrium whenever you feel ready. Nothing rushes that return.
 [PAUSE|1.5]
-[081|NARRATOR_TARGET_es|0.75] Una hebra de luz cálida marca la vuelta. Esa luz no llega hasta el agua de abajo, y puedes volver hacia la luz cálida.
+[081|NARRATOR_TARGET_es|0.75] Una luz cálida marca el regreso. No llega al agua de abajo, pero puedes volver con calma.
 [PAUSE|1.5]
-[081|NARRATOR_NATIVE_en_translate|0.82] A thread of warm light marks the way back. That light does not reach the water below, and you can turn back toward the warm light.
+[081|NARRATOR_NATIVE_en_translate|0.82] A warm light marks the way back. It does not reach the water below, but you can return calmly.
 [PAUSE|2.5]
-[082|NARRATOR_NATIVE_en|0.82] Both ends of the rain are audible now. The roof lets it in, the pool receives it, and this quiet store keeps the rest. The villa is finished with its work. You stay only to hear one last drop find the depth.
+[082|NARRATOR_NATIVE_en|0.82] Listening from this still corner, you can now hear both ends of the villa's rainy night working gently together. High overhead, roof tiles gather the shower into the shallow pool; deep beneath your knees, this silent stone vault keeps every drop safe. The house's patient work has already finished itself. You remain only to share its quiet finish.
 [PAUSE|1.5]
-[083|NARRATOR_NATIVE_en|0.82] The water below does not climb the shaft. The shine stays where it is. Your hands remain on the dry stone of the curb, and the damp is only air. What lies down there is the house's store, not a rising pool, and the stored water waits without climbing.
+[083|NARRATOR_NATIVE_en|0.82] Far beneath the chamber stones, the calm surface stays steadily at its natural mark without ever climbing up the shaft. That pale grey glimmer simply holds its place deep in the cool dark. Above the opening, your palms rest comfortably against dry limestone without touching any dampness. Stored quietly inside its vault, the rainwater settles softly for tomorrow.
 [PAUSE|1.5]
-[084|NARRATOR_NATIVE_en|0.82] Enough of the depth has been heard. The next drop can fall without you. You lift your knee and stand beside the round curb. The cool air lets your face go, and warm lamp light waits one turn ahead.
+[084|NARRATOR_NATIVE_en|0.82] By now, enough of that deep underground stillness has settled peacefully into your shoulders and breath. Rising smoothly from your knee, you stand upright beside the circular curb once more while the shaft remains quiet beneath you. Cool stone air lets go of your face gently as you turn around. One corridor bend away, warm amber lamplight waits calmly.
 [PAUSE|1.5]
-[084|NARRATOR_TARGET_es|0.75] Ya escuchas bastante el fondo del pozo. Te levantas junto al borde redondo, y la boca del pozo es solo un anillo.
+[084|NARRATOR_TARGET_es|0.75] El silencio del pozo queda atrás. Te levantas junto al borde redondo y miras hacia la luz.
 [PAUSE|1.5]
-[084|NARRATOR_NATIVE_en_translate|0.82] You have heard enough of the bottom of the shaft. You stand up beside the round rim, and the mouth of the shaft is only a ring.
+[084|NARRATOR_NATIVE_en_translate|0.82] The silence of the shaft stays behind. You stand up beside the round rim and look toward the light.
 [PAUSE|2.5]
-[085|NARRATOR_NATIVE_en|0.82] The way back is the same stones, a little warmer as you face the lamp. Your hand finds the other wall. The slope rises under your feet. The pool's murmur grows from a cloth of sound back into a voice, and the voice of the pool grows clearer.
+[085|NARRATOR_NATIVE_en|0.82] Walking back along the narrow corridor, you feel the familiar stones growing subtly milder with every step toward the light. Your open hand slides easily along the opposite plaster wall to guide your stride. Gently, the floor rises beneath your sandals by that single slight incline. Ahead, the soft hush of the atrium pool widens into clear silver music.
 [PAUSE|1.5]
-[086|NARRATOR_NATIVE_en|0.82] At the turn, warm light meets your chest before your eyes fully take it. A little rosemary is in that air, and it is welcome. The cistern smell stays in your sleeve for one breath, then the garden scent takes its place.
+[086|NARRATOR_NATIVE_en|0.82] As you reach the open bend, mild golden warmth greets your chest even before your eyes take in the hallway ahead. Floating softly inside that warm air arrives a welcome hint of damp rosemary from the nearby courtyard. Within a single quiet breath, the cool mineral scent slips off your sleeves. Smoothly, the living house welcomes you back inside.
 [PAUSE|1.5]
-[087|NARRATOR_NATIVE_en|0.82] You walk the narrow part without hurrying. The low ceiling is familiar now. Your steps stay even. The opening to the atrium shows as a brighter rectangle, lit by rain and lamp, and rainlight silvers the far edge of the opening.
+[087|NARRATOR_NATIVE_en|0.82] You step easily through the shorter narrow stretch without needing to hurry your sandals at all. Now the low limestone arch feels completely familiar above your hair, keeping your stride calm and even. Ahead at the end of the passage, the doorway into the atrium glows like a soft rectangle. Silver rainlight glimmers quietly along its far threshold.
 [PAUSE|1.5]
-[087|NARRATOR_TARGET_es|0.75] Cruzas la parte estrecha sin prisa. La salida a la sala es un rectángulo claro, y la luz de la lluvia aclara la salida.
+[087|NARRATOR_TARGET_es|0.75] Cruzas el pasillo estrecho sin prisa. La puerta hacia la sala brilla con luz de lluvia.
 [PAUSE|1.5]
-[087|NARRATOR_NATIVE_en_translate|0.82] You cross the narrow part without hurry. The way out to the room is a bright rectangle, and the rainlight brightens the opening.
+[087|NARRATOR_NATIVE_en_translate|0.82] You cross the narrow passage without hurrying. The doorway to the room shines with rainlight.
 [PAUSE|2.5]
-[088|NARRATOR_NATIVE_en|0.82] Cool air follows you a short way, then stays behind, as if the passage keeps it. The atrium's warmth takes your hands first. You step up the last small rise. The pool lies ahead under the open square of rain.
+[088|NARRATOR_NATIVE_en|0.82] A last ribbon of cool corridor air follows your heels for two paces before settling back inside the passage shadow. Immediately, the gentle warmth of the atrium wraps warmly around your wrists and fingers. You step up the final shallow rise onto swept mosaic stone. Directly ahead under the square roof opening, gold rings widen across the quiet pool.
 [PAUSE|1.5]
-[089|NARRATOR_NATIVE_en|0.82] You come out beside the wall, and the square of rainy sky is there again. Gold rings move on the water. The floor under you is dry. The hatch is behind you, heard, and left in its place, and the cover stays where you left it.
+[089|NARRATOR_NATIVE_en|0.82] Stepping out along the dry wall, you stand once more beneath the sheltered roof facing the open square of night sky. Rain continues falling softly into the shallow impluvium, spinning bright amber circles toward the rim. Around your sandals, the mosaic paving remains untouched and dry. Behind your shoulder, the open cistern rests silently in its hidden vault.
 [PAUSE|1.5]
-[090|NARRATOR_NATIVE_en|0.82] You stand a moment between the cool you left and the lamp you face. Your shoulders carry only the street's earlier wet, not the cistern. The room has not changed its rain for you. A bench waits along the wall, and the wooden seat is pale in the lamp.
+[IMAGE|11] First-person view of a dry wooden bench beside the atrium pool, two small lamps, rain in the open roof, no people
+[090|NARRATOR_NATIVE_en|0.82] For a calm heartbeat you stand balanced between the cool passage behind you and the warm oil lamps ahead. Your coat carries only the light memory of earlier street rain rather than underground chill. Nothing in the peaceful room shifted while you were away. Resting along the plastered wall waits a simple wooden bench, pale and inviting in the lamplight.
 [PAUSE|1.5]
-[090|NARRATOR_TARGET_es|0.75] Estás entre el aire frío y la lámpara. Hay un banco de madera junto a la pared, y el asiento se ve pálido.
+[090|NARRATOR_TARGET_es|0.75] Hay un banco de madera junto a la pared. El asiento seco y pálido invita al silencio.
 [PAUSE|1.5]
-[090|NARRATOR_NATIVE_en_translate|0.82] You are between the cold air and the lamp. There is a wooden bench by the wall, and the wooden seat looks pale.
+[090|NARRATOR_NATIVE_en_translate|0.82] There is a wooden bench by the wall. The dry, pale seat invites silence.
 [PAUSE|2.5]
 
 ## BLOCK: ACT_6_ATRIUM_REST
-[091|NARRATOR_NATIVE_en|0.82] The bench is wood, pale where the lamp reaches it, set against the plaster. You touch the seat. It is dry, with no film of rain and no seep from the floor. The wall behind it still holds the day's warmth under your palm.
+[091|NARRATOR_NATIVE_en|0.82] Set evenly against the smooth stucco wall sits a plain Roman bench of pale seasoned timber touched warmly by lamplight. Reaching down, you sweep your palm lightly across the wide plank seat. It feels completely dry, without any mist from the open roof or dampness from the floor. Behind it, the plastered wall still radiates mild daytime warmth into your fingertips.
 [PAUSE|1.5]
-[092|NARRATOR_NATIVE_en|0.82] You sit. The wood answers with a small sound, then goes quiet. Your back finds the wall. Your feet rest flat on the dry pattern, and the pool lies a little to your left.
+[092|NARRATOR_NATIVE_en|0.82] Lowering yourself unhurriedly onto the dry wooden seat, you feel the solid frame give one tiny settling whisper before turning utterly still. Leaning gently backward lets your shoulder blades find the supportive warm plaster behind you. Both feet settle flat and comfortable across the dry mosaic paving. Just a little to your left, the shallow pool murmurs on.
 [PAUSE|1.5]
-[093|NARRATOR_NATIVE_en|0.82] The oil lamp stands on a low support near the bench, a small flame under a clay lip. It does not smoke. The light lies on your knees and on the near rim. The far water stays softer in the shadow.
+[093|NARRATOR_NATIVE_en|0.82] Close beside the wooden bench stands a small bronze oil lamp resting upon a low pedestal beneath a curved clay lip. Its small golden flame burns completely clean without sending up a trace of smoke. Soft amber light spreads peacefully across your knees and highlights the near stone rim of the basin. Beyond that border, distant water rests in comfortable shadow.
 [PAUSE|1.5]
-[093|NARRATOR_TARGET_es|0.75] La lámpara de aceite arde cerca del banco. La llama pequeña ilumina tus rodillas, y el lado lejano del agua queda oscuro.
+[093|NARRATOR_TARGET_es|0.75] La lámpara de aceite arde cerca del banco. La luz suave cae sobre tus rodillas, y el agua lejana queda en sombra.
 [PAUSE|1.5]
-[093|NARRATOR_NATIVE_en_translate|0.82] The oil lamp burns near the bench. The small flame lights your knees, and the far side of the water stays dark.
+[093|NARRATOR_NATIVE_en_translate|0.82] The oil lamp burns near the bench. The soft light falls on your knees, and the far water stays in shadow.
 [PAUSE|2.5]
-[094|NARRATOR_NATIVE_en|0.82] You set your hands open on your thighs. There is nothing to hold. The street's wet is only a memory in the hem, and the hem is not dripping. The bench takes your full weight without a creak.
+[094|NARRATOR_NATIVE_en|0.82] You let both hands rest open, palms upward or gently relaxed across your thighs with nothing left to carry or adjust. Only a faint memory of street dampness lingers along the bottom hem of your tunic, now dry and still. Underneath you, the heavy Roman bench carries your whole weight effortlessly. Not a single task remains anywhere inside this house.
 [PAUSE|1.5]
-[095|NARRATOR_NATIVE_en|0.82] Rain keeps entering the open roof. Circles are born and fade on the pool, the same steady work. From the bench the sound is round and even. You do not need to walk to it, and the circles on the pool work alone.
+[095|NARRATOR_NATIVE_en|0.82] Overhead through the open compluvium square, gentle rain keeps entering the villa at the same steady, soothing pace. One clear circle opens, widens silently across the water, and yields smoothly to the next without crowding. Heard from the dry wooden bench, the splash feels rounded, balanced, and unhurried. You watch the pool continue its peaceful rhythm all by itself.
 [PAUSE|1.5]
-[096|NARRATOR_NATIVE_en|0.82] A little rosemary still lives on your sleeve when you turn your wrist. The garden is behind a doorway, raining on its own leaves. You do not return to it. The bench is the place, and you let the garden keep its own rain.
+[096|NARRATOR_NATIVE_en|0.82] When you turn your wrist slightly in the warm lamplight, a soft trace of rosemary still rises cleanly from your dry wool sleeve. Beyond the far doorway, the little colonnade garden keeps receiving gentle night drops across its leaves and clay pots. There is no reason to walk back out there tonight. This dry bench holds everything you need for quiet rest.
 [PAUSE|1.5]
-[096|NARRATOR_TARGET_es|0.75] Tu manga todavía huele un poco a romero. El jardín mojado queda detrás de la puerta, y el jardín se queda con su lluvia.
+[096|NARRATOR_TARGET_es|0.75] Tu manga huele a romero. El jardín mojado queda detrás con su lluvia tranquila.
 [PAUSE|1.5]
-[096|NARRATOR_NATIVE_en_translate|0.82] Your sleeve still smells a little of rosemary. The wet garden stays behind the door, and the garden keeps its rain.
+[096|NARRATOR_NATIVE_en_translate|0.82] Your sleeve smells of rosemary. The wet garden stays behind with its quiet rain.
 [PAUSE|2.5]
-[097|NARRATOR_NATIVE_en|0.82] Under the pool's voice, a lower tick from the cistern is almost gone. Once, you hear it. Then only the roof remains. The roof sound is the nearer one, steady enough to follow.
+[097|NARRATOR_NATIVE_en|0.82] Somewhere far beneath the mosaic paving, the slow single-drop echo inside the underground cistern has grown almost too faint to distinguish. Once, during a brief pause in the shower, you catch one tiny distant chime from below. Immediately afterward, the gentle roof rain covers it smoothly again like a soft woolen blanket. The nearer sound stays easy to follow.
 [PAUSE|1.5]
-[098|NARRATOR_NATIVE_en|0.82] Your shoulders grow heavy in a gentle way, the long walk set down. It is not a demand. The wall takes part of the weight. The wood takes the rest, and nothing in you argues with that weight.
+[098|NARRATOR_NATIVE_en|0.82] A comfortable, peaceful heaviness settles softly into both shoulders, as though the long walk from the basalt street has finally set itself down beside you. Nothing inside the room asks you to sit up straighter or stay alert. Behind your shoulder blades, the warm plaster wall shares part of the weight. Beneath your hips, seasoned timber holds the rest cleanly.
 [PAUSE|1.5]
-[099|NARRATOR_NATIVE_en|0.82] Your eyes lower halfway, and the lamp becomes a warm blur at the edge of sight. The pool stays a moving dark with gold in it. You may lift your gaze again. For now the lower gaze is easy, and the gold in the water can wait.
+[IMAGE|12] First-person view from the bench of the quiet pool and the dark square of sky, night rain, no people
+[099|NARRATOR_NATIVE_en|0.82] Letting your eyelids sink halfway down, you watch the nearby oil flame soften into a warm golden blur along the corner of your sight. Across the floor, the shallow pool remains a deep dark mirror dappled with gentle ripples of gold. Whenever you choose, you could lift your eyes again toward the beams. For now, that soft low gaze feels effortless.
 [PAUSE|1.5]
-[099|NARRATOR_TARGET_es|0.75] Tus ojos bajan y la llama se ve suave. El agua oscura guarda un poco de luz dorada, y la luz dorada del agua puede esperar.
+[099|NARRATOR_TARGET_es|0.75] Tus ojos bajan despacio. La llama se ve suave, y el agua oscura guarda luz dorada.
 [PAUSE|1.5]
-[099|NARRATOR_NATIVE_en_translate|0.82] Your eyes lower, and the flame looks soft. The dark water holds a little gold light, and the gold light of the water can wait.
+[099|NARRATOR_NATIVE_en_translate|0.82] Your eyes lower slowly. The flame looks soft, and the dark water holds gold light.
 [PAUSE|2.5]
-[100|NARRATOR_NATIVE_en|0.82] Breath follows the drops, in across a scatter of taps and out in the short quiet between them. The match happens on its own. Your mouth stays closed and easy. The bench holds that slow rhythm with you, and nothing asks you to count the taps.
+[100|NARRATOR_NATIVE_en|0.82] Without any deliberate counting, your gentle breathing falls smoothly into step with the atrium rain. Each slow inhale gathers across a soft scatter of falling drops, and each unhurried exhale releases into the quiet gap between showers. Your jaw softens, and your mouth stays easily closed. Inside this sheltered corner, the wooden bench shares that unhurried tempo with you.
 [PAUSE|1.5]
-[101|NARRATOR_NATIVE_en|0.82] The floor around the bench is still dry. No mist from the open roof reaches this wall. The rain does its work over the pool and leaves the sitting place in peace. Your ankles are warm, and the open roof leaves this wall alone.
+[101|NARRATOR_NATIVE_en|0.82] Across the mosaic around your sandals, the stone floor stays reassuringly dry from edge to edge. Not even a fine drift of mist from the open square roof reaches as far back as this quiet wall. Rain finishes its work neatly within the carved marble pool and leaves your resting corner untouched. Under your tunic, your ankles feel comfortably warm.
 [PAUSE|1.5]
-[102|NARRATOR_NATIVE_en|0.82] The street is only rain on far stone now. The hatch is only one drop in the dark. Both are true, and both are distant. The bench is the near thing, and the wood under you is the present thing.
+[102|NARRATOR_NATIVE_en|0.82] Out beyond the tall oak door, the dark basalt street has turned into nothing more than rain washing distant stones. Down beneath the paving, the deep cistern holds only one quiet drop echoing softly in the dark. Both truths stay calm and far removed from your seat. Right here, warm dry wood beneath your hands is all that exists nearby.
 [PAUSE|1.5]
-[102|NARRATOR_TARGET_es|0.75] La calle mojada está lejos de este banco. La cisterna también está lejos y en calma, y la madera bajo ti es lo cercano.
+[102|NARRATOR_TARGET_es|0.75] La calle mojada está muy lejos ahora. La cisterna está en calma, y la madera seca está aquí.
 [PAUSE|1.5]
-[102|NARRATOR_NATIVE_en_translate|0.82] The wet street is far from this bench. The cistern is also far and calm, and the wood under you is what is near.
+[102|NARRATOR_NATIVE_en_translate|0.82] The wet street is far away now. The cistern is calm, and the dry wood is right here.
 [PAUSE|2.5]
-[103|NARRATOR_NATIVE_en|0.82] The flame leans a little when a draft arrives from the garden, then stands straight. The draft smells green and wet, and it lasts one breath. After it, the lamp is steady. The room is steady with it, and the room settles again with the flame.
+[103|NARRATOR_NATIVE_en|0.82] A faint draft from the courtyard garden drifts gently through the doorway, bending the small lamp flame for half a breath before it stands upright again. Along with that slow breeze comes one crisp ribbon of green rosemary and rain-washed air. Moments later, the tiny golden flame burns completely steady once more. Gradually, the entire atrium settles deeper around you.
 [PAUSE|1.5]
-[104|NARRATOR_NATIVE_en|0.82] Your hands do not search for a task. The grain under one finger is a small ridge, and you let it be. The ridge needs nothing from you. The rain does not need your help, and the ridge is only a quiet texture.
+[104|NARRATOR_NATIVE_en|0.82] Resting easily on your lap, your fingers feel no urge to reach for anything, mend anything, or start another walk. Beneath one fingertip lies a smooth narrow ridge in the bench grain, warm and polished by years of quiet evening use. You simply let your finger rest lightly beside that timber line without tracing it. Nothing in the villa requires your attention.
 [PAUSE|1.5]
-[105|NARRATOR_NATIVE_en|0.82] Time here is the next circle on the water, and the one after that. You stop following them. The atrium can keep the count. Your eyes stay low, and a fresh circle of gold reaches the near rim.
+[105|NARRATOR_NATIVE_en|0.82] Time inside this sheltered atrium measures itself only by the next silver circle opening on the water and the quiet moment afterward. Slowly, you stop following the ripples one by one, trusting the quiet pool to keep its own count. Your gaze softens low toward the rim while fresh amber reflections drift easily across the dark basin.
 [PAUSE|1.5]
-[105|NARRATOR_TARGET_es|0.75] Dejas de seguir los círculos del agua. El atrio puede llevar la cuenta. Los ojos se quedan bajos, y un círculo dorado llega al borde cercano.
+[105|NARRATOR_TARGET_es|0.75] Dejas de seguir los círculos del agua. El atrio lleva la cuenta, y la luz dorada llega al borde.
 [PAUSE|1.5]
-[105|NARRATOR_NATIVE_en_translate|0.82] You stop following the circles on the water. The atrium can keep the count. Your eyes stay low, and a fresh circle of gold reaches the near rim.
+[105|NARRATOR_NATIVE_en_translate|0.82] You stop following the circles on the water. The atrium keeps the count, and the gold light reaches the rim.
 [PAUSE|2.5]
-[106|NARRATOR_NATIVE_en|0.82] Sleep is not an order in this room. It is only the heaviness already in your shoulders, free to stay or to pass. The lamp burns either way. The rain keeps the pool busy without asking anything of you.
+[106|NARRATOR_NATIVE_en|0.82] Nothing in this calm Roman hall treats sleep as a rule you are supposed to follow or earn. Rest is simply the natural heaviness already resting inside your shoulders, completely free to linger or deepen as it likes. Either way, the bronze lamp keeps burning gently beside you. Rain tends the quiet impluvium without asking anything at all of you.
 [PAUSE|1.5]
-[107|NARRATOR_NATIVE_en|0.82] You let your head rest a little toward the wall, not fully, only so the plaster holds a point of weight. The plaster is warm. The bench holds the rest of you. The square of sky rains on in the same soft way.
+[107|NARRATOR_NATIVE_en|0.82] You let the back of your head lean lightly toward the warm plaster wall—not pressed hard, only resting enough for solid lime to hold a feather of weight. The dry wall feels gentle against your hair while the broad wooden seat supports the rest of your body. Above the pool, the open square of night sky keeps raining softly into still water.
 [PAUSE|1.5]
-[108|NARRATOR_NATIVE_en|0.82] The walking is finished: street, garden, pool, the cool hatch, and now this dry bench. The pool answers the night with the same soft fall. You can remain here. The lamp stays with you, and the house is quiet, and the night can stay just like this.
+[108|NARRATOR_NATIVE_en|0.82] The long walk is completely finished now: dark basalt street, sheltered herb garden, open atrium pool, cool cistern vault, and finally this dry wooden bench. Inside the basin, gentle water answers the quiet night with the same soft fall. You are welcome to stay right here as long as you wish. Warm lamplight remains beside you in this silent house.
 [PAUSE|1.5]
-[108|NARRATOR_TARGET_es|0.75] Descansas en el banco seco de la sala. La casa queda en silencio con la lluvia, y la noche puede quedar así de quieta.
+[108|NARRATOR_TARGET_es|0.75] Descansas en el banco seco de la casa. Hay silencio con la lluvia, y la noche queda quieta.
 [PAUSE|1.5]
-[108|NARRATOR_NATIVE_en_translate|0.82] You rest on the dry bench in the room. The house stays quiet with the rain, and the night can remain this still.
+[108|NARRATOR_NATIVE_en_translate|0.82] You rest on the dry bench of the house. There is silence with the rain, and the night stays quiet.
 [PAUSE|2.5]
 
 ## BLOCK: RECALL_1
-[109|NARRATOR_NATIVE_en|0.80] You stand in warm rain on the dark stone street. Water runs along the walk and keeps to the middle of the road. A house lamp burns ahead and does not flicker.
+[IMAGE|01] First-person night view of a wet basalt street in Pompeii, warm rain, a small oil lamp in a doorway ahead, no people
+[109|NARRATOR_NATIVE_en|0.80] You stand in warm rain on the dark basalt street in Pompeii. Water gathers by the curbs and runs along the middle. A small house lamp burns ahead.
 [PAUSE|2.0]
-[109|NARRATOR_TARGET_es|0.75] Estás en lluvia cálida en la calle oscura de piedra. El agua corre por el camino y se queda en el centro de la calle. Una lámpara de casa arde adelante. La lámpara no parpadea.
+[109|NARRATOR_TARGET_es|0.75] Estás bajo lluvia cálida en la calle oscura de Pompeya. El agua se junta junto a los bordes y corre por el centro. Una lámpara pequeña arde adelante.
 [PAUSE|2.0]
-[109|NARRATOR_TARGET_es_repeat|0.70] Estás en lluvia cálida en la calle oscura de piedra. El agua corre por el camino y se queda en el centro de la calle. Una lámpara de casa arde adelante. La lámpara no parpadea.
+[109|NARRATOR_TARGET_es_repeat|0.70] Estás bajo lluvia cálida en la calle oscura de Pompeya. El agua se junta junto a los bordes y corre por el centro. Una lámpara pequeña arde adelante.
 [PAUSE|4.0]
-[110|NARRATOR_NATIVE_en|0.80] The paving is a patchwork of large grey blocks. Rain draws thin bright lines in the seams. Your foot stays on the high crown, where the water is thin.
+[110|NARRATOR_NATIVE_en|0.80] The paving is a patchwork of wide grey stones. Rain fills the seams with thin silver lines. Your sandals keep to the high crown where the flow is thin.
 [PAUSE|2.0]
-[110|NARRATOR_TARGET_es|0.75] El pavimento es un mosaico de bloques grandes y grises. La lluvia dibuja líneas finas y brillantes en las juntas. El pie queda en la parte alta. Allí el agua es poca.
+[110|NARRATOR_TARGET_es|0.75] El pavimento forma un dibujo de piedras anchas y grises. La lluvia llena las juntas con líneas finas de plata. Tus sandalias siguen la parte alta con poca agua.
 [PAUSE|2.0]
-[110|NARRATOR_TARGET_es_repeat|0.70] El pavimento es un mosaico de bloques grandes y grises. La lluvia dibuja líneas finas y brillantes en las juntas. El pie queda en la parte alta. Allí el agua es poca.
+[110|NARRATOR_TARGET_es_repeat|0.70] El pavimento forma un dibujo de piedras anchas y grises. La lluvia llena las juntas con líneas finas de plata. Tus sandalias siguen la parte alta con poca agua.
 [PAUSE|4.0]
-[111|NARRATOR_NATIVE_en|0.80] Wheel ruts hold a little rain and shine like dark ribbons. You stay on the high walk, above the flow. A bay leaf turns slowly in one rut.
+[111|NARRATOR_NATIVE_en|0.80] Wheel ruts hold dark water like two quiet ribbons. You stay on the raised sidewalk above the stream. A single bay leaf turns slowly inside one rut as it passes.
 [PAUSE|2.0]
-[111|NARRATOR_TARGET_es|0.75] Los surcos de las ruedas guardan un poco de lluvia y brillan como cintas oscuras. Te quedas en el camino alto, sobre el flujo. Una hoja de laurel gira despacio en un surco.
+[111|NARRATOR_TARGET_es|0.75] Los surcos de las ruedas guardan agua oscura como dos cintas quietas. Caminas por la acera alta sobre la corriente. Una hoja de laurel gira despacio en el agua y sigue su camino.
 [PAUSE|2.0]
-[111|NARRATOR_TARGET_es_repeat|0.70] Los surcos de las ruedas guardan un poco de lluvia y brillan como cintas oscuras. Te quedas en el camino alto, sobre el flujo. Una hoja de laurel gira despacio en un surco.
+[111|NARRATOR_TARGET_es_repeat|0.70] Los surcos de las ruedas guardan agua oscura como dos cintas quietas. Caminas por la acera alta sobre la corriente. Una hoja de laurel gira despacio en el agua y sigue su camino.
 [PAUSE|4.0]
-[112|NARRATOR_NATIVE_en|0.80] Flat blocks cross the wet street from walk to walk. You step from one stone to the next. Rain jumps beside your foot, and the house lamp does not move.
+[IMAGE|02] First-person view of raised stepping stones across a rainy street, water in the ruts, no people
+[112|NARRATOR_NATIVE_en|0.80] Flat stepping stones cross the rainy street from walk to walk. You step onto the first block above the stream. The next stone waits one easy stride toward the lamp.
 [PAUSE|2.0]
-[112|NARRATOR_TARGET_es|0.75] Bloques planos cruzan la calle mojada de camino a camino. Das un paso de una piedra a la siguiente. La lluvia salta junto al pie, y la lámpara de casa no se mueve.
+[112|NARRATOR_TARGET_es|0.75] Piedras planas cruzan la calle mojada de acera a acera. Subes al primer bloque sobre la corriente. La siguiente piedra espera a un paso fácil hacia la lámpara.
 [PAUSE|2.0]
-[112|NARRATOR_TARGET_es_repeat|0.70] Bloques planos cruzan la calle mojada de camino a camino. Das un paso de una piedra a la siguiente. La lluvia salta junto al pie, y la lámpara de casa no se mueve.
+[112|NARRATOR_TARGET_es_repeat|0.70] Piedras planas cruzan la calle mojada de acera a acera. Subes al primer bloque sobre la corriente. La siguiente piedra espera a un paso fácil hacia la lámpara.
 [PAUSE|4.0]
-[113|NARRATOR_NATIVE_en|0.80] The plaster wall is still warm under the rain. Your sleeve brushes it and comes away cool. A faded red band runs along the wall, and the street grows narrow.
+[113|NARRATOR_NATIVE_en|0.80] The stucco wall across the street still holds daytime warmth beneath the rain. A faded red band runs at shoulder height. Your sleeve brushes the plaster as the lane narrows.
 [PAUSE|2.0]
-[113|NARRATOR_TARGET_es|0.75] La pared de yeso sigue tibia bajo la lluvia. La manga la roza y queda fresca. Una banda roja desvaída corre por la pared, y la calle se hace estrecha.
+[113|NARRATOR_TARGET_es|0.75] La pared de yeso guarda todavía algo de calor del día. Una franja roja pálida corre a la altura del hombro. La manga roza la pared húmeda mientras la calle se estrecha adelante.
 [PAUSE|2.0]
-[113|NARRATOR_TARGET_es_repeat|0.70] La pared de yeso sigue tibia bajo la lluvia. La manga la roza y queda fresca. Una banda roja desvaída corre por la pared, y la calle se hace estrecha.
+[113|NARRATOR_TARGET_es_repeat|0.70] La pared de yeso guarda todavía algo de calor del día. Una franja roja pálida corre a la altura del hombro. La manga roza la pared húmeda mientras la calle se estrecha adelante.
 [PAUSE|4.0]
-[114|NARRATOR_NATIVE_en|0.80] A closed shop sits under a deep roof. Rain leaves that roof in one steady thread. You do not stop, and the lamp ahead grows a little larger.
+[114|NARRATOR_NATIVE_en|0.80] A closed shop rests under deep roof tiles with dry clay jars inside. Rain falls from the eaves in a thin curtain. Behind you, drops murmur as the lamp grows brighter.
 [PAUSE|2.0]
-[114|NARRATOR_TARGET_es|0.75] Una tienda cerrada está bajo un techo profundo. La lluvia sale de ese techo en un hilo constante. No paras, y la lámpara de adelante crece un poco.
+[114|NARRATOR_TARGET_es|0.75] Una tienda cerrada descansa bajo tejas hondas con jarras de barro secas adentro. La lluvia cae del alero en una cortina fina. Atrás las gotas murmuran mientras la luz crece.
 [PAUSE|2.0]
-[114|NARRATOR_TARGET_es_repeat|0.70] Una tienda cerrada está bajo un techo profundo. La lluvia sale de ese techo en un hilo constante. No paras, y la lámpara de adelante crece un poco.
+[114|NARRATOR_TARGET_es_repeat|0.70] Una tienda cerrada descansa bajo tejas hondas con jarras de barro secas adentro. La lluvia cae del alero en una cortina fina. Atrás las gotas murmuran mientras la luz crece.
 [PAUSE|4.0]
-[115|NARRATOR_NATIVE_en|0.80] At the corner a stone basin takes the rain and spills the extra into the street. The water inside is dark and moving. You pass it, and the house ahead is closer.
+[115|NARRATOR_NATIVE_en|0.80] A stone street fountain at the corner holds dark moving water and spills the extra. You smell wet limestone and iron as you pass. The villa doorway draws closer.
 [PAUSE|2.0]
-[115|NARRATOR_TARGET_es|0.75] En la esquina una pileta de piedra recibe la lluvia y vierte lo extra en la calle. El agua dentro está oscura y se mueve. Pasas de largo, y la casa de adelante está más cerca.
+[115|NARRATOR_TARGET_es|0.75] Una fuente de piedra en la esquina guarda agua oscura en movimiento y vierte el resto. Sientes olor a piedra mojada y hierro al pasar. La puerta de la villa se acerca.
 [PAUSE|2.0]
-[115|NARRATOR_TARGET_es_repeat|0.70] En la esquina una pileta de piedra recibe la lluvia y vierte lo extra en la calle. El agua dentro está oscura y se mueve. Pasas de largo, y la casa de adelante está más cerca.
+[115|NARRATOR_TARGET_es_repeat|0.70] Una fuente de piedra en la esquina guarda agua oscura en movimiento y vierte el resto. Sientes olor a piedra mojada y hierro al pasar. La puerta de la villa se acerca.
 [PAUSE|4.0]
-[116|NARRATOR_NATIVE_en|0.80] The sky is one low cloud, with no moon. Far thunder is only a soft change in the air. You carry a little water on your shoulders and notice the lamp.
+[116|NARRATOR_NATIVE_en|0.80] Low cloud fills the sky with no moon in sight. Far thunder passes softly behind the hills. Your shoulders carry warm rain calmly as you walk toward the lamp.
 [PAUSE|2.0]
-[116|NARRATOR_TARGET_es|0.75] El cielo es una nube baja, sin luna. El trueno lejano es solo un cambio suave en el aire. Llevas un poco de agua en los hombros y notas la lámpara.
+[116|NARRATOR_TARGET_es|0.75] Una nube baja cubre el cielo sin luna. Un trueno lejano pasa suave detrás de las colinas. Los hombros llevan la lluvia tibia con calma mientras caminas hacia la lámpara.
 [PAUSE|2.0]
-[116|NARRATOR_TARGET_es_repeat|0.70] El cielo es una nube baja, sin luna. El trueno lejano es solo un cambio suave en el aire. Llevas un poco de agua en los hombros y notas la lámpara.
+[116|NARRATOR_TARGET_es_repeat|0.70] Una nube baja cubre el cielo sin luna. Un trueno lejano pasa suave detrás de las colinas. Los hombros llevan la lluvia tibia con calma mientras caminas hacia la lámpara.
 [PAUSE|4.0]
-[117|NARRATOR_NATIVE_en|0.80] A wooden shutter ticks once and then rests. After that tick the rain seems rounder. You pass a dry wood smell, and then the wet dust returns.
+[117|NARRATOR_NATIVE_en|0.80] A wooden shutter taps once in a breeze and settles still. A brief scent of dry cypress drifts past before wet stone returns. The tall house is just ahead.
 [PAUSE|2.0]
-[117|NARRATOR_TARGET_es|0.75] Una persiana de madera hace tic una vez y luego descansa. Después de ese tic la lluvia parece más redonda. Pasas un olor de madera seca, y luego vuelve el polvo mojado.
+[117|NARRATOR_TARGET_es|0.75] Una contraventana de madera suena una vez con el viento y queda quieta. Llega un breve olor a madera seca antes de volver el olor a piedra mojada. La casa ya está muy cerca.
 [PAUSE|2.0]
-[117|NARRATOR_TARGET_es_repeat|0.70] Una persiana de madera hace tic una vez y luego descansa. Después de ese tic la lluvia parece más redonda. Pasas un olor de madera seca, y luego vuelve el polvo mojado.
+[117|NARRATOR_TARGET_es_repeat|0.70] Una contraventana de madera suena una vez con el viento y queda quieta. Llega un breve olor a madera seca antes de volver el olor a piedra mojada. La casa ya está muy cerca.
 [PAUSE|4.0]
-[118|NARRATOR_NATIVE_en|0.80] The house shows a tall front and a dark wooden door. A small oil flame sits in a niche beside the door. The threshold is one step up from the wet street.
+[IMAGE|03] First-person view of a tall wooden house door and a niche lamp, rain on the threshold, no people
+[118|NARRATOR_NATIVE_en|0.80] The villa rises ahead with a tall dark wooden door. An oil lamp burns warmly inside a sheltered wall niche. Rain runs down to the raised threshold as you approach.
 [PAUSE|2.0]
-[118|NARRATOR_TARGET_es|0.75] La casa muestra un frente alto y una puerta de madera oscura. Una llama pequeña de aceite está en un nicho junto a la puerta. El umbral está un escalón arriba de la calle mojada.
+[118|NARRATOR_TARGET_es|0.75] La villa muestra una fachada alta con una puerta grande de madera oscura. Una lámpara de aceite arde tibia en un nicho de la pared. La lluvia baja por el umbral mientras te acercas.
 [PAUSE|2.0]
-[118|NARRATOR_TARGET_es_repeat|0.70] La casa muestra un frente alto y una puerta de madera oscura. Una llama pequeña de aceite está en un nicho junto a la puerta. El umbral está un escalón arriba de la calle mojada.
+[118|NARRATOR_TARGET_es_repeat|0.70] La villa muestra una fachada alta con una puerta grande de madera oscura. Una lámpara de aceite arde tibia en un nicho de la pared. La lluvia baja por el umbral mientras te acercas.
 [PAUSE|4.0]
-[119|NARRATOR_NATIVE_en|0.80] A bronze ring on the door is cold, then only metal. The door opens inward on a quiet hinge. Warm air meets the rain, and a green smell comes with it.
+[119|NARRATOR_NATIVE_en|0.80] A bronze ring rests cool under your fingers as the heavy door swings quietly inward. Mild dry air meets the rain on your face, carrying a green leaf scent from inside.
 [PAUSE|2.0]
-[119|NARRATOR_TARGET_es|0.75] Un anillo de bronce en la puerta está frío, luego solo metal. La puerta se abre hacia adentro en una bisagra silenciosa. El aire cálido encuentra la lluvia, y viene un olor verde con él.
+[119|NARRATOR_TARGET_es|0.75] Un anillo de bronce está frío bajo los dedos mientras la puerta cede sin ruido. Aire tibio y seco sale al encuentro de la lluvia. Desde adentro llega un olor verde a hojas frescas.
 [PAUSE|2.0]
-[119|NARRATOR_TARGET_es_repeat|0.70] Un anillo de bronce en la puerta está frío, luego solo metal. La puerta se abre hacia adentro en una bisagra silenciosa. El aire cálido encuentra la lluvia, y viene un olor verde con él.
+[119|NARRATOR_TARGET_es_repeat|0.70] Un anillo de bronce está frío bajo los dedos mientras la puerta cede sin ruido. Aire tibio y seco sale al encuentro de la lluvia. Desde adentro llega un olor verde a hojas frescas.
 [PAUSE|4.0]
-[120|NARRATOR_NATIVE_en|0.80] You step under the lintel, and the rain leaves your head. The corridor is dim, straight, and paved with small pale stones. At the far end the dark breaks into leaves.
+[120|NARRATOR_NATIVE_en|0.80] You step under the wide lintel and out of the rain. A dim corridor of pale stone chips leads straight ahead toward dark leaves. You leave the street behind.
 [PAUSE|2.0]
-[120|NARRATOR_TARGET_es|0.75] Pasas bajo el dintel, y la lluvia deja la cabeza. El pasillo está oscuro, recto y con piedras pequeñas y claras. Al fondo la oscuridad se parte en hojas.
+[120|NARRATOR_TARGET_es|0.75] Pasas bajo el dintel ancho y sales de la lluvia. Un pasillo oscuro de piedras claras sigue recto hacia hojas oscuras al fondo. Dejas la calle atrás con calma.
 [PAUSE|2.0]
-[120|NARRATOR_TARGET_es_repeat|0.70] Pasas bajo el dintel, y la lluvia deja la cabeza. El pasillo está oscuro, recto y con piedras pequeñas y claras. Al fondo la oscuridad se parte en hojas.
+[120|NARRATOR_TARGET_es_repeat|0.70] Pasas bajo el dintel ancho y sales de la lluvia. Un pasillo oscuro de piedras claras sigue recto hacia hojas oscuras al fondo. Dejas la calle atrás con calma.
 [PAUSE|4.0]
-[121|NARRATOR_NATIVE_en|0.80] The corridor thins the last noise of the street. Your steps sound close on the pale stones. A painted border of leaves runs low on the wall, and the green smell grows.
+[121|NARRATOR_NATIVE_en|0.80] The thick corridor hushes the street rain behind you. Your steps fall softly along pale mosaic stones bordered with painted vines. Ahead, the fresh scent of leaves grows stronger.
 [PAUSE|2.0]
-[121|NARRATOR_TARGET_es|0.75] El pasillo reduce el último ruido de la calle. Los pasos suenan cerca en las piedras claras. Un borde pintado de hojas corre bajo en la pared, y el olor verde crece.
+[121|NARRATOR_TARGET_es|0.75] El pasillo grueso apaga el ruido de la lluvia en la calle. Los pasos suenan suaves sobre el suelo claro con hojas pintadas en la pared. Adelante crece más el olor fresco de las plantas.
 [PAUSE|2.0]
-[121|NARRATOR_TARGET_es_repeat|0.70] El pasillo reduce el último ruido de la calle. Los pasos suenan cerca en las piedras claras. Un borde pintado de hojas corre bajo en la pared, y el olor verde crece.
+[121|NARRATOR_TARGET_es_repeat|0.70] El pasillo grueso apaga el ruido de la lluvia en la calle. Los pasos suenan suaves sobre el suelo claro con hojas pintadas en la pared. Adelante crece más el olor fresco de las plantas.
 [PAUSE|4.0]
-[122|NARRATOR_NATIVE_en|0.80] A side opening gives one slice of rainy air, then closes. Your hand finds the wall dry. The street lamp is gone, and a warmer light waits past the garden.
+[122|NARRATOR_NATIVE_en|0.80] A small side opening brushes cool air across the dry plaster wall as you pass. The street lamp vanishes behind you while a softer golden light waits past the leaves.
 [PAUSE|2.0]
-[122|NARRATOR_TARGET_es|0.75] Una abertura lateral da una porción de aire de lluvia, luego se cierra. La mano encuentra la pared seca. La lámpara de la calle ya no está, y una luz más cálida espera después del jardín.
+[122|NARRATOR_TARGET_es|0.75] Una abertura lateral deja entrar un hilo de aire fresco mientras pasas junto al yeso seco. La lámpara de la calle desaparece atrás. Más allá de las hojas espera una luz dorada más suave.
 [PAUSE|2.0]
-[122|NARRATOR_TARGET_es_repeat|0.70] Una abertura lateral da una porción de aire de lluvia, luego se cierra. La mano encuentra la pared seca. La lámpara de la calle ya no está, y una luz más cálida espera después del jardín.
+[122|NARRATOR_TARGET_es_repeat|0.70] Una abertura lateral deja entrar un hilo de aire fresco mientras pasas junto al yeso seco. La lámpara de la calle desaparece atrás. Más allá de las hojas espera una luz dorada más suave.
 [PAUSE|4.0]
-[123|NARRATOR_NATIVE_en|0.80] The rain changes from a street hiss to drops on leaves. The corridor ends in a covered walk. Beyond the columns a small garden drinks the night, and you slow down.
+[IMAGE|04] First-person view of a small Roman garden in night rain, rosemary and bay under a covered walk, no people
+[123|NARRATOR_NATIVE_en|0.80] The rain softens from street hiss to drops on living leaves. The corridor opens onto a covered colonnade around a small garden. Cool herbal air greets you as you step forward.
 [PAUSE|2.0]
-[123|NARRATOR_TARGET_es|0.75] La lluvia cambia del siseo de la calle a gotas en hojas. El pasillo termina en un paseo cubierto. Más allá de las columnas un jardín pequeño bebe la noche, y vas más despacio.
+[123|NARRATOR_TARGET_es|0.75] La lluvia cambia del sonido de la calle a gotas sobre hojas vivas. El pasillo termina en un paseo cubierto junto a un jardín pequeño. El aire fresco con olor verde te recibe al salir.
 [PAUSE|2.0]
-[123|NARRATOR_TARGET_es_repeat|0.70] La lluvia cambia del siseo de la calle a gotas en hojas. El pasillo termina en un paseo cubierto. Más allá de las columnas un jardín pequeño bebe la noche, y vas más despacio.
+[123|NARRATOR_TARGET_es_repeat|0.70] La lluvia cambia del sonido de la calle a gotas sobre hojas vivas. El pasillo termina en un paseo cubierto junto a un jardín pequeño. El aire fresco con olor verde te recibe al salir.
 [PAUSE|4.0]
-[124|NARRATOR_NATIVE_en|0.80] The garden is paths, pots, and a dry strip under the roof. The house is quiet, with only water and leaves. You step under the walk onto that dry strip.
+[124|NARRATOR_NATIVE_en|0.80] The small garden reveals gravel paths, clay pots, and a dry paved walk under the eaves. Thick walls keep out the wind, leaving quiet rain and leaves under shelter.
 [PAUSE|2.0]
-[124|NARRATOR_TARGET_es|0.75] El jardín son caminos, macetas y una franja seca bajo el techo. La casa está tranquila, solo con agua y hojas. Pasas bajo el paseo a esa franja seca.
+[124|NARRATOR_TARGET_es|0.75] El jardín pequeño muestra caminos de grava, macetas de barro y un paseo seco bajo el techo. Los muros gruesos detienen el viento. Solo quedan lluvia quieta y hojas bajo abrigo.
 [PAUSE|2.0]
-[124|NARRATOR_TARGET_es_repeat|0.70] El jardín son caminos, macetas y una franja seca bajo el techo. La casa está tranquila, solo con agua y hojas. Pasas bajo el paseo a esa franja seca.
+[124|NARRATOR_TARGET_es_repeat|0.70] El jardín pequeño muestra caminos de grava, macetas de barro y un paseo seco bajo el techo. Los muros gruesos detienen el viento. Solo quedan lluvia quieta y hojas bajo abrigo.
 [PAUSE|4.0]
-[125|NARRATOR_NATIVE_en|0.80] The first column is cool where a far lamp reaches it. Rain hits the open bed and misses the strip where you stand. Rosemary leaves a clean scent on your wet sleeve.
+[125|NARRATOR_NATIVE_en|0.80] The nearest column stands cool in distant lamplight while rain falls beside the dry walk. A rosemary sprig brushes your sleeve, leaving a crisp scent as the street fades away.
 [PAUSE|2.0]
-[125|NARRATOR_TARGET_es|0.75] La primera columna está fresca donde una lámpara lejana la alcanza. La lluvia golpea el lecho abierto y no toca la franja donde estás. El romero deja un olor limpio en la manga mojada.
+[125|NARRATOR_TARGET_es|0.75] La primera columna está fresca bajo una luz lejana mientras la lluvia cae junto al borde seco. Una rama de romero roza la manga y deja un aroma limpio. La calle queda muy lejos.
 [PAUSE|2.0]
-[125|NARRATOR_TARGET_es_repeat|0.70] La primera columna está fresca donde una lámpara lejana la alcanza. La lluvia golpea el lecho abierto y no toca la franja donde estás. El romero deja un olor limpio en la manga mojada.
+[125|NARRATOR_TARGET_es_repeat|0.70] La primera columna está fresca bajo una luz lejana mientras la lluvia cae junto al borde seco. Una rama de romero roza la manga y deja un aroma limpio. La calle queda muy lejos.
 [PAUSE|4.0]
-[126|NARRATOR_NATIVE_en|0.80] You pause under the eaves. Drops hit the leaves, and a pot spills a thin thread. Your sleeve stops dripping, and you follow the warmer light.
+[126|NARRATOR_NATIVE_en|0.80] You pause beneath the eaves while drops settle across leaves and clay pots. The covered walk turns left around the garden toward a warm honey glow, and you follow it.
 [PAUSE|2.0]
-[126|NARRATOR_TARGET_es|0.75] Paras un momento bajo el alero. Las gotas golpean las hojas, y una maceta suelta un hilo fino. La manga deja de gotear, y sigues la luz más cálida.
+[126|NARRATOR_TARGET_es|0.75] Paras un momento bajo el alero mientras las gotas tocan hojas y macetas de barro. El paseo cubierto gira a la izquierda por el jardín hacia una luz cálida color miel, y la sigues.
 [PAUSE|2.0]
-[126|NARRATOR_TARGET_es_repeat|0.70] Paras un momento bajo el alero. Las gotas golpean las hojas, y una maceta suelta un hilo fino. La manga deja de gotear, y sigues la luz más cálida.
+[126|NARRATOR_TARGET_es_repeat|0.70] Paras un momento bajo el alero mientras las gotas tocan hojas y macetas de barro. El paseo cubierto gira a la izquierda por el jardín hacia una luz cálida color miel, y la sigues.
 [PAUSE|4.0]
-[127|NARRATOR_NATIVE_en|0.80] The walk is a square of roof around an open garden. Rain falls freely in the open middle. Bay and rosemary shine in clay pots, and you keep to the dry strip.
+[127|NARRATOR_NATIVE_en|0.80] The covered walk frames a small square garden open to the night rain. Bay and rosemary shine softly inside clay pots along the edge. You keep comfortably to the dry stone.
 [PAUSE|2.0]
-[127|NARRATOR_TARGET_es|0.75] El paseo es un cuadrado de techo alrededor de un jardín abierto. La lluvia cae libre en el centro abierto. Laurel y romero brillan en macetas de barro, y te quedas en la franja seca.
+[127|NARRATOR_TARGET_es|0.75] El paseo cubierto rodea un jardín cuadrado abierto a la lluvia nocturna. Laurel y romero brillan suavemente en macetas de barro junto al borde. Caminas con calma por la piedra seca bajo el techo.
 [PAUSE|2.0]
-[127|NARRATOR_TARGET_es_repeat|0.70] El paseo es un cuadrado de techo alrededor de un jardín abierto. La lluvia cae libre en el centro abierto. Laurel y romero brillan en macetas de barro, y te quedas en la franja seca.
+[127|NARRATOR_TARGET_es_repeat|0.70] El paseo cubierto rodea un jardín cuadrado abierto a la lluvia nocturna. Laurel y romero brillan suavemente en macetas de barro junto al borde. Caminas con calma por la piedra seca bajo el techo.
 [PAUSE|4.0]
-[128|NARRATOR_NATIVE_en|0.80] A corner pot spills a steady thread onto the gravel. The thread wears a dark mark, and you step around it. The column beside the pot is cool under your fingers.
+[128|NARRATOR_NATIVE_en|0.80] A corner clay pot pours a thin thread onto dark gravel where water has worn a shallow cup. You step smoothly past while your fingers brush a cool fluted column.
 [PAUSE|2.0]
-[128|NARRATOR_TARGET_es|0.75] Una maceta de esquina suelta un hilo constante sobre la grava. El hilo deja una marca oscura, y rodeas el agua. La columna junto a la maceta está fresca bajo los dedos.
+[128|NARRATOR_TARGET_es|0.75] Una maceta de esquina deja caer un hilo fino de agua sobre la grava oscura. El agua forma una pequeña marca húmeda en las piedras. Tu mano roza una columna fresca al pasar.
 [PAUSE|2.0]
-[128|NARRATOR_TARGET_es_repeat|0.70] Una maceta de esquina suelta un hilo constante sobre la grava. El hilo deja una marca oscura, y rodeas el agua. La columna junto a la maceta está fresca bajo los dedos.
+[128|NARRATOR_TARGET_es_repeat|0.70] Una maceta de esquina deja caer un hilo fino de agua sobre la grava oscura. El agua forma una pequeña marca húmeda en las piedras. Tu mano roza una columna fresca al pasar.
 [PAUSE|4.0]
-[129|NARRATOR_NATIVE_en|0.80] Wet leaves make the garden look deep between the columns. A closed pale flower holds one drop. You leave the flower, and the rosemary smell is enough.
+[129|NARRATOR_NATIVE_en|0.80] Wet leaves layer the garden in soft dark shades between the columns. A closed pale flower holds one bright drop on its edge while rosemary scents the cool air.
 [PAUSE|2.0]
-[129|NARRATOR_TARGET_es|0.75] Las hojas mojadas hacen que el jardín se vea profundo entre las columnas. Una flor pálida cerrada tiene una gota. Dejas la flor. El olor del romero es suficiente.
+[129|NARRATOR_TARGET_es|0.75] Las hojas mojadas llenan el jardín de sombras suaves entre las columnas. Una flor pálida cerrada sostiene una gota clara en el borde. El olor limpio del romero llena el aire fresco.
 [PAUSE|2.0]
-[129|NARRATOR_TARGET_es_repeat|0.70] Las hojas mojadas hacen que el jardín se vea profundo entre las columnas. Una flor pálida cerrada tiene una gota. Dejas la flor. El olor del romero es suficiente.
+[129|NARRATOR_TARGET_es_repeat|0.70] Las hojas mojadas llenan el jardín de sombras suaves entre las columnas. Una flor pálida cerrada sostiene una gota clara en el borde. El olor limpio del romero llena el aire fresco.
 [PAUSE|4.0]
-[130|NARRATOR_NATIVE_en|0.80] Your breath follows the taps of the drops. The walk gives a soft echo and lets it die. Nothing answers, and your shoulders loosen under the roof.
+[130|NARRATOR_NATIVE_en|0.80] Your breath matches the quiet tapping of leaves without effort. Beneath the wooden ceiling, your soft steps fade away immediately. The sheltered garden helps your shoulders settle down.
 [PAUSE|2.0]
-[130|NARRATOR_TARGET_es|0.75] La respiración sigue los golpes de las gotas. El paseo da un eco suave y lo deja morir. Nada responde, y los hombros se aflojan bajo el techo.
+[130|NARRATOR_TARGET_es|0.75] La respiración sigue el ritmo lento de las gotas sobre las hojas sin esfuerzo. Bajo el techo de madera, los pasos suaves desaparecen enseguida. El jardín tranquilo deja descansar los hombros con calma.
 [PAUSE|2.0]
-[130|NARRATOR_TARGET_es_repeat|0.70] La respiración sigue los golpes de las gotas. El paseo da un eco suave y lo deja morir. Nada responde, y los hombros se aflojan bajo el techo.
+[130|NARRATOR_TARGET_es_repeat|0.70] La respiración sigue el ritmo lento de las gotas sobre las hojas sin esfuerzo. Bajo el techo de madera, los pasos suaves desaparecen enseguida. El jardín tranquilo deja descansar los hombros con calma.
 [PAUSE|4.0]
-[131|NARRATOR_NATIVE_en|0.80] The gravel path across the garden is almost black. You stay on the paved walk and only look. A far doorway holds a still warm light, and the stones there look dry.
+[IMAGE|05] First-person view from a column into a gravel garden path, wet leaves, warm lamplight, no people
+[131|NARRATOR_NATIVE_en|0.80] From the columned walk, a dark gravel path crosses the wet garden toward a wider doorway. Warm honey lamplight rests inside that dry entrance where rain cannot reach.
 [PAUSE|2.0]
-[131|NARRATOR_TARGET_es|0.75] El camino de grava por el jardín está casi negro. Te quedas en el paseo de piedra y solo miras. Una puerta lejana tiene una luz aún cálida, y las piedras allí parecen secas.
+[131|NARRATOR_TARGET_es|0.75] Desde el paseo de columnas, un camino oscuro de grava cruza el jardín mojado hacia una puerta más ancha. Adentro espera una luz cálida de color miel. Allí la lluvia no llega.
 [PAUSE|2.0]
-[131|NARRATOR_TARGET_es_repeat|0.70] El camino de grava por el jardín está casi negro. Te quedas en el paseo de piedra y solo miras. Una puerta lejana tiene una luz aún cálida, y las piedras allí parecen secas.
+[131|NARRATOR_TARGET_es_repeat|0.70] Desde el paseo de columnas, un camino oscuro de grava cruza el jardín mojado hacia una puerta más ancha. Adentro espera una luz cálida de color miel. Allí la lluvia no llega.
 [PAUSE|4.0]
-[132|NARRATOR_NATIVE_en|0.80] A painted garden repeats the real leaves on the inner wall. The painted leaves do not move. The living leaves nod under the drops, and that difference is the pleasure.
+[132|NARRATOR_NATIVE_en|0.80] Frescoes along the dry plaster wall mirror the real garden with painted leaves and blue sky. While the wall remains still, living branches outside nod softly under falling rain.
 [PAUSE|2.0]
-[132|NARRATOR_TARGET_es|0.75] Un jardín pintado repite las hojas reales en la pared interior. Las hojas pintadas no se mueven. Las hojas vivas asienten bajo las gotas, y esa diferencia es el placer.
+[132|NARRATOR_TARGET_es|0.75] En la pared seca del paseo hay un jardín pintado con hojas verdes y cielo azul. Las ramas pintadas no se mueven nunca. Afuera, las hojas vivas se inclinan suave bajo cada gota de lluvia.
 [PAUSE|2.0]
-[132|NARRATOR_TARGET_es_repeat|0.70] Un jardín pintado repite las hojas reales en la pared interior. Las hojas pintadas no se mueven. Las hojas vivas asienten bajo las gotas, y esa diferencia es el placer.
+[132|NARRATOR_TARGET_es_repeat|0.70] En la pared seca del paseo hay un jardín pintado con hojas verdes y cielo azul. Las ramas pintadas no se mueven nunca. Afuera, las hojas vivas se inclinan suave bajo cada gota de lluvia.
 [PAUSE|4.0]
-[133|NARRATOR_NATIVE_en|0.80] A gap drops one line of rain on the walk. You hear the brighter tick before you see it. You shift half a step, and the line misses your shoulder.
+[133|NARRATOR_NATIVE_en|0.80] A small gap between roof tiles lets one bright line of rain tap the stone walk. You shift half a step inward so the line misses your shoulder completely.
 [PAUSE|2.0]
-[133|NARRATOR_TARGET_es|0.75] Un hueco deja caer una línea de lluvia en el paseo. Oyes el tic más brillante antes de verlo. Das medio paso al lado, y la línea no toca el hombro.
+[133|NARRATOR_TARGET_es|0.75] Un hueco pequeño entre las tejas deja pasar una línea clara de lluvia. El agua toca el paseo de piedra. Das medio paso adentro y la línea pasa lejos del hombro por completo.
 [PAUSE|2.0]
-[133|NARRATOR_TARGET_es_repeat|0.70] Un hueco deja caer una línea de lluvia en el paseo. Oyes el tic más brillante antes de verlo. Das medio paso al lado, y la línea no toca el hombro.
+[133|NARRATOR_TARGET_es_repeat|0.70] Un hueco pequeño entre las tejas deja pasar una línea clara de lluvia. El agua toca el paseo de piedra. Das medio paso adentro y la línea pasa lejos del hombro por completo.
 [PAUSE|4.0]
-[134|NARRATOR_NATIVE_en|0.80] Under the next roof the air is clearly warmer. The walls give the day's heat back to your wrists. The open garden stays cool beside you.
+[134|NARRATOR_NATIVE_en|0.80] Around the next corner, thick walls release afternoon warmth into the covered walk. Your wrists feel the mild air while the open garden stays cool beside you.
 [PAUSE|2.0]
-[134|NARRATOR_TARGET_es|0.75] Bajo el siguiente techo el aire está claramente más cálido. Las paredes devuelven el calor del día. El calor llega a las muñecas. El jardín abierto sigue fresco al lado.
+[134|NARRATOR_TARGET_es|0.75] En el siguiente lado del paseo, las paredes devuelven el calor guardado de la tarde. Las muñecas sienten el aire más tibio. Mientras tanto, el jardín abierto sigue fresco bajo la lluvia nocturna.
 [PAUSE|2.0]
-[134|NARRATOR_TARGET_es_repeat|0.70] Bajo el siguiente techo el aire está claramente más cálido. Las paredes devuelven el calor del día. El calor llega a las muñecas. El jardín abierto sigue fresco al lado.
+[134|NARRATOR_TARGET_es_repeat|0.70] En el siguiente lado del paseo, las paredes devuelven el calor guardado de la tarde. Las muñecas sienten el aire más tibio. Mientras tanto, el jardín abierto sigue fresco bajo la lluvia nocturna.
 [PAUSE|4.0]
-[135|NARRATOR_NATIVE_en|0.80] A small trough at the edge is full and trickles into the soil. It is only a little water for the plants. You already hear a larger water sound ahead.
+[135|NARRATOR_NATIVE_en|0.80] A small stone trough overflows gently into the herb soil through a carved groove. Beyond the far doorway ahead, a deeper, fuller sound of falling water begins to rise.
 [PAUSE|2.0]
-[135|NARRATOR_TARGET_es|0.75] Un abrevadero pequeño en el borde está lleno y gotea en la tierra. Es solo un poco de agua para las plantas. Ya se oye un sonido de agua más grande adelante.
+[135|NARRATOR_TARGET_es|0.75] Una pila pequeña de piedra vierte agua suave hacia las hierbas por un canal tallado. Más allá de la puerta lejana adelante, empieza a subir un sonido más hondo de agua.
 [PAUSE|2.0]
-[135|NARRATOR_TARGET_es_repeat|0.70] Un abrevadero pequeño en el borde está lleno y gotea en la tierra. Es solo un poco de agua para las plantas. Ya se oye un sonido de agua más grande adelante.
+[135|NARRATOR_TARGET_es_repeat|0.70] Una pila pequeña de piedra vierte agua suave hacia las hierbas por un canal tallado. Más allá de la puerta lejana adelante, empieza a subir un sonido más hondo de agua.
 [PAUSE|4.0]
-[136|NARRATOR_NATIVE_en|0.80] The larger sound is one fall into a basin. It comes from the far doorway and grows clearer with each step. You do not hurry, and rosemary stays with you.
+[136|NARRATOR_NATIVE_en|0.80] The deeper water sound rises evenly from the far doorway like rain filling a basin. Each slow step makes it clearer while rosemary scent still stays beside you.
 [PAUSE|2.0]
-[136|NARRATOR_TARGET_es|0.75] El sonido más grande es una caída en una pileta. Viene de la puerta lejana y crece más claro con cada paso. No hay prisa, y el romero sigue cerca.
+[136|NARRATOR_TARGET_es|0.75] El sonido hondo sube parejo desde la puerta lejana como lluvia llenando una pileta. Cada paso lento lo vuelve más claro mientras el olor del romero sigue cerca.
 [PAUSE|2.0]
-[136|NARRATOR_TARGET_es_repeat|0.70] El sonido más grande es una caída en una pileta. Viene de la puerta lejana y crece más claro con cada paso. No hay prisa, y el romero sigue cerca.
+[136|NARRATOR_TARGET_es_repeat|0.70] El sonido hondo sube parejo desde la puerta lejana como lluvia llenando una pileta. Cada paso lento lo vuelve más claro mientras el olor del romero sigue cerca.
 [PAUSE|4.0]
-[137|NARRATOR_NATIVE_en|0.80] A moth circles the far lamp and then leaves. You see a small pale movement and no threat. Your hand rests on a column as cool as the first.
+[137|NARRATOR_NATIVE_en|0.80] A pale moth circles the far lamp once and drifts softly back toward the leaves. Your fingers touch another cool stone column while the steady rain continues undisturbed.
 [PAUSE|2.0]
-[137|NARRATOR_TARGET_es|0.75] Una polilla rodea la lámpara lejana y luego se va. Se ve un movimiento pálido pequeño y no hay amenaza. La mano descansa en una columna tan fresca como la primera.
+[137|NARRATOR_TARGET_es|0.75] Una polilla pálida da una vuelta lenta cerca de la lámpara lejana y vuelve a las hojas. La lluvia sigue igual sin cambios. Tu mano toca otra columna tan fresca como la primera.
 [PAUSE|2.0]
-[137|NARRATOR_TARGET_es_repeat|0.70] Una polilla rodea la lámpara lejana y luego se va. Se ve un movimiento pálido pequeño y no hay amenaza. La mano descansa en una columna tan fresca como la primera.
+[137|NARRATOR_TARGET_es_repeat|0.70] Una polilla pálida da una vuelta lenta cerca de la lámpara lejana y vuelve a las hojas. La lluvia sigue igual sin cambios. Tu mano toca otra columna tan fresca como la primera.
 [PAUSE|4.0]
-[138|NARRATOR_NATIVE_en|0.80] The ceiling is low dark beams, dry over your head. One drop shines in a crack and does not fall at once. Then it falls on the garden side, not on you.
+[138|NARRATOR_NATIVE_en|0.80] Low dark cedar beams stretch across the walkway ceiling over dry planks. One shining drop hangs in a beam joint and falls safely into the garden beside you.
 [PAUSE|2.0]
-[138|NARRATOR_TARGET_es|0.75] El techo son vigas bajas y oscuras, secas sobre la cabeza. Una gota brilla en una grieta y no cae de inmediato. Luego cae del lado del jardín, no sobre ti.
+[138|NARRATOR_TARGET_es|0.75] El techo del paseo tiene vigas bajas de madera oscura y seca. Una gota brilla un momento en una unión alta. Luego cae hacia el jardín y deja las vigas secas.
 [PAUSE|2.0]
-[138|NARRATOR_TARGET_es_repeat|0.70] El techo son vigas bajas y oscuras, secas sobre la cabeza. Una gota brilla en una grieta y no cae de inmediato. Luego cae del lado del jardín, no sobre ti.
+[138|NARRATOR_TARGET_es_repeat|0.70] El techo del paseo tiene vigas bajas de madera oscura y seca. Una gota brilla un momento en una unión alta. Luego cae hacia el jardín y deja las vigas secas.
 [PAUSE|4.0]
-[139|NARRATOR_NATIVE_en|0.80] You pass a row of smaller pots, mint among them. One leaf gives its drop to the next leaf. The smell is sweet and near, and the rain feels farther.
+[139|NARRATOR_NATIVE_en|0.80] Small pots of sweet mint line the last walk border. One soft leaf tips its raindrop to the leaf below and into dark earth, leaving a cool scent in the air.
 [PAUSE|2.0]
-[139|NARRATOR_TARGET_es|0.75] Pasas una fila de macetas más pequeñas, con menta entre ellas. Una hoja da su gota a la siguiente hoja. El olor es dulce y cerca, y la lluvia se siente más lejos.
+[139|NARRATOR_TARGET_es|0.75] Macetas bajas con menta dulce acompañan el final del borde. Una hoja suave pasa su gota a la siguiente hasta caer en la tierra oscura. El aire huele fresco y limpio.
 [PAUSE|2.0]
-[139|NARRATOR_TARGET_es_repeat|0.70] Pasas una fila de macetas más pequeñas, con menta entre ellas. Una hoja da su gota a la siguiente hoja. El olor es dulce y cerca, y la lluvia se siente más lejos.
+[139|NARRATOR_TARGET_es_repeat|0.70] Macetas bajas con menta dulce acompañan el final del borde. Una hoja suave pasa su gota a la siguiente hasta caer en la tierra oscura. El aire huele fresco y limpio.
 [PAUSE|4.0]
-[140|NARRATOR_NATIVE_en|0.80] At the last turn you see a rectangle of warm light. Cut stone begins inside, with gold rain-light on it. You are about to leave the garden behind.
+[140|NARRATOR_NATIVE_en|0.80] At the last corner, the covered walk opens toward a wide doorway filled with amber light. Shimmering water reflections dance softly on smooth cut paving just inside the room.
 [PAUSE|2.0]
-[140|NARRATOR_TARGET_es|0.75] En el último giro ves un rectángulo de luz cálida. La piedra labrada empieza adentro, con luz dorada de lluvia sobre ella. Estás a punto de dejar el jardín atrás.
+[140|NARRATOR_TARGET_es|0.75] En la última esquina, el paseo cubierto abre hacia una puerta ancha llena de luz ámbar. Reflejos suaves de agua brillan sobre la piedra lisa justo adentro de la sala.
 [PAUSE|2.0]
-[140|NARRATOR_TARGET_es_repeat|0.70] En el último giro ves un rectángulo de luz cálida. La piedra labrada empieza adentro, con luz dorada de lluvia sobre ella. Estás a punto de dejar el jardín atrás.
+[140|NARRATOR_TARGET_es_repeat|0.70] En la última esquina, el paseo cubierto abre hacia una puerta ancha llena de luz ámbar. Reflejos suaves de agua brillan sobre la piedra lisa justo adentro de la sala.
 [PAUSE|4.0]
-[141|NARRATOR_NATIVE_en|0.80] Your fingers leave the last cool column. Gravel sounds once, and then you stand on dry stone. The water's fall is close, and the leaves stay behind.
+[141|NARRATOR_NATIVE_en|0.80] Your fingers leave the last cool column as your heel clears the gravel border onto dry cut stone. Ahead, the steady fall of water grows clearer while leaf noise fades.
 [PAUSE|2.0]
-[141|NARRATOR_TARGET_es|0.75] Los dedos dejan la última columna fresca. La grava suena una vez, y luego estás en piedra seca. La caída del agua está cerca, y las hojas quedan atrás.
+[141|NARRATOR_TARGET_es|0.75] Tus dedos dejan la última columna fresca y el pie pisa piedra seca después de la grava. El sonido de hojas queda atrás en la sombra. Adelante se oye más claro el agua que cae.
 [PAUSE|2.0]
-[141|NARRATOR_TARGET_es_repeat|0.70] Los dedos dejan la última columna fresca. La grava suena una vez, y luego estás en piedra seca. La caída del agua está cerca, y las hojas quedan atrás.
+[141|NARRATOR_TARGET_es_repeat|0.70] Tus dedos dejan la última columna fresca y el pie pisa piedra seca después de la grava. El sonido de hojas queda atrás en la sombra. Adelante se oye más claro el agua que cae.
 [PAUSE|4.0]
-[142|NARRATOR_NATIVE_en|0.80] You pause with wet leaves behind you and dry stone ahead. Rosemary stays on your sleeve. You step toward the room where the roof gathers the night.
+[142|NARRATOR_NATIVE_en|0.80] You pause briefly between the cool wet garden and the warm lit hall. Rosemary remains on your cuff as you step calmly into the quiet heart of the house.
 [PAUSE|2.0]
-[142|NARRATOR_TARGET_es|0.75] Paras un momento con hojas mojadas atrás y piedra seca adelante. El romero queda en la manga. Das un paso hacia la sala donde el techo junta la noche.
+[142|NARRATOR_TARGET_es|0.75] Haces una pausa entre el jardín húmedo y la sala tibia. El aroma de romero sigue en la manga. Das un paso tranquilo hacia el centro de la casa donde entra la lluvia.
 [PAUSE|2.0]
-[142|NARRATOR_TARGET_es_repeat|0.70] Paras un momento con hojas mojadas atrás y piedra seca adelante. El romero queda en la manga. Das un paso hacia la sala donde el techo junta la noche.
+[142|NARRATOR_TARGET_es_repeat|0.70] Haces una pausa entre el jardín húmedo y la sala tibia. El aroma de romero sigue en la manga. Das un paso tranquilo hacia el centro de la casa donde entra la lluvia.
 [PAUSE|4.0]
-[143|NARRATOR_NATIVE_en|0.80] The air changes from cool garden to warm room. The floor is larger swept stones, with no grit. Water shines at the center, and you are in the atrium.
+[IMAGE|06] First-person view of a Roman atrium at night, rain falling through a square roof opening into a shallow pool, no people
+[143|NARRATOR_NATIVE_en|0.80] You enter the wide Roman atrium with smooth swept stone underfoot. Warm air replaces garden damp while rain falls straight through a square opening in the roof into a shallow pool.
 [PAUSE|2.0]
-[143|NARRATOR_TARGET_es|0.75] El aire cambia de jardín fresco a sala cálida. El suelo son piedras grandes barridas, sin arena. El agua brilla en el centro, y estás en el atrio.
+[143|NARRATOR_TARGET_es|0.75] Entras en el atrio romano sobre un suelo liso de piedra limpia. El aire tibio reemplaza el frescor del jardín. La lluvia cae por un cuadrado abierto del techo hacia una pileta baja.
 [PAUSE|2.0]
-[143|NARRATOR_TARGET_es_repeat|0.70] El aire cambia de jardín fresco a sala cálida. El suelo son piedras grandes barridas, sin arena. El agua brilla en el centro, y estás en el atrio.
+[143|NARRATOR_TARGET_es_repeat|0.70] Entras en el atrio romano sobre un suelo liso de piedra limpia. El aire tibio reemplaza el frescor del jardín. La lluvia cae por un cuadrado abierto del techo hacia una pileta baja.
 [PAUSE|4.0]
-[144|NARRATOR_NATIVE_en|0.80] The garden keeps raining behind you. Ahead, rain falls through one square in the roof. You stop inside and see the square and the pool together.
+[144|NARRATOR_NATIVE_en|0.80] Rain falls through one neat square opening in the roof while the walls stay sheltered and dry. You stop inside where both the open sky and the shallow pool meet your view.
 [PAUSE|2.0]
-[144|NARRATOR_TARGET_es|0.75] El jardín sigue lloviendo detrás de ti. Adelante, la lluvia cae por un cuadrado en el techo. Paras dentro. Ves juntos el cuadrado y la pileta.
+[144|NARRATOR_TARGET_es|0.75] La lluvia entra por un solo cuadrado abierto en el techo de la sala. Todas las paredes quedan secas bajo la cubierta. Te detienes adentro para mirar al mismo tiempo el cielo y la pileta.
 [PAUSE|2.0]
-[144|NARRATOR_TARGET_es_repeat|0.70] El jardín sigue lloviendo detrás de ti. Adelante, la lluvia cae por un cuadrado en el techo. Paras dentro. Ves juntos el cuadrado y la pileta.
+[144|NARRATOR_TARGET_es_repeat|0.70] La lluvia entra por un solo cuadrado abierto en el techo de la sala. Todas las paredes quedan secas bajo la cubierta. Te detienes adentro para mirar al mismo tiempo el cielo y la pileta.
 [PAUSE|4.0]
+
 ## BLOCK: RECALL_2
-[145|NARRATOR_NATIVE_en|0.80] The roof leaves the middle open to the cloud. Rain comes through that square in a soft column. Below it a shallow pool is set in the floor.
+[145|NARRATOR_NATIVE_en|0.80] The open square roof lets warm rain fall in a soft column into a shallow rectangular pool set in the floor. The walls around the impluvium stay sheltered and dry.
 [PAUSE|2.0]
-[145|NARRATOR_TARGET_es|0.75] El techo deja el centro abierto a la nube. La lluvia entra por ese cuadrado. La lluvia cae en una columna suave. Debajo hay una pileta baja. La pileta está en el suelo de la sala.
+[145|NARRATOR_TARGET_es|0.75] El techo cuadrado abierto deja caer lluvia tibia en una columna suave dentro de una pileta rectangular. Las paredes alrededor del impluvio quedan cubiertas y secas en la sala.
 [PAUSE|2.0]
-[145|NARRATOR_TARGET_es_repeat|0.70] El techo deja el centro abierto a la nube. La lluvia entra por ese cuadrado. La lluvia cae en una columna suave. Debajo hay una pileta baja. La pileta está en el suelo de la sala.
+[145|NARRATOR_TARGET_es_repeat|0.70] El techo cuadrado abierto deja caer lluvia tibia en una columna suave dentro de una pileta rectangular. Las paredes alrededor del impluvio quedan cubiertas y secas en la sala.
 [PAUSE|4.0]
-[146|NARRATOR_NATIVE_en|0.80] Each drop opens a circle on the water. A lamp turns the near water gold. You stand on dry stone, and the far side stays dark.
+[IMAGE|07] Close first-person view of rain circles on the impluvium, gold lamp light on the near water, dry stone rim, no people
+[146|NARRATOR_NATIVE_en|0.80] Every drop opens a clear circle that widens and fades before reaching the dry stone rim. Near lamplight turns the water pale gold while the far side stays quiet and dark.
 [PAUSE|2.0]
-[146|NARRATOR_TARGET_es|0.75] Cada gota abre un círculo en el agua. Una lámpara pone el agua cercana en oro. El lado lejano queda oscuro. Tú estás en piedra seca. La salpicadura no llega a tus pies.
+[146|NARRATOR_TARGET_es|0.75] Cada gota abre un círculo claro en el agua que se borra antes de llegar al borde. Una lámpara pone luz dorada cerca de ti. El otro lado de la pileta queda en sombra.
 [PAUSE|2.0]
-[146|NARRATOR_TARGET_es_repeat|0.70] Cada gota abre un círculo en el agua. Una lámpara pone el agua cercana en oro. El lado lejano queda oscuro. Tú estás en piedra seca. La salpicadura no llega a tus pies.
+[146|NARRATOR_TARGET_es_repeat|0.70] Cada gota abre un círculo claro en el agua que se borra antes de llegar al borde. Una lámpara pone luz dorada cerca de ti. El otro lado de la pileta queda en sombra.
 [PAUSE|4.0]
-[147|NARRATOR_NATIVE_en|0.80] The pool is deeper than a dish and shallower than a step. Between the rings you see a pale clean bottom. The room takes the rain and does not grow wild.
+[147|NARRATOR_NATIVE_en|0.80] The shallow pool is deeper than a dish yet shallower than a step. Between overlapping rings, the clean pale stone bottom stays calm and clear under steady rain.
 [PAUSE|2.0]
-[147|NARRATOR_TARGET_es|0.75] La pileta es más honda que un plato. Es más baja que un escalón. Entre los anillos ves el fondo claro. El fondo está limpio. La sala recibe la lluvia y no se desordena.
+[147|NARRATOR_TARGET_es|0.75] La pileta es más honda que un plato pero más baja que un escalón. Entre los anillos de lluvia se ve el fondo claro y limpio de piedra. El agua mantiene una calma ordenada.
 [PAUSE|2.0]
-[147|NARRATOR_TARGET_es_repeat|0.70] La pileta es más honda que un plato. Es más baja que un escalón. Entre los anillos ves el fondo claro. El fondo está limpio. La sala recibe la lluvia y no se desordena.
+[147|NARRATOR_TARGET_es_repeat|0.70] La pileta es más honda que un plato pero más baja que un escalón. Entre los anillos de lluvia se ve el fondo claro y limpio de piedra. El agua mantiene una calma ordenada.
 [PAUSE|4.0]
-[148|NARRATOR_NATIVE_en|0.80] Around the pool the floor pattern is dry under your shoes. The room smells of wet lime and fresh water. High walls hold the sound close.
+[148|NARRATOR_NATIVE_en|0.80] Dry black-and-white mosaic paving surrounds the pool cleanly under your feet. The air smells of wet lime and fresh rainwater while high walls keep the falling sound soft and close.
 [PAUSE|2.0]
-[148|NARRATOR_TARGET_es|0.75] Alrededor de la pileta el suelo está seco bajo los zapatos. El dibujo del suelo es simple. Huele a cal mojada. También huele a agua fresca. Las paredes altas guardan el sonido cerca.
+[148|NARRATOR_TARGET_es|0.75] Alrededor de la pileta el suelo blanco y negro está seco bajo los pies. El aire huele a cal húmeda y agua fresca. Las paredes altas guardan el sonido suave de la lluvia.
 [PAUSE|2.0]
-[148|NARRATOR_TARGET_es_repeat|0.70] Alrededor de la pileta el suelo está seco bajo los zapatos. El dibujo del suelo es simple. Huele a cal mojada. También huele a agua fresca. Las paredes altas guardan el sonido cerca.
+[148|NARRATOR_TARGET_es_repeat|0.70] Alrededor de la pileta el suelo blanco y negro está seco bajo los pies. El aire huele a cal húmeda y agua fresca. Las paredes altas guardan el sonido suave de la lluvia.
 [PAUSE|4.0]
-[149|NARRATOR_NATIVE_en|0.80] The tiles all slope inward toward the open square. Rain from the whole roof slides to that one lip. You hear the slide as a smooth whisper above the fall.
+[IMAGE|08] First-person view looking up at roof tiles sloping toward an open square of rainy sky, no people
+[149|NARRATOR_NATIVE_en|0.80] Looking up, all four slopes of terracotta tiles angle smoothly inward toward the rainy square of sky. Rain slides down the roof channels in a soft whisper before dropping to the pool.
 [PAUSE|2.0]
-[149|NARRATOR_TARGET_es|0.75] Las tejas bajan hacia el cuadrado abierto. Toda la lluvia del techo va a ese borde. En el borde el agua se suelta. Se oye un susurro suave arriba de la caída. La caída clara está debajo del susurro.
+[149|NARRATOR_TARGET_es|0.75] Al mirar arriba, las cuatro caídas de tejas bajan hacia el cuadrado de cielo con lluvia. El agua corre por el techo en un susurro suave antes de caer a la pileta.
 [PAUSE|2.0]
-[149|NARRATOR_TARGET_es_repeat|0.70] Las tejas bajan hacia el cuadrado abierto. Toda la lluvia del techo va a ese borde. En el borde el agua se suelta. Se oye un susurro suave arriba de la caída. La caída clara está debajo del susurro.
+[149|NARRATOR_TARGET_es_repeat|0.70] Al mirar arriba, las cuatro caídas de tejas bajan hacia el cuadrado de cielo con lluvia. El agua corre por el techo en un susurro suave antes de caer a la pileta.
 [PAUSE|4.0]
-[150|NARRATOR_NATIVE_en|0.80] You walk back a little from the rim. Cool air comes down with the rain, and your face dries a little. A lower lamp shows the rim as a clean line.
+[150|NARRATOR_NATIVE_en|0.80] You walk slowly along the long side back from the rim. Cool air meets room warmth at your collar while a second low lamp marks the far edge cleanly.
 [PAUSE|2.0]
-[150|NARRATOR_TARGET_es|0.75] Tú caminas un poco lejos del borde. Baja aire fresco con la lluvia. Tu cara se seca un poco. Una lámpara baja está junto al agua. Muestra el borde como una línea limpia.
+[150|NARRATOR_TARGET_es|0.75] Caminas despacio por el lado largo lejos del borde. Aire fresco baja con la lluvia y encuentra el aire tibio de la sala. Otra lámpara baja dibuja la línea del borde lejano.
 [PAUSE|2.0]
-[150|NARRATOR_TARGET_es_repeat|0.70] Tú caminas un poco lejos del borde. Baja aire fresco con la lluvia. Tu cara se seca un poco. Una lámpara baja está junto al agua. Muestra el borde como una línea limpia.
+[150|NARRATOR_TARGET_es_repeat|0.70] Caminas despacio por el lado largo lejos del borde. Aire fresco baja con la lluvia y encuentra el aire tibio de la sala. Otra lámpara baja dibuja la línea del borde lejano.
 [PAUSE|4.0]
-[151|NARRATOR_NATIVE_en|0.80] No moon shows, only cloud and silver rain. The opening lets the weather in and still holds the room. You look up once, then return your eyes to the pool.
+[151|NARRATOR_NATIVE_en|0.80] Only low cloud and silver threads of rain fill the open square above without moonlight. You look up briefly at the enclosed night sky, then return your gaze to the pool.
 [PAUSE|2.0]
-[151|NARRATOR_TARGET_es|0.75] No hay luna en el cuadrado. Solo hay nube y lluvia plateada. La abertura deja entrar la noche. La sala sigue sintiéndose cerrada. Tú miras arriba un momento y vuelves los ojos a la pileta.
+[151|NARRATOR_TARGET_es|0.75] Solo nubes bajas e hilos plateados de lluvia llenan el cuadrado abierto sin luz de luna. Miras un momento arriba el cielo cerrado y luego vuelves la vista a la pileta.
 [PAUSE|2.0]
-[151|NARRATOR_TARGET_es_repeat|0.70] No hay luna en el cuadrado. Solo hay nube y lluvia plateada. La abertura deja entrar la noche. La sala sigue sintiéndose cerrada. Tú miras arriba un momento y vuelves los ojos a la pileta.
+[151|NARRATOR_TARGET_es_repeat|0.70] Solo nubes bajas e hilos plateados de lluvia llenan el cuadrado abierto sin luz de luna. Miras un momento arriba el cielo cerrado y luego vuelves la vista a la pileta.
 [PAUSE|4.0]
-[152|NARRATOR_NATIVE_en|0.80] Several drops together start a wide ring toward the near rim. The ring dies against the stone. The water level does not rise, so the extra is leaving through the floor.
+[152|NARRATOR_NATIVE_en|0.80] Several drops send a wider ring toward the stone rim where it fades out cleanly. Even with steady rain from the roof, the shallow pool level never rises.
 [PAUSE|2.0]
-[152|NARRATOR_TARGET_es|0.75] Varias gotas abren un anillo ancho. El anillo corre hacia el borde cercano. Muere contra la piedra. El nivel del agua no sube. El agua extra se va por el suelo.
+[152|NARRATOR_TARGET_es|0.75] Varias gotas juntas abren un anillo ancho que se apaga contra la piedra del borde. Aunque el techo manda más lluvia cada minuto, el nivel de la pileta no sube nunca.
 [PAUSE|2.0]
-[152|NARRATOR_TARGET_es_repeat|0.70] Varias gotas abren un anillo ancho. El anillo corre hacia el borde cercano. Muere contra la piedra. El nivel del agua no sube. El agua extra se va por el suelo.
+[152|NARRATOR_TARGET_es_repeat|0.70] Varias gotas juntas abren un anillo ancho que se apaga contra la piedra del borde. Aunque el techo manda más lluvia cada minuto, el nivel de la pileta no sube nunca.
 [PAUSE|4.0]
-[153|NARRATOR_NATIVE_en|0.80] A few fine drops reach your toes and no farther. You crouch, and your knee finds dry stone. From here you see a quiet field of rings.
+[153|NARRATOR_NATIVE_en|0.80] You step closer and crouch lightly on dry mosaic beside the worn stone rim. From this low angle, the shallow impluvium becomes a quiet, bright field of overlapping water rings.
 [PAUSE|2.0]
-[153|NARRATOR_TARGET_es|0.75] Unas gotas finas llegan a los pies. No van más lejos. Tú te agachas junto al borde. La rodilla toca piedra seca. Desde aquí la pileta es un campo quieto de anillos.
+[153|NARRATOR_TARGET_es|0.75] Te acercas un poco y te inclinas sobre el suelo seco junto al borde liso de piedra. Desde esta altura baja, el agua de la pileta muestra un campo tranquilo de anillos brillantes.
 [PAUSE|2.0]
-[153|NARRATOR_TARGET_es_repeat|0.70] Unas gotas finas llegan a los pies. No van más lejos. Tú te agachas junto al borde. La rodilla toca piedra seca. Desde aquí la pileta es un campo quieto de anillos.
+[153|NARRATOR_TARGET_es_repeat|0.70] Te acercas un poco y te inclinas sobre el suelo seco junto al borde liso de piedra. Desde esta altura baja, el agua de la pileta muestra un campo tranquilo de anillos brillantes.
 [PAUSE|4.0]
-[154|NARRATOR_NATIVE_en|0.80] Near one corner a darker mouth waits in the bottom. The water draws toward it in a slow sheet. The pool is the part you see, and the path goes down to the cistern.
+[IMAGE|09] First-person view of a darker drain mouth in the corner of the shallow pool, no people
+[154|NARRATOR_NATIVE_en|0.80] In a quiet corner of the pool floor sits a darker stone drain mouth. Water glides toward it steadily, descending beneath the atrium floor into a hidden underground cistern.
 [PAUSE|2.0]
-[154|NARRATOR_TARGET_es|0.75] En una esquina del fondo hay una boca oscura. El agua va hacia ella en una lámina lenta. La pileta es la parte que ves. El camino sigue hacia abajo. Llega a la cisterna bajo el suelo.
+[154|NARRATOR_TARGET_es|0.75] En una esquina del fondo se abre una boca oscura en la piedra. El agua se desliza despacio hacia ese desagüe. Desde allí baja bajo el suelo hacia una cisterna oculta.
 [PAUSE|2.0]
-[154|NARRATOR_TARGET_es_repeat|0.70] En una esquina del fondo hay una boca oscura. El agua va hacia ella en una lámina lenta. La pileta es la parte que ves. El camino sigue hacia abajo. Llega a la cisterna bajo el suelo.
+[154|NARRATOR_TARGET_es_repeat|0.70] En una esquina del fondo se abre una boca oscura en la piedra. El agua se desliza despacio hacia ese desagüe. Desde allí baja bajo el suelo hacia una cisterna oculta.
 [PAUSE|4.0]
-[155|NARRATOR_NATIVE_en|0.80] You do not reach into the water. Under the bright fall a softer drop answers from below. The house is storing the night, and your hands stay still.
+[155|NARRATOR_NATIVE_en|0.80] Keeping your hands dry, you listen past the pool splash to a softer echo beneath the floor. One slow drop answers from below as the villa stores rainwater inside its cistern.
 [PAUSE|2.0]
-[155|NARRATOR_TARGET_es|0.75] Las manos no entran en el agua. Bajo la caída fuerte hay una gota más suave. La gota responde desde abajo. La casa guarda la noche bajo el suelo. Las manos quedan quietas un momento.
+[155|NARRATOR_TARGET_es|0.75] Sin tocar el agua, escuchas bajo el sonido de la pileta otro eco más suave abajo del suelo. Cae una gota lenta en lo hondo. La casa guarda así la lluvia de la noche.
 [PAUSE|2.0]
-[155|NARRATOR_TARGET_es_repeat|0.70] Las manos no entran en el agua. Bajo la caída fuerte hay una gota más suave. La gota responde desde abajo. La casa guarda la noche bajo el suelo. Las manos quedan quietas un momento.
+[155|NARRATOR_TARGET_es_repeat|0.70] Sin tocar el agua, escuchas bajo el sonido de la pileta otro eco más suave abajo del suelo. Cae una gota lenta en lo hondo. La casa guarda así la lluvia de la noche.
 [PAUSE|4.0]
-[156|NARRATOR_NATIVE_en|0.80] The lamp sits on the near water like a broken coin. A drop scatters it, and the pieces gather again. You watch it twice in this small center of the house.
+[156|NARRATOR_NATIVE_en|0.80] A golden lamp reflection rests like a coin on the near water, scatters when struck by a drop, and softly gathers again. Watching it twice leaves the room deeply calm.
 [PAUSE|2.0]
-[156|NARRATOR_TARGET_es|0.75] El reflejo de la lámpara parece una moneda rota. Una gota golpea el reflejo. Los pedazos se juntan otra vez. Tú miras esto dos veces. Esta sala pequeña es el centro de la casa.
+[156|NARRATOR_TARGET_es|0.75] Un reflejo dorado de lámpara descansa como una moneda en el agua cercana. Una gota lo rompe y vuelve a juntarse suave. Mirarlo dos veces deja la sala muy tranquila.
 [PAUSE|2.0]
-[156|NARRATOR_TARGET_es_repeat|0.70] El reflejo de la lámpara parece una moneda rota. Una gota golpea el reflejo. Los pedazos se juntan otra vez. Tú miras esto dos veces. Esta sala pequeña es el centro de la casa.
+[156|NARRATOR_TARGET_es_repeat|0.70] Un reflejo dorado de lámpara descansa como una moneda en el agua cercana. Una gota lo rompe y vuelve a juntarse suave. Mirarlo dos veces deja la sala muy tranquila.
 [PAUSE|4.0]
-[157|NARRATOR_NATIVE_en|0.80] Your palm rests on the cool rim. One drop touches a knuckle and stops. The open roof and the dry walk meet there, and your shoulders drop.
+[157|NARRATOR_NATIVE_en|0.80] Your open palm rests on the cool limestone rim where one stray drop touches your knuckle while the rest stays dry. Sharing both weathers lets your shoulders loosen easily.
 [PAUSE|2.0]
-[157|NARRATOR_TARGET_es|0.75] La palma descansa en el borde fresco. La piedra está fresca, no fría. Una gota toca un nudillo y se detiene. El techo abierto y el paseo seco se encuentran ahí. Los hombros bajan sin esfuerzo.
+[157|NARRATOR_TARGET_es|0.75] Tu palma abierta descansa sobre el borde fresco de piedra. Una sola gota toca un nudillo mientras el resto de la mano sigue seco. Los hombros bajan sin ningún esfuerzo.
 [PAUSE|2.0]
-[157|NARRATOR_TARGET_es_repeat|0.70] La palma descansa en el borde fresco. La piedra está fresca, no fría. Una gota toca un nudillo y se detiene. El techo abierto y el paseo seco se encuentran ahí. Los hombros bajan sin esfuerzo.
+[157|NARRATOR_TARGET_es_repeat|0.70] Tu palma abierta descansa sobre el borde fresco de piedra. Una sola gota toca un nudillo mientras el resto de la mano sigue seco. Los hombros bajan sin ningún esfuerzo.
 [PAUSE|4.0]
-[158|NARRATOR_NATIVE_en|0.80] You stand, and the square of sky is unchanged. The tiles shine, then go dull as they shed water. You know the house now: street, corridor, garden, and this pool.
+[158|NARRATOR_NATIVE_en|0.80] Standing up again, you see rain still falling cleanly past the shiny roof tiles into the pool. Behind you the garden murmurs faintly, and the quiet order of the villa feels clear.
 [PAUSE|2.0]
-[158|NARRATOR_TARGET_es|0.75] Tú te pones de pie otra vez. El cuadrado del cielo no cambia. Las tejas brillan y luego quedan mates. Sueltan el agua del techo. Ya conoces la forma de la casa: calle, pasillo, jardín y pileta.
+[158|NARRATOR_TARGET_es|0.75] Al ponerte de pie, ves la lluvia caer limpia junto a las tejas brillantes hacia la pileta. Detrás el jardín murmura suave, y el orden tranquilo de la villa queda claro.
 [PAUSE|2.0]
-[158|NARRATOR_TARGET_es_repeat|0.70] Tú te pones de pie otra vez. El cuadrado del cielo no cambia. Las tejas brillan y luego quedan mates. Sueltan el agua del techo. Ya conoces la forma de la casa: calle, pasillo, jardín y pileta.
+[158|NARRATOR_TARGET_es_repeat|0.70] Al ponerte de pie, ves la lluvia caer limpia junto a las tejas brillantes hacia la pileta. Detrás el jardín murmura suave, y el orden tranquilo de la villa queda claro.
 [PAUSE|4.0]
-[159|NARRATOR_NATIVE_en|0.80] The cistern is not in this room. It is the lower quiet, and the dark mouth is its doorway. The water keeps moving, the basin does not rise, and the pool is enough.
+[159|NARRATOR_NATIVE_en|0.80] Though the cistern stays hidden beneath the paving, its lower quiet supports the room while the pool holds steady. For this calm breath, simply standing beside the water feels plenty.
 [PAUSE|2.0]
-[159|NARRATOR_TARGET_es|0.75] La cisterna no está en esta sala. Es el silencio bajo que se oye. La boca oscura es su puerta. El agua sigue en movimiento. La pileta no sube y basta para quedarse al lado.
+[159|NARRATOR_TARGET_es|0.75] La cisterna oculta está debajo del suelo y sostiene el silencio de la sala. Mientras sigue la lluvia, la pileta mantiene siempre el mismo nivel. Quedarse un momento junto al borde es suficiente.
 [PAUSE|2.0]
-[159|NARRATOR_TARGET_es_repeat|0.70] La cisterna no está en esta sala. Es el silencio bajo que se oye. La boca oscura es su puerta. El agua sigue en movimiento. La pileta no sube y basta para quedarse al lado.
+[159|NARRATOR_TARGET_es_repeat|0.70] La cisterna oculta está debajo del suelo y sostiene el silencio de la sala. Mientras sigue la lluvia, la pileta mantiene siempre el mismo nivel. Quedarse un momento junto al borde es suficiente.
 [PAUSE|4.0]
-[160|NARRATOR_NATIVE_en|0.80] The rhythm of the drops becomes the rhythm of the room. In the street the rain was on your clothes. Here the lamps do not smoke, and your hands hang open.
+[160|NARRATOR_NATIVE_en|0.80] Your breath settles to the steady pulse of the atrium drops. Unlike the wet street outside, rain works here in calm order while clean oil lamps keep the floor bright.
 [PAUSE|2.0]
-[160|NARRATOR_TARGET_es|0.75] El ritmo de las gotas es el ritmo de la sala. En la calle la lluvia estaba en la ropa. Aquí las lámparas no echan humo. Las manos cuelgan abiertas. El aire de la sala sigue en calma.
+[160|NARRATOR_TARGET_es|0.75] Tu respiración sigue el pulso parejo de las gotas del atrio. A diferencia de la calle mojada, la lluvia trabaja aquí en calma mientras las lámparas limpias alumbran el suelo.
 [PAUSE|2.0]
-[160|NARRATOR_TARGET_es_repeat|0.70] El ritmo de las gotas es el ritmo de la sala. En la calle la lluvia estaba en la ropa. Aquí las lámparas no echan humo. Las manos cuelgan abiertas. El aire de la sala sigue en calma.
+[160|NARRATOR_TARGET_es_repeat|0.70] Tu respiración sigue el pulso parejo de las gotas del atrio. A diferencia de la calle mojada, la lluvia trabaja aquí en calma mientras las lámparas limpias alumbran el suelo.
 [PAUSE|4.0]
-[161|NARRATOR_NATIVE_en|0.80] The roof may keep feeding the basin, or the rain may thin. You let both possibilities rest. The house already knows what to do with the wet night.
+[161|NARRATOR_NATIVE_en|0.80] Whether rain lasts until dawn or fades into stillness, the roof and cistern handle the night on their own. Nothing asks you to decide or adjust a single thing.
 [PAUSE|2.0]
-[161|NARRATOR_TARGET_es|0.75] El techo puede seguir mandando agua a la pileta. O la lluvia puede hacerse más fina. No hace falta elegir entre las dos cosas. Las dos posibilidades pueden descansar. La casa ya sabe qué hacer con la noche mojada.
+[161|NARRATOR_TARGET_es|0.75] La lluvia puede durar hasta el alba o bajar a la calma. El techo y la cisterna cuidan la noche solos. Nada pide decidir ni cambiar una sola cosa.
 [PAUSE|2.0]
-[161|NARRATOR_TARGET_es_repeat|0.70] El techo puede seguir mandando agua a la pileta. O la lluvia puede hacerse más fina. No hace falta elegir entre las dos cosas. Las dos posibilidades pueden descansar. La casa ya sabe qué hacer con la noche mojada.
+[161|NARRATOR_TARGET_es_repeat|0.70] La lluvia puede durar hasta el alba o bajar a la calma. El techo y la cisterna cuidan la noche solos. Nada pide decidir ni cambiar una sola cosa.
 [PAUSE|4.0]
-[162|NARRATOR_NATIVE_en|0.80] You stay at the rim in gold light and open rain. A small dark mouth carries the extra down. The garden is behind you, the street is far, and neither calls.
+[162|NARRATOR_NATIVE_en|0.80] You linger beside the golden pool while the small drain sends water toward the vault below. With garden and street quiet behind you, the whole atrium rests in stillness.
 [PAUSE|2.0]
-[162|NARRATOR_TARGET_es|0.75] Tú te quedas en el borde con lluvia en el techo abierto. Hay luz dorada en el agua cercana. Una boca oscura lleva el extra hacia abajo. El jardín está detrás y la calle está lejos. Ninguno de los dos llama.
+[162|NARRATOR_TARGET_es|0.75] Quedas un instante junto a la pileta dorada. El desagüe pequeño envía agua hacia la bóveda abajo. Con el jardín y la calle en calma atrás, todo el atrio descansa en silencio.
 [PAUSE|2.0]
-[162|NARRATOR_TARGET_es_repeat|0.70] Tú te quedas en el borde con lluvia en el techo abierto. Hay luz dorada en el agua cercana. Una boca oscura lleva el extra hacia abajo. El jardín está detrás y la calle está lejos. Ninguno de los dos llama.
+[162|NARRATOR_TARGET_es_repeat|0.70] Quedas un instante junto a la pileta dorada. El desagüe pequeño envía agua hacia la bóveda abajo. Con el jardín y la calle en calma atrás, todo el atrio descansa en silencio.
 [PAUSE|4.0]
-[163|NARRATOR_NATIVE_en|0.80] You leave the pool for a low opening in the corner. Cooler air comes out and meets your knees first. The rain stays loud behind you, and the pool you left stays bright.
+[IMAGE|10] First-person view of a cool stone passage and a round cistern opening in the floor, water sounding below, no people
+[163|NARRATOR_NATIVE_en|0.80] You follow the dry wall to a low stone doorway in the corner. Cool air drifts out around your ankles while rain keeps brightening the pool behind you.
 [PAUSE|2.0]
-[163|NARRATOR_TARGET_es|0.75] Tú dejas la pileta por una entrada baja en la esquina. Sale aire más fresco hacia las rodillas. La lluvia sigue fuerte detrás. La pileta que dejaste sigue brillante con lluvia. El pasillo espera en la esquina.
+[163|NARRATOR_TARGET_es|0.75] Sigues la pared seca hacia una entrada baja de piedra en la esquina. Sale aire fresco junto a los tobillos. Atrás la lluvia sigue cayendo brillante sobre la pileta del atrio.
 [PAUSE|2.0]
-[163|NARRATOR_TARGET_es_repeat|0.70] Tú dejas la pileta por una entrada baja en la esquina. Sale aire más fresco hacia las rodillas. La lluvia sigue fuerte detrás. La pileta que dejaste sigue brillante con lluvia. El pasillo espera en la esquina.
+[163|NARRATOR_TARGET_es_repeat|0.70] Sigues la pared seca hacia una entrada baja de piedra en la esquina. Sale aire fresco junto a los tobillos. Atrás la lluvia sigue cayendo brillante sobre la pileta del atrio.
 [PAUSE|4.0]
-[164|NARRATOR_NATIVE_en|0.80] The opening is a worn stone frame, and the passage beyond is narrow. You bend and look through. Your hand meets the near wall, and that dry stone steadies your palm.
+[164|NARRATOR_NATIVE_en|0.80] Inside the worn stone frame waits a narrow passage darker than the atrium. You lean to look through and steady your palm against the dry, cool wall beside you.
 [PAUSE|2.0]
-[164|NARRATOR_TARGET_es|0.75] El marco de la entrada es de piedra gastada. El pasillo de adentro es estrecho. Tú te inclinas y miras a través. La mano toca la pared cercana. La piedra seca afirma la palma.
+[164|NARRATOR_TARGET_es|0.75] Tras el marco gastado hay un pasillo estrecho más oscuro que el atrio. Te inclinas para mirar adentro. Tu palma abierta toca la pared seca y fresca para guardar el equilibrio.
 [PAUSE|2.0]
-[164|NARRATOR_TARGET_es_repeat|0.70] El marco de la entrada es de piedra gastada. El pasillo de adentro es estrecho. Tú te inclinas y miras a través. La mano toca la pared cercana. La piedra seca afirma la palma.
+[164|NARRATOR_TARGET_es_repeat|0.70] Tras el marco gastado hay un pasillo estrecho más oscuro que el atrio. Te inclinas para mirar adentro. Tu palma abierta toca la pared seca y fresca para guardar el equilibrio.
 [PAUSE|4.0]
-[165|NARRATOR_NATIVE_en|0.80] You step in, and the ceiling passes close to your hair. Then it gives you a little room. The warm atrium stays at your back, and your shoulders turn to fit.
+[165|NARRATOR_NATIVE_en|0.80] You duck beneath the low threshold and turn your shoulders to fit the narrow corridor. The ceiling clears your hair as the warm atrium remains calmly behind you.
 [PAUSE|2.0]
-[165|NARRATOR_TARGET_es|0.75] Tú entras en el pasillo. El techo pasa cerca de tu pelo. Luego hay un poco más de espacio. La sala cálida queda a tu espalda. Tus hombros giran un poco para caber.
+[165|NARRATOR_TARGET_es|0.75] Pasas bajo el umbral bajo y giras un poco los hombros en el pasillo estrecho. El techo pasa cerca del pelo. La sala cálida del atrio queda detrás de tu espalda.
 [PAUSE|2.0]
-[165|NARRATOR_TARGET_es_repeat|0.70] Tú entras en el pasillo. El techo pasa cerca de tu pelo. Luego hay un poco más de espacio. La sala cálida queda a tu espalda. Tus hombros giran un poco para caber.
+[165|NARRATOR_TARGET_es_repeat|0.70] Pasas bajo el umbral bajo y giras un poco los hombros en el pasillo estrecho. El techo pasa cerca del pelo. La sala cálida del atrio queda detrás de tu espalda.
 [PAUSE|4.0]
-[166|NARRATOR_NATIVE_en|0.80] A darker band marks the damp lower wall. Above it the stone is only cool. The smell is deep stone, with no garden scent in it.
+[166|NARRATOR_NATIVE_en|0.80] A darker damp band traces the bottom stones while the upper wall stays cool and dry. You keep your sleeve clear in calm air scented only with limestone.
 [PAUSE|2.0]
-[166|NARRATOR_TARGET_es|0.75] Una banda oscura marca la pared baja. Arriba la piedra está solo fresca. La manga queda lejos de la humedad. El olor es de piedra profunda. No hay olor de jardín aquí.
+[166|NARRATOR_TARGET_es|0.75] Una banda oscura recorre las piedras bajas mientras la pared alta sigue seca y fresca. Dejas la manga lejos de abajo. El aire quieto huele solo a piedra sin olor de jardín.
 [PAUSE|2.0]
-[166|NARRATOR_TARGET_es_repeat|0.70] Una banda oscura marca la pared baja. Arriba la piedra está solo fresca. La manga queda lejos de la humedad. El olor es de piedra profunda. No hay olor de jardín aquí.
+[166|NARRATOR_TARGET_es_repeat|0.70] Una banda oscura recorre las piedras bajas mientras la pared alta sigue seca y fresca. Dejas la manga lejos de abajo. El aire quieto huele solo a piedra sin olor de jardín.
 [PAUSE|4.0]
-[167|NARRATOR_NATIVE_en|0.80] The floor slopes down by less than a step. You take short steps in the narrow width. The atrium rain grows softer, and the corner behind you thins to a murmur.
+[167|NARRATOR_NATIVE_en|0.80] The paving slopes gently downward beneath short, easy steps. With each quiet pace forward, the bright splash of the atrium softens behind you into a mild murmur.
 [PAUSE|2.0]
-[167|NARRATOR_TARGET_es|0.75] El suelo baja menos de un escalón. Tú das pasos cortos. El pasillo es estrecho. La lluvia de la sala suena más suave. La esquina de atrás queda en un rumor.
+[167|NARRATOR_TARGET_es|0.75] El suelo baja suave bajo pasos cortos y tranquilos. Con cada metro hacia adelante la lluvia del atrio suena más suave atrás. Pronto ese sonido queda como un rumor lejano.
 [PAUSE|2.0]
-[167|NARRATOR_TARGET_es_repeat|0.70] El suelo baja menos de un escalón. Tú das pasos cortos. El pasillo es estrecho. La lluvia de la sala suena más suave. La esquina de atrás queda en un rumor.
+[167|NARRATOR_TARGET_es_repeat|0.70] El suelo baja suave bajo pasos cortos y tranquilos. Con cada metro hacia adelante la lluvia del atrio suena más suave atrás. Pronto ese sonido queda como un rumor lejano.
 [PAUSE|4.0]
-[168|NARRATOR_NATIVE_en|0.80] One hand stays on the wall, and the other hangs open. Nothing here needs to be carried. The stone leads you, the slope is gentle, and your pace matches it.
+[168|NARRATOR_NATIVE_en|0.80] One open hand trails the cool wall in the dimness while your other arm hangs relaxed. Your feet follow the gentle downward incline without effort or hurry.
 [PAUSE|2.0]
-[168|NARRATOR_TARGET_es|0.75] Una mano sigue la pared. La otra cuelga abierta al lado. Aquí no hay nada que llevar. La piedra guía en la bajada suave. El paso va con la pendiente.
+[168|NARRATOR_TARGET_es|0.75] Una mano abierta sigue la pared fresca en la penumbra. El otro brazo cuelga suelto junto al cuerpo. Los pies siguen la bajada suave del pasillo sin ninguna prisa.
 [PAUSE|2.0]
-[168|NARRATOR_TARGET_es_repeat|0.70] Una mano sigue la pared. La otra cuelga abierta al lado. Aquí no hay nada que llevar. La piedra guía en la bajada suave. El paso va con la pendiente.
+[168|NARRATOR_TARGET_es_repeat|0.70] Una mano abierta sigue la pared fresca en la penumbra. El otro brazo cuelga suelto junto al cuerpo. Los pies siguen la bajada suave del pasillo sin ninguna prisa.
 [PAUSE|4.0]
-[169|NARRATOR_NATIVE_en|0.80] Behind you the pool is only a bright murmur now. Ahead you see only gray shapes. Your feet trust the nearer stones, and that gray is enough.
+[169|NARRATOR_NATIVE_en|0.80] Behind you the pool fades into a silver hush while gray twilight fills the corridor ahead. Your eyes relax easily, and every flat floor stone feels solid underfoot.
 [PAUSE|2.0]
-[169|NARRATOR_TARGET_es|0.75] Detrás la pileta es solo un rumor brillante. Ya no llena toda la sala. Adelante solo hay formas grises. Los ojos aceptan ese gris. Los pies confían en las piedras cercanas.
+[169|NARRATOR_TARGET_es|0.75] Atrás la pileta queda en un susurro suave. Adelante la penumbra muestra formas tranquilas de color gris. Los ojos descansan sin esfuerzo y el suelo firme sostiene cada paso.
 [PAUSE|2.0]
-[169|NARRATOR_TARGET_es_repeat|0.70] Detrás la pileta es solo un rumor brillante. Ya no llena toda la sala. Adelante solo hay formas grises. Los ojos aceptan ese gris. Los pies confían en las piedras cercanas.
+[169|NARRATOR_TARGET_es_repeat|0.70] Atrás la pileta queda en un susurro suave. Adelante la penumbra muestra formas tranquilas de color gris. Los ojos descansan sin esfuerzo y el suelo firme sostiene cada paso.
 [PAUSE|4.0]
-[170|NARRATOR_NATIVE_en|0.80] The passage turns once left, and there is no door. Warmth stays only on your back. The coolest air of the night settles on your face.
+[170|NARRATOR_NATIVE_en|0.80] The passage curves gently left around an open stone corner. Past the turn, warm atrium air lingers behind while cool underground stillness rests gently across your face.
 [PAUSE|2.0]
-[170|NARRATOR_TARGET_es|0.75] El pasillo gira una vez a la izquierda. En la esquina no hay puerta. El calor queda solo en tu espalda. Este aire es el más fresco de la noche. Se posa en tu cara.
+[170|NARRATOR_TARGET_es|0.75] El pasillo gira suave a la izquierda por una esquina abierta de piedra. Después del giro, el aire tibio queda atrás mientras un frescor tranquilo descansa en tu cara.
 [PAUSE|2.0]
-[170|NARRATOR_TARGET_es_repeat|0.70] El pasillo gira una vez a la izquierda. En la esquina no hay puerta. El calor queda solo en tu espalda. Este aire es el más fresco de la noche. Se posa en tu cara.
+[170|NARRATOR_TARGET_es_repeat|0.70] El pasillo gira suave a la izquierda por una esquina abierta de piedra. Después del giro, el aire tibio queda atrás mientras un frescor tranquilo descansa en tu cara.
 [PAUSE|4.0]
-[171|NARRATOR_NATIVE_en|0.80] The smell changes from leaves to stored water. It is mineral and calm, like a cool closed jar. You breathe it, and the garden green is gone.
+[171|NARRATOR_NATIVE_en|0.80] The leafy garden scent fades completely, replaced by clean mineral air like water stored in cool clay. Drawing a slow breath brings mild stillness deep into your chest.
 [PAUSE|2.0]
-[171|NARRATOR_TARGET_es|0.75] El olor pasa de las hojas al agua guardada. El olor es mineral y está en calma. Es como un frasco fresco y cerrado. El aire fresco entra en el pecho. El verde del jardín ya no está.
+[171|NARRATOR_TARGET_es|0.75] El olor verde de las hojas desaparece del aire. Ahora huele limpio a piedra y a agua guardada. Al respirar despacio, entra una calma fresca y honda en el pecho.
 [PAUSE|2.0]
-[171|NARRATOR_TARGET_es_repeat|0.70] El olor pasa de las hojas al agua guardada. El olor es mineral y está en calma. Es como un frasco fresco y cerrado. El aire fresco entra en el pecho. El verde del jardín ya no está.
+[171|NARRATOR_TARGET_es_repeat|0.70] El olor verde de las hojas desaparece del aire. Ahora huele limpio a piedra y a agua guardada. Al respirar despacio, entra una calma fresca y honda en el pecho.
 [PAUSE|4.0]
-[172|NARRATOR_NATIVE_en|0.80] A thin thread of the lamp shows the next stones. You bring no flame of your own. The house light stays at your back, and the floor under you is sure.
+[172|NARRATOR_NATIVE_en|0.80] A thin thread of atrium lamplight still touches the stones past the turn. Carrying no flame of your own, you walk calmly with unburdened hands along the sure floor.
 [PAUSE|2.0]
-[172|NARRATOR_TARGET_es|0.75] Un hilo fino de la lámpara llega hasta aquí. Ese hilo muestra las piedras siguientes. No hay llama propia en las manos. La luz de la casa queda atrás. El suelo bajo los pies es seguro.
+[172|NARRATOR_TARGET_es|0.75] Un hilo fino de luz dorada llega todavía desde el atrio hasta las piedras. No llevas ninguna llama en las manos. El suelo firme muestra con claridad cada paso siguiente.
 [PAUSE|2.0]
-[172|NARRATOR_TARGET_es_repeat|0.70] Un hilo fino de la lámpara llega hasta aquí. Ese hilo muestra las piedras siguientes. No hay llama propia en las manos. La luz de la casa queda atrás. El suelo bajo los pies es seguro.
+[172|NARRATOR_TARGET_es_repeat|0.70] Un hilo fino de luz dorada llega todavía desde el atrio hasta las piedras. No llevas ninguna llama en las manos. El suelo firme muestra con claridad cada paso siguiente.
 [PAUSE|4.0]
-[173|NARRATOR_NATIVE_en|0.80] The walls ease apart, and your shoulders drop. The ceiling lets you stand straight on smoother stone. You are near the end, and a dark ring is close.
+[173|NARRATOR_NATIVE_en|0.80] The walls widen into a small stone chamber where the arch lets you stand straight. On smooth worn stone ahead rests a low round curb in the floor.
 [PAUSE|2.0]
-[173|NARRATOR_TARGET_es|0.75] Las paredes se abren y los hombros bajan. El techo deja estar derecho. La piedra bajo los pies está más lisa. Estás cerca del final del pasillo. El anillo oscuro en el suelo está cerca.
+[173|NARRATOR_TARGET_es|0.75] Las paredes se abren en una cámara pequeña donde puedes estar derecho bajo el arco. Adelante, sobre el suelo liso y gastado, espera un borde redondo y bajo de piedra.
 [PAUSE|2.0]
-[173|NARRATOR_TARGET_es_repeat|0.70] Las paredes se abren y los hombros bajan. El techo deja estar derecho. La piedra bajo los pies está más lisa. Estás cerca del final del pasillo. El anillo oscuro en el suelo está cerca.
+[173|NARRATOR_TARGET_es_repeat|0.70] Las paredes se abren en una cámara pequeña donde puedes estar derecho bajo el arco. Adelante, sobre el suelo liso y gastado, espera un borde redondo y bajo de piedra.
 [PAUSE|4.0]
-[174|NARRATOR_NATIVE_en|0.80] A low ring of stone rises from the floor. A heavy cover stands on edge beside it. The dark opening inside the ring is the cistern mouth.
+[174|NARRATOR_NATIVE_en|0.80] A low circular stone curb rises from the floor beside its heavy cover resting against the wall. Inside the quiet ring opens the dark shaft of the villa cistern.
 [PAUSE|2.0]
-[174|NARRATOR_TARGET_es|0.75] En el suelo hay un borde redondo de piedra. Es un anillo bajo. Una tapa pesada descansa a un lado. Está quieta y apartada. El hueco oscuro es la boca de la cisterna.
+[174|NARRATOR_TARGET_es|0.75] Un borde redondo y bajo de piedra sube desde el suelo. La tapa pesada descansa quieta a un lado. Dentro del anillo se abre el pozo oscuro de la cisterna.
 [PAUSE|2.0]
-[174|NARRATOR_TARGET_es_repeat|0.70] En el suelo hay un borde redondo de piedra. Es un anillo bajo. Una tapa pesada descansa a un lado. Está quieta y apartada. El hueco oscuro es la boca de la cisterna.
+[174|NARRATOR_TARGET_es_repeat|0.70] Un borde redondo y bajo de piedra sube desde el suelo. La tapa pesada descansa quieta a un lado. Dentro del anillo se abre el pozo oscuro de la cisterna.
 [PAUSE|4.0]
-[175|NARRATOR_NATIVE_en|0.80] You stop with your toes short of the curb. The opening is for seeing, not for a step. Cool air rises to your chin, and your heels stay flat.
+[175|NARRATOR_NATIVE_en|0.80] You stop comfortably short of the stone curb while cool air rises softly against your chin. Overhead, the atrium rain sounds muffled and gentle like soft felt.
 [PAUSE|2.0]
-[175|NARRATOR_TARGET_es|0.75] Tú paras con los dedos antes del borde. El hueco es para mirar, no para un paso. El aire fresco sube hasta la barbilla. Los talones siguen en el suelo plano. El borde redondo queda delante.
+[175|NARRATOR_TARGET_es|0.75] Paras con los pies antes del anillo de piedra. Un aire fresco y suave sube desde el pozo hasta la cara. Arriba la lluvia del atrio suena lejana y apagada.
 [PAUSE|2.0]
-[175|NARRATOR_TARGET_es_repeat|0.70] Tú paras con los dedos antes del borde. El hueco es para mirar, no para un paso. El aire fresco sube hasta la barbilla. Los talones siguen en el suelo plano. El borde redondo queda delante.
+[175|NARRATOR_TARGET_es_repeat|0.70] Paras con los pies antes del anillo de piedra. Un aire fresco y suave sube desde el pozo hasta la cara. Arriba la lluvia del atrio suena lejana y apagada.
 [PAUSE|4.0]
-[176|NARRATOR_NATIVE_en|0.80] The cover is dry above and dark along the lower rim. It rests on its edge, and you leave it there. Your fingers stay on your sleeve, and the stone ring is enough.
+[176|NARRATOR_NATIVE_en|0.80] The heavy cover leans dry and balanced beside the corner, needing no touch at all. With your hands resting on your sleeves, you look quietly into the stone ring.
 [PAUSE|2.0]
-[176|NARRATOR_TARGET_es|0.75] La tapa está seca arriba por dentro. El borde de abajo está oscuro. La tapa descansa en su canto. La dejas ahí sin tocarla. Los dedos quedan en la manga y el anillo de piedra basta.
+[176|NARRATOR_TARGET_es|0.75] La tapa pesada descansa seca y firme en su rincón sin necesidad de moverla. Las manos quedan tranquilas sobre las mangas. El anillo de piedra basta para mirar con calma.
 [PAUSE|2.0]
-[176|NARRATOR_TARGET_es_repeat|0.70] La tapa está seca arriba por dentro. El borde de abajo está oscuro. La tapa descansa en su canto. La dejas ahí sin tocarla. Los dedos quedan en la manga y el anillo de piedra basta.
+[176|NARRATOR_TARGET_es_repeat|0.70] La tapa pesada descansa seca y firme en su rincón sin necesidad de moverla. Las manos quedan tranquilas sobre las mangas. El anillo de piedra basta para mirar con calma.
 [PAUSE|4.0]
-[177|NARRATOR_NATIVE_en|0.80] You lower one knee on dry stone beside the curb. The shaft below is a dark column of fitted blocks. Far down, one small sound answers, and you do not follow it.
+[177|NARRATOR_NATIVE_en|0.80] You rest one knee on dry stone beside the curb and look down the dark block-lined shaft. Far below, one tiny liquid sound answers softly from the deep cistern.
 [PAUSE|2.0]
-[177|NARRATOR_TARGET_es|0.75] Tú bajas una rodilla en piedra seca junto al borde. El pozo de abajo es una columna de bloques oscuros. Muy abajo un sonido pequeño responde. No sigues ese sonido. El pozo espera en la oscuridad.
+[177|NARRATOR_TARGET_es|0.75] Apoyas una rodilla en la piedra seca junto al borde y miras hacia abajo. El pozo baja con bloques oscuros fuera de la luz. Muy abajo responde un sonido pequeño de agua.
 [PAUSE|2.0]
-[177|NARRATOR_TARGET_es_repeat|0.70] Tú bajas una rodilla en piedra seca junto al borde. El pozo de abajo es una columna de bloques oscuros. Muy abajo un sonido pequeño responde. No sigues ese sonido. El pozo espera en la oscuridad.
+[177|NARRATOR_TARGET_es_repeat|0.70] Apoyas una rodilla en la piedra seca junto al borde y miras hacia abajo. El pozo baja con bloques oscuros fuera de la luz. Muy abajo responde un sonido pequeño de agua.
 [PAUSE|4.0]
-[178|NARRATOR_NATIVE_en|0.80] The sound is one drop, then quiet, then depth. It is precise and not loud. The cistern lies under the atrium, you have found it, and your knee stays on the dry side.
+[178|NARRATOR_NATIVE_en|0.80] One clear drop rises from the deep vault, followed by wide stillness and a sense of depth. Beneath the atrium floor, this stone cistern quietly collects the night rain.
 [PAUSE|2.0]
-[178|NARRATOR_TARGET_es|0.75] El sonido es una gota, luego silencio. Luego viene la sensación de profundidad. Es preciso y no es fuerte. La cisterna está bajo el atrio. Ya está aquí y la rodilla sigue en el lado seco.
+[178|NARRATOR_TARGET_es|0.75] Una gota clara sube desde la bóveda honda, seguida de un silencio amplio y profundo. Debajo del suelo del atrio, esta cisterna de piedra recoge con calma la lluvia nocturna.
 [PAUSE|2.0]
-[178|NARRATOR_TARGET_es_repeat|0.70] El sonido es una gota, luego silencio. Luego viene la sensación de profundidad. Es preciso y no es fuerte. La cisterna está bajo el atrio. Ya está aquí y la rodilla sigue en el lado seco.
+[178|NARRATOR_TARGET_es_repeat|0.70] Una gota clara sube desde la bóveda honda, seguida de un silencio amplio y profundo. Debajo del suelo del atrio, esta cisterna de piedra recoge con calma la lluvia nocturna.
 [PAUSE|4.0]
-[179|NARRATOR_NATIVE_en|0.80] You do not set a foot over the ring. Both hands rest on your knee, with the curb between you and the shaft. A thread of light marks the short way back.
+[179|NARRATOR_NATIVE_en|0.80] Both feet stay safely back while your hands rest loosely on your raised knee. Behind you waits the short corridor back to the atrium whenever you choose to rise.
 [PAUSE|2.0]
-[179|NARRATOR_TARGET_es|0.75] No hay un pie sobre el anillo. El borde queda entre las rodillas y el pozo. Las dos manos descansan en la rodilla. El regreso es corto y se conoce. Un hilo de luz marca el giro.
+[179|NARRATOR_TARGET_es|0.75] Los pies siguen firmes detrás del anillo de piedra. Las dos manos descansan sueltas sobre la rodilla doblada. El camino de vuelta hacia la sala cálida queda muy corto atrás.
 [PAUSE|2.0]
-[179|NARRATOR_TARGET_es_repeat|0.70] No hay un pie sobre el anillo. El borde queda entre las rodillas y el pozo. Las dos manos descansan en la rodilla. El regreso es corto y se conoce. Un hilo de luz marca el giro.
+[179|NARRATOR_TARGET_es_repeat|0.70] Los pies siguen firmes detrás del anillo de piedra. Las dos manos descansan sueltas sobre la rodilla doblada. El camino de vuelta hacia la sala cálida queda muy corto atrás.
 [PAUSE|4.0]
-[180|NARRATOR_NATIVE_en|0.80] You wait for another drop in clear cool air. The warm room is only one turn away and still yours. For this breath the dark water below is the quiet center.
+[180|NARRATOR_NATIVE_en|0.80] You wait beside the dry rim while cool air keeps your brow clear. For this quiet breath, the dark stored water below becomes the calm center of the whole villa.
 [PAUSE|2.0]
-[180|NARRATOR_TARGET_es|0.75] Tú esperas otra gota en aire fresco. El aire mantiene la cara despejada. La sala cálida está a un solo giro. Sigue siendo tuya. El agua oscura de abajo es el centro quieto.
+[180|NARRATOR_TARGET_es|0.75] Esperas junto al borde seco mientras el aire fresco despeja tu frente. En esta respiración tranquila, el agua oscura guardada abajo es el centro calmo de toda la villa.
 [PAUSE|2.0]
-[180|NARRATOR_TARGET_es_repeat|0.70] Tú esperas otra gota en aire fresco. El aire mantiene la cara despejada. La sala cálida está a un solo giro. Sigue siendo tuya. El agua oscura de abajo es el centro quieto.
+[180|NARRATOR_TARGET_es_repeat|0.70] Esperas junto al borde seco mientras el aire fresco despeja tu frente. En esta respiración tranquila, el agua oscura guardada abajo es el centro calmo de toda la villa.
 [PAUSE|4.0]
+
 ## BLOCK: RECALL_3
-[181|NARRATOR_NATIVE_en|0.80] The next drop lands where the last one did. You hear a round tick, small as a seed. The shaft returns it softer, and nothing else moves.
+[181|NARRATOR_NATIVE_en|0.80] The next drop lands in the exact same spot far below with a soft round tick like a small seed. The stone shaft softens the echo before stillness returns completely.
 [PAUSE|2.0]
-[181|NARRATOR_TARGET_es|0.75] La gota siguiente cae en el mismo sitio. Oyes un golpe redondo, pequeño como una semilla. El pozo devuelve el sonido más suave. Nada más se mueve.
+[181|NARRATOR_TARGET_es|0.75] La siguiente gota cae en el mismo sitio muy abajo. Suena como un golpe redondo y pequeño como una semilla. El pozo devuelve un eco suave y todo vuelve al silencio.
 [PAUSE|2.0]
-[181|NARRATOR_TARGET_es_repeat|0.70] La gota siguiente cae en el mismo sitio. Oyes un golpe redondo, pequeño como una semilla. El pozo devuelve el sonido más suave. Nada más se mueve.
+[181|NARRATOR_TARGET_es_repeat|0.70] La siguiente gota cae en el mismo sitio muy abajo. Suena como un golpe redondo y pequeño como una semilla. El pozo devuelve un eco suave y todo vuelve al silencio.
 [PAUSE|4.0]
-[182|NARRATOR_NATIVE_en|0.80] A second drop follows after a long patient gap. The gap is wider than the rain on the roof. Down here each drop arrives alone, and you listen without counting.
+[182|NARRATOR_NATIVE_en|0.80] Another drop follows after a long, patient pause much slower than the roof rain above. Listening without counting lets the wide stillness between drops feel gentle and easy.
 [PAUSE|2.0]
-[182|NARRATOR_TARGET_es|0.75] Después de una pausa larga cae otra gota. La pausa es más ancha que la lluvia en el techo. Aquí cada gota llega sola. Escuchas sin contar.
+[182|NARRATOR_TARGET_es|0.75] Otra gota cae después de una pausa larga y tranquila. Aquí abajo el agua llega de una en una tras su camino. Escuchas sin contar y la pausa parece ancha y fácil.
 [PAUSE|2.0]
-[182|NARRATOR_TARGET_es_repeat|0.70] Después de una pausa larga cae otra gota. La pausa es más ancha que la lluvia en el techo. Aquí cada gota llega sola. Escuchas sin contar.
+[182|NARRATOR_TARGET_es_repeat|0.70] Otra gota cae después de una pausa larga y tranquila. Aquí abajo el agua llega de una en una tras su camino. Escuchas sin contar y la pausa parece ancha y fácil.
 [PAUSE|4.0]
-[183|NARRATOR_NATIVE_en|0.80] Far below, a dull gray shine is stored water, not a lamp. A drop strikes it, the gray trembles, and then it lies flat. You watch that from the dry knee.
+[183|NARRATOR_NATIVE_en|0.80] Far below rests a dull grey shine where stored water catches faint sky light. When a drop strikes it, the pale disc trembles once and settles smoothly flat again.
 [PAUSE|2.0]
-[183|NARRATOR_TARGET_es|0.75] Muy abajo un brillo gris es agua guardada, no una lámpara. Una gota lo golpea, el gris tiembla y queda plano. Miras eso desde la rodilla seca.
+[183|NARRATOR_TARGET_es|0.75] Muy abajo hay un brillo gris pálido donde el agua guardada recuerda la luz. Una gota toca ese círculo claro, el agua tiembla suavemente y en seguida vuelve a quedar plana y tranquila.
 [PAUSE|2.0]
-[183|NARRATOR_TARGET_es_repeat|0.70] Muy abajo un brillo gris es agua guardada, no una lámpara. Una gota lo golpea, el gris tiembla y queda plano. Miras eso desde la rodilla seca.
+[183|NARRATOR_TARGET_es_repeat|0.70] Muy abajo hay un brillo gris pálido donde el agua guardada recuerda la luz. Una gota toca ese círculo claro, el agua tiembla suavemente y en seguida vuelve a quedar plana y tranquila.
 [PAUSE|4.0]
-[184|NARRATOR_NATIVE_en|0.80] Air from the shaft is steady and cool on your brow. It smells of wet stone and of nothing green. You do not lean your weight past the curb.
+[184|NARRATOR_NATIVE_en|0.80] Steady cool air from the shaft brushes your brow with a clean scent of wet stone. Keeping your weight safely back behind the curb, you let that mild breath rest.
 [PAUSE|2.0]
-[184|NARRATOR_TARGET_es|0.75] El aire del pozo es fresco y constante en la frente. Huele a piedra mojada y no huele a plantas. No pasas el peso más allá del borde.
+[184|NARRATOR_TARGET_es|0.75] Aire fresco sube parejo desde el pozo y toca la frente. Huele limpio a piedra húmeda sin olor de plantas. Dejas tu peso seguro detrás del borde mientras descansas.
 [PAUSE|2.0]
-[184|NARRATOR_TARGET_es_repeat|0.70] El aire del pozo es fresco y constante en la frente. Huele a piedra mojada y no huele a plantas. No pasas el peso más allá del borde.
+[184|NARRATOR_TARGET_es_repeat|0.70] Aire fresco sube parejo desde el pozo y toca la frente. Huele limpio a piedra húmeda sin olor de plantas. Dejas tu peso seguro detrás del borde mientras descansas.
 [PAUSE|4.0]
-[185|NARRATOR_NATIVE_en|0.80] The rhythm below is slower than the pool above. Up there many drops share one voice. Here one drop comes, then a quiet, and your ears prefer this slower clock.
+[185|NARRATOR_NATIVE_en|0.80] The cistern keeps a far slower rhythm than the bright pool upstairs. Instead of many raindrops blending together, single drops leave wide quiet room that puts your ears at ease.
 [PAUSE|2.0]
-[185|NARRATOR_TARGET_es|0.75] Abajo el ritmo es más lento que arriba en la pileta. Arriba muchas gotas comparten una voz. Aquí llega una gota y luego hay silencio. Los oídos prefieren este reloj lento.
+[185|NARRATOR_TARGET_es|0.75] Abajo el ritmo es mucho más lento que arriba en la pileta del atrio. Allí muchas gotas suenan juntas. Aquí cada gota deja un espacio amplio y tus oídos prefieren esta calma.
 [PAUSE|2.0]
-[185|NARRATOR_TARGET_es_repeat|0.70] Abajo el ritmo es más lento que arriba en la pileta. Arriba muchas gotas comparten una voz. Aquí llega una gota y luego hay silencio. Los oídos prefieren este reloj lento.
+[185|NARRATOR_TARGET_es_repeat|0.70] Abajo el ritmo es mucho más lento que arriba en la pileta del atrio. Allí muchas gotas suenan juntas. Aquí cada gota deja un espacio amplio y tus oídos prefieren esta calma.
 [PAUSE|4.0]
-[186|NARRATOR_NATIVE_en|0.80] Your breath matches the gap, quiet in and a soft tick out. The match is easy, and you do not force it. Your shoulders stay loose, and the next quiet arrives on time.
+[186|NARRATOR_NATIVE_en|0.80] Your breath settles naturally into the wide space between drops without effort. Soft inhales match the stillness while slow exhales meet each distant touch on the water below.
 [PAUSE|2.0]
-[186|NARRATOR_TARGET_es|0.75] La respiración sigue el silencio, entra quieta y sale con un golpe suave. El ajuste es fácil y no lo fuerzas. Los hombros siguen sueltos. El siguiente silencio llega a tiempo.
+[186|NARRATOR_TARGET_es|0.75] La respiración encuentra sin esfuerzo la pausa larga entre las gotas. El aire entra quieto en el silencio y sale suave cuando una gota lejana toca el agua abajo.
 [PAUSE|2.0]
-[186|NARRATOR_TARGET_es_repeat|0.70] La respiración sigue el silencio, entra quieta y sale con un golpe suave. El ajuste es fácil y no lo fuerzas. Los hombros siguen sueltos. El siguiente silencio llega a tiempo.
+[186|NARRATOR_TARGET_es_repeat|0.70] La respiración encuentra sin esfuerzo la pausa larga entre las gotas. El aire entra quieto en el silencio y sale suave cuando una gota lejana toca el agua abajo.
 [PAUSE|4.0]
-[187|NARRATOR_NATIVE_en|0.80] The first row of the shaft is dark, and the next is shadow. The blocks stand close together. Below that, the calm shine is marked only by drops.
+[187|NARRATOR_NATIVE_en|0.80] Only the top stone row catches faint corridor light before the shaft deepens into shadow. Far beneath the dark rings, calm water rests untouched except by single slow drops.
 [PAUSE|2.0]
-[187|NARRATOR_TARGET_es|0.75] La primera hilera del pozo es oscura y la siguiente es sombra. Los bloques están cerca unos de otros. Abajo el brillo tranquilo solo marca las gotas.
+[187|NARRATOR_TARGET_es|0.75] Solo la primera fila de piedra recibe algo de luz antes de entrar en sombra oscura. Muy abajo, el agua calma espera sin moverse salvo cuando una gota lenta toca la superficie.
 [PAUSE|2.0]
-[187|NARRATOR_TARGET_es_repeat|0.70] La primera hilera del pozo es oscura y la siguiente es sombra. Los bloques están cerca unos de otros. Abajo el brillo tranquilo solo marca las gotas.
+[187|NARRATOR_TARGET_es_repeat|0.70] Solo la primera fila de piedra recibe algo de luz antes de entrar en sombra oscura. Muy abajo, el agua calma espera sin moverse salvo cuando una gota lenta toca la superficie.
 [PAUSE|4.0]
-[188|NARRATOR_NATIVE_en|0.80] Another drop finds the same place and the same soft answer. The drops would go on even if you stood up. You stay, because the sound is kind.
+[188|NARRATOR_NATIVE_en|0.80] Another drop returns the same gentle echo from below. Knowing the quiet rhythm continues all night even after you leave makes lingering beside the curb effortless and peaceful.
 [PAUSE|2.0]
-[188|NARRATOR_TARGET_es|0.75] Otra gota cae en el mismo sitio con la misma respuesta suave. Las gotas siguen aunque te levantes. Te quedas porque el sonido es amable.
+[188|NARRATOR_TARGET_es|0.75] Otra gota cae en el mismo punto y devuelve el mismo eco suave. Sabes que este ritmo sigue igual toda la noche. Quedarte un poco más junto al borde resulta tranquilo y libre.
 [PAUSE|2.0]
-[188|NARRATOR_TARGET_es_repeat|0.70] Otra gota cae en el mismo sitio con la misma respuesta suave. Las gotas siguen aunque te levantes. Te quedas porque el sonido es amable.
+[188|NARRATOR_TARGET_es_repeat|0.70] Otra gota cae en el mismo punto y devuelve el mismo eco suave. Sabes que este ritmo sigue igual toda la noche. Quedarte un poco más junto al borde resulta tranquilo y libre.
 [PAUSE|4.0]
-[189|NARRATOR_NATIVE_en|0.80] At the turn behind you, warm light marks the way back. It does not reach the water. It only keeps the passage open, and you know where the atrium is.
+[189|NARRATOR_NATIVE_en|0.80] Behind you at the corridor bend, a thin thread of warm light marks the short path back to the atrium. Though it never reaches the dark shaft, the return remains clear.
 [PAUSE|2.0]
-[189|NARRATOR_TARGET_es|0.75] En el giro de atrás la luz cálida marca el camino de vuelta. No llega hasta el agua. Solo deja el pasillo abierto y sabes dónde está la sala.
+[189|NARRATOR_TARGET_es|0.75] Detrás, en el giro del pasillo, un hilo de luz cálida señala el regreso. No llega hasta el agua profunda, pero mantiene abierto el camino hacia la sala cálida cuando quieras volver.
 [PAUSE|2.0]
-[189|NARRATOR_TARGET_es_repeat|0.70] En el giro de atrás la luz cálida marca el camino de vuelta. No llega hasta el agua. Solo deja el pasillo abierto y sabes dónde está la sala.
+[189|NARRATOR_TARGET_es_repeat|0.70] Detrás, en el giro del pasillo, un hilo de luz cálida señala el regreso. No llega hasta el agua profunda, pero mantiene abierto el camino hacia la sala cálida cuando quieras volver.
 [PAUSE|4.0]
-[190|NARRATOR_NATIVE_en|0.80] You hear both ends of the rain. The roof lets it in, and the cistern keeps the rest. You are here only to hear the last step.
+[190|NARRATOR_NATIVE_en|0.80] From this quiet chamber you hear both ends of the rain working together: the high roof gathering drops above and the deep stone cistern keeping them safely below.
 [PAUSE|2.0]
-[190|NARRATOR_TARGET_es|0.75] Oyes los dos extremos de la lluvia. El techo deja entrar el agua y la cisterna guarda el resto. Solo estás aquí para oír el último paso.
+[190|NARRATOR_TARGET_es|0.75] Desde aquí escuchas los dos extremos de la lluvia trabajar juntos en paz. El techo alto recoge el agua arriba y la cisterna profunda guarda el resto abajo sin hacer ruido.
 [PAUSE|2.0]
-[190|NARRATOR_TARGET_es_repeat|0.70] Oyes los dos extremos de la lluvia. El techo deja entrar el agua y la cisterna guarda el resto. Solo estás aquí para oír el último paso.
+[190|NARRATOR_TARGET_es_repeat|0.70] Desde aquí escuchas los dos extremos de la lluvia trabajar juntos en paz. El techo alto recoge el agua arriba y la cisterna profunda guarda el resto abajo sin hacer ruido.
 [PAUSE|4.0]
-[191|NARRATOR_NATIVE_en|0.80] The water below does not climb, and the shine stays put. Your hands stay on the dry curb. What lies down there is a store, not a rising pool.
+[191|NARRATOR_NATIVE_en|0.80] Deep below the floor, the grey water keeps its steady level without rising toward the shaft. Your hands stay completely dry against the curb while the calm store settles for morning.
 [PAUSE|2.0]
-[191|NARRATOR_TARGET_es|0.75] El agua de abajo no sube y el brillo se queda en su sitio. Las manos siguen en el borde seco. Lo de abajo es una reserva, no una pileta que sube.
+[191|NARRATOR_TARGET_es|0.75] El agua profunda mantiene siempre su nivel sin subir por el pozo. El brillo gris sigue quieto abajo. Tus manos descansan sobre la piedra seca del borde mientras la reserva reposa.
 [PAUSE|2.0]
-[191|NARRATOR_TARGET_es_repeat|0.70] El agua de abajo no sube y el brillo se queda en su sitio. Las manos siguen en el borde seco. Lo de abajo es una reserva, no una pileta que sube.
+[191|NARRATOR_TARGET_es_repeat|0.70] El agua profunda mantiene siempre su nivel sin subir por el pozo. El brillo gris sigue quieto abajo. Tus manos descansan sobre la piedra seca del borde mientras la reserva reposa.
 [PAUSE|4.0]
-[192|NARRATOR_NATIVE_en|0.80] Enough of the depth has been heard. The next drop can fall without you. You stand, the curb is only a ring again, and the cool air lets your face go.
+[192|NARRATOR_NATIVE_en|0.80] Having listened long enough to the deep cistern, you rise smoothly beside the curb. As cool shaft air releases your brow, warm atrium lamplight waits just around the bend.
 [PAUSE|2.0]
-[192|NARRATOR_TARGET_es|0.75] Ya se oyó bastante del fondo. La gota siguiente puede caer sin ti. Te pones de pie, el borde vuelve a ser un anillo y el aire fresco suelta la cara.
+[192|NARRATOR_TARGET_es|0.75] Ya escuchas bastante el silencio del fondo. Te pones de pie junto al borde redondo de piedra. El aire fresco deja la frente y la luz cálida espera detrás del giro.
 [PAUSE|2.0]
-[192|NARRATOR_TARGET_es_repeat|0.70] Ya se oyó bastante del fondo. La gota siguiente puede caer sin ti. Te pones de pie, el borde vuelve a ser un anillo y el aire fresco suelta la cara.
+[192|NARRATOR_TARGET_es_repeat|0.70] Ya escuchas bastante el silencio del fondo. Te pones de pie junto al borde redondo de piedra. El aire fresco deja la frente y la luz cálida espera detrás del giro.
 [PAUSE|4.0]
-[193|NARRATOR_NATIVE_en|0.80] The way back is the same stones, warmer as you face the lamp. Your hand finds the other wall, and the slope rises. The pool's voice grows clearer as you climb.
+[193|NARRATOR_NATIVE_en|0.80] Walking back up the gentle stone slope, the air turns milder toward the lamp. Your hand brushes the opposite wall while the muffled pool sound opens clearly ahead.
 [PAUSE|2.0]
-[193|NARRATOR_TARGET_es|0.75] El camino de vuelta son las mismas piedras, más cálidas de frente a la lámpara. La mano encuentra la otra pared. El suelo sube. La voz de la pileta se hace más clara al subir.
+[193|NARRATOR_TARGET_es|0.75] El camino de regreso sobre las piedras se siente más tibio al mirar hacia la lámpara. La mano roza la pared contraria. Al subir la pendiente suave, la pileta suena más clara.
 [PAUSE|2.0]
-[193|NARRATOR_TARGET_es_repeat|0.70] El camino de vuelta son las mismas piedras, más cálidas de frente a la lámpara. La mano encuentra la otra pared. El suelo sube. La voz de la pileta se hace más clara al subir.
+[193|NARRATOR_TARGET_es_repeat|0.70] El camino de regreso sobre las piedras se siente más tibio al mirar hacia la lámpara. La mano roza la pared contraria. Al subir la pendiente suave, la pileta suena más clara.
 [PAUSE|4.0]
-[194|NARRATOR_NATIVE_en|0.80] At the turn, warm light meets your chest before your eyes. A little rosemary is in that air and is welcome. The mineral smell thins off your sleeve.
+[194|NARRATOR_NATIVE_en|0.80] At the corner bend, mild golden warmth meets your chest ahead of a welcome trace of rosemary. In one calm breath, the cool mineral air fades cleanly from your sleeves.
 [PAUSE|2.0]
-[194|NARRATOR_TARGET_es|0.75] En el giro la luz cálida toca el pecho antes que los ojos. En ese aire hay un poco de romero y viene bien. El olor mineral se va de la manga.
+[194|NARRATOR_TARGET_es|0.75] En el giro del pasillo, el aire tibio encuentra tu pecho antes que tus ojos. Llega un olor suave de romero desde el jardín. El aroma mineral sale de tu manga en una respiración.
 [PAUSE|2.0]
-[194|NARRATOR_TARGET_es_repeat|0.70] En el giro la luz cálida toca el pecho antes que los ojos. En ese aire hay un poco de romero y viene bien. El olor mineral se va de la manga.
+[194|NARRATOR_TARGET_es_repeat|0.70] En el giro del pasillo, el aire tibio encuentra tu pecho antes que tus ojos. Llega un olor suave de romero desde el jardín. El aroma mineral sale de tu manga en una respiración.
 [PAUSE|4.0]
-[195|NARRATOR_NATIVE_en|0.80] You walk the narrow part without hurrying, and the low ceiling is familiar. Your steps stay even. The opening ahead is a brighter rectangle, lit by rain and by the lamp.
+[195|NARRATOR_NATIVE_en|0.80] You walk evenly through the familiar low stretch without hurrying. Ahead at the passage mouth, the atrium doorway opens as a bright rectangle edged in silver rainlight.
 [PAUSE|2.0]
-[195|NARRATOR_TARGET_es|0.75] Caminas la parte estrecha sin prisa y el techo bajo ya es conocido. Los pasos siguen parejos. La salida es un rectángulo más claro con lluvia y lámpara.
+[195|NARRATOR_TARGET_es|0.75] Caminas parejo por la parte estrecha y conocida sin ninguna prisa. Adelante la puerta hacia el atrio brilla como un rectángulo claro. La luz de la lluvia ilumina suave el umbral.
 [PAUSE|2.0]
-[195|NARRATOR_TARGET_es_repeat|0.70] Caminas la parte estrecha sin prisa y el techo bajo ya es conocido. Los pasos siguen parejos. La salida es un rectángulo más claro con lluvia y lámpara.
+[195|NARRATOR_TARGET_es_repeat|0.70] Caminas parejo por la parte estrecha y conocida sin ninguna prisa. Adelante la puerta hacia el atrio brilla como un rectángulo claro. La luz de la lluvia ilumina suave el umbral.
 [PAUSE|4.0]
-[196|NARRATOR_NATIVE_en|0.80] Cool air follows you a short way and then stays in the passage. The atrium's warmth takes your hands first. You step up, and the pool comes into view.
+[196|NARRATOR_NATIVE_en|0.80] Cool passage air stays behind as atrium warmth wraps gently around your wrists. Stepping up onto swept mosaic, you see golden rain rings widening softly across the pool.
 [PAUSE|2.0]
-[196|NARRATOR_TARGET_es|0.75] El aire fresco te sigue un poco y luego se queda en el pasillo. El calor de la sala toma las manos primero. Subes un escalón y la pileta vuelve a la vista.
+[196|NARRATOR_TARGET_es|0.75] El aire fresco queda atrás en el pasillo mientras el calor suave del atrio abraza tus manos. Subes el último paso al suelo limpio. Adelante, los anillos dorados brillan en la pileta.
 [PAUSE|2.0]
-[196|NARRATOR_TARGET_es_repeat|0.70] El aire fresco te sigue un poco y luego se queda en el pasillo. El calor de la sala toma las manos primero. Subes un escalón y la pileta vuelve a la vista.
+[196|NARRATOR_TARGET_es_repeat|0.70] El aire fresco queda atrás en el pasillo mientras el calor suave del atrio abraza tus manos. Subes el último paso al suelo limpio. Adelante, los anillos dorados brillan en la pileta.
 [PAUSE|4.0]
-[197|NARRATOR_NATIVE_en|0.80] You come out by the wall under the rainy square. Gold rings move on the water, and your floor is dry. The hatch remains behind you, in its place.
+[197|NARRATOR_NATIVE_en|0.80] Back beside the dry wall, you watch amber rain rings move calmly across the shallow pool. Behind you, the covered vault holds its quiet rainwater cleanly under the paving.
 [PAUSE|2.0]
-[197|NARRATOR_TARGET_es|0.75] Sales junto a la pared bajo el cielo con lluvia. Hay anillos de oro en el agua y el suelo está seco. El hueco queda atrás en su sitio.
+[197|NARRATOR_TARGET_es|0.75] De vuelta junto a la pared seca, miras anillos ámbar de lluvia moverse en la pileta baja. Detrás de ti, la bóveda cubierta guarda el agua tranquila bajo el suelo.
 [PAUSE|2.0]
-[197|NARRATOR_TARGET_es_repeat|0.70] Sales junto a la pared bajo el cielo con lluvia. Hay anillos de oro en el agua y el suelo está seco. El hueco queda atrás en su sitio.
+[197|NARRATOR_TARGET_es_repeat|0.70] De vuelta junto a la pared seca, miras anillos ámbar de lluvia moverse en la pileta baja. Detrás de ti, la bóveda cubierta guarda el agua tranquila bajo el suelo.
 [PAUSE|4.0]
-[198|NARRATOR_NATIVE_en|0.80] You stand between the cool passage and the lamp you face. Your shoulders carry only the street's old wet, not the cistern. A pale wooden bench waits by the wall.
+[IMAGE|11] First-person view of a dry wooden bench beside the atrium pool, two small lamps, rain in the open roof, no people
+[198|NARRATOR_NATIVE_en|0.80] You pause between cool passage air and warm lamplight while the quiet atrium stays unchanged. Set cleanly against the plaster wall waits a pale wooden bench beside the pool.
 [PAUSE|2.0]
-[198|NARRATOR_TARGET_es|0.75] Estás entre el pasillo fresco y la lámpara de frente. Los hombros llevan solo la humedad de la calle, no de la cisterna. Un banco de madera pálida espera junto a la pared.
+[198|NARRATOR_TARGET_es|0.75] Paras un momento entre el aire fresco y las lámparas cálidas mientras todo sigue en paz. Junto a la pared de yeso espera un banco de madera pálida al lado de la pileta.
 [PAUSE|2.0]
-[198|NARRATOR_TARGET_es_repeat|0.70] Estás entre el pasillo fresco y la lámpara de frente. Los hombros llevan solo la humedad de la calle, no de la cisterna. Un banco de madera pálida espera junto a la pared.
+[198|NARRATOR_TARGET_es_repeat|0.70] Paras un momento entre el aire fresco y las lámparas cálidas mientras todo sigue en paz. Junto a la pared de yeso espera un banco de madera pálida al lado de la pileta.
 [PAUSE|4.0]
-[199|NARRATOR_NATIVE_en|0.80] The bench is pale wood against the plaster, and you touch it. The seat is dry, with no film of rain. The wall behind it is still a little warm.
+[199|NARRATOR_NATIVE_en|0.80] You touch the pale wooden bench set against the warm plaster wall. The seat feels completely dry without mist from the roof or any dampness from the floor.
 [PAUSE|2.0]
-[199|NARRATOR_TARGET_es|0.75] El banco es madera clara contra el yeso y lo tocas. El asiento está seco, sin película de lluvia. La pared detrás sigue un poco caliente.
+[199|NARRATOR_TARGET_es|0.75] Tocas el asiento de madera pálida junto a la pared de yeso. La madera está del todo seca, sin lluvia del techo ni humedad del suelo. La pared conserva un calor suave.
 [PAUSE|2.0]
-[199|NARRATOR_TARGET_es_repeat|0.70] El banco es madera clara contra el yeso y lo tocas. El asiento está seco, sin película de lluvia. La pared detrás sigue un poco caliente.
+[199|NARRATOR_TARGET_es_repeat|0.70] Tocas el asiento de madera pálida junto a la pared de yeso. La madera está del todo seca, sin lluvia del techo ni humedad del suelo. La pared conserva un calor suave.
 [PAUSE|4.0]
-[200|NARRATOR_NATIVE_en|0.80] You sit, and the wood gives one small sound, then goes quiet. Your back finds the wall. Your feet rest flat, with the pool a little to your left.
+[200|NARRATOR_NATIVE_en|0.80] You sit down gently on the dry wooden bench while your back rests against warm plaster. With your feet flat on dry paving, the quiet pool murmurs softly to your left.
 [PAUSE|2.0]
-[200|NARRATOR_TARGET_es|0.75] Te sientas y la madera suena una vez y calla. La espalda encuentra la pared. Los pies descansan planos y la pileta queda un poco a la izquierda.
+[200|NARRATOR_TARGET_es|0.75] Te sientas despacio en el banco seco mientras la espalda descansa contra la pared tibia. Los pies quedan planos sobre el suelo limpio. A la izquierda suena suave el agua de la pileta.
 [PAUSE|2.0]
-[200|NARRATOR_TARGET_es_repeat|0.70] Te sientas y la madera suena una vez y calla. La espalda encuentra la pared. Los pies descansan planos y la pileta queda un poco a la izquierda.
+[200|NARRATOR_TARGET_es_repeat|0.70] Te sientas despacio en el banco seco mientras la espalda descansa contra la pared tibia. Los pies quedan planos sobre el suelo limpio. A la izquierda suena suave el agua de la pileta.
 [PAUSE|4.0]
-[201|NARRATOR_NATIVE_en|0.80] A small oil flame burns near the bench under a clay lip. It does not smoke. The light lies on your knees and the near rim, while the far water stays soft.
+[201|NARRATOR_NATIVE_en|0.80] A small oil lamp burns cleanly beside the bench without smoke. Soft amber light falls across your knees and the near rim while the far pool rests quietly in shadow.
 [PAUSE|2.0]
-[201|NARRATOR_TARGET_es|0.75] Una llama pequeña de aceite arde cerca del banco bajo un borde de barro. No echa humo. La luz cae en las rodillas y el borde cercano y el agua lejana queda suave.
+[201|NARRATOR_TARGET_es|0.75] Una lámpara pequeña de aceite arde limpia junto al banco sin humo. Su luz suave cae sobre tus rodillas y el borde cercano. El agua lejana descansa tranquila en la sombra nocturna.
 [PAUSE|2.0]
-[201|NARRATOR_TARGET_es_repeat|0.70] Una llama pequeña de aceite arde cerca del banco bajo un borde de barro. No echa humo. La luz cae en las rodillas y el borde cercano y el agua lejana queda suave.
+[201|NARRATOR_TARGET_es_repeat|0.70] Una lámpara pequeña de aceite arde limpia junto al banco sin humo. Su luz suave cae sobre tus rodillas y el borde cercano. El agua lejana descansa tranquila en la sombra nocturna.
 [PAUSE|4.0]
-[202|NARRATOR_NATIVE_en|0.80] Your open hands rest on your thighs, and you carry nothing. The hem is damp only in memory and does not drip. The bench takes your full weight.
+[202|NARRATOR_NATIVE_en|0.80] Your open hands rest lightly on your thighs with nothing left to hold. The hem of your tunic stays dry while the steady wooden bench carries your full weight easily.
 [PAUSE|2.0]
-[202|NARRATOR_TARGET_es|0.75] Las manos abiertas descansan en las piernas y no llevan nada. La ropa está húmeda solo en el recuerdo y no gotea. El banco recibe todo el peso.
+[202|NARRATOR_TARGET_es|0.75] Las manos abiertas descansan suaves sobre las piernas sin nada que sostener. El borde de la ropa ya está seco y quieto. El banco firme sostiene todo tu peso sin esfuerzo.
 [PAUSE|2.0]
-[202|NARRATOR_TARGET_es_repeat|0.70] Las manos abiertas descansan en las piernas y no llevan nada. La ropa está húmeda solo en el recuerdo y no gotea. El banco recibe todo el peso.
+[202|NARRATOR_TARGET_es_repeat|0.70] Las manos abiertas descansan suaves sobre las piernas sin nada que sostener. El borde de la ropa ya está seco y quieto. El banco firme sostiene todo tu peso sin esfuerzo.
 [PAUSE|4.0]
-[203|NARRATOR_NATIVE_en|0.80] Rain keeps entering through the open roof. From the bench the sound is round and even. You do not walk to the pool, and the circles work alone.
+[203|NARRATOR_NATIVE_en|0.80] Rain continues entering the open roof in steady drops while circles open and fade across the pool. From the dry bench, the calm water sounds even and completely unhurried.
 [PAUSE|2.0]
-[203|NARRATOR_TARGET_es|0.75] La lluvia sigue entrando por el techo abierto. Desde el banco el sonido es redondo y parejo. No caminas a la pileta y los círculos trabajan solos.
+[203|NARRATOR_TARGET_es|0.75] La lluvia sigue entrando por el techo abierto hacia la pileta. Los círculos se abren y desaparecen solos sobre el agua. Desde el banco seco, el sonido suena redondo y muy tranquilo.
 [PAUSE|2.0]
-[203|NARRATOR_TARGET_es_repeat|0.70] La lluvia sigue entrando por el techo abierto. Desde el banco el sonido es redondo y parejo. No caminas a la pileta y los círculos trabajan solos.
+[203|NARRATOR_TARGET_es_repeat|0.70] La lluvia sigue entrando por el techo abierto hacia la pileta. Los círculos se abren y desaparecen solos sobre el agua. Desde el banco seco, el sonido suena redondo y muy tranquilo.
 [PAUSE|4.0]
-[204|NARRATOR_NATIVE_en|0.80] A little rosemary still lives on your sleeve. The garden rains on its own leaves behind a doorway. You stay, and the bench is the place.
+[204|NARRATOR_NATIVE_en|0.80] A clean trace of rosemary lingers on your wrist while the courtyard garden receives rain behind the doorway. Resting comfortably on the bench, you let the garden keep its night.
 [PAUSE|2.0]
-[204|NARRATOR_TARGET_es|0.75] La manga sigue con un poco de romero. El jardín llueve en sus hojas detrás de una puerta. Te quedas y el banco es el lugar.
+[204|NARRATOR_TARGET_es|0.75] Tu manga conserva todavía un aroma limpio de romero. Detrás de la puerta el jardín mojado recibe su lluvia tranquila. Te quedas en paz sentado sobre el banco seco de la sala.
 [PAUSE|2.0]
-[204|NARRATOR_TARGET_es_repeat|0.70] La manga sigue con un poco de romero. El jardín llueve en sus hojas detrás de una puerta. Te quedas y el banco es el lugar.
+[204|NARRATOR_TARGET_es_repeat|0.70] Tu manga conserva todavía un aroma limpio de romero. Detrás de la puerta el jardín mojado recibe su lluvia tranquila. Te quedas en paz sentado sobre el banco seco de la sala.
 [PAUSE|4.0]
-[205|NARRATOR_NATIVE_en|0.80] Under the pool's voice, the cistern's low tick is almost gone. Once you hear it, and then only the roof remains. The roof sound is the one you keep.
+[205|NARRATOR_NATIVE_en|0.80] Deep below the floor, the faint cistern tick sounds once during a brief hush before gentle roof rain covers it again. That nearer sound remains soft and steady to follow.
 [PAUSE|2.0]
-[205|NARRATOR_TARGET_es|0.75] Bajo la voz de la pileta el golpe bajo de la cisterna casi no está. Una vez lo oyes y luego solo queda el techo. El sonido del techo es el que guardas.
+[205|NARRATOR_TARGET_es|0.75] Muy abajo del suelo, el toque leve de la cisterna suena una vez en una pausa breve. Luego la lluvia suave del techo lo cubre otra vez. Ese sonido cercano sigue suave y parejo.
 [PAUSE|2.0]
-[205|NARRATOR_TARGET_es_repeat|0.70] Bajo la voz de la pileta el golpe bajo de la cisterna casi no está. Una vez lo oyes y luego solo queda el techo. El sonido del techo es el que guardas.
+[205|NARRATOR_TARGET_es_repeat|0.70] Muy abajo del suelo, el toque leve de la cisterna suena una vez en una pausa breve. Luego la lluvia suave del techo lo cubre otra vez. Ese sonido cercano sigue suave y parejo.
 [PAUSE|4.0]
-[206|NARRATOR_NATIVE_en|0.80] Your shoulders grow heavy in a gentle way, the long walk set down. It is not a demand. The wall takes part of the weight, and the wood takes the rest.
+[206|NARRATOR_NATIVE_en|0.80] A gentle heaviness settles into your shoulders as the long walk finally sets itself down. The warm plaster wall supports your back while the sturdy bench holds the rest effortlessly.
 [PAUSE|2.0]
-[206|NARRATOR_TARGET_es|0.75] Los hombros se ponen pesados con suavidad, el camino largo ya dejado. No es una orden. La pared toma parte del peso y la madera toma el resto.
+[206|NARRATOR_TARGET_es|0.75] Un peso suave baja por los hombros mientras la larga caminata descansa por fin. La pared tibia de yeso sostiene tu espalda y el banco firme sostiene el resto sin esfuerzo.
 [PAUSE|2.0]
-[206|NARRATOR_TARGET_es_repeat|0.70] Los hombros se ponen pesados con suavidad, el camino largo ya dejado. No es una orden. La pared toma parte del peso y la madera toma el resto.
+[206|NARRATOR_TARGET_es_repeat|0.70] Un peso suave baja por los hombros mientras la larga caminata descansa por fin. La pared tibia de yeso sostiene tu espalda y el banco firme sostiene el resto sin esfuerzo.
 [PAUSE|4.0]
-[207|NARRATOR_NATIVE_en|0.80] Your eyes lower halfway, and the lamp becomes a warm blur. The pool stays a moving dark with gold in it. For now the low gaze is easy.
+[IMAGE|12] First-person view from the bench of the quiet pool and the dark square of sky, night rain, no people
+[207|NARRATOR_NATIVE_en|0.80] Your eyelids lower halfway while the oil flame blurs softly at the edge of view. Across the floor, the dark pool holds gentle gold ripples under the quiet night rain.
 [PAUSE|2.0]
-[207|NARRATOR_TARGET_es|0.75] Los ojos bajan a la mitad y la lámpara se ve borrosa y cálida. La pileta sigue oscura en movimiento con un poco de oro. Por ahora la mirada baja es fácil.
+[207|NARRATOR_TARGET_es|0.75] Los párpados bajan a la mitad. La llama de aceite se vuelve suave y borrosa al borde de la vista. Sobre el suelo, la pileta oscura guarda suaves ondas doradas bajo la lluvia nocturna tranquila.
 [PAUSE|2.0]
-[207|NARRATOR_TARGET_es_repeat|0.70] Los ojos bajan a la mitad y la lámpara se ve borrosa y cálida. La pileta sigue oscura en movimiento con un poco de oro. Por ahora la mirada baja es fácil.
+[207|NARRATOR_TARGET_es_repeat|0.70] Los párpados bajan a la mitad. La llama de aceite se vuelve suave y borrosa al borde de la vista. Sobre el suelo, la pileta oscura guarda suaves ondas doradas bajo la lluvia nocturna tranquila.
 [PAUSE|4.0]
-[208|NARRATOR_NATIVE_en|0.80] Breath follows the drops, in on the taps and out in the short quiet. The match happens on its own, and your mouth stays easy. You do not count the taps.
+[208|NARRATOR_NATIVE_en|0.80] Your breath naturally follows the rain, rising easily across soft drops and resting out during each brief quiet. Your jaw softens cleanly while the bench holds your weight.
 [PAUSE|2.0]
-[208|NARRATOR_TARGET_es|0.75] La respiración sigue las gotas, entra con los golpes y sale en el silencio corto. El ajuste pasa solo y la boca queda tranquila. No cuentas los golpes.
+[208|NARRATOR_TARGET_es|0.75] La respiración sigue la lluvia, entrando fácil entre gotas suaves y saliendo en cada calma breve. Tu mandíbula se afloja con suavidad mientras el banco firme sostiene todo tu peso.
 [PAUSE|2.0]
-[208|NARRATOR_TARGET_es_repeat|0.70] La respiración sigue las gotas, entra con los golpes y sale en el silencio corto. El ajuste pasa solo y la boca queda tranquila. No cuentas los golpes.
+[208|NARRATOR_TARGET_es_repeat|0.70] La respiración sigue la lluvia, entrando fácil entre gotas suaves y saliendo en cada calma breve. Tu mandíbula se afloja con suavidad mientras el banco firme sostiene todo tu peso.
 [PAUSE|4.0]
-[209|NARRATOR_NATIVE_en|0.80] The floor around the bench is still dry. No mist from the open roof reaches this wall. The rain works over the pool, your ankles are warm, and this place stays in peace.
+[209|NARRATOR_NATIVE_en|0.80] The mosaic paving around the bench stays dry while no roof mist reaches this quiet wall. Rain keeps cleanly inside the pool, leaving your ankles warm and your seat peaceful.
 [PAUSE|2.0]
-[209|NARRATOR_TARGET_es|0.75] El suelo junto al banco sigue seco. La llovizna del techo no llega a esta pared. La lluvia trabaja sobre la pileta, los tobillos están calientes y el lugar queda en paz.
+[209|NARRATOR_TARGET_es|0.75] El suelo junto al banco sigue seco y ninguna brisa de lluvia llega hasta esta pared. El agua trabaja solo dentro de la pileta. Los tobillos están tibios y todo queda en paz.
 [PAUSE|2.0]
-[209|NARRATOR_TARGET_es_repeat|0.70] El suelo junto al banco sigue seco. La llovizna del techo no llega a esta pared. La lluvia trabaja sobre la pileta, los tobillos están calientes y el lugar queda en paz.
+[209|NARRATOR_TARGET_es_repeat|0.70] El suelo junto al banco sigue seco y ninguna brisa de lluvia llega hasta esta pared. El agua trabaja solo dentro de la pileta. Los tobillos están tibios y todo queda en paz.
 [PAUSE|4.0]
-[210|NARRATOR_NATIVE_en|0.80] The street is only rain on far stone now. The hatch is only one drop in the dark. Both are true and distant, and the wood under you is the near thing.
+[210|NARRATOR_NATIVE_en|0.80] The rainy street and the deep underground vault now feel equally distant and calm. Here beside the pool, the dry wooden bench beneath you is the only near thing.
 [PAUSE|2.0]
-[210|NARRATOR_TARGET_es|0.75] La calle es solo lluvia en piedra lejana ahora. El hueco es solo una gota en lo oscuro. Las dos cosas son verdad y están lejos, y la madera bajo ti es lo cercano.
+[210|NARRATOR_TARGET_es|0.75] La calle con lluvia y la bóveda profunda se sienten ahora igual de lejanas y calmas. Aquí junto a la pileta, el banco de madera seca es lo único cercano.
 [PAUSE|2.0]
-[210|NARRATOR_TARGET_es_repeat|0.70] La calle es solo lluvia en piedra lejana ahora. El hueco es solo una gota en lo oscuro. Las dos cosas son verdad y están lejos, y la madera bajo ti es lo cercano.
+[210|NARRATOR_TARGET_es_repeat|0.70] La calle con lluvia y la bóveda profunda se sienten ahora igual de lejanas y calmas. Aquí junto a la pileta, el banco de madera seca es lo único cercano.
 [PAUSE|4.0]
-[211|NARRATOR_NATIVE_en|0.80] A garden draft leans the flame, then lets it stand. It smells green and wet for one breath. Then the lamp and the room are steady.
+[211|NARRATOR_NATIVE_en|0.80] A brief garden breeze leans the lamp flame softly and brings one crisp trace of damp rosemary. Then the small flame stands straight again while the room settles deeper.
 [PAUSE|2.0]
-[211|NARRATOR_TARGET_es|0.75] Un aire del jardín mueve la llama y luego la deja derecha. Huele a verde y humedad por una respiración. Luego la lámpara y la sala quedan firmes.
+[211|NARRATOR_TARGET_es|0.75] Una brisa breve del jardín inclina suave la llama. Trae un rastro limpio de romero húmedo. Luego la llama pequeña vuelve a quedar recta mientras la sala entra en más calma.
 [PAUSE|2.0]
-[211|NARRATOR_TARGET_es_repeat|0.70] Un aire del jardín mueve la llama y luego la deja derecha. Huele a verde y humedad por una respiración. Luego la lámpara y la sala quedan firmes.
+[211|NARRATOR_TARGET_es_repeat|0.70] Una brisa breve del jardín inclina suave la llama. Trae un rastro limpio de romero húmedo. Luego la llama pequeña vuelve a quedar recta mientras la sala entra en más calma.
 [PAUSE|4.0]
-[212|NARRATOR_NATIVE_en|0.80] Your hands do not look for a task. One finger finds a small ridge in the wood, and you let it be. The ridge is only a quiet texture.
+[212|NARRATOR_NATIVE_en|0.80] Your relaxed fingers seek no task while one fingertip rests near a smooth ridge of bench grain. Without tracing or adjusting anything, you let the peaceful room keep its own pace.
 [PAUSE|2.0]
-[212|NARRATOR_TARGET_es|0.75] Las manos no buscan una tarea. Un dedo encuentra una veta pequeña en la madera y la dejas en paz. La veta es solo una textura tranquila.
+[212|NARRATOR_TARGET_es|0.75] Tus dedos sueltos no buscan tarea mientras una yema descansa junto a una veta lisa del banco. Sin mover ni ajustar nada, dejas que la sala tranquila siga su propio ritmo.
 [PAUSE|2.0]
-[212|NARRATOR_TARGET_es_repeat|0.70] Las manos no buscan una tarea. Un dedo encuentra una veta pequeña en la madera y la dejas en paz. La veta es solo una textura tranquila.
+[212|NARRATOR_TARGET_es_repeat|0.70] Tus dedos sueltos no buscan tarea mientras una yema descansa junto a una veta lisa del banco. Sin mover ni ajustar nada, dejas que la sala tranquila siga su propio ritmo.
 [PAUSE|4.0]
-[213|NARRATOR_NATIVE_en|0.80] Time here is the next circle on the water, and the one after. You stop following them. Your eyes stay low, and a fresh gold circle reaches the near rim.
+[213|NARRATOR_NATIVE_en|0.80] You let go of counting ripples on the pool, trusting the atrium to keep the night's rhythm. Through lowered eyes, fresh golden rings drift softly toward the near stone rim.
 [PAUSE|2.0]
-[213|NARRATOR_TARGET_es|0.75] El tiempo aquí es el círculo siguiente en el agua y el de después. Dejas de seguirlos. Los ojos siguen bajos y un círculo dorado nuevo llega al borde cercano.
+[213|NARRATOR_TARGET_es|0.75] Dejas de seguir los círculos del agua uno por uno. El atrio lleva la cuenta de la noche sin ti. Con la mirada baja, un anillo dorado suave llega tranquilo hasta el borde cercano.
 [PAUSE|2.0]
-[213|NARRATOR_TARGET_es_repeat|0.70] El tiempo aquí es el círculo siguiente en el agua y el de después. Dejas de seguirlos. Los ojos siguen bajos y un círculo dorado nuevo llega al borde cercano.
+[213|NARRATOR_TARGET_es_repeat|0.70] Dejas de seguir los círculos del agua uno por uno. El atrio lleva la cuenta de la noche sin ti. Con la mirada baja, un anillo dorado suave llega tranquilo hasta el borde cercano.
 [PAUSE|4.0]
-[214|NARRATOR_NATIVE_en|0.80] Sleep is not an order in this room. It is only the heaviness in your shoulders, free to stay or to pass. The rain keeps the pool busy without asking you.
+[214|NARRATOR_NATIVE_en|0.80] Nothing here turns rest into a task. Heaviness sits gently in your shoulders while the clean oil lamp burns beside you and soft rain tends the quiet pool alone.
 [PAUSE|2.0]
-[214|NARRATOR_TARGET_es|0.75] El sueño no es una orden en esta sala. Es solo el peso en los hombros, libre de quedarse o pasar. La lluvia mantiene la pileta ocupada sin pedir nada.
+[214|NARRATOR_TARGET_es|0.75] Aquí el descanso no es ninguna obligación. Solo hay una calma suave en los hombros que puede quedarse todo el tiempo. La lámpara arde tranquila mientras la lluvia cuida sola la pileta.
 [PAUSE|2.0]
-[214|NARRATOR_TARGET_es_repeat|0.70] El sueño no es una orden en esta sala. Es solo el peso en los hombros, libre de quedarse o pasar. La lluvia mantiene la pileta ocupada sin pedir nada.
+[214|NARRATOR_TARGET_es_repeat|0.70] Aquí el descanso no es ninguna obligación. Solo hay una calma suave en los hombros que puede quedarse todo el tiempo. La lámpara arde tranquila mientras la lluvia cuida sola la pileta.
 [PAUSE|4.0]
-[215|NARRATOR_NATIVE_en|0.80] You rest your head a little on the warm wall. The bench holds the rest of you. The square of sky rains on in the same soft way.
+[215|NARRATOR_NATIVE_en|0.80] Your head leans lightly against warm plaster while the wooden bench supports the rest of your weight. Above the atrium, the dark square of sky sends down steady, soothing rain.
 [PAUSE|2.0]
-[215|NARRATOR_TARGET_es|0.75] La cabeza se apoya un poco en la pared cálida. El banco sostiene el resto del cuerpo. El cuadrado de cielo sigue con lluvia suave.
+[215|NARRATOR_TARGET_es|0.75] La cabeza se apoya suave en la pared tibia de yeso. El banco de madera sostiene todo el resto del cuerpo con firmeza. Arriba, el cuadrado oscuro de cielo sigue enviando lluvia mansa.
 [PAUSE|2.0]
-[215|NARRATOR_TARGET_es_repeat|0.70] La cabeza se apoya un poco en la pared cálida. El banco sostiene el resto del cuerpo. El cuadrado de cielo sigue con lluvia suave.
+[215|NARRATOR_TARGET_es_repeat|0.70] La cabeza se apoya suave en la pared tibia de yeso. El banco de madera sostiene todo el resto del cuerpo con firmeza. Arriba, el cuadrado oscuro de cielo sigue enviando lluvia mansa.
 [PAUSE|4.0]
-[216|NARRATOR_NATIVE_en|0.80] The walk is finished, from the street to this dry bench. The pool answers the night with the same soft fall. You can remain, the lamp stays, and the house is quiet.
+[216|NARRATOR_NATIVE_en|0.80] Your walk from street to garden, pool, cistern, and dry bench is complete. Warm lamplight remains beside you while the silent Roman house rests peacefully beneath steady night rain.
 [PAUSE|2.0]
-[216|NARRATOR_TARGET_es|0.75] El camino termina, de la calle a este banco seco. La pileta responde a la noche con la misma caída suave. Puedes quedarte, la lámpara se queda y la casa está en silencio.
+[216|NARRATOR_TARGET_es|0.75] Tu camino desde la calle al jardín, la pileta, la cisterna y el banco seco termina. La luz cálida sigue junto a ti mientras la casa romana descansa bajo la lluvia.
 [PAUSE|2.0]
-[216|NARRATOR_TARGET_es_repeat|0.70] El camino termina, de la calle a este banco seco. La pileta responde a la noche con la misma caída suave. Puedes quedarte, la lámpara se queda y la casa está en silencio.
+[216|NARRATOR_TARGET_es_repeat|0.70] Tu camino desde la calle al jardín, la pileta, la cisterna y el banco seco termina. La luz cálida sigue junto a ti mientras la casa romana descansa bajo la lluvia.
 [PAUSE|4.0]
+
+## BLOCK: PLOT_TARGET_1
+[IMAGE|01] First-person night view of a wet basalt street in Pompeii, warm rain, a small oil lamp in a doorway ahead, no people
+[217|NARRATOR_TARGET_es|0.75] Estás bajo la lluvia cálida en una calle tranquila de Pompeya. Las piedras oscuras brillan bajo los pies y el agua corre por el centro de la calzada. Adelante arde una lámpara pequeña en una puerta.
+[PAUSE|2.5]
+[218|NARRATOR_TARGET_es|0.75] El suelo forma un dibujo de grandes piedras grises, cada una pulida por el paso lento de los años. La lluvia dibuja líneas de plata en las juntas y los pies eligen la parte alta, donde casi no hay agua.
+[PAUSE|2.5]
+[219|NARRATOR_TARGET_es|0.75] Los surcos profundos brillan con agua oscura como dos cintas largas en la calle. Sigues por la acera alta, lejos de la corriente, mientras una hoja de laurel gira despacio en el agua y pasa de largo.
+[PAUSE|2.5]
+[IMAGE|02] First-person view of raised stepping stones across a rainy street, water in the ruts, no people
+[220|NARRATOR_TARGET_es|0.75] Bloques altos y planos cruzan la calle mojada de acera a acera para caminar sin mojar los pies. Subes a la primera piedra firme mientras la lluvia salta a un lado y la lámpara espera adelante.
+[PAUSE|2.5]
+[221|NARRATOR_TARGET_es|0.75] En la otra acera, la pared de yeso conserva un resto suave del calor del día bajo la lluvia. Una banda roja gastada recorre el muro a la altura del hombro mientras la calle tranquila se vuelve más estrecha.
+[PAUSE|2.5]
+[222|NARRATOR_TARGET_es|0.75] Una tienda cerrada descansa bajo un alero hondo de tejas, con sus grandes jarras de barro secas en la sombra. El agua cae del borde del techo en un hilo continuo mientras la lámpara del fondo brilla más cerca.
+[PAUSE|2.5]
+[223|NARRATOR_TARGET_es|0.75] En la esquina, una fuente de piedra recoge el agua y deja caer lo que sobra hacia la calzada. El agua del pilón está oscura y serena, con olor a piedra mojada, y pronto la casa aparece más cerca.
+[PAUSE|2.5]
+[224|NARRATOR_TARGET_es|0.75] El cielo es una sola nube baja, sin luna ni bordes duros. Un trueno lejano pasa detrás de las colinas como un leve cambio en el aire. Llevas la lluvia tibia sobre los hombros y sigues hacia la lámpara.
+[PAUSE|2.5]
+[225|NARRATOR_TARGET_es|0.75] En lo alto de una fachada, una contraventana de madera golpea una sola vez con la brisa y vuelve al silencio. Llega un breve aroma de madera seca antes de que regrese el olor a piedra mojada frente a la casa.
+[PAUSE|2.5]
+[IMAGE|03] First-person view of a tall wooden house door and a niche lamp, rain on the threshold, no people
+[226|NARRATOR_TARGET_es|0.75] La casa muestra un frente alto y sereno, con una puerta grande de madera oscura. En un pequeño nicho junto al marco arde una lámpara de aceite bajo las tejas. Subes el umbral de piedra lejos del arroyo.
+[PAUSE|2.5]
+[227|NARRATOR_TARGET_es|0.75] Un anillo de bronce descansa frío bajo los dedos y cede con suavidad al empujar la puerta. Sale aire tibio y seco desde el interior de la casa, trayendo consigo el olor verde de un jardín escondido adentro.
+[PAUSE|2.5]
+[228|NARRATOR_TARGET_es|0.75] Cruzas el umbral y el dintel ancho detiene la lluvia sobre tu cabeza. El pasillo interior es oscuro, recto y cubierto de pequeñas piedras claras. Al fondo se ven hojas húmedas, y dejas la calle cerrada atrás.
+[PAUSE|2.5]
+[229|NARRATOR_TARGET_es|0.75] Las paredes gruesas del pasillo dejan atrás el ruido de la calle. Tus pasos suenan serenos sobre las piedras claras, junto a una cenefa pintada de hojas verdes. Con cada paso crece el aroma limpio de las plantas.
+[PAUSE|2.5]
+[230|NARRATOR_TARGET_es|0.75] A mitad del pasillo, un vano lateral deja entrar un poco de aire fresco mientras tu mano roza la pared seca de yeso. La lámpara de la entrada queda atrás, y más allá del verde espera otra luz más cálida.
+[PAUSE|2.5]
+[IMAGE|04] First-person view of a small Roman garden in night rain, rosemary and bay under a covered walk, no people
+[231|NARRATOR_TARGET_es|0.75] Antes del final, el sonido del agua cambia del siseo de la calle a gotas sueltas sobre hojas vivas. El pasillo se abre a un paseo cubierto con columnas alrededor de un jardín pequeño bajo la noche.
+[PAUSE|2.5]
+[232|NARRATOR_TARGET_es|0.75] Tus ojos se acostumbran a la penumbra y ven senderos de grava, macetas de barro y un pasillo seco bajo las tejas. Los muros altos protegen el jardín del viento y tus pies pisan piedra seca sin salpicar.
+[PAUSE|2.5]
+[233|NARRATOR_TARGET_es|0.75] La primera columna se siente fresca donde llega una luz lejana. La lluvia oscurece la tierra abierta justo al lado del borde seco. Una rama de romero roza tu manga y perfuma el aire tranquilo del jardín.
+[PAUSE|2.5]
+[234|NARRATOR_TARGET_es|0.75] Haces una pausa bajo el alero para escuchar las gotas en las hojas y el goteo lento de una maceta. El paseo gira a la izquierda alrededor del jardín, hacia una luz color miel que espera al fondo.
+[PAUSE|2.5]
+[235|NARRATOR_TARGET_es|0.75] El paseo cubierto forma un cuadrado alrededor del jardín abierto a la noche. La lluvia oscurece la tierra y hace brillar las hojas de laurel y romero en sus macetas de barro junto al camino seco.
+[PAUSE|2.5]
+[236|NARRATOR_TARGET_es|0.75] Junto a la esquina, una maceta deja caer un hilo continuo de agua sobre la grava oscura, marcando un pequeño hoyo entre las piedras. Rodeas la humedad con paso suave y rozas una columna fresca.
+[PAUSE|2.5]
+[237|NARRATOR_TARGET_es|0.75] Entre las columnas, el jardín parece más hondo en la penumbra. Las hojas mojadas mezclan tonos oscuros y verdes mientras una flor pálida cerrada guarda una gota. Solo queda el aroma limpio del romero.
+[PAUSE|2.5]
+[238|NARRATOR_TARGET_es|0.75] Tu respiración sigue de forma natural el ritmo tranquilo de las gotas sobre las hojas. Bajo el techo bajo del paseo, tus pasos casi no suenan y no hay respuesta en la casa, mientras tus hombros descansan.
+[PAUSE|2.5]
+[IMAGE|05] First-person view from a column into a gravel garden path, wet leaves, warm lamplight, no people
+[239|NARRATOR_TARGET_es|0.75] Desde la columna miras el sendero oscuro de grava que cruza el jardín lavado por la lluvia. El camino apunta hacia una puerta más ancha al otro lado, donde brilla una luz tranquila de color miel.
+[PAUSE|2.5]
+[240|NARRATOR_TARGET_es|0.75] En la pared interior, una pintura antigua repite las plantas del jardín con hojas suaves y una banda azul. Mientras la pared queda inmóvil, las ramas vivas de afuera se inclinan despacio bajo el peso de la lluvia.
+[PAUSE|2.5]
+[241|NARRATOR_TARGET_es|0.75] Un pequeño hueco entre dos tejas deja caer una línea fina de lluvia sobre el borde del paseo. Oyes su toque brillante en la piedra antes de verlo y te apartas medio paso para seguir seco.
+[PAUSE|2.5]
+[242|NARRATOR_TARGET_es|0.75] Bajo el siguiente tramo del techo, el aire se siente más tibio que en la calle. Los muros gruesos devuelven poco a poco el calor de la tarde mientras caminas entre la tibieza del techo y el frescor abierto.
+[PAUSE|2.5]
+[243|NARRATOR_TARGET_es|0.75] Un pequeño canal de piedra al borde del jardín riega la tierra con calma, pero es poca agua. Más allá de la puerta del fondo ya se escucha un sonido más hondo y redondo de agua cayendo.
+[PAUSE|2.5]
+[244|NARRATOR_TARGET_es|0.75] Ese sonido más grande es redondo, como lluvia cayendo directamente en un estanque ancho. Llega desde la puerta abierta del fondo y se vuelve más claro a cada paso, sin pedirte ninguna prisa.
+[PAUSE|2.5]
+[245|NARRATOR_TARGET_es|0.75] Una pequeña polilla pálida rodea una vez la lámpara lejana y vuelve a la sombra tranquila de las hojas. La lluvia no cambia su ritmo mientras apoyas la mano en otra columna fresca del paseo.
+[PAUSE|2.5]
+[246|NARRATOR_TARGET_es|0.75] Sobre tu cabeza, el techo del paseo muestra vigas bajas y secas de madera oscura. Una sola gota brilla en una rendija exterior durante unos segundos y cae finalmente del lado del jardín.
+[PAUSE|2.5]
+[247|NARRATOR_TARGET_es|0.75] Pasas junto a pequeñas macetas de menta de hojas más blandas que el romero. Una hoja se inclina, entrega su gota a la hoja de abajo y el agua entra en la tierra con un aroma dulce.
+[PAUSE|2.5]
+[248|NARRATOR_TARGET_es|0.75] En el último giro del patio, el paseo cubierto se abre frente a una puerta ancha llena de luz dorada. Sobre las losas lisas del interior bailan suaves reflejos de agua movida por la lluvia.
+[PAUSE|2.5]
+[249|NARRATOR_TARGET_es|0.75] Tus dedos se separan de la última columna y la grava suena una sola vez bajo el talón antes de pisar la losa seca. El susurro de las hojas queda atrás y el agua interior suena más clara.
+[PAUSE|2.5]
+[250|NARRATOR_TARGET_es|0.75] Te detienes un instante en el umbral, entre el jardín fresco a la espalda y la sala iluminada adelante. Con el aroma del romero todavía en la manga, entras en el corazón abierto de la casa.
+[PAUSE|2.5]
+[IMAGE|06] First-person view of a Roman atrium at night, rain falling through a square roof opening into a shallow pool, no people
+[251|NARRATOR_TARGET_es|0.75] Al cruzar el umbral, el aire más cálido de la sala reemplaza el frescor del jardín. El suelo es de grandes losas limpias de piedra, y en el centro del atrio la lluvia cae por una abertura cuadrada del techo hacia un estanque.
+[PAUSE|2.5]
+[252|NARRATOR_TARGET_es|0.75] Detrás queda el jardín lloviendo sobre sus hojas, mientras aquí toda el agua entra por una sola abertura cuadrada en el techo. Te detienes donde las paredes secas enmarcan el cielo y el estanque juntos.
+[PAUSE|2.5]
+
+## BLOCK: PLOT_TARGET_2
+[253|NARRATOR_TARGET_es|0.75] El techo deja abierto su centro a las nubes de la noche y la lluvia baja en una columna serena. Justo debajo espera el impluvio, una pileta rectangular y poco profunda que recoge el agua sin mojar las paredes.
+[PAUSE|2.5]
+[IMAGE|07] Close first-person view of rain circles on the impluvium, gold lamp light on the near water, dry stone rim, no people
+[254|NARRATOR_TARGET_es|0.75] Cada gota abre un círculo limpio en el agua que avanza, se debilita y muere antes del borde de piedra. Una lámpara cercana tiñe de oro el agua de tu lado mientras el otro extremo queda en sombra.
+[PAUSE|2.5]
+[255|NARRATOR_TARGET_es|0.75] El estanque es más hondo que un plato y más bajo que un escalón. Cuando los círculos se calman por un instante, se distingue el fondo claro de piedra limpia, sin hojas ni desorden, recibiendo la lluvia con calma.
+[PAUSE|2.5]
+[256|NARRATOR_TARGET_es|0.75] Alrededor del estanque se extiende un suelo sencillo de mosaico blanco y negro, seco bajo tus pies. El aire huele a cal húmeda y agua fresca de lluvia, y las paredes altas abrazan el sonido suave.
+[PAUSE|2.5]
+[IMAGE|08] First-person view looking up at roof tiles sloping toward an open square of rainy sky, no people
+[257|NARRATOR_TARGET_es|0.75] Al levantar la vista ves las cuatro vertientes de tejas inclinadas hacia el cuadrado abierto del cielo. Toda la lluvia del techo resbala hacia ese borde en un susurro continuo antes de soltarse hacia el agua.
+[PAUSE|2.5]
+[258|NARRATOR_TARGET_es|0.75] Recorres despacio el lado largo del estanque, un palmo detrás del borde. El aire fresco que baja con la lluvia encuentra la tibieza de la sala mientras una segunda lámpara dibuja con nitidez la orilla opuesta.
+[PAUSE|2.5]
+[259|NARRATOR_TARGET_es|0.75] Sobre las tejas no aparece ninguna luna en el cuadrado de cielo, solo nubes bajas y finos hilos de lluvia plateada. La abertura deja entrar la noche sin quitar abrigo, y devuelves la mirada al estanque.
+[PAUSE|2.5]
+[260|NARRATOR_TARGET_es|0.75] Varias gotas caen juntas y envían una onda más ancha que muere con suavidad contra la piedra cercana. Aunque el techo sigue entregando lluvia sin pausa, el nivel del agua en el estanque nunca sube.
+[PAUSE|2.5]
+[261|NARRATOR_TARGET_es|0.75] Te acercas hasta donde apenas dos gotas finas alcanzan tus sandalias y te inclinas sobre el mosaico seco. El borde liso queda por debajo de la rodilla, y desde aquí el estanque es un campo tranquilo de círculos.
+[PAUSE|2.5]
+[IMAGE|09] First-person view of a darker drain mouth in the corner of the shallow pool, no people
+[262|NARRATOR_TARGET_es|0.75] Cerca de una esquina del fondo, la piedra clara se abre en un desagüe oscuro hacia donde el agua fluye en una lámina lenta. Por allí baja la lluvia recogida hacia la cisterna subterránea de la casa.
+[PAUSE|2.5]
+[263|NARRATOR_TARGET_es|0.75] Sin meter las manos en el agua, miras el desagüe y distingues un sonido más bajo debajo del suelo: una gota, una pausa y un eco hondo. Así guarda la villa la lluvia de la noche en lo profundo.
+[PAUSE|2.5]
+[264|NARRATOR_TARGET_es|0.75] El reflejo de la lámpara flota sobre el agua cercana como una moneda dorada. Una gota la rompe en chispas de luz y al instante vuelve a reunirse entera, dejando una quietud sencilla en toda la sala.
+[PAUSE|2.5]
+[265|NARRATOR_TARGET_es|0.75] Apoyas una palma abierta sobre el borde ancho de piedra, que está fresco sin llegar a helar. Una gota roza un nudillo mientras el resto de la mano sigue seco bajo el alero, y tus hombros se sueltan.
+[PAUSE|2.5]
+[266|NARRATOR_TARGET_es|0.75] Al levantarte otra vez, ves el cuadrado del techo sin cambios, con las tejas brillando en el borde al entregar su lluvia. Detrás queda el murmullo leve del jardín, y ya conoces todo el trazado de la casa.
+[PAUSE|2.5]
+[267|NARRATOR_TARGET_es|0.75] La cisterna no está a la vista, pero se siente su silencio debajo de las losas mientras el desagüe cumple su trabajo y el nivel del estanque no sube. Basta con quedarse un momento junto al agua.
+[PAUSE|2.5]
+[268|NARRATOR_TARGET_es|0.75] Con una respiración más larga, el ritmo de las gotas pasa a ser el pulso entero del atrio. En la calle la lluvia era intemperie; aquí es trabajo ordenado bajo techo, con lámparas limpias y suelo seco.
+[PAUSE|2.5]
+[269|NARRATOR_TARGET_es|0.75] Tanto si la lluvia dura toda la noche como si se vuelve más fina, el techo y la cisterna saben qué hacer con cada gota. No hace falta elegir nada; la casa entera cuida la noche por sí sola.
+[PAUSE|2.5]
+[270|NARRATOR_TARGET_es|0.75] Permaneces junto al borde bajo el cielo abierto y la luz dorada sobre el agua, mientras el desagüe oscuro conduce lo que sobra hacia abajo. El jardín y la calle quedan lejos, y la casa está en calma.
+[PAUSE|2.5]
+[IMAGE|10] First-person view of a cool stone passage and a round cistern opening in the floor, water sounding below, no people
+[271|NARRATOR_TARGET_es|0.75] Dejas el borde iluminado y sigues la pared seca hacia una esquina tranquila del atrio. Allí espera un vano bajo de piedra apenas a la altura del hombro, por donde sale un aire más fresco mientras la lluvia sigue atrás.
+[PAUSE|2.5]
+[272|NARRATOR_TARGET_es|0.75] El vano tiene un marco de piedra gastada más allá del cual se abre un pasillo estrecho que la lámpara apenas ilumina. Al inclinar la cabeza, apoyas una palma sobre la piedra seca y fresca del muro cercano.
+[PAUSE|2.5]
+[273|NARRATOR_TARGET_es|0.75] Te agachas con suavidad para entrar en el pasillo estrecho, girando un poco los hombros entre las paredes lisas. El techo bajo roza casi el pelo antes de subir un poco, y la sala cálida queda atrás.
+[PAUSE|2.5]
+[274|NARRATOR_TARGET_es|0.75] Cerca del suelo, una franja algo más oscura marca la piedra baja donde vive una humedad antigua, pero más arriba el muro está seco y fresco. Mantienes la manga apartada mientras respiras olor limpio a piedra.
+[PAUSE|2.5]
+[275|NARRATOR_TARGET_es|0.75] El suelo de piedra baja en una pendiente muy suave, menor que la altura de un escalón. Con pasos cortos y serenos en la penumbra, el sonido claro del estanque se vuelve un murmullo blando a tu espalda.
+[PAUSE|2.5]
+[276|NARRATOR_TARGET_es|0.75] Una mano abierta roza suavemente la pared en la penumbra para guiarte, mientras el otro brazo cuelga suelto a un lado. Tus pies siguen la pendiente suave sin esfuerzo y sin prisa por llegar.
+[PAUSE|2.5]
+[277|NARRATOR_TARGET_es|0.75] Detrás, el estanque es ya solo un susurro suave que no llena el aire. Adelante todo se vuelve tonos serenos de gris, suficientes para caminar con confianza sobre las losas firmes y parejas.
+[PAUSE|2.5]
+[278|NARRATOR_TARGET_es|0.75] El pasillo gira una sola vez a la izquierda en una esquina abierta, sin ninguna puerta. Tras ese giro, la tibieza del atrio queda atrás y el aire más fresco de la noche se posa suave en tu cara.
+[PAUSE|2.5]
+[279|NARRATOR_TARGET_es|0.75] El aroma de las hojas desaparece por completo y deja lugar al olor mineral y sereno del agua guardada, como una tinaja fresca y cerrada. Respiras hondo y el jardín verde queda ya muy lejos.
+[PAUSE|2.5]
+[280|NARRATOR_TARGET_es|0.75] Un hilo delgado de luz dorada del atrio alcanza todavía el giro para señalar las losas siguientes. No llevas ninguna llama en la mano, confías en la luz de la casa y pisas seguro.
+[PAUSE|2.5]
+[281|NARRATOR_TARGET_es|0.75] Las paredes se separan y tus hombros se relajan al entrar en una cámara pequeña cuyo arco te deja erguirte del todo. Sobre las losas muy lisas del suelo espera ya un anillo bajo de piedra.
+[PAUSE|2.5]
+[282|NARRATOR_TARGET_es|0.75] Un brocal redondo de piedra se alza desde el suelo de la cámara, con su tapa pesada apoyada en calma a un lado. Dentro del anillo se abre la boca oscura de la cisterna subterránea de la casa.
+[PAUSE|2.5]
+[283|NARRATOR_TARGET_es|0.75] Te detienes con los pies un palmo antes del brocal, porque esta abertura es solo para mirar y escuchar. Aire fresco sube despacio hacia tu rostro mientras el ruido de la lluvia arriba suena apagado.
+[PAUSE|2.5]
+[284|NARRATOR_TARGET_es|0.75] La cara interior de la tapa se ve seca arriba y más oscura abajo, apoyada con firmeza donde nadie necesita moverla. Dejas las manos tranquilas sobre tus mangas mirando el brocal.
+[PAUSE|2.5]
+[285|NARRATOR_TARGET_es|0.75] Apoyas una rodilla sobre la losa seca junto al brocal y miras hacia el fondo. El pozo desciende en anillos de piedra oscura fuera del alcance de la luz, y muy abajo suena una nota pequeña.
+[PAUSE|2.5]
+[286|NARRATOR_TARGET_es|0.75] Lo que sube desde la profundidad es una sola gota nítida, seguida de silencio y hondura. Justo debajo del atrio termina aquí el camino del agua del techo, y tú acompañas esa reserva desde el lado seco.
+[PAUSE|2.5]
+[287|NARRATOR_TARGET_es|0.75] No acercas ningún pie al borde y dejas el brocal firme entre tú y el pozo, con ambas manos descansando sobre la rodilla. El regreso hacia la sala cálida es corto y lo conoces bien.
+[PAUSE|2.5]
+[288|NARRATOR_TARGET_es|0.75] Permaneces inmóvil esperando la gota siguiente mientras el aire fresco despeja tu frente. La sala tibia está a un solo giro, pero por este instante el agua guardada abajo es el centro sereno de la casa.
+[PAUSE|2.5]
+
+## BLOCK: PLOT_TARGET_3
+[289|NARRATOR_TARGET_es|0.75] La gota siguiente cae exactamente en el mismo punto muy abajo. Suena como un toque redondo, pequeño como una semilla, que el pozo de piedra recoge y devuelve más blando antes de quedar todo quieto.
+[PAUSE|2.5]
+[290|NARRATOR_TARGET_es|0.75] Una segunda gota cae tras una pausa larga y paciente, mucho más lenta que la lluvia del techo. Aquí el agua llega de una en una al final de su viaje, y escuchas sin contar los segundos.
+[PAUSE|2.5]
+[291|NARRATOR_TARGET_es|0.75] Muy abajo brilla un disco gris y apagado: no es ninguna lámpara, solo el agua guardada recordando la luz de arriba. Una gota lo toca, el brillo tiembla un instante y vuelve a quedar plano.
+[PAUSE|2.5]
+[292|NARRATOR_TARGET_es|0.75] El aire que sube del pozo roza tu frente con un frescor limpio a piedra húmeda, sin rastro de hojas verdes. Te dejas refrescar sin inclinar el peso más allá del brocal, firme en la losa.
+[PAUSE|2.5]
+[293|NARRATOR_TARGET_es|0.75] Aquí abajo el ritmo es mucho más lento que en el impluvio de arriba. Allí muchas gotas hablan a la vez; aquí suena una sola y deja alrededor un silencio ancho que descansa el oído.
+[PAUSE|2.5]
+[294|NARRATOR_TARGET_es|0.75] Tu respiración se acomoda sola al intervalo entre gotas, entrando en el silencio y saliendo suave con el toque lejano del fondo. No fuerzas nada y tus hombros siguen sueltos sobre la piedra seca.
+[PAUSE|2.5]
+[295|NARRATOR_TARGET_es|0.75] La hilera superior del brocal aún recibe un reflejo tenue, pero un palmo más abajo los bloques se funden en sombra limpia. En el fondo, bajo esos anillos oscuros, solo las gotas marcan el agua.
+[PAUSE|2.5]
+[296|NARRATOR_TARGET_es|0.75] Otra gota encuentra el mismo punto y devuelve la misma respuesta blanda. Aunque te levantes ahora, este ritmo sigue toda la noche; por eso quedarte un momento más junto al brocal resulta ligero.
+[PAUSE|2.5]
+[297|NARRATOR_TARGET_es|0.75] En el recodo detrás de ti, esa hebra de luz cálida sigue señalando el camino de regreso. No baja hasta el agua, pero mantiene abierta la vuelta hacia el atrio para cuando quieras levantarte.
+[PAUSE|2.5]
+[298|NARRATOR_TARGET_es|0.75] Ahora percibes los dos extremos de la lluvia trabajando juntos: arriba el techo la entrega al impluvio, y aquí abajo esta bóveda silenciosa guarda la reserva sin ruido ni prisa alguna.
+[PAUSE|2.5]
+[299|NARRATOR_TARGET_es|0.75] El agua del fondo no sube por el pozo y su brillo gris permanece quieto en su sitio. Tus manos siguen sobre la piedra seca del brocal mientras la reserva tranquila descansa guardada para el día.
+[PAUSE|2.5]
+[300|NARRATOR_TARGET_es|0.75] Escuchas ya bastante silencio en la profundidad y te levantas despacio junto al brocal. El aire fresco suelta tu rostro al darte la vuelta hacia el recodo donde espera la luz cálida.
+[PAUSE|2.5]
+[301|NARRATOR_TARGET_es|0.75] El regreso recorre las mismas losas, algo más templadas al avanzar hacia la luz. Tu mano guía el paso por la pared opuesta mientras la pendiente sube apenas y el murmullo del impluvio vuelve a abrirse.
+[PAUSE|2.5]
+[302|NARRATOR_TARGET_es|0.75] Al doblar la esquina, la tibieza dorada te recibe en el pecho antes de llegar a tus ojos, mezclada con un rastro suave de romero. En una respiración el olor mineral deja tu manga.
+[PAUSE|2.5]
+[303|NARRATOR_TARGET_es|0.75] Avanzas sin prisa por el tramo estrecho y conocido bajo el arco bajo. Al final del pasillo, la salida al atrio se abre como un rectángulo luminoso tocado por la claridad plateada de la lluvia.
+[PAUSE|2.5]
+[304|NARRATOR_TARGET_es|0.75] El frescor del pasillo te acompaña apenas dos pasos y se queda atrás mientras la tibieza del atrio envuelve tus manos. Subes el último desnivel y el impluvio vuelve a abrirse ante ti.
+[PAUSE|2.5]
+[305|NARRATOR_TARGET_es|0.75] Sales junto a la pared seca y ves de nuevo el cuadrado de cielo lluvioso enviando anillos dorados sobre el agua. El suelo bajo tus sandalias está seco y la cisterna queda en paz a tu espalda.
+[PAUSE|2.5]
+[IMAGE|11] First-person view of a dry wooden bench beside the atrium pool, two small lamps, rain in the open roof, no people
+[306|NARRATOR_TARGET_es|0.75] Te detienes un instante entre el frescor del pasillo y la calidez de las lámparas, viendo que nada cambia en la sala. Junto al muro de yeso espera un banco sencillo de madera pálida.
+[PAUSE|2.5]
+[307|NARRATOR_TARGET_es|0.75] El banco es de madera clara, bañado suavemente por la lámpara junto al muro de yeso. Al tocar el asiento lo sientes por completo seco, sin rocío de la lluvia, junto a la pared todavía tibia.
+[PAUSE|2.5]
+[308|NARRATOR_TARGET_es|0.75] Te sientas sin prisa; la madera da un leve crujido y vuelve al silencio. Tu espalda encuentra la pared tibia, tus pies descansan planos sobre el mosaico seco y el estanque murmura a tu izquierda.
+[PAUSE|2.5]
+[309|NARRATOR_TARGET_es|0.75] Cerca del banco arde una lámpara de aceite de llama pequeña y limpia, sin nada de humo. Su claridad cálida descansa sobre tus rodillas y el borde cercano mientras el agua opuesta queda en sombra.
+[PAUSE|2.5]
+[310|NARRATOR_TARGET_es|0.75] Dejas las manos abiertas y ligeras sobre los muslos, sin nada que sujetar ni hacer. La ropa ya está seca por completo y el banco sólido sostiene todo tu peso sin un solo crujido.
+[PAUSE|2.5]
+[311|NARRATOR_TARGET_es|0.75] Por la abertura del techo sigue entrando la lluvia mansa. Cada círculo nace y muere en el estanque en un trabajo constante que desde el banco suena redondo, parejo y del todo autónomo.
+[PAUSE|2.5]
+[312|NARRATOR_TARGET_es|0.75] Al mover un poco la muñeca sube todavía un resto limpio de romero desde la manga. Detrás de la puerta, el jardín sigue recibiendo lluvia en sus hojas mientras tú permaneces en el banco.
+[PAUSE|2.5]
+[313|NARRATOR_TARGET_es|0.75] Bajo la voz del estanque, el goteo lejano de la cisterna casi desaparece ya; apenas lo percibes una vez y enseguida queda cubierto por el sonido más cercano y dócil de la lluvia en el techo.
+[PAUSE|2.5]
+[314|NARRATOR_TARGET_es|0.75] Un cansancio blando y amable desciende por tus hombros al soltar el largo recorrido. No es ninguna exigencia: la pared tibia recibe parte de tu peso, la madera sostiene el resto y nada se resiste.
+[PAUSE|2.5]
+[IMAGE|12] First-person view from the bench of the quiet pool and the dark square of sky, night rain, no people
+[315|NARRATOR_TARGET_es|0.75] Tus párpados descienden a la mitad y la lámpara se vuelve un resplandor tibio al borde de la vista. El estanque permanece oscuro con chispas doradas sobre el agua mientras el descanso llega solo.
+[PAUSE|2.5]
+[316|NARRATOR_TARGET_es|0.75] La respiración acompaña las gotas por sí sola, entrando suave con el rumor del agua y saliendo en los breves claros de calma. La mandíbula se afloja y el banco acompaña ese ritmo sereno.
+[PAUSE|2.5]
+[317|NARRATOR_TARGET_es|0.75] El suelo alrededor del banco permanece seco y ninguna brizna de agua del techo abierto alcanza esta pared. La lluvia trabaja ordenada dentro del estanque y deja tus tobillos templados y tranquilos.
+[PAUSE|2.5]
+[318|NARRATOR_TARGET_es|0.75] La calle es ya solo lluvia sobre piedras lejanas y la cisterna es apenas una gota honda en la oscuridad. Ambas quedan lejos y en paz; lo único cercano es esta madera seca bajo tus manos.
+[PAUSE|2.5]
+[319|NARRATOR_TARGET_es|0.75] Una leve brisa del jardín inclina un instante la llama, trayendo por una respiración el aroma verde y mojado de las plantas, antes de que la lámpara y toda la sala vuelvan a quedar firmes.
+[PAUSE|2.5]
+[320|NARRATOR_TARGET_es|0.75] Tus manos no buscan ninguna tarea. La yema de un dedo descansa junto a una veta suave de la madera y allí se queda sin moverse, porque ni la veta ni la lluvia piden nada de ti.
+[PAUSE|2.5]
+[321|NARRATOR_TARGET_es|0.75] El tiempo aquí es solo un círculo tras otro sobre el agua, y dejas de seguirlos para que el atrio lleve solo la cuenta. Con los ojos bajos, un nuevo reflejo dorado alcanza la orilla cercana.
+[PAUSE|2.5]
+[322|NARRATOR_TARGET_es|0.75] El descanso no es ninguna orden en esta sala, sino ese peso amable en los hombros, libre de quedarse o ahondarse. La lámpara arde igual y la lluvia atiende el estanque sin pedirte nada.
+[PAUSE|2.5]
+[323|NARRATOR_TARGET_es|0.75] Dejas que la nuca descanse apenas contra el yeso cálido, lo justo para que la pared reciba un poco de peso mientras el banco sostiene lo demás. Arriba, el cuadrado de cielo sigue lloviendo igual.
+[PAUSE|2.5]
+[324|NARRATOR_TARGET_es|0.75] El recorrido termina aquí: calle, jardín, estanque, cisterna y este banco seco. El agua responde a la noche con la misma caída mansa. Puedes quedarte aquí con la lámpara en esta casa en silencio.
+[PAUSE|2.5]
 
 ## PLAYLIST_SEQUENCE
 PLAY: ACT_1_NIGHT_RAIN, ACT_2_INNER_GARDEN, ACT_3_ATRIUM_POOL (mode=full, repeat=1)
 PLAY: ACT_4_CISTERN_PASSAGE, ACT_5_UNDERGROUND_WATER, ACT_6_ATRIUM_REST (mode=full, repeat=1)
 PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=full, repeat=1)
-PLAY: RECALL_1, RECALL_2, RECALL_3 (mode=target_only, speed_mult=0.85, extra_pause=5.0, repeat=1)
+PLAY: PLOT_TARGET_1, PLOT_TARGET_2, PLOT_TARGET_3 (mode=full, speed_mult=0.82, repeat=1)
